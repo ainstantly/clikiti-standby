@@ -1,0 +1,32 @@
+# The State of Independent Home-Service Trades Websites 2026 (Q4 2026). CC BY 4.0, credit Clikiti with a link: https://clikiti.com/research/trades
+"section","id","label","standard","metric","value"
+"summary","sites","Websites scanned","","count",165
+"summary","median","Median overall score","","score_0_100",77
+"summary","mean","Mean overall score","","score_0_100",78
+"summary","moe","Margin of error (95%)","","percentage_points",7.6
+"summary","weak","Sites scoring under 60","","percent",0
+"question","warranty","What if it fails again?","Homeowner question 7","percent_pass",17
+"question","price","What will the visit cost?","Homeowner question 8","percent_pass",18
+"question","financing","Can I spread the cost?","Homeowner question 6","percent_pass",27
+"question","licensed","Are you licensed?","Homeowner question 4","percent_pass",28
+"question","reviews","Do my neighbours vouch for you?","Homeowner question 9","percent_pass",52
+"question","emergency","Can someone come tonight?","Homeowner question 3","percent_pass",53
+"question","book","Can I book without calling?","Homeowner question 5","percent_pass",60
+"question","contact","How do I reach you, and when are you open?","Homeowner question 1","percent_pass",64
+"question","area","Do you work in my area?","Homeowner question 2","percent_pass",80
+"technical","lcp","Loads in under 2.5 s on a phone","Core Web Vitals · LCP","percent_fail",93
+"technical","con","Text contrast passes 4.5:1","WCAG 1.4.3","percent_fail",73
+"technical","schema","Plumber, HVACBusiness, Electrician or RoofingContractor structured data","Schema.org · HomeAndConstructionBusiness","percent_fail",61
+"technical","alt","Images have text descriptions","WCAG 1.1.1","percent_fail",22
+"segment","plumb","Plumbing and HVAC","","median_score",75
+"segment","plumb","Plumbing and HVAC","","percent_under_60",0
+"segment","plumb","Plumbing and HVAC","","sites",44
+"segment","elec","Electrical","","median_score",75
+"segment","elec","Electrical","","percent_under_60",0
+"segment","elec","Electrical","","sites",42
+"segment","roof","Roofing and exteriors","","median_score",75
+"segment","roof","Roofing and exteriors","","percent_under_60",0
+"segment","roof","Roofing and exteriors","","sites",42
+"segment","appl","Appliance repair and handyman","","median_score",83
+"segment","appl","Appliance repair and handyman","","percent_under_60",0
+"segment","appl","Appliance repair and handyman","","sites",37

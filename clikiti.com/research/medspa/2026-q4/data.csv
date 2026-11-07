@@ -1,0 +1,32 @@
+# The State of Independent Med Spa Websites 2026 (Q4 2026). CC BY 4.0, credit Clikiti with a link: https://clikiti.com/research/medspa
+"section","id","label","standard","metric","value"
+"summary","sites","Websites scanned","","count",194
+"summary","median","Median overall score","","score_0_100",75
+"summary","mean","Mean overall score","","score_0_100",75
+"summary","moe","Margin of error (95%)","","percentage_points",7
+"summary","weak","Sites scoring under 60","","percent",2
+"question","price","What will it cost?","Client question 1","percent_pass",34
+"question","safety","Is it safe, and how long will I look treated?","Client question 8","percent_pass",42
+"question","director","Is a doctor overseeing this?","Client question 4","percent_pass",44
+"question","gallery","What results can I expect?","Client question 5","percent_pass",45
+"question","consult","Can I talk to someone first?","Client question 7","percent_pass",52
+"question","finance","Can I spread the cost?","Client question 6","percent_pass",65
+"question","reviews","Do other clients vouch for you?","Client question 9","percent_pass",68
+"question","provider","Who will be doing my treatment?","Client question 3","percent_pass",71
+"question","book","Can I book without calling?","Client question 2","percent_pass",87
+"technical","con","Text contrast passes 4.5:1","WCAG 1.4.3","percent_fail",87
+"technical","lcp","Loads in under 2.5 s on a phone","Core Web Vitals · LCP","percent_fail",77
+"technical","schema","MedicalBusiness, MedicalClinic, Physician or DaySpa structured data","Schema.org · MedicalBusiness","percent_fail",59
+"technical","alt","Images have text descriptions","WCAG 1.1.1","percent_fail",18
+"segment","spa","Independent med spas","","median_score",75
+"segment","spa","Independent med spas","","percent_under_60",2
+"segment","spa","Independent med spas","","sites",66
+"segment","derm","Cosmetic dermatology","","median_score",74
+"segment","derm","Cosmetic dermatology","","percent_under_60",4
+"segment","derm","Cosmetic dermatology","","sites",46
+"segment","laser","Laser and skin clinics","","median_score",75
+"segment","laser","Laser and skin clinics","","percent_under_60",0
+"segment","laser","Laser and skin clinics","","sites",39
+"segment","inj","Injector-led boutiques and aesthetic nurse practices","","median_score",76
+"segment","inj","Injector-led boutiques and aesthetic nurse practices","","percent_under_60",0
+"segment","inj","Injector-led boutiques and aesthetic nurse practices","","sites",43

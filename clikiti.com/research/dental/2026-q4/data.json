@@ -1,0 +1,199 @@
+{
+  "title": "The State of Dental Practice Websites 2026",
+  "edition": "2026-Q4",
+  "period": "Q4 2026",
+  "sample": false,
+  "source": "corpus",
+  "note": "Aggregates computed from automated scans. No individual site is identified.",
+  "url": "https://clikiti.com/research/dental/2026-q4",
+  "scannedAt": "2026-10-13T05:46:05.857Z",
+  "publishedAt": "2026-10-13T05:46:10.860Z",
+  "modifiedAt": "2026-10-13T05:46:10.860Z",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "Free to use and cite under CC BY 4.0. Credit Clikiti with a link.",
+  "citation": "Clikiti. (2026, October 13). The state of dental practice websites 2026 (Q4 2026) [Report]. https://clikiti.com/research/dental/2026-q4",
+  "audience": "Web agencies and freelancers selling to independent dental practices",
+  "sampleSize": 135,
+  "marginOfErrorPts": 8.4,
+  "medianScore": 77,
+  "meanScore": 76,
+  "meanQuestionsAnswered": 3.7,
+  "questionCount": 8,
+  "findings": [
+    "Only 28% of the 135 independent dental practice websites we scanned say which insurance they take.",
+    "A typical site answers four of the eight questions patients ask before choosing (mean 3.7).",
+    "The median overall score is 77 out of 100 (mean 76).",
+    "The least-answered questions are \"Are you taking new patients?\" (22%), \"What will it cost?\" (23%) and \"Do you take my insurance?\" (28%).",
+    "The best-answered are \"When are you open?\" (79%) and \"Can I book online?\" (62%).",
+    "General and family have the highest median score (78), against 77 for orthodontics, 77 for pediatric and 74 for cosmetic and implants.",
+    "91% fail \"Loads in under 2.5 s on a phone\" (Core Web Vitals · LCP).",
+    "84% fail \"Text contrast passes 4.5:1\" (WCAG 1.4.3).",
+    "59% fail \"Dentist or MedicalClinic structured data\" (Schema.org · Dentist).",
+    "Kinds of practice differ in median score by at least 3 points."
+  ],
+  "questions": [
+    {
+      "id": "newpts",
+      "question": "Are you taking new patients?",
+      "label": "Says whether it is taking new patients",
+      "standard": "Patient question 1",
+      "passPct": 22
+    },
+    {
+      "id": "price",
+      "question": "What will it cost?",
+      "label": "Shows prices or a membership plan",
+      "standard": "Patient question 3",
+      "passPct": 23
+    },
+    {
+      "id": "insurance",
+      "question": "Do you take my insurance?",
+      "label": "Says which insurance it takes",
+      "standard": "Patient question 2",
+      "passPct": 28
+    },
+    {
+      "id": "anxiety",
+      "question": "Will it be comfortable?",
+      "label": "Comfort or sedation options explained",
+      "standard": "Patient question 8",
+      "passPct": 44
+    },
+    {
+      "id": "sameday",
+      "question": "Can I be seen today?",
+      "label": "Emergency or same-day care stated",
+      "standard": "Patient question 5",
+      "passPct": 49
+    },
+    {
+      "id": "dentist",
+      "question": "Who will treat me?",
+      "label": "Dentists named, with their training",
+      "standard": "Patient question 6",
+      "passPct": 60
+    },
+    {
+      "id": "book",
+      "question": "Can I book online?",
+      "label": "Appointments can be booked or requested online",
+      "standard": "Patient question 4",
+      "passPct": 62
+    },
+    {
+      "id": "hours",
+      "question": "When are you open?",
+      "label": "Opening hours stated",
+      "standard": "Patient question 7",
+      "passPct": 79
+    }
+  ],
+  "technical": [
+    {
+      "id": "lcp",
+      "label": "Loads in under 2.5 s on a phone",
+      "standard": "Core Web Vitals · LCP",
+      "failPct": 91
+    },
+    {
+      "id": "con",
+      "label": "Text contrast passes 4.5:1",
+      "standard": "WCAG 1.4.3",
+      "failPct": 84
+    },
+    {
+      "id": "schema",
+      "label": "Dentist or MedicalClinic structured data",
+      "standard": "Schema.org · Dentist",
+      "failPct": 59
+    },
+    {
+      "id": "alt",
+      "label": "Images have text descriptions",
+      "standard": "WCAG 1.1.1",
+      "failPct": 10
+    }
+  ],
+  "segments": [
+    {
+      "id": "gen",
+      "name": "General and family",
+      "sites": 37,
+      "median": 78,
+      "weakPct": 0
+    },
+    {
+      "id": "ortho",
+      "name": "Orthodontics",
+      "sites": 33,
+      "median": 77,
+      "weakPct": 0
+    },
+    {
+      "id": "peds",
+      "name": "Pediatric",
+      "sites": 31,
+      "median": 77,
+      "weakPct": 3
+    },
+    {
+      "id": "cosm",
+      "name": "Cosmetic and implants",
+      "sites": 34,
+      "median": 74,
+      "weakPct": 3
+    }
+  ],
+  "agencyProblems": [
+    {
+      "id": "lcp",
+      "label": "Loads in under 2.5 s on a phone",
+      "standard": "Core Web Vitals · LCP",
+      "failPct": 91,
+      "fix": "Resize and compress the hero image, defer scripts, aim for under 2.5 s on a phone.",
+      "pitch": "Your home page takes several seconds to appear on the phone of someone in pain.",
+      "effort": "Build"
+    },
+    {
+      "id": "con",
+      "label": "Text contrast passes 4.5:1",
+      "standard": "WCAG 1.4.3",
+      "failPct": 84,
+      "fix": "Raise text contrast to at least 4.5:1 in the theme.",
+      "pitch": "Parts of the site are hard to read, and it is a WCAG failure.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "newpts",
+      "label": "Says whether it is taking new patients",
+      "standard": "Patient question 1",
+      "failPct": 78,
+      "question": "Are you taking new patients?",
+      "fix": "Say plainly on the home page that the practice is welcoming new patients, with one line on what the first visit involves.",
+      "pitch": "A new patient cannot tell from your site whether you would even see them.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "price",
+      "label": "Shows prices or a membership plan",
+      "standard": "Patient question 3",
+      "failPct": 77,
+      "question": "What will it cost?",
+      "fix": "Publish prices for the common visits (exam, cleaning, X-rays) or a membership plan with its monthly cost.",
+      "pitch": "Patients without insurance fear the bill most. Your site gives them no number at all.",
+      "effort": "Content"
+    },
+    {
+      "id": "insurance",
+      "label": "Says which insurance it takes",
+      "standard": "Patient question 2",
+      "failPct": 72,
+      "question": "Do you take my insurance?",
+      "fix": "An insurance page that names every plan the practice is in network with, or says clearly that it is fee-for-service, linked from the home page.",
+      "pitch": "\"Do you take my insurance?\" is the first question a new patient has, and your site makes them call to ask.",
+      "effort": "Quick fix"
+    }
+  ]
+}

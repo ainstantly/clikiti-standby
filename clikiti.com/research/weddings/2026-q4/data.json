@@ -1,0 +1,283 @@
+{
+  "title": "The State of Independent Wedding Venue Websites 2026",
+  "edition": "2026-Q4",
+  "period": "Q4 2026",
+  "sample": false,
+  "source": "corpus",
+  "note": "Aggregates computed from automated scans. No individual site is identified.",
+  "url": "https://clikiti.com/research/weddings/2026-q4",
+  "scannedAt": "2026-10-16T01:06:21.474Z",
+  "publishedAt": "2026-10-16T01:06:39.705Z",
+  "modifiedAt": "2026-10-16T01:06:39.705Z",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "Free to use and cite under CC BY 4.0. Credit Clikiti with a link.",
+  "citation": "Clikiti. (2026, October 16). The state of independent wedding venue websites 2026 (Q4 2026) [Report]. https://clikiti.com/research/weddings/2026-q4",
+  "audience": "Web agencies and freelancers selling to independent barn, estate, vineyard and loft wedding venues",
+  "sampleSize": 191,
+  "marginOfErrorPts": 7.1,
+  "medianScore": 77,
+  "meanScore": 76,
+  "meanQuestionsAnswered": 4.8,
+  "questionCount": 9,
+  "findings": [
+    "Only 9% of the 191 independent wedding venue websites we scanned show which dates are still open.",
+    "A typical site answers five of the nine questions couples ask before choosing (mean 4.8).",
+    "The median overall score is 77 out of 100 (mean 76).",
+    "The least-answered questions are \"Is our date still free?\" (9%), \"What if it rains?\" (36%) and \"Do other couples vouch for you?\" (41%).",
+    "The best-answered are \"Can we see real weddings here?\" (95%) and \"How many guests can you hold?\" (76%).",
+    "By kind of business, the highest median score is 78 (lofts and restaurants with event space), against 77 for barns and farms, 77 for vineyards and wineries and 76 for estates and historic houses.",
+    "76% fail \"Text contrast passes 4.5:1\" (WCAG 1.4.3).",
+    "72% fail \"Loads in under 2.5 s on a phone\" (Core Web Vitals · LCP).",
+    "43% fail \"Event venue or local business structured data\" (Schema.org · EventVenue)."
+  ],
+  "questions": [
+    {
+      "id": "dates",
+      "question": "Is our date still free?",
+      "label": "Open dates listed or an availability calendar",
+      "standard": "Couple question 3",
+      "passPct": 9,
+      "bySegment": {
+        "barn": 18,
+        "estate": 9,
+        "vine": 7,
+        "urban": 0
+      }
+    },
+    {
+      "id": "rain",
+      "question": "What if it rains?",
+      "label": "A rain or weather plan stated",
+      "standard": "Couple question 6",
+      "passPct": 36,
+      "bySegment": {
+        "barn": 48,
+        "estate": 38,
+        "vine": 36,
+        "urban": 13
+      }
+    },
+    {
+      "id": "reviews",
+      "question": "Do other couples vouch for you?",
+      "label": "Reviews marked up, in a widget or quoted",
+      "standard": "Couple question 9",
+      "passPct": 41,
+      "bySegment": {
+        "barn": 48,
+        "estate": 42,
+        "vine": 33,
+        "urban": 36
+      }
+    },
+    {
+      "id": "tour",
+      "question": "Can we book a tour online?",
+      "label": "A tour can be booked or requested online",
+      "standard": "Couple question 7",
+      "passPct": 46,
+      "bySegment": {
+        "barn": 48,
+        "estate": 49,
+        "vine": 42,
+        "urban": 44
+      }
+    },
+    {
+      "id": "price",
+      "question": "What will it cost us?",
+      "label": "A starting price or price range for the venue or a package",
+      "standard": "Couple question 1",
+      "passPct": 49,
+      "bySegment": {
+        "barn": 53,
+        "estate": 51,
+        "vine": 40,
+        "urban": 49
+      }
+    },
+    {
+      "id": "included",
+      "question": "What's included in the fee?",
+      "label": "What the venue fee includes, item by item",
+      "standard": "Couple question 4",
+      "passPct": 59,
+      "bySegment": {
+        "barn": 66,
+        "estate": 67,
+        "vine": 42,
+        "urban": 59
+      }
+    },
+    {
+      "id": "vendors",
+      "question": "Can we bring our own caterer?",
+      "label": "Catering and vendor policy: in-house, preferred list or outside",
+      "standard": "Couple question 5",
+      "passPct": 70,
+      "bySegment": {
+        "barn": 66,
+        "estate": 64,
+        "vine": 69,
+        "urban": 82
+      }
+    },
+    {
+      "id": "capacity",
+      "question": "How many guests can you hold?",
+      "label": "Guest capacity stated as a number",
+      "standard": "Couple question 2",
+      "passPct": 76,
+      "bySegment": {
+        "barn": 79,
+        "estate": 80,
+        "vine": 67,
+        "urban": 77
+      }
+    },
+    {
+      "id": "gallery",
+      "question": "Can we see real weddings here?",
+      "label": "A wedding photo gallery",
+      "standard": "Couple question 8",
+      "passPct": 95,
+      "bySegment": {
+        "barn": 95,
+        "estate": 91,
+        "vine": 96,
+        "urban": 97
+      }
+    }
+  ],
+  "technical": [
+    {
+      "id": "con",
+      "label": "Text contrast passes 4.5:1",
+      "standard": "WCAG 1.4.3",
+      "failPct": 76,
+      "bySegment": {
+        "barn": 74,
+        "estate": 82,
+        "vine": 78,
+        "urban": 72
+      }
+    },
+    {
+      "id": "lcp",
+      "label": "Loads in under 2.5 s on a phone",
+      "standard": "Core Web Vitals · LCP",
+      "failPct": 72,
+      "bySegment": {
+        "barn": 87,
+        "estate": 60,
+        "vine": 53,
+        "urban": 85
+      }
+    },
+    {
+      "id": "schema",
+      "label": "Event venue or local business structured data",
+      "standard": "Schema.org · EventVenue",
+      "failPct": 43,
+      "bySegment": {
+        "barn": 42,
+        "estate": 49,
+        "vine": 44,
+        "urban": 36
+      }
+    },
+    {
+      "id": "alt",
+      "label": "Images have text descriptions",
+      "standard": "WCAG 1.1.1",
+      "failPct": 16,
+      "bySegment": {
+        "barn": 18,
+        "estate": 9,
+        "vine": 13,
+        "urban": 26
+      }
+    }
+  ],
+  "segments": [
+    {
+      "id": "barn",
+      "name": "Barns and farms",
+      "sites": 62,
+      "median": 77,
+      "weakPct": 0
+    },
+    {
+      "id": "estate",
+      "name": "Estates and historic houses",
+      "sites": 45,
+      "median": 76,
+      "weakPct": 2
+    },
+    {
+      "id": "vine",
+      "name": "Vineyards and wineries",
+      "sites": 45,
+      "median": 77,
+      "weakPct": 0
+    },
+    {
+      "id": "urban",
+      "name": "Lofts and restaurants with event space",
+      "sites": 39,
+      "median": 78,
+      "weakPct": 0
+    }
+  ],
+  "agencyProblems": [
+    {
+      "id": "dates",
+      "label": "Open dates listed or an availability calendar",
+      "standard": "Couple question 3",
+      "failPct": 91,
+      "question": "Is our date still free?",
+      "fix": "An availability page linked from the home page: open dates listed by month, or a calendar the venue updates when a date books.",
+      "pitch": "\"Is our date free?\" is the first question in every inquiry. Answer it on the site and the inquiries you get are for dates you have.",
+      "effort": "Build"
+    },
+    {
+      "id": "con",
+      "label": "Text contrast passes 4.5:1",
+      "standard": "WCAG 1.4.3",
+      "failPct": 76,
+      "fix": "Raise text contrast to at least 4.5:1, especially light script and thin text over photographs.",
+      "pitch": "Pale text on a pale photo is hard to read for the parents and grandparents who look too, and it is a WCAG failure.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "lcp",
+      "label": "Loads in under 2.5 s on a phone",
+      "standard": "Core Web Vitals · LCP",
+      "failPct": 72,
+      "fix": "Resize and compress the hero photographs and slideshow, lazy-load the gallery and defer scripts; aim for under 2.5 s on a phone.",
+      "pitch": "Your home page takes several seconds to appear on a phone, which is where couples look first.",
+      "effort": "Build"
+    },
+    {
+      "id": "rain",
+      "label": "A rain or weather plan stated",
+      "standard": "Couple question 6",
+      "failPct": 64,
+      "question": "What if it rains?",
+      "fix": "Name the rain plan: where the ceremony moves, when the call is made and whether a tent or covered space is included in the fee.",
+      "pitch": "Every couple booking an outdoor ceremony asks about rain. A named plan on the page answers it before the tour.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "reviews",
+      "label": "Reviews marked up, in a widget or quoted",
+      "standard": "Couple question 9",
+      "failPct": 59,
+      "question": "Do other couples vouch for you?",
+      "fix": "Quote couples on the home and weddings pages, or embed the venue’s reviews, with Review or AggregateRating markup.",
+      "pitch": "Couples praise you on The Knot and Google, and your own site keeps it quiet.",
+      "effort": "Quick fix"
+    }
+  ]
+}

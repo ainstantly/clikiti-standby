@@ -1,0 +1,257 @@
+{
+  "title": "The State of Independent Auto Websites 2026",
+  "edition": "2026-Q4",
+  "period": "Q4 2026",
+  "sample": false,
+  "source": "corpus",
+  "note": "Aggregates computed from automated scans. No individual site is identified.",
+  "url": "https://clikiti.com/research/automotive/2026-q4",
+  "scannedAt": "2026-10-15T12:49:15.288Z",
+  "publishedAt": "2026-10-14T23:48:26.302Z",
+  "modifiedAt": "2026-10-15T12:51:56.113Z",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "Free to use and cite under CC BY 4.0. Credit Clikiti with a link.",
+  "citation": "Clikiti. (2026, October 14). The state of independent auto websites 2026 (Q4 2026) [Report]. https://clikiti.com/research/automotive/2026-q4",
+  "audience": "Web agencies and freelancers selling to independent repair, tire and collision shops and used-car dealers",
+  "sampleSize": 174,
+  "marginOfErrorPts": 7.4,
+  "medianScore": 76,
+  "meanScore": 76,
+  "meanQuestionsAnswered": 3.7,
+  "questionCount": 7,
+  "findings": [
+    "Only 29% of the 174 independent auto shop and used-car dealer websites we scanned show any price: a service, a fee, a labour rate or a car.",
+    "A typical site answers four of the seven questions drivers ask before choosing (mean 3.7).",
+    "The median overall score is 76 out of 100 (mean 76).",
+    "The least-answered questions are \"Roughly what will it cost?\" (29%), \"Do you stand behind the work?\" (40%) and \"Are you qualified?\" (47%).",
+    "The best-answered are \"How do I reach you, and when are you open?\" (85%) and \"Do you handle my car?\" (70%).",
+    "By kind of business, the highest median score is 77 (general repair and service), against 76 for tire, brake and quick service, 76 for collision and body and 72 for independent used-car dealers.",
+    "87% fail \"Loads in under 2.5 s on a phone\" (Core Web Vitals · LCP).",
+    "77% fail \"Text contrast passes 4.5:1\" (WCAG 1.4.3).",
+    "51% fail \"AutoRepair, AutoBodyShop or AutoDealer structured data\" (Schema.org · AutomotiveBusiness)."
+  ],
+  "questions": [
+    {
+      "id": "price",
+      "question": "Roughly what will it cost?",
+      "label": "A price shown: a service, a fee, a labour rate or a car",
+      "standard": "Customer question 6",
+      "passPct": 29,
+      "bySegment": {
+        "rep": 22,
+        "tire": 19,
+        "body": 4,
+        "dlr": 72
+      }
+    },
+    {
+      "id": "warranty",
+      "question": "Do you stand behind the work?",
+      "label": "Warranty stated with its terms",
+      "standard": "Customer question 5",
+      "passPct": 40,
+      "bySegment": {
+        "rep": 58,
+        "tire": 35,
+        "body": 56,
+        "dlr": 2
+      }
+    },
+    {
+      "id": "certified",
+      "question": "Are you qualified?",
+      "label": "Qualifications shown (ASE, I-CAR, AAA, OEM, BBB)",
+      "standard": "Customer question 3",
+      "passPct": 47,
+      "bySegment": {
+        "rep": 78,
+        "tire": 48,
+        "body": 44,
+        "dlr": 7
+      }
+    },
+    {
+      "id": "reviews",
+      "question": "Do other drivers vouch for you?",
+      "label": "Reviews marked up, in a widget or quoted",
+      "standard": "Customer question 7",
+      "passPct": 47,
+      "bySegment": {
+        "rep": 64,
+        "tire": 55,
+        "body": 44,
+        "dlr": 23
+      }
+    },
+    {
+      "id": "book",
+      "question": "Can I book without calling?",
+      "label": "Book, request an estimate or a test drive online",
+      "standard": "Customer question 4",
+      "passPct": 56,
+      "bySegment": {
+        "rep": 64,
+        "tire": 61,
+        "body": 44,
+        "dlr": 56
+      }
+    },
+    {
+      "id": "makes",
+      "question": "Do you handle my car?",
+      "label": "Makes named, or all makes and models",
+      "standard": "Customer question 2",
+      "passPct": 70,
+      "bySegment": {
+        "rep": 78,
+        "tire": 65,
+        "body": 51,
+        "dlr": 81
+      }
+    },
+    {
+      "id": "contact",
+      "question": "How do I reach you, and when are you open?",
+      "label": "Tappable phone plus opening hours",
+      "standard": "Customer question 1",
+      "passPct": 85,
+      "bySegment": {
+        "rep": 89,
+        "tire": 97,
+        "body": 71,
+        "dlr": 86
+      }
+    }
+  ],
+  "technical": [
+    {
+      "id": "lcp",
+      "label": "Loads in under 2.5 s on a phone",
+      "standard": "Core Web Vitals · LCP",
+      "failPct": 87,
+      "bySegment": {
+        "rep": 89,
+        "tire": 97,
+        "body": 96,
+        "dlr": 67
+      }
+    },
+    {
+      "id": "con",
+      "label": "Text contrast passes 4.5:1",
+      "standard": "WCAG 1.4.3",
+      "failPct": 77,
+      "bySegment": {
+        "rep": 67,
+        "tire": 74,
+        "body": 87,
+        "dlr": 81
+      }
+    },
+    {
+      "id": "schema",
+      "label": "AutoRepair, AutoBodyShop or AutoDealer structured data",
+      "standard": "Schema.org · AutomotiveBusiness",
+      "failPct": 51,
+      "bySegment": {
+        "rep": 42,
+        "tire": 55,
+        "body": 80,
+        "dlr": 30
+      }
+    },
+    {
+      "id": "alt",
+      "label": "Images have text descriptions",
+      "standard": "WCAG 1.1.1",
+      "failPct": 25,
+      "bySegment": {
+        "rep": 13,
+        "tire": 16,
+        "body": 33,
+        "dlr": 40
+      }
+    }
+  ],
+  "segments": [
+    {
+      "id": "rep",
+      "name": "General repair and service",
+      "sites": 55,
+      "median": 77,
+      "weakPct": 0
+    },
+    {
+      "id": "tire",
+      "name": "Tire, brake and quick service",
+      "sites": 31,
+      "median": 76,
+      "weakPct": 0
+    },
+    {
+      "id": "body",
+      "name": "Collision and body",
+      "sites": 45,
+      "median": 76,
+      "weakPct": 0
+    },
+    {
+      "id": "dlr",
+      "name": "Independent used-car dealers",
+      "sites": 43,
+      "median": 72,
+      "weakPct": 5
+    }
+  ],
+  "agencyProblems": [
+    {
+      "id": "lcp",
+      "label": "Loads in under 2.5 s on a phone",
+      "standard": "Core Web Vitals · LCP",
+      "failPct": 87,
+      "fix": "Resize and compress the hero image and inventory photos, defer scripts, aim for under 2.5 s on a phone.",
+      "pitch": "Your home page takes several seconds to appear on the phone of someone stuck at the roadside.",
+      "effort": "Build"
+    },
+    {
+      "id": "con",
+      "label": "Text contrast passes 4.5:1",
+      "standard": "WCAG 1.4.3",
+      "failPct": 77,
+      "fix": "Raise text contrast to at least 4.5:1 in the theme.",
+      "pitch": "Parts of the site are hard to read, and it is a WCAG failure.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "price",
+      "label": "A price shown: a service, a fee, a labour rate or a car",
+      "standard": "Customer question 6",
+      "failPct": 71,
+      "question": "Roughly what will it cost?",
+      "fix": "Publish starting prices for common jobs (diagnostic fee, oil change, brakes, alignment) or the labour rate; for dealers, a price on every car.",
+      "pitch": "The first question a driver has is what it will cost. Your site makes them call to ask.",
+      "effort": "Content"
+    },
+    {
+      "id": "warranty",
+      "label": "Warranty stated with its terms",
+      "standard": "Customer question 5",
+      "failPct": 60,
+      "question": "Do you stand behind the work?",
+      "fix": "State the warranty with its terms (months and miles, or lifetime on body work) on the home and services pages.",
+      "pitch": "You guarantee your work. The site never says so, so the cheaper shop down the road looks the same as you.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "certified",
+      "label": "Qualifications shown (ASE, I-CAR, AAA, OEM, BBB)",
+      "standard": "Customer question 3",
+      "failPct": 53,
+      "question": "Are you qualified?",
+      "fix": "Show the shop's qualifications by name: ASE, I-CAR, AAA Approved, manufacturer certifications.",
+      "pitch": "Your technicians are certified and your site keeps it a secret.",
+      "effort": "Quick fix"
+    }
+  ]
+}

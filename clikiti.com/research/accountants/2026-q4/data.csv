@@ -1,0 +1,32 @@
+# The State of Independent Accountant Websites 2026 (Q4 2026). CC BY 4.0, credit Clikiti with a link: https://clikiti.com/research/accountants
+"section","id","label","standard","metric","value"
+"summary","sites","Websites scanned","","count",158
+"summary","median","Median overall score","","score_0_100",77
+"summary","mean","Mean overall score","","score_0_100",77
+"summary","moe","Margin of error (95%)","","percentage_points",7.8
+"summary","weak","Sites scoring under 60","","percent",1
+"question","fees","What will it cost me?","Client question 2","percent_pass",13
+"question","book","Can I book a first call without phoning?","Client question 6","percent_pass",15
+"question","portal","How do I send my documents safely?","Client question 5","percent_pass",23
+"question","reviews","Do other clients vouch for you?","Client question 8","percent_pass",31
+"question","team","Who will I actually work with?","Client question 7","percent_pass",32
+"question","credentials","Is someone qualified doing my books?","Client question 3","percent_pass",35
+"question","niches","Do you know businesses like mine?","Client question 4","percent_pass",44
+"question","contact","Where are you, and how do I reach you?","Client question 9","percent_pass",46
+"question","services","What do you do?","Client question 1","percent_pass",80
+"technical","lcp","Loads in under 2.5 s on a phone","Core Web Vitals · LCP","percent_fail",95
+"technical","schema","AccountingService structured data","Schema.org · AccountingService","percent_fail",82
+"technical","con","Text contrast passes 4.5:1","WCAG 1.4.3","percent_fail",78
+"technical","alt","Images have text descriptions","WCAG 1.1.1","percent_fail",23
+"segment","cpa","Small CPA firms","","median_score",77
+"segment","cpa","Small CPA firms","","percent_under_60",0
+"segment","cpa","Small CPA firms","","sites",30
+"segment","book","Bookkeeping firms","","median_score",79
+"segment","book","Bookkeeping firms","","percent_under_60",0
+"segment","book","Bookkeeping firms","","sites",43
+"segment","tax","Tax preparers and enrolled agents","","median_score",75
+"segment","tax","Tax preparers and enrolled agents","","percent_under_60",0
+"segment","tax","Tax preparers and enrolled agents","","sites",41
+"segment","cfo","Advisory and fractional CFO","","median_score",77
+"segment","cfo","Advisory and fractional CFO","","percent_under_60",2
+"segment","cfo","Advisory and fractional CFO","","sites",44

@@ -1,0 +1,269 @@
+{
+  "title": "The State of Independent Real Estate Websites 2026",
+  "edition": "2026-Q4",
+  "period": "Q4 2026",
+  "sample": false,
+  "source": "corpus",
+  "note": "Aggregates computed from automated scans. No individual site is identified.",
+  "url": "https://clikiti.com/research/realestate/2026-q4",
+  "scannedAt": "2026-10-15T13:21:26.072Z",
+  "publishedAt": "2026-10-15T13:18:09.215Z",
+  "modifiedAt": "2026-10-15T13:21:41.936Z",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "Free to use and cite under CC BY 4.0. Credit Clikiti with a link.",
+  "citation": "Clikiti. (2026, October 15). The state of independent real estate websites 2026 (Q4 2026) [Report]. https://clikiti.com/research/realestate/2026-q4",
+  "audience": "Web agencies and freelancers selling to independent brokerages, agent teams and property managers",
+  "sampleSize": 133,
+  "marginOfErrorPts": 8.5,
+  "medianScore": 75,
+  "meanScore": 75,
+  "meanQuestionsAnswered": 3.3,
+  "questionCount": 8,
+  "findings": [
+    "Only 13% of the 133 independent real estate websites we scanned say what they charge.",
+    "A typical site answers three of the eight questions buyers, sellers and landlords ask before choosing (mean 3.3).",
+    "The median overall score is 75 out of 100 (mean 75).",
+    "The least-answered questions are \"What will it cost me?\" (13%), \"Are you licensed?\" (20%) and \"Have you sold or managed homes like mine?\" (26%).",
+    "The best-answered are \"Can I see what you have for sale or rent?\" (76%) and \"How do I reach you or book a showing?\" (60%).",
+    "By kind of business, the highest median score is 79 (independent property managers), against 74 for independent residential brokerages, 74 for solo agents and small teams and 72 for luxury boutiques.",
+    "87% fail \"Text contrast passes 4.5:1\" (WCAG 1.4.3).",
+    "78% fail \"RealEstateAgent or listing structured data\" (Schema.org · RealEstateAgent).",
+    "77% fail \"Loads in under 2.5 s on a phone\" (Core Web Vitals · LCP)."
+  ],
+  "questions": [
+    {
+      "id": "fees",
+      "question": "What will it cost me?",
+      "label": "Commission or management fee stated",
+      "standard": "Customer question 7",
+      "passPct": 13,
+      "bySegment": {
+        "brok": 9,
+        "team": 0,
+        "pm": 28,
+        "lux": 0
+      }
+    },
+    {
+      "id": "licence",
+      "question": "Are you licensed?",
+      "label": "A real estate licence number is shown",
+      "standard": "Customer question 6",
+      "passPct": 20,
+      "bySegment": {
+        "brok": 17,
+        "team": 27,
+        "pm": 17,
+        "lux": 22
+      }
+    },
+    {
+      "id": "sold",
+      "question": "Have you sold or managed homes like mine?",
+      "label": "Track record shown: sales, volume or doors managed",
+      "standard": "Customer question 5",
+      "passPct": 26,
+      "bySegment": {
+        "brok": 20,
+        "team": 32,
+        "pm": 15,
+        "lux": 67
+      }
+    },
+    {
+      "id": "areas",
+      "question": "Do you work where I live?",
+      "label": "Areas served named, or community pages",
+      "standard": "Customer question 3",
+      "passPct": 37,
+      "bySegment": {
+        "brok": 39,
+        "team": 18,
+        "pm": 32,
+        "lux": 67
+      }
+    },
+    {
+      "id": "reviews",
+      "question": "Do past clients vouch for you?",
+      "label": "Reviews marked up, in a widget or quoted",
+      "standard": "Customer question 8",
+      "passPct": 40,
+      "bySegment": {
+        "brok": 39,
+        "team": 27,
+        "pm": 36,
+        "lux": 67
+      }
+    },
+    {
+      "id": "valuation",
+      "question": "What's my home worth, or what will it rent for?",
+      "label": "Home valuation or rental analysis offered",
+      "standard": "Customer question 4",
+      "passPct": 58,
+      "bySegment": {
+        "brok": 57,
+        "team": 55,
+        "pm": 55,
+        "lux": 72
+      }
+    },
+    {
+      "id": "contact",
+      "question": "How do I reach you or book a showing?",
+      "label": "Tappable phone plus a form or showing request",
+      "standard": "Customer question 2",
+      "passPct": 60,
+      "bySegment": {
+        "brok": 65,
+        "team": 55,
+        "pm": 53,
+        "lux": 72
+      }
+    },
+    {
+      "id": "search",
+      "question": "Can I see what you have for sale or rent?",
+      "label": "Listings or rentals can be searched on the site",
+      "standard": "Customer question 1",
+      "passPct": 76,
+      "bySegment": {
+        "brok": 72,
+        "team": 77,
+        "pm": 72,
+        "lux": 94
+      }
+    }
+  ],
+  "technical": [
+    {
+      "id": "con",
+      "label": "Text contrast passes 4.5:1",
+      "standard": "WCAG 1.4.3",
+      "failPct": 87,
+      "bySegment": {
+        "brok": 85,
+        "team": 91,
+        "pm": 87,
+        "lux": 89
+      }
+    },
+    {
+      "id": "schema",
+      "label": "RealEstateAgent or listing structured data",
+      "standard": "Schema.org · RealEstateAgent",
+      "failPct": 78,
+      "bySegment": {
+        "brok": 80,
+        "team": 68,
+        "pm": 83,
+        "lux": 72
+      }
+    },
+    {
+      "id": "lcp",
+      "label": "Loads in under 2.5 s on a phone",
+      "standard": "Core Web Vitals · LCP",
+      "failPct": 77,
+      "bySegment": {
+        "brok": 83,
+        "team": 77,
+        "pm": 77,
+        "lux": 61
+      }
+    },
+    {
+      "id": "alt",
+      "label": "Images have text descriptions",
+      "standard": "WCAG 1.1.1",
+      "failPct": 29,
+      "bySegment": {
+        "brok": 41,
+        "team": 32,
+        "pm": 6,
+        "lux": 56
+      }
+    }
+  ],
+  "segments": [
+    {
+      "id": "brok",
+      "name": "Independent residential brokerages",
+      "sites": 46,
+      "median": 74,
+      "weakPct": 4
+    },
+    {
+      "id": "team",
+      "name": "Solo agents and small teams",
+      "sites": 22,
+      "median": 74,
+      "weakPct": 0
+    },
+    {
+      "id": "pm",
+      "name": "Independent property managers",
+      "sites": 47,
+      "median": 79,
+      "weakPct": 0
+    },
+    {
+      "id": "lux",
+      "name": "Luxury boutiques",
+      "sites": 18,
+      "median": 72,
+      "weakPct": 0
+    }
+  ],
+  "agencyProblems": [
+    {
+      "id": "fees",
+      "label": "Commission or management fee stated",
+      "standard": "Customer question 7",
+      "failPct": 87,
+      "question": "What will it cost me?",
+      "fix": "Say plainly how the firm is paid: commission or flat fee and what it covers, or the management and leasing fees.",
+      "pitch": "Since buyer agreements became the norm, clients ask what you charge first, and your site does not say.",
+      "effort": "Content"
+    },
+    {
+      "id": "con",
+      "label": "Text contrast passes 4.5:1",
+      "standard": "WCAG 1.4.3",
+      "failPct": 87,
+      "fix": "Raise text contrast to at least 4.5:1, especially text laid over hero photos.",
+      "pitch": "Parts of the site are hard to read, and it is a WCAG failure.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "licence",
+      "label": "A real estate licence number is shown",
+      "standard": "Customer question 6",
+      "failPct": 80,
+      "question": "Are you licensed?",
+      "fix": "Show the broker of record and each agent’s licence number in the footer and on agent pages.",
+      "pitch": "A careful client checks the licence first, and your site makes them look it up elsewhere.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "schema",
+      "label": "RealEstateAgent or listing structured data",
+      "standard": "Schema.org · RealEstateAgent",
+      "failPct": 78,
+      "fix": "Add RealEstateAgent structured data with the firm’s name, address, phone and areas served.",
+      "pitch": "Search engines and assistants have to guess who you are and where you work.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "lcp",
+      "label": "Loads in under 2.5 s on a phone",
+      "standard": "Core Web Vitals · LCP",
+      "failPct": 77,
+      "fix": "Resize and compress the hero photo, defer the listing-search scripts, aim for under 2.5 s on a phone.",
+      "pitch": "Your home page takes several seconds to appear on a buyer’s phone at the curb.",
+      "effort": "Build"
+    }
+  ]
+}

@@ -1,0 +1,282 @@
+{
+  "title": "The State of Independent Med Spa Websites 2026",
+  "edition": "2026-Q4",
+  "period": "Q4 2026",
+  "sample": false,
+  "source": "corpus",
+  "note": "Aggregates computed from automated scans. No individual site is identified.",
+  "url": "https://clikiti.com/research/medspa/2026-q4",
+  "scannedAt": "2026-10-15T12:27:02.594Z",
+  "publishedAt": "2026-10-15T12:18:52.348Z",
+  "modifiedAt": "2026-10-15T12:27:13.824Z",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "Free to use and cite under CC BY 4.0. Credit Clikiti with a link.",
+  "citation": "Clikiti. (2026, October 15). The state of independent med spa websites 2026 (Q4 2026) [Report]. https://clikiti.com/research/medspa/2026-q4",
+  "audience": "Web agencies and freelancers selling to independent med spas, cosmetic dermatology practices, laser clinics and injector-led boutiques",
+  "sampleSize": 194,
+  "marginOfErrorPts": 7,
+  "medianScore": 75,
+  "meanScore": 75,
+  "meanQuestionsAnswered": 5.1,
+  "questionCount": 9,
+  "findings": [
+    "Only 34% of the 194 independent med spa and aesthetic clinic websites we scanned show any treatment price: per unit, per syringe, per session or a starting price.",
+    "A typical site answers five of the nine questions clients ask before choosing (mean 5.1).",
+    "The median overall score is 75 out of 100 (mean 75).",
+    "The least-answered questions are \"What will it cost?\" (34%), \"Is it safe, and how long will I look treated?\" (42%) and \"Is a doctor overseeing this?\" (44%).",
+    "The best-answered are \"Can I book without calling?\" (87%) and \"Who will be doing my treatment?\" (71%).",
+    "Injector-led boutiques and aesthetic nurse practices have the highest median score (76), against 75 for independent med spas, 75 for laser and skin clinics and 74 for cosmetic dermatology.",
+    "87% fail \"Text contrast passes 4.5:1\" (WCAG 1.4.3).",
+    "77% fail \"Loads in under 2.5 s on a phone\" (Core Web Vitals · LCP).",
+    "59% fail \"MedicalBusiness, MedicalClinic, Physician or DaySpa structured data\" (Schema.org · MedicalBusiness)."
+  ],
+  "questions": [
+    {
+      "id": "price",
+      "question": "What will it cost?",
+      "label": "A treatment price or a \"from\" price shown",
+      "standard": "Client question 1",
+      "passPct": 34,
+      "bySegment": {
+        "spa": 41,
+        "derm": 13,
+        "laser": 36,
+        "inj": 44
+      }
+    },
+    {
+      "id": "safety",
+      "question": "Is it safe, and how long will I look treated?",
+      "label": "Downtime, recovery or side effects explained",
+      "standard": "Client question 8",
+      "passPct": 42,
+      "bySegment": {
+        "spa": 48,
+        "derm": 35,
+        "laser": 38,
+        "inj": 42
+      }
+    },
+    {
+      "id": "director",
+      "question": "Is a doctor overseeing this?",
+      "label": "A physician is named as medical director or lead doctor",
+      "standard": "Client question 4",
+      "passPct": 44,
+      "bySegment": {
+        "spa": 45,
+        "derm": 80,
+        "laser": 23,
+        "inj": 23
+      }
+    },
+    {
+      "id": "gallery",
+      "question": "What results can I expect?",
+      "label": "Before-and-after photos of real results",
+      "standard": "Client question 5",
+      "passPct": 45,
+      "bySegment": {
+        "spa": 53,
+        "derm": 41,
+        "laser": 38,
+        "inj": 44
+      }
+    },
+    {
+      "id": "consult",
+      "question": "Can I talk to someone first?",
+      "label": "A consultation is offered",
+      "standard": "Client question 7",
+      "passPct": 52,
+      "bySegment": {
+        "spa": 62,
+        "derm": 22,
+        "laser": 72,
+        "inj": 51
+      }
+    },
+    {
+      "id": "finance",
+      "question": "Can I spread the cost?",
+      "label": "Financing or a membership plan offered",
+      "standard": "Client question 6",
+      "passPct": 65,
+      "bySegment": {
+        "spa": 74,
+        "derm": 59,
+        "laser": 46,
+        "inj": 74
+      }
+    },
+    {
+      "id": "reviews",
+      "question": "Do other clients vouch for you?",
+      "label": "Reviews marked up, in a widget or quoted",
+      "standard": "Client question 9",
+      "passPct": 68,
+      "bySegment": {
+        "spa": 80,
+        "derm": 63,
+        "laser": 59,
+        "inj": 60
+      }
+    },
+    {
+      "id": "provider",
+      "question": "Who will be doing my treatment?",
+      "label": "Who treats you is named, with a clinical credential (MD, DO, NP, PA, RN)",
+      "standard": "Client question 3",
+      "passPct": 71,
+      "bySegment": {
+        "spa": 73,
+        "derm": 96,
+        "laser": 41,
+        "inj": 70
+      }
+    },
+    {
+      "id": "book",
+      "question": "Can I book without calling?",
+      "label": "Treatments or a consultation can be booked online",
+      "standard": "Client question 2",
+      "passPct": 87,
+      "bySegment": {
+        "spa": 91,
+        "derm": 83,
+        "laser": 87,
+        "inj": 84
+      }
+    }
+  ],
+  "technical": [
+    {
+      "id": "con",
+      "label": "Text contrast passes 4.5:1",
+      "standard": "WCAG 1.4.3",
+      "failPct": 87,
+      "bySegment": {
+        "spa": 89,
+        "derm": 91,
+        "laser": 95,
+        "inj": 72
+      }
+    },
+    {
+      "id": "lcp",
+      "label": "Loads in under 2.5 s on a phone",
+      "standard": "Core Web Vitals · LCP",
+      "failPct": 77,
+      "bySegment": {
+        "spa": 85,
+        "derm": 41,
+        "laser": 87,
+        "inj": 93
+      }
+    },
+    {
+      "id": "schema",
+      "label": "MedicalBusiness, MedicalClinic, Physician or DaySpa structured data",
+      "standard": "Schema.org · MedicalBusiness",
+      "failPct": 59,
+      "bySegment": {
+        "spa": 50,
+        "derm": 59,
+        "laser": 69,
+        "inj": 63
+      }
+    },
+    {
+      "id": "alt",
+      "label": "Images have text descriptions",
+      "standard": "WCAG 1.1.1",
+      "failPct": 18,
+      "bySegment": {
+        "spa": 8,
+        "derm": 28,
+        "laser": 21,
+        "inj": 21
+      }
+    }
+  ],
+  "segments": [
+    {
+      "id": "spa",
+      "name": "Independent med spas",
+      "sites": 66,
+      "median": 75,
+      "weakPct": 2
+    },
+    {
+      "id": "derm",
+      "name": "Cosmetic dermatology",
+      "sites": 46,
+      "median": 74,
+      "weakPct": 4
+    },
+    {
+      "id": "laser",
+      "name": "Laser and skin clinics",
+      "sites": 39,
+      "median": 75,
+      "weakPct": 0
+    },
+    {
+      "id": "inj",
+      "name": "Injector-led boutiques and aesthetic nurse practices",
+      "sites": 43,
+      "median": 76,
+      "weakPct": 0
+    }
+  ],
+  "agencyProblems": [
+    {
+      "id": "con",
+      "label": "Text contrast passes 4.5:1",
+      "standard": "WCAG 1.4.3",
+      "failPct": 87,
+      "fix": "Raise text contrast to at least 4.5:1 in the theme: pale taupe on cream and white on photographs are the usual failures.",
+      "pitch": "The soft palette makes parts of the site hard to read, and it is a WCAG failure.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "lcp",
+      "label": "Loads in under 2.5 s on a phone",
+      "standard": "Core Web Vitals · LCP",
+      "failPct": 77,
+      "fix": "Resize and compress the hero video or image and the gallery, defer booking and chat scripts, aim for under 2.5 s on a phone.",
+      "pitch": "Your home page takes several seconds to appear on the phone where clients compare you with two other practices.",
+      "effort": "Build"
+    },
+    {
+      "id": "price",
+      "label": "A treatment price or a \"from\" price shown",
+      "standard": "Client question 1",
+      "failPct": 66,
+      "question": "What will it cost?",
+      "fix": "Publish the price the practice already quotes on the phone: neurotoxin per unit, filler per syringe, laser and facials per session or package, or a \"from\" price for each treatment.",
+      "pitch": "The first thing a client wants to know is what it costs, and your site makes her book a consultation to find out.",
+      "effort": "Content"
+    },
+    {
+      "id": "schema",
+      "label": "MedicalBusiness, MedicalClinic, Physician or DaySpa structured data",
+      "standard": "Schema.org · MedicalBusiness",
+      "failPct": 59,
+      "fix": "Add MedicalBusiness (or MedicalClinic or DaySpa) structured data with the address, phone, hours and the physician.",
+      "pitch": "Search engines and assistants have to guess what kind of practice you are and where you are.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "safety",
+      "label": "Downtime, recovery or side effects explained",
+      "standard": "Client question 8",
+      "failPct": 58,
+      "question": "Is it safe, and how long will I look treated?",
+      "fix": "On each treatment page, say how long the treatment takes, the usual downtime and the common side effects, and link the aftercare instructions.",
+      "pitch": "Clients plan treatments around work and events. Your site never says how long they will look treated.",
+      "effort": "Content"
+    }
+  ]
+}

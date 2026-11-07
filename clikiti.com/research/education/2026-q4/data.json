@@ -1,0 +1,171 @@
+{
+  "title": "The State of School Websites 2026",
+  "edition": "2026-Q4",
+  "period": "Q4 2026",
+  "sample": false,
+  "source": "corpus",
+  "note": "Aggregates computed from automated scans. No individual site is identified.",
+  "url": "https://clikiti.com/research/education/2026-q4",
+  "scannedAt": "2026-10-13T04:30:55.797Z",
+  "publishedAt": "2026-10-12T18:09:38.740Z",
+  "modifiedAt": "2026-10-13T04:31:12.263Z",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "Free to use and cite under CC BY 4.0. Credit Clikiti with a link.",
+  "citation": "Clikiti. (2026, October 12). The state of school websites 2026 (Q4 2026) [Report]. https://clikiti.com/research/education/2026-q4",
+  "audience": "Web agencies and freelancers selling to private schools and tutoring centres",
+  "sampleSize": 114,
+  "marginOfErrorPts": 9.2,
+  "medianScore": 74,
+  "meanScore": 75,
+  "meanQuestionsAnswered": 2.9,
+  "questionCount": 6,
+  "findings": [
+    "Only 68% of the 114 private school and tutoring websites we scanned show what the school costs without the parent having to ask.",
+    "A typical site answers three of the six questions parents ask before choosing (mean 2.9).",
+    "The median overall score is 74 out of 100 (mean 75).",
+    "The least-answered questions are \"Can I reach a person?\" (9%), \"Is it recognised?\" (27%) and \"When are the holidays?\" (46%).",
+    "The best-answered are \"Can we afford it?\" (76%) and \"What does it cost?\" (68%).",
+    "Tutoring and learning centres have the highest median score (78), against 75 for small private schools and 73 for independent schools.",
+    "80% fail \"Text contrast passes 4.5:1\" (WCAG 1.4.3).",
+    "57% fail \"Loads in under 2.5 s on a phone\" (Core Web Vitals · LCP).",
+    "17% fail \"Images have text descriptions\" (WCAG 1.1.1)."
+  ],
+  "questions": [
+    {
+      "id": "contact",
+      "question": "Can I reach a person?",
+      "label": "Phone and email tappable, hours stated",
+      "standard": "Parent question 10",
+      "passPct": 9
+    },
+    {
+      "id": "accr",
+      "question": "Is it recognised?",
+      "label": "Accreditation shown",
+      "standard": "Parent question 5",
+      "passPct": 27
+    },
+    {
+      "id": "cal",
+      "question": "When are the holidays?",
+      "label": "Term dates published as a page",
+      "standard": "Parent question 8",
+      "passPct": 46
+    },
+    {
+      "id": "tour",
+      "question": "Can we visit?",
+      "label": "A tour or open day can be booked online",
+      "standard": "Parent question 3",
+      "passPct": 59
+    },
+    {
+      "id": "cost",
+      "question": "What does it cost?",
+      "label": "Tuition or fees shown without asking",
+      "standard": "Parent question 1",
+      "passPct": 68
+    },
+    {
+      "id": "aid",
+      "question": "Can we afford it?",
+      "label": "Financial aid or payment plans explained",
+      "standard": "Parent question 6",
+      "passPct": 76
+    }
+  ],
+  "technical": [
+    {
+      "id": "con",
+      "label": "Text contrast passes 4.5:1",
+      "standard": "WCAG 1.4.3",
+      "failPct": 80
+    },
+    {
+      "id": "lcp",
+      "label": "Loads in under 2.5 s on a phone",
+      "standard": "Core Web Vitals · LCP",
+      "failPct": 57
+    },
+    {
+      "id": "alt",
+      "label": "Images have text descriptions",
+      "standard": "WCAG 1.1.1",
+      "failPct": 17
+    }
+  ],
+  "segments": [
+    {
+      "id": "ind",
+      "name": "Independent schools",
+      "sites": 58,
+      "median": 73,
+      "weakPct": 0
+    },
+    {
+      "id": "small",
+      "name": "Small private schools",
+      "sites": 31,
+      "median": 75,
+      "weakPct": 0
+    },
+    {
+      "id": "tut",
+      "name": "Tutoring and learning centres",
+      "sites": 25,
+      "median": 78,
+      "weakPct": 4
+    }
+  ],
+  "agencyProblems": [
+    {
+      "id": "contact",
+      "label": "Phone and email tappable, hours stated",
+      "standard": "Parent question 10",
+      "failPct": 91,
+      "question": "Can I reach a person?",
+      "fix": "Tappable phone and email in the header, with office hours.",
+      "pitch": "On a phone, reaching a person takes more than one tap.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "con",
+      "label": "Text contrast passes 4.5:1",
+      "standard": "WCAG 1.4.3",
+      "failPct": 80,
+      "fix": "Raise text contrast to at least 4.5:1 in the theme.",
+      "pitch": "Parts of the site are hard to read, and it is a WCAG failure.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "accr",
+      "label": "Accreditation shown",
+      "standard": "Parent question 5",
+      "failPct": 73,
+      "question": "Is it recognised?",
+      "fix": "Show accreditation clearly, with the accrediting body named and linked.",
+      "pitch": "Your best proof of quality is invisible on the site.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "lcp",
+      "label": "Loads in under 2.5 s on a phone",
+      "standard": "Core Web Vitals · LCP",
+      "failPct": 57,
+      "fix": "Resize and compress the hero image, defer scripts, aim for under 2.5 s on a phone.",
+      "pitch": "Your home page takes several seconds to appear on a parent's phone.",
+      "effort": "Build"
+    },
+    {
+      "id": "cal",
+      "label": "Term dates published as a page",
+      "standard": "Parent question 8",
+      "failPct": 54,
+      "question": "When are the holidays?",
+      "fix": "Term dates as a web page, not a scanned PDF.",
+      "pitch": "Current families hunt for term dates every holiday.",
+      "effort": "Quick fix"
+    }
+  ]
+}

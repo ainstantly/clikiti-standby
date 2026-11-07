@@ -1,0 +1,284 @@
+{
+  "title": "The State of Independent Accountant Websites 2026",
+  "edition": "2026-Q4",
+  "period": "Q4 2026",
+  "sample": false,
+  "source": "corpus",
+  "note": "Aggregates computed from automated scans. No individual site is identified.",
+  "url": "https://clikiti.com/research/accountants/2026-q4",
+  "scannedAt": "2026-10-15T12:35:47.304Z",
+  "publishedAt": "2026-10-15T12:35:50.947Z",
+  "modifiedAt": "2026-10-15T12:35:50.947Z",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "Free to use and cite under CC BY 4.0. Credit Clikiti with a link.",
+  "citation": "Clikiti. (2026, October 15). The state of independent accountant websites 2026 (Q4 2026) [Report]. https://clikiti.com/research/accountants/2026-q4",
+  "audience": "Web agencies and freelancers selling to small CPA firms, bookkeepers and tax preparers",
+  "sampleSize": 158,
+  "marginOfErrorPts": 7.8,
+  "medianScore": 77,
+  "meanScore": 77,
+  "meanQuestionsAnswered": 3.2,
+  "questionCount": 9,
+  "findings": [
+    "Only 13% of the 158 independent accounting, bookkeeping and tax practice websites we scanned show any price, package or fee.",
+    "A typical site answers three of the nine questions clients ask before choosing (mean 3.2).",
+    "The median overall score is 77 out of 100 (mean 77).",
+    "The least-answered questions are \"What will it cost me?\" (13%), \"Can I book a first call without phoning?\" (15%) and \"How do I send my documents safely?\" (23%).",
+    "The best-answered are \"What do you do?\" (80%) and \"Where are you, and how do I reach you?\" (46%).",
+    "Bookkeeping firms have the highest median score (79), against 77 for small cpa firms, 77 for advisory and fractional cfo and 75 for tax preparers and enrolled agents.",
+    "95% fail \"Loads in under 2.5 s on a phone\" (Core Web Vitals · LCP).",
+    "82% fail \"AccountingService structured data\" (Schema.org · AccountingService).",
+    "78% fail \"Text contrast passes 4.5:1\" (WCAG 1.4.3).",
+    "Bookkeeping firms show a price more often than CPA firms.",
+    "Kinds of practice differ in median score by at least 3 points."
+  ],
+  "questions": [
+    {
+      "id": "fees",
+      "question": "What will it cost me?",
+      "label": "A price, package or fee shown",
+      "standard": "Client question 2",
+      "passPct": 13,
+      "bySegment": {
+        "cpa": 3,
+        "book": 21,
+        "tax": 5,
+        "cfo": 18
+      }
+    },
+    {
+      "id": "book",
+      "question": "Can I book a first call without phoning?",
+      "label": "Book a consultation online",
+      "standard": "Client question 6",
+      "passPct": 15,
+      "bySegment": {
+        "cpa": 10,
+        "book": 9,
+        "tax": 12,
+        "cfo": 25
+      }
+    },
+    {
+      "id": "portal",
+      "question": "How do I send my documents safely?",
+      "label": "A working secure client portal",
+      "standard": "Client question 5",
+      "passPct": 23,
+      "bySegment": {
+        "cpa": 53,
+        "book": 7,
+        "tax": 34,
+        "cfo": 7
+      }
+    },
+    {
+      "id": "reviews",
+      "question": "Do other clients vouch for you?",
+      "label": "Reviews marked up, shown or quoted",
+      "standard": "Client question 8",
+      "passPct": 31,
+      "bySegment": {
+        "cpa": 7,
+        "book": 44,
+        "tax": 22,
+        "cfo": 43
+      }
+    },
+    {
+      "id": "team",
+      "question": "Who will I actually work with?",
+      "label": "People named with a short bio",
+      "standard": "Client question 7",
+      "passPct": 32,
+      "bySegment": {
+        "cpa": 57,
+        "book": 28,
+        "tax": 29,
+        "cfo": 20
+      }
+    },
+    {
+      "id": "credentials",
+      "question": "Is someone qualified doing my books?",
+      "label": "A named CPA, EA or certified bookkeeper",
+      "standard": "Client question 3",
+      "passPct": 35,
+      "bySegment": {
+        "cpa": 80,
+        "book": 19,
+        "tax": 29,
+        "cfo": 27
+      }
+    },
+    {
+      "id": "niches",
+      "question": "Do you know businesses like mine?",
+      "label": "Industries or client types named",
+      "standard": "Client question 4",
+      "passPct": 44,
+      "bySegment": {
+        "cpa": 47,
+        "book": 42,
+        "tax": 24,
+        "cfo": 64
+      }
+    },
+    {
+      "id": "contact",
+      "question": "Where are you, and how do I reach you?",
+      "label": "Tappable phone plus a street address",
+      "standard": "Client question 9",
+      "passPct": 46,
+      "bySegment": {
+        "cpa": 53,
+        "book": 28,
+        "tax": 59,
+        "cfo": 48
+      }
+    },
+    {
+      "id": "services",
+      "question": "What do you do?",
+      "label": "Four or more services named",
+      "standard": "Client question 1",
+      "passPct": 80,
+      "bySegment": {
+        "cpa": 90,
+        "book": 86,
+        "tax": 66,
+        "cfo": 80
+      }
+    }
+  ],
+  "technical": [
+    {
+      "id": "lcp",
+      "label": "Loads in under 2.5 s on a phone",
+      "standard": "Core Web Vitals · LCP",
+      "failPct": 95,
+      "bySegment": {
+        "cpa": 97,
+        "book": 100,
+        "tax": 93,
+        "cfo": 91
+      }
+    },
+    {
+      "id": "schema",
+      "label": "AccountingService structured data",
+      "standard": "Schema.org · AccountingService",
+      "failPct": 82,
+      "bySegment": {
+        "cpa": 83,
+        "book": 91,
+        "tax": 88,
+        "cfo": 68
+      }
+    },
+    {
+      "id": "con",
+      "label": "Text contrast passes 4.5:1",
+      "standard": "WCAG 1.4.3",
+      "failPct": 78,
+      "bySegment": {
+        "cpa": 73,
+        "book": 72,
+        "tax": 80,
+        "cfo": 84
+      }
+    },
+    {
+      "id": "alt",
+      "label": "Images have text descriptions",
+      "standard": "WCAG 1.1.1",
+      "failPct": 23,
+      "bySegment": {
+        "cpa": 33,
+        "book": 14,
+        "tax": 32,
+        "cfo": 16
+      }
+    }
+  ],
+  "segments": [
+    {
+      "id": "cpa",
+      "name": "Small CPA firms",
+      "sites": 30,
+      "median": 77,
+      "weakPct": 0
+    },
+    {
+      "id": "book",
+      "name": "Bookkeeping firms",
+      "sites": 43,
+      "median": 79,
+      "weakPct": 0
+    },
+    {
+      "id": "tax",
+      "name": "Tax preparers and enrolled agents",
+      "sites": 41,
+      "median": 75,
+      "weakPct": 0
+    },
+    {
+      "id": "cfo",
+      "name": "Advisory and fractional CFO",
+      "sites": 44,
+      "median": 77,
+      "weakPct": 2
+    }
+  ],
+  "agencyProblems": [
+    {
+      "id": "lcp",
+      "label": "Loads in under 2.5 s on a phone",
+      "standard": "Core Web Vitals · LCP",
+      "failPct": 95,
+      "fix": "Resize and compress the hero image, defer scripts, aim for under 2.5 s on a phone.",
+      "pitch": "Your home page takes several seconds to appear on a client's phone.",
+      "effort": "Build"
+    },
+    {
+      "id": "fees",
+      "label": "A price, package or fee shown",
+      "standard": "Client question 2",
+      "failPct": 87,
+      "question": "What will it cost me?",
+      "fix": "Publish starting prices or monthly packages for the common work: a personal return, a business return, monthly bookkeeping.",
+      "pitch": "The first thing a new client wants to know is what it will cost, and your site makes them call to ask.",
+      "effort": "Content"
+    },
+    {
+      "id": "book",
+      "label": "Book a consultation online",
+      "standard": "Client question 6",
+      "failPct": 85,
+      "question": "Can I book a first call without phoning?",
+      "fix": "Embed an online scheduler for a first consultation, linked from the home and contact pages.",
+      "pitch": "A prospect who finds you at 10 pm cannot book a first call without phoning in the morning.",
+      "effort": "Build"
+    },
+    {
+      "id": "schema",
+      "label": "AccountingService structured data",
+      "standard": "Schema.org · AccountingService",
+      "failPct": 82,
+      "fix": "Add AccountingService structured data with the practice's name, address, phone and services.",
+      "pitch": "Search engines and AI assistants have to guess what your practice does and where it is.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "con",
+      "label": "Text contrast passes 4.5:1",
+      "standard": "WCAG 1.4.3",
+      "failPct": 78,
+      "fix": "Raise text contrast to at least 4.5:1 in the theme.",
+      "pitch": "Parts of the site are hard to read, especially for older clients, and it is a WCAG failure.",
+      "effort": "Quick fix"
+    }
+  ]
+}

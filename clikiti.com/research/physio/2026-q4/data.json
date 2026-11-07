@@ -1,0 +1,282 @@
+{
+  "title": "The State of Independent Physical Therapy Websites 2026",
+  "edition": "2026-Q4",
+  "period": "Q4 2026",
+  "sample": false,
+  "source": "corpus",
+  "note": "Aggregates computed from automated scans. No individual site is identified.",
+  "url": "https://clikiti.com/research/physio/2026-q4",
+  "scannedAt": "2026-10-15T12:51:00.987Z",
+  "publishedAt": "2026-10-15T12:32:22.047Z",
+  "modifiedAt": "2026-10-15T12:51:16.162Z",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "Free to use and cite under CC BY 4.0. Credit Clikiti with a link.",
+  "citation": "Clikiti. (2026, October 15). The state of independent physical therapy websites 2026 (Q4 2026) [Report]. https://clikiti.com/research/physio/2026-q4",
+  "audience": "Web agencies and freelancers selling to independent physical therapy, chiropractic, sports rehab and specialty clinics",
+  "sampleSize": 148,
+  "marginOfErrorPts": 8.1,
+  "medianScore": 76,
+  "meanScore": 77,
+  "meanQuestionsAnswered": 4.5,
+  "questionCount": 9,
+  "findings": [
+    "Only 18% of the 148 independent physical therapy and chiropractic clinic websites we scanned show a self-pay price for a visit or session.",
+    "A typical site answers five of the nine questions patients ask before choosing (mean 4.5).",
+    "The median overall score is 76 out of 100 (mean 77).",
+    "The least-answered questions are \"What if I pay myself?\" (18%), \"Do I need a referral?\" (27%) and \"What happens at the first visit?\" (32%).",
+    "The best-answered are \"Do you treat my problem?\" (84%) and \"Can I book without calling?\" (75%).",
+    "By kind of business, the highest median score is 78 (outpatient physical therapy), against 77 for sports and orthopedic rehab, 76 for massage, wellness and pelvic health and 74 for chiropractic.",
+    "91% fail \"Loads in under 2.5 s on a phone\" (Core Web Vitals · LCP).",
+    "80% fail \"Text contrast passes 4.5:1\" (WCAG 1.4.3).",
+    "78% fail \"Physiotherapy, MedicalBusiness or health-business structured data\" (Schema.org · MedicalBusiness)."
+  ],
+  "questions": [
+    {
+      "id": "selfpay",
+      "question": "What if I pay myself?",
+      "label": "A self-pay price shown for a visit or session",
+      "standard": "Patient question 8",
+      "passPct": 18,
+      "bySegment": {
+        "pt": 8,
+        "chiro": 13,
+        "sports": 4,
+        "spec": 41
+      }
+    },
+    {
+      "id": "direct",
+      "question": "Do I need a referral?",
+      "label": "No referral needed (direct access) stated",
+      "standard": "Patient question 7",
+      "passPct": 27,
+      "bySegment": {
+        "pt": 28,
+        "chiro": 13,
+        "sports": 50,
+        "spec": 28
+      }
+    },
+    {
+      "id": "firstvisit",
+      "question": "What happens at the first visit?",
+      "label": "First visit described: length or what happens",
+      "standard": "Patient question 6",
+      "passPct": 32,
+      "bySegment": {
+        "pt": 22,
+        "chiro": 36,
+        "sports": 42,
+        "spec": 31
+      }
+    },
+    {
+      "id": "insurance",
+      "question": "Do you take my insurance?",
+      "label": "Insurance plans named, or out of network stated",
+      "standard": "Patient question 5",
+      "passPct": 39,
+      "bySegment": {
+        "pt": 36,
+        "chiro": 49,
+        "sports": 42,
+        "spec": 28
+      }
+    },
+    {
+      "id": "reviews",
+      "question": "Do other patients vouch for you?",
+      "label": "Reviews marked up, in a widget or quoted",
+      "standard": "Patient question 9",
+      "passPct": 45,
+      "bySegment": {
+        "pt": 36,
+        "chiro": 51,
+        "sports": 42,
+        "spec": 46
+      }
+    },
+    {
+      "id": "contact",
+      "question": "Where are you, and when are you open?",
+      "label": "Street address plus opening hours",
+      "standard": "Patient question 1",
+      "passPct": 63,
+      "bySegment": {
+        "pt": 67,
+        "chiro": 74,
+        "sports": 65,
+        "spec": 44
+      }
+    },
+    {
+      "id": "credentials",
+      "question": "Who will treat me?",
+      "label": "Clinicians named with credentials (DPT, DC, OCS, LMT)",
+      "standard": "Patient question 4",
+      "passPct": 67,
+      "bySegment": {
+        "pt": 83,
+        "chiro": 55,
+        "sports": 65,
+        "spec": 67
+      }
+    },
+    {
+      "id": "book",
+      "question": "Can I book without calling?",
+      "label": "Book or request a visit online",
+      "standard": "Patient question 3",
+      "passPct": 75,
+      "bySegment": {
+        "pt": 61,
+        "chiro": 83,
+        "sports": 73,
+        "spec": 79
+      }
+    },
+    {
+      "id": "conditions",
+      "question": "Do you treat my problem?",
+      "label": "Three or more conditions named",
+      "standard": "Patient question 2",
+      "passPct": 84,
+      "bySegment": {
+        "pt": 83,
+        "chiro": 87,
+        "sports": 81,
+        "spec": 82
+      }
+    }
+  ],
+  "technical": [
+    {
+      "id": "lcp",
+      "label": "Loads in under 2.5 s on a phone",
+      "standard": "Core Web Vitals · LCP",
+      "failPct": 91,
+      "bySegment": {
+        "pt": 92,
+        "chiro": 94,
+        "sports": 92,
+        "spec": 87
+      }
+    },
+    {
+      "id": "con",
+      "label": "Text contrast passes 4.5:1",
+      "standard": "WCAG 1.4.3",
+      "failPct": 80,
+      "bySegment": {
+        "pt": 72,
+        "chiro": 79,
+        "sports": 88,
+        "spec": 82
+      }
+    },
+    {
+      "id": "schema",
+      "label": "Physiotherapy, MedicalBusiness or health-business structured data",
+      "standard": "Schema.org · MedicalBusiness",
+      "failPct": 78,
+      "bySegment": {
+        "pt": 78,
+        "chiro": 70,
+        "sports": 69,
+        "spec": 92
+      }
+    },
+    {
+      "id": "alt",
+      "label": "Images have text descriptions",
+      "standard": "WCAG 1.1.1",
+      "failPct": 14,
+      "bySegment": {
+        "pt": 19,
+        "chiro": 11,
+        "sports": 8,
+        "spec": 15
+      }
+    }
+  ],
+  "segments": [
+    {
+      "id": "pt",
+      "name": "Outpatient physical therapy",
+      "sites": 36,
+      "median": 78,
+      "weakPct": 0
+    },
+    {
+      "id": "chiro",
+      "name": "Chiropractic",
+      "sites": 47,
+      "median": 74,
+      "weakPct": 0
+    },
+    {
+      "id": "sports",
+      "name": "Sports and orthopedic rehab",
+      "sites": 26,
+      "median": 77,
+      "weakPct": 0
+    },
+    {
+      "id": "spec",
+      "name": "Massage, wellness and pelvic health",
+      "sites": 39,
+      "median": 76,
+      "weakPct": 0
+    }
+  ],
+  "agencyProblems": [
+    {
+      "id": "lcp",
+      "label": "Loads in under 2.5 s on a phone",
+      "standard": "Core Web Vitals · LCP",
+      "failPct": 91,
+      "fix": "Resize and compress the hero image or video, defer booking and chat scripts, aim for under 2.5 s on a phone.",
+      "pitch": "Your home page takes several seconds to appear on the phone of someone in pain.",
+      "effort": "Build"
+    },
+    {
+      "id": "selfpay",
+      "label": "A self-pay price shown for a visit or session",
+      "standard": "Patient question 8",
+      "failPct": 82,
+      "question": "What if I pay myself?",
+      "fix": "Publish the self-pay rate the front desk already quotes: the first evaluation and a follow-up visit, or a package price.",
+      "pitch": "Patients with high deductibles want to know what a visit costs. Your site gives them no number at all.",
+      "effort": "Content"
+    },
+    {
+      "id": "con",
+      "label": "Text contrast passes 4.5:1",
+      "standard": "WCAG 1.4.3",
+      "failPct": 80,
+      "fix": "Raise text contrast to at least 4.5:1 in the theme: white text on photographs and pale grey body text are the usual failures.",
+      "pitch": "Parts of the site are hard to read, and it is a WCAG failure.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "schema",
+      "label": "Physiotherapy, MedicalBusiness or health-business structured data",
+      "standard": "Schema.org · MedicalBusiness",
+      "failPct": 78,
+      "fix": "Add Physiotherapy or MedicalBusiness structured data (Chiropractic for chiropractors) with the address, phone and hours.",
+      "pitch": "Search engines and assistants have to guess what kind of clinic you are and when you are open.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "direct",
+      "label": "No referral needed (direct access) stated",
+      "standard": "Patient question 7",
+      "failPct": 73,
+      "question": "Do I need a referral?",
+      "fix": "Say on the home page and the new-patient page whether a patient can come in without a doctor's referral, and any limits the state or the plan sets.",
+      "pitch": "Many patients think they need a doctor first. Your site never tells them they can book you directly.",
+      "effort": "Quick fix"
+    }
+  ]
+}

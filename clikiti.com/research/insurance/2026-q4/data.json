@@ -1,0 +1,282 @@
+{
+  "title": "The State of Independent Insurance Agency Websites 2026",
+  "edition": "2026-Q4",
+  "period": "Q4 2026",
+  "sample": false,
+  "source": "corpus",
+  "note": "Aggregates computed from automated scans. No individual site is identified.",
+  "url": "https://clikiti.com/research/insurance/2026-q4",
+  "scannedAt": "2026-10-15T13:13:05.732Z",
+  "publishedAt": "2026-10-15T12:52:58.444Z",
+  "modifiedAt": "2026-10-15T13:13:19.205Z",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "Free to use and cite under CC BY 4.0. Credit Clikiti with a link.",
+  "citation": "Clikiti. (2026, October 15). The state of independent insurance agency websites 2026 (Q4 2026) [Report]. https://clikiti.com/research/insurance/2026-q4",
+  "audience": "Web agencies and freelancers selling to independent insurance agencies",
+  "sampleSize": 170,
+  "marginOfErrorPts": 7.5,
+  "medianScore": 77,
+  "meanScore": 77,
+  "meanQuestionsAnswered": 4.7,
+  "questionCount": 9,
+  "findings": [
+    "Only 22% of the 170 independent insurance agency websites we scanned show a licence number, an NPN or the states the agency is licensed in.",
+    "A typical site answers five of the nine questions clients ask before choosing (mean 4.7).",
+    "The median overall score is 77 out of 100 (mean 77).",
+    "The least-answered questions are \"Are you licensed where I live?\" (22%), \"Do other clients vouch for you?\" (36%) and \"What do I do when I need to claim?\" (39%).",
+    "The best-answered are \"What can you insure?\" (93%) and \"Can I start a quote online?\" (78%).",
+    "By kind of business, the highest median score is 78 (personal lines), against 78 for commercial and business, 77 for specialty: farm, marine and flood and 75 for life, health and Medicare.",
+    "94% fail \"Loads in under 2.5 s on a phone\" (Core Web Vitals · LCP).",
+    "79% fail \"Text contrast passes 4.5:1\" (WCAG 1.4.3).",
+    "69% fail \"InsuranceAgency structured data\" (Schema.org · InsuranceAgency)."
+  ],
+  "questions": [
+    {
+      "id": "licensed",
+      "question": "Are you licensed where I live?",
+      "label": "Licence number, NPN or licensed states shown",
+      "standard": "Client question 7",
+      "passPct": 22,
+      "bySegment": {
+        "pers": 21,
+        "comm": 26,
+        "life": 27,
+        "spec": 14
+      }
+    },
+    {
+      "id": "reviews",
+      "question": "Do other clients vouch for you?",
+      "label": "Reviews marked up, in a widget or quoted",
+      "standard": "Client question 9",
+      "passPct": 36,
+      "bySegment": {
+        "pers": 46,
+        "comm": 28,
+        "life": 41,
+        "spec": 21
+      }
+    },
+    {
+      "id": "claims",
+      "question": "What do I do when I need to claim?",
+      "label": "How to file a claim, with a number or link",
+      "standard": "Client question 5",
+      "passPct": 39,
+      "bySegment": {
+        "pers": 56,
+        "comm": 40,
+        "life": 10,
+        "spec": 45
+      }
+    },
+    {
+      "id": "carriers",
+      "question": "Which companies do you quote?",
+      "label": "Three or more insurance companies named in text",
+      "standard": "Client question 3",
+      "passPct": 40,
+      "bySegment": {
+        "pers": 53,
+        "comm": 37,
+        "life": 24,
+        "spec": 41
+      }
+    },
+    {
+      "id": "service",
+      "question": "Can I pay or change my policy without calling?",
+      "label": "Pay a bill or request a change online",
+      "standard": "Client question 8",
+      "passPct": 52,
+      "bySegment": {
+        "pers": 63,
+        "comm": 74,
+        "life": 12,
+        "spec": 52
+      }
+    },
+    {
+      "id": "contact",
+      "question": "How do I reach you, and when are you open?",
+      "label": "Tappable phone plus office hours",
+      "standard": "Client question 1",
+      "passPct": 53,
+      "bySegment": {
+        "pers": 56,
+        "comm": 56,
+        "life": 46,
+        "spec": 52
+      }
+    },
+    {
+      "id": "agents",
+      "question": "Who would my agent be?",
+      "label": "An agent named with their role",
+      "standard": "Client question 6",
+      "passPct": 56,
+      "bySegment": {
+        "pers": 56,
+        "comm": 63,
+        "life": 59,
+        "spec": 41
+      }
+    },
+    {
+      "id": "quote",
+      "question": "Can I start a quote online?",
+      "label": "A quote can be started online",
+      "standard": "Client question 4",
+      "passPct": 78,
+      "bySegment": {
+        "pers": 84,
+        "comm": 86,
+        "life": 59,
+        "spec": 83
+      }
+    },
+    {
+      "id": "lines",
+      "question": "What can you insure?",
+      "label": "Three or more lines of cover named",
+      "standard": "Client question 2",
+      "passPct": 93,
+      "bySegment": {
+        "pers": 98,
+        "comm": 93,
+        "life": 90,
+        "spec": 86
+      }
+    }
+  ],
+  "technical": [
+    {
+      "id": "lcp",
+      "label": "Loads in under 2.5 s on a phone",
+      "standard": "Core Web Vitals · LCP",
+      "failPct": 94,
+      "bySegment": {
+        "pers": 93,
+        "comm": 98,
+        "life": 93,
+        "spec": 93
+      }
+    },
+    {
+      "id": "con",
+      "label": "Text contrast passes 4.5:1",
+      "standard": "WCAG 1.4.3",
+      "failPct": 79,
+      "bySegment": {
+        "pers": 75,
+        "comm": 84,
+        "life": 88,
+        "spec": 69
+      }
+    },
+    {
+      "id": "schema",
+      "label": "InsuranceAgency structured data",
+      "standard": "Schema.org · InsuranceAgency",
+      "failPct": 69,
+      "bySegment": {
+        "pers": 61,
+        "comm": 65,
+        "life": 80,
+        "spec": 76
+      }
+    },
+    {
+      "id": "alt",
+      "label": "Images have text descriptions",
+      "standard": "WCAG 1.1.1",
+      "failPct": 19,
+      "bySegment": {
+        "pers": 25,
+        "comm": 9,
+        "life": 27,
+        "spec": 10
+      }
+    }
+  ],
+  "segments": [
+    {
+      "id": "pers",
+      "name": "Personal lines",
+      "sites": 57,
+      "median": 78,
+      "weakPct": 0
+    },
+    {
+      "id": "comm",
+      "name": "Commercial and business",
+      "sites": 43,
+      "median": 78,
+      "weakPct": 2
+    },
+    {
+      "id": "life",
+      "name": "Life, health and Medicare",
+      "sites": 41,
+      "median": 75,
+      "weakPct": 0
+    },
+    {
+      "id": "spec",
+      "name": "Specialty: farm, marine and flood",
+      "sites": 29,
+      "median": 77,
+      "weakPct": 0
+    }
+  ],
+  "agencyProblems": [
+    {
+      "id": "lcp",
+      "label": "Loads in under 2.5 s on a phone",
+      "standard": "Core Web Vitals · LCP",
+      "failPct": 94,
+      "fix": "Resize and compress the hero image, defer chat and quote scripts, aim for under 2.5 s on a phone.",
+      "pitch": "Your home page takes several seconds to appear on a phone.",
+      "effort": "Build"
+    },
+    {
+      "id": "con",
+      "label": "Text contrast passes 4.5:1",
+      "standard": "WCAG 1.4.3",
+      "failPct": 79,
+      "fix": "Raise text contrast to at least 4.5:1 in the theme, including text over photos.",
+      "pitch": "Parts of the site are hard to read, and it is a WCAG failure.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "licensed",
+      "label": "Licence number, NPN or licensed states shown",
+      "standard": "Client question 7",
+      "failPct": 78,
+      "question": "Are you licensed where I live?",
+      "fix": "Put the agency licence number or NPN and the states it is licensed in on the footer and the about page.",
+      "pitch": "A client cannot see from your site whether you are licensed in their state.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "schema",
+      "label": "InsuranceAgency structured data",
+      "standard": "Schema.org · InsuranceAgency",
+      "failPct": 69,
+      "fix": "Add InsuranceAgency structured data with the address, phone, hours and areas served.",
+      "pitch": "Search engines and assistants have to guess what you are, where you are and when you are open.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "reviews",
+      "label": "Reviews marked up, in a widget or quoted",
+      "standard": "Client question 9",
+      "failPct": 64,
+      "question": "Do other clients vouch for you?",
+      "fix": "Show real client reviews through a review widget, marked up for search engines.",
+      "pitch": "Your clients vouch for you elsewhere, and your site never shows it.",
+      "effort": "Quick fix"
+    }
+  ]
+}

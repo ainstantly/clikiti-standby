@@ -1,0 +1,283 @@
+{
+  "title": "The State of Independent Pest Control Websites 2026",
+  "edition": "2026-Q4",
+  "period": "Q4 2026",
+  "sample": false,
+  "source": "corpus",
+  "note": "Aggregates computed from automated scans. No individual site is identified.",
+  "url": "https://clikiti.com/research/pest/2026-q4",
+  "scannedAt": "2026-10-15T12:18:20.195Z",
+  "publishedAt": "2026-10-15T12:28:45.745Z",
+  "modifiedAt": "2026-10-15T12:28:45.745Z",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "Free to use and cite under CC BY 4.0. Credit Clikiti with a link.",
+  "citation": "Clikiti. (2026, October 15). The state of independent pest control websites 2026 (Q4 2026) [Report]. https://clikiti.com/research/pest/2026-q4",
+  "audience": "Web agencies and freelancers selling to independent pest control companies",
+  "sampleSize": 155,
+  "marginOfErrorPts": 7.9,
+  "medianScore": 77,
+  "meanScore": 77,
+  "meanQuestionsAnswered": 4.2,
+  "questionCount": 9,
+  "findings": [
+    "Only 12% of the 155 independent pest control websites we scanned show a state licence number.",
+    "A typical site answers four of the nine questions homeowners ask before choosing (mean 4.2).",
+    "The median overall score is 77 out of 100 (mean 77).",
+    "The least-answered questions are \"Who will treat my home?\" (12%), \"What will it cost?\" (21%) and \"What if they come back?\" (32%).",
+    "The best-answered are \"Do you treat my problem?\" (97%) and \"Do you come to my town?\" (70%).",
+    "Wildlife and rodent removal have the highest median score (79), against 78 for general household pest, 77 for termite and wood-destroying insects and 73 for mosquito, bed bug and specialty.",
+    "88% fail \"Loads in under 2.5 s on a phone\" (Core Web Vitals · LCP).",
+    "77% fail \"Text contrast passes 4.5:1\" (WCAG 1.4.3).",
+    "43% fail \"LocalBusiness structured data\" (Schema.org · LocalBusiness)."
+  ],
+  "questions": [
+    {
+      "id": "licensed",
+      "question": "Who will treat my home?",
+      "label": "State licence number shown",
+      "standard": "Homeowner question 7",
+      "passPct": 12,
+      "bySegment": {
+        "res": 16,
+        "term": 8,
+        "wild": 15,
+        "spec": 9
+      }
+    },
+    {
+      "id": "price",
+      "question": "What will it cost?",
+      "label": "A price shown: a visit, a plan or an inspection",
+      "standard": "Homeowner question 5",
+      "passPct": 21,
+      "bySegment": {
+        "res": 36,
+        "term": 19,
+        "wild": 3,
+        "spec": 23
+      }
+    },
+    {
+      "id": "guarantee",
+      "question": "What if they come back?",
+      "label": "Guarantee with its terms: free re-treatment, money back or a set period",
+      "standard": "Homeowner question 6",
+      "passPct": 32,
+      "bySegment": {
+        "res": 40,
+        "term": 36,
+        "wild": 23,
+        "spec": 26
+      }
+    },
+    {
+      "id": "safe",
+      "question": "Is it safe for my kids and my dog?",
+      "label": "Says how treatment affects children and pets",
+      "standard": "Homeowner question 8",
+      "passPct": 38,
+      "bySegment": {
+        "res": 42,
+        "term": 36,
+        "wild": 23,
+        "spec": 51
+      }
+    },
+    {
+      "id": "sameday",
+      "question": "Can you come today?",
+      "label": "Same-day, next-day or emergency service stated",
+      "standard": "Homeowner question 2",
+      "passPct": 41,
+      "bySegment": {
+        "res": 47,
+        "term": 39,
+        "wild": 49,
+        "spec": 26
+      }
+    },
+    {
+      "id": "reviews",
+      "question": "Do my neighbours vouch for you?",
+      "label": "Reviews marked up, in a widget or quoted",
+      "standard": "Homeowner question 9",
+      "passPct": 54,
+      "bySegment": {
+        "res": 67,
+        "term": 53,
+        "wild": 41,
+        "spec": 54
+      }
+    },
+    {
+      "id": "book",
+      "question": "Can I book without calling?",
+      "label": "Book or request an inspection online",
+      "standard": "Homeowner question 3",
+      "passPct": 59,
+      "bySegment": {
+        "res": 67,
+        "term": 58,
+        "wild": 51,
+        "spec": 60
+      }
+    },
+    {
+      "id": "area",
+      "question": "Do you come to my town?",
+      "label": "Service area named",
+      "standard": "Homeowner question 4",
+      "passPct": 70,
+      "bySegment": {
+        "res": 76,
+        "term": 75,
+        "wild": 72,
+        "spec": 54
+      }
+    },
+    {
+      "id": "pests",
+      "question": "Do you treat my problem?",
+      "label": "The pests it treats, named",
+      "standard": "Homeowner question 1",
+      "passPct": 97,
+      "bySegment": {
+        "res": 93,
+        "term": 100,
+        "wild": 100,
+        "spec": 97
+      }
+    }
+  ],
+  "technical": [
+    {
+      "id": "lcp",
+      "label": "Loads in under 2.5 s on a phone",
+      "standard": "Core Web Vitals · LCP",
+      "failPct": 88,
+      "bySegment": {
+        "res": 84,
+        "term": 89,
+        "wild": 85,
+        "spec": 97
+      }
+    },
+    {
+      "id": "con",
+      "label": "Text contrast passes 4.5:1",
+      "standard": "WCAG 1.4.3",
+      "failPct": 77,
+      "bySegment": {
+        "res": 82,
+        "term": 86,
+        "wild": 67,
+        "spec": 74
+      }
+    },
+    {
+      "id": "schema",
+      "label": "LocalBusiness structured data",
+      "standard": "Schema.org · LocalBusiness",
+      "failPct": 43,
+      "bySegment": {
+        "res": 33,
+        "term": 50,
+        "wild": 44,
+        "spec": 46
+      }
+    },
+    {
+      "id": "alt",
+      "label": "Images have text descriptions",
+      "standard": "WCAG 1.1.1",
+      "failPct": 21,
+      "bySegment": {
+        "res": 16,
+        "term": 33,
+        "wild": 23,
+        "spec": 11
+      }
+    }
+  ],
+  "segments": [
+    {
+      "id": "res",
+      "name": "General household pest",
+      "sites": 45,
+      "median": 78,
+      "weakPct": 0
+    },
+    {
+      "id": "term",
+      "name": "Termite and wood-destroying insects",
+      "sites": 36,
+      "median": 77,
+      "weakPct": 0
+    },
+    {
+      "id": "wild",
+      "name": "Wildlife and rodent removal",
+      "sites": 39,
+      "median": 79,
+      "weakPct": 0
+    },
+    {
+      "id": "spec",
+      "name": "Mosquito, bed bug and specialty",
+      "sites": 35,
+      "median": 73,
+      "weakPct": 0
+    }
+  ],
+  "agencyProblems": [
+    {
+      "id": "licensed",
+      "label": "State licence number shown",
+      "standard": "Homeowner question 7",
+      "failPct": 88,
+      "question": "Who will treat my home?",
+      "fix": "Show the state pest control licence number in the footer and on the about page, with the names of the licensed applicators.",
+      "pitch": "A parent letting a stranger spray their home wants proof you are licensed, and your site gives no number to check.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "lcp",
+      "label": "Loads in under 2.5 s on a phone",
+      "standard": "Core Web Vitals · LCP",
+      "failPct": 88,
+      "fix": "Resize and compress the hero image, defer scripts, aim for under 2.5 s on a phone.",
+      "pitch": "Your home page takes several seconds to appear on the phone of someone standing in their kitchen.",
+      "effort": "Build"
+    },
+    {
+      "id": "price",
+      "label": "A price shown: a visit, a plan or an inspection",
+      "standard": "Homeowner question 5",
+      "failPct": 79,
+      "question": "What will it cost?",
+      "fix": "Publish the price of the first visit and of the regular plan (per month or per quarter), with what each visit includes.",
+      "pitch": "\"What will it cost?\" is the question your site never answers, and the national brands do.",
+      "effort": "Content"
+    },
+    {
+      "id": "con",
+      "label": "Text contrast passes 4.5:1",
+      "standard": "WCAG 1.4.3",
+      "failPct": 77,
+      "fix": "Raise text contrast to at least 4.5:1 in the theme.",
+      "pitch": "Parts of the site are hard to read, and it is a WCAG failure.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "guarantee",
+      "label": "Guarantee with its terms: free re-treatment, money back or a set period",
+      "standard": "Homeowner question 6",
+      "failPct": 68,
+      "question": "What if they come back?",
+      "fix": "State the guarantee in plain terms: free re-treatment between visits, or the length of the termite or exclusion warranty.",
+      "pitch": "You stand behind your work, but your site never says what happens if the pests come back.",
+      "effort": "Quick fix"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+# The State of Independent Pest Control Websites 2026 (Q4 2026). CC BY 4.0, credit Clikiti with a link: https://clikiti.com/research/pest
+"section","id","label","standard","metric","value"
+"summary","sites","Websites scanned","","count",155
+"summary","median","Median overall score","","score_0_100",77
+"summary","mean","Mean overall score","","score_0_100",77
+"summary","moe","Margin of error (95%)","","percentage_points",7.9
+"summary","weak","Sites scoring under 60","","percent",0
+"question","licensed","Who will treat my home?","Homeowner question 7","percent_pass",12
+"question","price","What will it cost?","Homeowner question 5","percent_pass",21
+"question","guarantee","What if they come back?","Homeowner question 6","percent_pass",32
+"question","safe","Is it safe for my kids and my dog?","Homeowner question 8","percent_pass",38
+"question","sameday","Can you come today?","Homeowner question 2","percent_pass",41
+"question","reviews","Do my neighbours vouch for you?","Homeowner question 9","percent_pass",54
+"question","book","Can I book without calling?","Homeowner question 3","percent_pass",59
+"question","area","Do you come to my town?","Homeowner question 4","percent_pass",70
+"question","pests","Do you treat my problem?","Homeowner question 1","percent_pass",97
+"technical","lcp","Loads in under 2.5 s on a phone","Core Web Vitals · LCP","percent_fail",88
+"technical","con","Text contrast passes 4.5:1","WCAG 1.4.3","percent_fail",77
+"technical","schema","LocalBusiness structured data","Schema.org · LocalBusiness","percent_fail",43
+"technical","alt","Images have text descriptions","WCAG 1.1.1","percent_fail",21
+"segment","res","General household pest","","median_score",78
+"segment","res","General household pest","","percent_under_60",0
+"segment","res","General household pest","","sites",45
+"segment","term","Termite and wood-destroying insects","","median_score",77
+"segment","term","Termite and wood-destroying insects","","percent_under_60",0
+"segment","term","Termite and wood-destroying insects","","sites",36
+"segment","wild","Wildlife and rodent removal","","median_score",79
+"segment","wild","Wildlife and rodent removal","","percent_under_60",0
+"segment","wild","Wildlife and rodent removal","","sites",39
+"segment","spec","Mosquito, bed bug and specialty","","median_score",73
+"segment","spec","Mosquito, bed bug and specialty","","percent_under_60",0
+"segment","spec","Mosquito, bed bug and specialty","","sites",35

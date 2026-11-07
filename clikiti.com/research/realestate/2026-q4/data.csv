@@ -1,0 +1,31 @@
+# The State of Independent Real Estate Websites 2026 (Q4 2026). CC BY 4.0, credit Clikiti with a link: https://clikiti.com/research/realestate
+"section","id","label","standard","metric","value"
+"summary","sites","Websites scanned","","count",133
+"summary","median","Median overall score","","score_0_100",75
+"summary","mean","Mean overall score","","score_0_100",75
+"summary","moe","Margin of error (95%)","","percentage_points",8.5
+"summary","weak","Sites scoring under 60","","percent",2
+"question","fees","What will it cost me?","Customer question 7","percent_pass",13
+"question","licence","Are you licensed?","Customer question 6","percent_pass",20
+"question","sold","Have you sold or managed homes like mine?","Customer question 5","percent_pass",26
+"question","areas","Do you work where I live?","Customer question 3","percent_pass",37
+"question","reviews","Do past clients vouch for you?","Customer question 8","percent_pass",40
+"question","valuation","What's my home worth, or what will it rent for?","Customer question 4","percent_pass",58
+"question","contact","How do I reach you or book a showing?","Customer question 2","percent_pass",60
+"question","search","Can I see what you have for sale or rent?","Customer question 1","percent_pass",76
+"technical","con","Text contrast passes 4.5:1","WCAG 1.4.3","percent_fail",87
+"technical","schema","RealEstateAgent or listing structured data","Schema.org · RealEstateAgent","percent_fail",78
+"technical","lcp","Loads in under 2.5 s on a phone","Core Web Vitals · LCP","percent_fail",77
+"technical","alt","Images have text descriptions","WCAG 1.1.1","percent_fail",29
+"segment","brok","Independent residential brokerages","","median_score",74
+"segment","brok","Independent residential brokerages","","percent_under_60",4
+"segment","brok","Independent residential brokerages","","sites",46
+"segment","team","Solo agents and small teams","","median_score",74
+"segment","team","Solo agents and small teams","","percent_under_60",0
+"segment","team","Solo agents and small teams","","sites",22
+"segment","pm","Independent property managers","","median_score",79
+"segment","pm","Independent property managers","","percent_under_60",0
+"segment","pm","Independent property managers","","sites",47
+"segment","lux","Luxury boutiques","","median_score",72
+"segment","lux","Luxury boutiques","","percent_under_60",0
+"segment","lux","Luxury boutiques","","sites",18

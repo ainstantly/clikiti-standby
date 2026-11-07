@@ -1,0 +1,32 @@
+# The State of Independent Physical Therapy Websites 2026 (Q4 2026). CC BY 4.0, credit Clikiti with a link: https://clikiti.com/research/physio
+"section","id","label","standard","metric","value"
+"summary","sites","Websites scanned","","count",148
+"summary","median","Median overall score","","score_0_100",76
+"summary","mean","Mean overall score","","score_0_100",77
+"summary","moe","Margin of error (95%)","","percentage_points",8.1
+"summary","weak","Sites scoring under 60","","percent",0
+"question","selfpay","What if I pay myself?","Patient question 8","percent_pass",18
+"question","direct","Do I need a referral?","Patient question 7","percent_pass",27
+"question","firstvisit","What happens at the first visit?","Patient question 6","percent_pass",32
+"question","insurance","Do you take my insurance?","Patient question 5","percent_pass",39
+"question","reviews","Do other patients vouch for you?","Patient question 9","percent_pass",45
+"question","contact","Where are you, and when are you open?","Patient question 1","percent_pass",63
+"question","credentials","Who will treat me?","Patient question 4","percent_pass",67
+"question","book","Can I book without calling?","Patient question 3","percent_pass",75
+"question","conditions","Do you treat my problem?","Patient question 2","percent_pass",84
+"technical","lcp","Loads in under 2.5 s on a phone","Core Web Vitals · LCP","percent_fail",91
+"technical","con","Text contrast passes 4.5:1","WCAG 1.4.3","percent_fail",80
+"technical","schema","Physiotherapy, MedicalBusiness or health-business structured data","Schema.org · MedicalBusiness","percent_fail",78
+"technical","alt","Images have text descriptions","WCAG 1.1.1","percent_fail",14
+"segment","pt","Outpatient physical therapy","","median_score",78
+"segment","pt","Outpatient physical therapy","","percent_under_60",0
+"segment","pt","Outpatient physical therapy","","sites",36
+"segment","chiro","Chiropractic","","median_score",74
+"segment","chiro","Chiropractic","","percent_under_60",0
+"segment","chiro","Chiropractic","","sites",47
+"segment","sports","Sports and orthopedic rehab","","median_score",77
+"segment","sports","Sports and orthopedic rehab","","percent_under_60",0
+"segment","sports","Sports and orthopedic rehab","","sites",26
+"segment","spec","Massage, wellness and pelvic health","","median_score",76
+"segment","spec","Massage, wellness and pelvic health","","percent_under_60",0
+"segment","spec","Massage, wellness and pelvic health","","sites",39

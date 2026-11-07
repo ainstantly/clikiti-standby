@@ -1,0 +1,297 @@
+{
+  "title": "The State of Independent Funeral Home Websites 2026",
+  "edition": "2026-Q4",
+  "period": "Q4 2026",
+  "sample": false,
+  "source": "corpus",
+  "note": "Aggregates computed from automated scans. No individual site is identified.",
+  "url": "https://clikiti.com/research/funeral/2026-q4",
+  "scannedAt": "2026-10-15T20:42:25.150Z",
+  "publishedAt": "2026-10-15T20:42:41.025Z",
+  "modifiedAt": "2026-10-15T20:42:41.025Z",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "Free to use and cite under CC BY 4.0. Credit Clikiti with a link.",
+  "citation": "Clikiti. (2026, October 15). The state of independent funeral home websites 2026 (Q4 2026) [Report]. https://clikiti.com/research/funeral/2026-q4",
+  "audience": "Web agencies and freelancers selling to independent and family-owned funeral homes",
+  "sampleSize": 175,
+  "marginOfErrorPts": 7.4,
+  "medianScore": 78,
+  "meanScore": 77,
+  "meanQuestionsAnswered": 5.3,
+  "questionCount": 10,
+  "findings": [
+    "Only 13% of the 175 independent funeral home websites we scanned name a religious or cultural tradition they serve.",
+    "A typical site answers five of the ten questions families ask before choosing (mean 5.3).",
+    "The median overall score is 78 out of 100 (mean 77).",
+    "The least-answered questions are \"Can you honour our faith or culture?\" (13%), \"Can family far away watch?\" (22%) and \"Do other families vouch for you?\" (30%).",
+    "The best-answered are \"Can I plan my own arrangements?\" (97%) and \"When and where is the service?\" (93%).",
+    "By kind of business, the highest median score is 79 (family funeral homes, one location), against 78 for family firms with two or three locations, 78 for cremation-focused providers and 77 for faith and cultural community homes.",
+    "86% fail \"Text contrast passes 4.5:1\" (WCAG 1.4.3).",
+    "53% fail \"Local business structured data\" (Schema.org · LocalBusiness).",
+    "26% fail \"Loads in under 2.5 s on a phone\" (Core Web Vitals · LCP)."
+  ],
+  "questions": [
+    {
+      "id": "faith",
+      "question": "Can you honour our faith or culture?",
+      "label": "Religious and cultural traditions named",
+      "standard": "Family question 7",
+      "passPct": 13,
+      "bySegment": {
+        "fam": 3,
+        "multi": 9,
+        "crem": 5,
+        "faith": 70
+      }
+    },
+    {
+      "id": "stream",
+      "question": "Can family far away watch?",
+      "label": "Livestreamed services offered",
+      "standard": "Family question 5",
+      "passPct": 22,
+      "bySegment": {
+        "fam": 22,
+        "multi": 30,
+        "crem": 0,
+        "faith": 40
+      }
+    },
+    {
+      "id": "reviews",
+      "question": "Do other families vouch for you?",
+      "label": "Reviews marked up, in a widget or quoted",
+      "standard": "Family question 10",
+      "passPct": 30,
+      "bySegment": {
+        "fam": 28,
+        "multi": 22,
+        "crem": 43,
+        "faith": 30
+      }
+    },
+    {
+      "id": "price",
+      "question": "What will cremation or a burial cost?",
+      "label": "Cremation or burial prices shown",
+      "standard": "Family question 2",
+      "passPct": 37,
+      "bySegment": {
+        "fam": 17,
+        "multi": 24,
+        "crem": 89,
+        "faith": 35
+      }
+    },
+    {
+      "id": "gpl",
+      "question": "Can I see your price list?",
+      "label": "General Price List online or offered",
+      "standard": "Family question 1 · FTC Funeral Rule",
+      "passPct": 39,
+      "bySegment": {
+        "fam": 25,
+        "multi": 41,
+        "crem": 57,
+        "faith": 50
+      }
+    },
+    {
+      "id": "directions",
+      "question": "How do we get there?",
+      "label": "Directions or a map",
+      "standard": "Family question 9",
+      "passPct": 57,
+      "bySegment": {
+        "fam": 56,
+        "multi": 61,
+        "crem": 62,
+        "faith": 40
+      }
+    },
+    {
+      "id": "death",
+      "question": "Who do I call, right now?",
+      "label": "A 24-hour number for when a death occurs",
+      "standard": "Family question 3",
+      "passPct": 58,
+      "bySegment": {
+        "fam": 47,
+        "multi": 54,
+        "crem": 73,
+        "faith": 75
+      }
+    },
+    {
+      "id": "grief",
+      "question": "Is there help afterward?",
+      "label": "Grief support offered",
+      "standard": "Family question 8",
+      "passPct": 89,
+      "bySegment": {
+        "fam": 100,
+        "multi": 94,
+        "crem": 62,
+        "faith": 90
+      }
+    },
+    {
+      "id": "obits",
+      "question": "When and where is the service?",
+      "label": "Obituaries published on the site",
+      "standard": "Family question 4",
+      "passPct": 93,
+      "bySegment": {
+        "fam": 100,
+        "multi": 98,
+        "crem": 76,
+        "faith": 85
+      }
+    },
+    {
+      "id": "plan",
+      "question": "Can I plan my own arrangements?",
+      "label": "Pre-planning offered",
+      "standard": "Family question 6",
+      "passPct": 97,
+      "bySegment": {
+        "fam": 100,
+        "multi": 98,
+        "crem": 89,
+        "faith": 95
+      }
+    }
+  ],
+  "technical": [
+    {
+      "id": "con",
+      "label": "Text contrast passes 4.5:1",
+      "standard": "WCAG 1.4.3",
+      "failPct": 86,
+      "bySegment": {
+        "fam": 83,
+        "multi": 93,
+        "crem": 89,
+        "faith": 75
+      }
+    },
+    {
+      "id": "schema",
+      "label": "Local business structured data",
+      "standard": "Schema.org · LocalBusiness",
+      "failPct": 53,
+      "bySegment": {
+        "fam": 64,
+        "multi": 52,
+        "crem": 46,
+        "faith": 35
+      }
+    },
+    {
+      "id": "lcp",
+      "label": "Loads in under 2.5 s on a phone",
+      "standard": "Core Web Vitals · LCP",
+      "failPct": 26,
+      "bySegment": {
+        "fam": 20,
+        "multi": 13,
+        "crem": 51,
+        "faith": 30
+      }
+    },
+    {
+      "id": "alt",
+      "label": "Images have text descriptions",
+      "standard": "WCAG 1.1.1",
+      "failPct": 24,
+      "bySegment": {
+        "fam": 22,
+        "multi": 26,
+        "crem": 14,
+        "faith": 45
+      }
+    }
+  ],
+  "segments": [
+    {
+      "id": "fam",
+      "name": "Family funeral homes, one location",
+      "sites": 64,
+      "median": 79,
+      "weakPct": 0
+    },
+    {
+      "id": "multi",
+      "name": "Family firms with two or three locations",
+      "sites": 54,
+      "median": 78,
+      "weakPct": 0
+    },
+    {
+      "id": "crem",
+      "name": "Cremation-focused providers",
+      "sites": 37,
+      "median": 78,
+      "weakPct": 3
+    },
+    {
+      "id": "faith",
+      "name": "Faith and cultural community homes",
+      "sites": 20,
+      "median": 77,
+      "weakPct": 0
+    }
+  ],
+  "agencyProblems": [
+    {
+      "id": "faith",
+      "label": "Religious and cultural traditions named",
+      "standard": "Family question 7",
+      "failPct": 87,
+      "question": "Can you honour our faith or culture?",
+      "fix": "A traditions page that names the faiths and cultures the home serves, the customs it can arrange and the clergy and communities it works with.",
+      "pitch": "A family looks for its own tradition by name. \"All faiths\" does not tell them you know it.",
+      "effort": "Content"
+    },
+    {
+      "id": "con",
+      "label": "Text contrast passes 4.5:1",
+      "standard": "WCAG 1.4.3",
+      "failPct": 86,
+      "fix": "Raise text contrast to at least 4.5:1 in the theme, including obituary text.",
+      "pitch": "Older relatives read your obituaries. Faint text is the first thing they meet, and it is a WCAG failure.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "stream",
+      "label": "Livestreamed services offered",
+      "standard": "Family question 5",
+      "failPct": 78,
+      "question": "Can family far away watch?",
+      "fix": "Say whether services can be watched online, and put each stream link on the obituary page for that service.",
+      "pitch": "Relatives far away look for the stream first, and your site never says you offer one.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "reviews",
+      "label": "Reviews marked up, in a widget or quoted",
+      "standard": "Family question 10",
+      "failPct": 70,
+      "question": "Do other families vouch for you?",
+      "fix": "Show families’ reviews on the site, with Review or AggregateRating markup.",
+      "pitch": "Families already thank you in public. Your own site does not show it.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "price",
+      "label": "Cremation or burial prices shown",
+      "standard": "Family question 2",
+      "failPct": 63,
+      "question": "What will cremation or a burial cost?",
+      "fix": "Publish starting prices for direct cremation, a cremation with a service and a traditional funeral with burial, each with what it includes.",
+      "pitch": "A family deciding tonight can see a cremation price on a broker’s site and none on yours.",
+      "effort": "Content"
+    }
+  ]
+}

@@ -1,0 +1,928 @@
+<!doctype html>
+<html lang="en">
+<head><meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The State of School Websites 2026: a Q4 2026 report for web agencies | Clikiti Research</title>
+<meta name="description" content="Selling websites to private schools and tutoring centres? We scanned 114 of their sites: only 68% show what the school costs without the parent having to ask. Median score 74/100. The fixable problems to pitch, Q4 2026.">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<link rel="canonical" href="./">
+<link rel="alternate" type="application/pdf" href="2026-q4/report.pdf" title="The State of School Websites 2026 (PDF)">
+<link rel="alternate" type="text/markdown" href="2026-q4/report.md" title="The State of School Websites 2026 (Markdown)">
+<link rel="alternate" type="application/json" href="2026-q4/data.json" title="Aggregate data (JSON)">
+<link rel="alternate" type="text/csv" href="2026-q4/data.csv" title="Aggregate data (CSV)">
+<link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+<link rel="icon" href="../../favicon.svg">
+<meta name="author" content="Clikiti">
+<meta name="keywords" content="school websites, private school websites, tutoring websites, web design for private schools, web design for tutoring centres, agency prospecting, school website redesign, school website accessibility, WCAG, Core Web Vitals">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Clikiti">
+<meta property="og:title" content="The State of School Websites 2026">
+<meta property="og:description" content="Selling websites to private schools and tutoring centres? We scanned 114 of their sites: only 68% show what the school costs without the parent having to ask. Median score 74/100. The fixable problems to pitch, Q4 2026.">
+<meta property="og:url" content="https://clikiti.com/research/education">
+<meta property="og:image" content="https://clikiti.com/research/education/2026-q4/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Only 68% of the 114 private school and tutoring websites we scanned show what the school costs without the parent having to ask.">
+<meta property="article:published_time" content="2026-10-12T18:09:38.740Z">
+<meta property="article:modified_time" content="2026-10-13T04:31:12.263Z">
+<meta property="article:section" content="Research">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The State of School Websites 2026">
+<meta name="twitter:description" content="Selling websites to private schools and tutoring centres? We scanned 114 of their sites: only 68% show what the school costs without the parent having to ask. Median score 74/100. The fixable problems to pitch, Q4 2026.">
+<meta name="twitter:image" content="https://clikiti.com/research/education/2026-q4/og.jpg">
+<meta name="citation_title" content="The State of School Websites 2026: Q4 2026">
+<meta name="citation_author" content="Clikiti">
+<meta name="citation_publication_date" content="2026/10/12">
+<meta name="citation_pdf_url" content="https://clikiti.com/research/education/2026-q4/report.pdf">
+<link rel="preload" as="image" href="2026-q4/hero/hero-1-1600.webp" imagesrcset="/research/education/2026-q4/hero/hero-1-800.webp 800w, /research/education/2026-q4/hero/hero-1-1600.webp 1600w, /research/education/2026-q4/hero/hero-1-2560.webp 2560w" imagesizes="100vw" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Public+Sans:wght@400;500;600&family=Caveat:wght@500;600&display=swap">
+<style>
+/* Formal and human. A school prospectus crossed with a journal paper: cool rag-paper ground, Oxford navy, serif text with footnotes and margin notes. The human touches are the ones a teacher would make: yellow highlighter on the finding, red pen and handwriting on the report cards. No children are shown or generated. */
+:root{
+  --bg:#F3F4F7; --card:#FFFFFF; --ink:#111A33; --navy:#14284B; --mute:#586078; --rule:#D1D5DF; --marker:#F2B705; --pen:#C0312B; --good:#2A6F4E;
+  --serif:'Newsreader',Georgia,'Times New Roman',serif;
+  --sans:'Public Sans',system-ui,-apple-system,sans-serif;
+  --hand:'Caveat','Segoe Script',cursive;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 19px/1.62 var(--serif);font-optical-sizing:auto;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+p{margin:0 0 1em}
+a{color:var(--navy)}
+.wrap{max-width:1120px;margin-inline:auto;padding-inline:22px}
+h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;line-height:1.02;letter-spacing:-.012em;text-wrap:balance}
+h2{font-size:clamp(38px,5.6vw,70px)}
+h3{font-size:clamp(26px,3vw,34px)}
+.lab{font:500 12px/1.3 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+em.i{font-style:italic}
+mark{background:linear-gradient(transparent 52%,var(--marker) 52%,var(--marker) 92%,transparent 92%);color:inherit;padding:0 .08em}
+sup a{font:600 .62em var(--sans);text-decoration:none;color:var(--pen);padding-left:1px}
+.num{font-variant-numeric:lining-nums tabular-nums}
+
+/* top bar */
+.bar{background:var(--navy);color:#DDE3F0;position:sticky;top:env(safe-area-inset-top,0px);z-index:20}
+.bar .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding-block:11px}
+.bar .lab{color:#B7C1D8}.bar b{color:var(--marker);font-weight:600}
+
+/* cover */
+.cover{border-bottom:1px solid var(--rule)}
+.cover .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;padding-block:64px 70px;align-items:end}
+.cover h1{font-size:clamp(52px,8vw,112px);line-height:.94;margin:18px 0 26px}
+.cover h1 i{font-weight:400}
+.cover .lede{font-size:22px;max-width:36ch;color:#2B3552}
+.contents{margin-top:36px;border-top:2px solid var(--ink);max-width:520px}
+.contents a{display:grid;grid-template-columns:34px 1fr;gap:10px;padding:9px 0;border-bottom:1px solid var(--rule);text-decoration:none;color:var(--ink);font:500 15px/1.3 var(--sans)}
+.contents a span{color:var(--pen);font-family:var(--serif);font-weight:500;font-size:17px}
+.contents a:hover{color:var(--navy)}
+.contents a:focus-visible{outline:2px solid var(--navy);outline-offset:2px}
+figure{margin:0}
+.fig img{width:100%;aspect-ratio:4/5;object-fit:cover;border:1px solid var(--rule)}
+figcaption{font:400 13px/1.45 var(--sans);color:var(--mute);margin-top:10px;max-width:60ch}
+figcaption b{color:var(--ink);font-weight:600}
+
+/* sections */
+.sec{padding-block:84px;border-bottom:1px solid var(--rule)}
+.sec.alt{background:var(--card)}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 230px;gap:56px;align-items:start}
+.layout.wide{grid-template-columns:minmax(0,1fr)}
+.sechead{margin-bottom:34px;max-width:760px}
+.sechead .n{font:500 italic 22px var(--serif);color:var(--pen);display:block;margin-bottom:10px}
+.sechead p{font-size:21px;color:#2B3552;margin-top:20px;max-width:46ch}
+.margin{font:400 13.5px/1.55 var(--sans);color:var(--mute);border-left:2px solid var(--marker);padding-left:14px;position:sticky;top:70px}
+.margin b{display:block;color:var(--ink);font:600 11px var(--sans);letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px}
+
+/* abstract */
+.abstract{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:2px solid var(--ink);border-bottom:1px solid var(--rule);margin-top:46px;background:var(--card)}
+.abstract div{padding:22px 22px 20px;border-right:1px solid var(--rule)}
+.abstract div:last-child{border-right:0}
+.abstract b{display:block;font:500 clamp(50px,6vw,78px)/.9 var(--serif);letter-spacing:-.02em}
+.abstract b small{font-size:.38em;margin-left:3px;color:var(--mute)}
+.abstract span{display:block;font:400 14px/1.4 var(--sans);color:var(--mute);margin-top:10px;max-width:24ch}
+
+/* questions chart */
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 22px}
+.chip{font:500 13px var(--sans);color:var(--mute);background:var(--card);border:1px solid var(--rule);padding:9px 14px;cursor:pointer;border-radius:999px}
+.chip[aria-pressed="true"]{background:var(--navy);color:#fff;border-color:var(--navy)}
+.chip:focus-visible{outline:2px solid var(--navy);outline-offset:2px}
+.qs{border-top:2px solid var(--ink)}
+.q{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1.4fr) 66px;gap:20px;align-items:center;padding:15px 0;border-bottom:1px solid var(--rule)}
+.q b{font:500 21px/1.2 var(--serif);display:block}
+.q small{font:400 12.5px var(--sans);color:var(--mute)}
+.q .tr{height:10px;background:#E4E7EE;position:relative}
+.q .tr u{position:absolute;inset:0 auto 0 0;background:var(--navy);transition:width .3s}
+.q .tr u.low{background:var(--pen)}
+.q .v{font:500 34px/1 var(--serif);text-align:right}
+.cap{font:400 13px/1.45 var(--sans);color:var(--mute);margin-top:14px}
+.cap b{color:var(--ink);font-weight:600}
+
+/* figure 1 */
+.fig1{background:var(--card);border:1px solid var(--rule);padding:22px 22px 10px}
+.fig1 svg{width:100%;display:block;min-width:620px}
+svg text{font-family:var(--sans);fill:var(--mute)}
+.read{font:500 13px var(--sans);color:var(--mute);min-height:20px;margin-top:6px}
+.read b{color:var(--ink)}
+.dot{cursor:pointer}
+.legend{display:flex;flex-wrap:wrap;gap:6px 20px;font:500 12px var(--sans);color:var(--mute);margin-top:10px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}
+
+/* report cards */
+.cards{display:grid;gap:64px}
+.rc{display:grid;grid-template-columns:.95fr 1.05fr;gap:40px;align-items:start}
+.rc.flip{grid-template-columns:1.05fr .95fr}
+.rc.flip .site{order:2}
+.site .shot{position:relative;aspect-ratio:16/10;overflow:hidden;border:1px solid var(--rule);background:#fff}
+.site .shot>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.site .nav{position:absolute;left:0;right:0;top:0;z-index:2;display:flex;align-items:center;gap:2.4%;background:rgba(255,255,255,.95);padding:1.8% 3%;border-bottom:1px solid var(--rule)}
+.site .nav b{font:500 clamp(13px,2vw,24px) var(--serif);margin-right:auto;color:var(--navy)}
+.site .nav span{font:500 clamp(7px,.9vw,11px) var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.site .nav em{font:600 clamp(8px,1.05vw,13px) var(--sans);font-style:normal;background:var(--navy);color:#fff;padding:.9% 2%;letter-spacing:.06em;text-transform:uppercase}
+.site .tx{position:absolute;left:3.2%;bottom:7%;z-index:2;color:#fff;max-width:68%}
+.site .tx h4{margin:0;font:500 clamp(22px,4.4vw,56px)/1 var(--serif);text-shadow:0 1px 14px rgba(0,0,0,.4)}
+.site .shd{position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,18,40,.72),rgba(10,18,40,0) 55%)}
+.site.stock .shd{background:none}.site.stock .tx{color:#222}.site.stock .tx h4{text-shadow:none}
+.site .meta{margin-top:16px}
+.site .meta h3{font-size:clamp(30px,3.6vw,44px)}
+.paper{background:var(--card);border:1px solid var(--rule);box-shadow:0 1px 0 rgba(0,0,0,.03),0 16px 30px -22px rgba(17,26,51,.45);position:relative}
+.paper .ph{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;padding:18px 22px 14px;border-bottom:2px solid var(--ink)}
+.paper .ph b{font:500 26px/1.05 var(--serif);display:block}
+.grade{width:74px;height:74px;border:3px solid var(--pen);border-radius:50%;display:grid;place-items:center;color:var(--pen);font:600 44px/1 var(--hand);transform:rotate(-6deg);flex:none}
+.subj{display:grid;grid-template-columns:128px 42px 1fr;gap:12px;padding:13px 22px;border-bottom:1px solid var(--rule);align-items:start}
+.subj:last-child{border-bottom:0}
+.subj .s{font:600 11px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--mute);padding-top:7px}
+.subj .g{font:500 28px/1 var(--serif);text-align:center;padding-top:2px}
+.subj .g.hi{color:var(--good)}.subj .g.lo{color:var(--pen)}
+.subj p{font:600 21px/1.15 var(--hand);color:var(--pen);margin:0}
+.subj p small{display:block;font:400 11.5px/1.35 var(--sans);color:var(--mute);margin-top:3px}
+.sig{padding:14px 22px 18px;border-top:2px solid var(--ink);font:600 24px var(--hand);color:var(--pen);display:flex;justify-content:space-between}
+.sig span{font:500 11px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.verdict{font:italic 400 22px/1.3 var(--serif);margin:12px 0 0;max-width:34ch}
+
+.stockart{position:absolute;inset:0;background:#fff}
+.stockart i{position:absolute;display:block}
+.stockart .b1{left:50%;bottom:18%;width:34%;height:9%;background:#2a73c7;transform:translateX(-50%)}
+.stockart .b2{left:50%;bottom:27%;width:30%;height:8%;background:#e8b923;transform:translateX(-46%)}
+.stockart .b3{left:50%;bottom:35%;width:27%;height:8%;background:#2f9e5b;transform:translateX(-54%)}
+.stockart .ap{left:50%;bottom:43%;width:15%;aspect-ratio:1;background:#d62828;border-radius:50%;transform:translateX(-50%);box-shadow:inset -6px -8px 14px rgba(0,0,0,.18)}
+.stockart .st{left:50%;bottom:58%;width:1.2%;height:6%;background:#5a3b1e;transform:translateX(-50%)}
+/* table */
+.tbl{width:100%;border-collapse:collapse;font:400 15px/1.45 var(--sans);margin-top:6px}
+.tbl th{font:600 11px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--mute);text-align:left;padding:0 14px 10px 0;border-bottom:2px solid var(--ink)}
+.tbl td{padding:13px 14px 13px 0;border-bottom:1px solid var(--rule);vertical-align:top}
+.tbl td.n{font:500 30px/1 var(--serif);text-align:right;padding-right:0;white-space:nowrap}
+.tbl td b{font:500 18px var(--serif);display:block}
+.tbl tr:last-child td{border-bottom:0}
+.tw{overflow-x:auto}
+
+/* strip */
+.strip{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:60px}
+.strip img{width:100%;aspect-ratio:4/3;object-fit:cover;border:1px solid var(--rule)}
+
+/* method / notes / final */
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;border-top:2px solid var(--ink);padding-top:26px}
+.pillars h3{font-size:28px;margin:8px 0}
+.pillars p{font:400 15px/1.55 var(--sans);color:#3A4561}
+.ethic{margin-top:40px;background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--marker);padding:20px 24px;font:400 15.5px/1.6 var(--sans);max-width:780px}
+.ethic b{font-family:var(--serif);font-weight:500;font-size:20px;display:block;margin-bottom:4px}
+.final{background:var(--navy);color:#EEF1F8;padding-block:96px}
+.final h2{font-size:clamp(46px,7.4vw,98px);max-width:13ch}
+.final p{font-size:21px;max-width:44ch;margin-top:20px;color:#C9D2E6}
+.final mark{background:linear-gradient(transparent 52%,var(--marker) 52%,var(--marker) 92%,transparent 92%);color:#fff}
+.cta{display:inline-block;margin-top:30px;background:var(--marker);color:#14213D;font:600 15px var(--sans);letter-spacing:.06em;text-transform:uppercase;padding:17px 28px;text-decoration:none}
+.cta:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.notes{font:400 13.5px/1.6 var(--sans);color:var(--mute);padding-block:30px 60px;max-width:760px}
+.notes ol{margin:10px 0 0;padding-left:22px}
+.notes li{margin-bottom:8px}
+
+@media (max-width:960px){
+  .cover .wrap,.layout,.rc,.rc.flip{grid-template-columns:minmax(0,1fr);gap:30px}
+  .rc.flip .site{order:0}
+  .margin{position:static}
+  .abstract{grid-template-columns:repeat(2,1fr)}
+  .abstract div:nth-child(2){border-right:0}.abstract div:nth-child(-n+2){border-bottom:1px solid var(--rule)}
+  .pillars,.strip{grid-template-columns:1fr}
+  .sec{padding-block:60px}
+  .fig img{aspect-ratio:16/10}
+}
+@media (max-width:560px){
+  body{font-size:18px}
+  .q{grid-template-columns:1fr 56px;gap:8px 14px}.q .tr{grid-column:1/-1;order:3}
+  .subj{grid-template-columns:38px minmax(0,1fr);gap:4px 12px}.subj .s{grid-column:1/-1;padding-top:0}.subj .g{text-align:left}
+  .site .nav span{display:none}
+}
+/* real editions: named feature, list of sites, disclaimer */
+.methlink{margin:28px 0 0;font:400 16px/1.5 var(--sans);color:var(--mute)}.methlink a{font-weight:600;color:var(--navy);margin-right:8px}
+.meth h3{font:600 22px/1.25 var(--serif);margin:44px 0 12px;color:var(--ink)}
+.meth h4{font:600 12px/1.3 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin:0 0 8px}
+.meth p,.meth li{max-width:780px}.meth ul{padding-left:20px;margin:0 0 12px}.meth li{margin:0 0 6px}
+.meth code{font:500 13px/1.4 ui-monospace,Menlo,monospace;background:rgba(20,40,75,.06);padding:1px 5px;word-break:break-word}
+.mgrid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;border-top:2px solid var(--navy);border-bottom:1px solid var(--rule);margin:8px 0 8px}
+.mfact{padding:16px 14px 14px 0}.mfact b{display:block;font:500 clamp(22px,2.6vw,32px)/1.1 var(--serif);color:var(--navy)}.mfact span{font:400 13px/1.35 var(--sans);color:var(--mute)}
+.mcols{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin:22px 0}
+.mt{width:100%;border-collapse:collapse;margin:16px 0 8px;font:400 15px/1.45 var(--sans)}
+.mt th{font:600 11px/1.3 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--mute);text-align:left;padding:8px 10px 8px 0;border-bottom:2px solid var(--navy)}
+.mt td{padding:10px 10px 10px 0;border-bottom:1px solid var(--rule);vertical-align:top}.mt .num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.mt td small{display:block;color:var(--mute);font-size:13px}.mt tr.tot td{font-weight:600;border-top:1px solid var(--navy)}
+.mt tr.sub td{font:600 11px/1.3 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--mute);padding-top:18px}
+.mm td:first-child{width:24%}.mm td:last-child{width:16%;color:var(--mute);font-size:13px}
+@media print{#methodology,#schools{break-before:page;padding-bottom:0!important;margin-bottom:0!important}.meth .mt td:first-child b{white-space:nowrap}.mt tr,.mfact{break-inside:avoid}.meth h3{break-after:avoid}}
+@media (max-width:760px){.mgrid{grid-template-columns:1fr 1fr}.mcols{grid-template-columns:1fr}.mm td:first-child{width:auto}.mt{font-size:14px}}
+.aichip{position:absolute;left:10px;bottom:10px;padding:4px 9px;border-radius:999px;background:rgba(10,16,34,.72);color:#fff;font:600 11px/1.2 var(--sans);letter-spacing:.04em;backdrop-filter:blur(4px)}
+.browser{border:1px solid var(--rule);border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 1px 0 rgba(0,0,0,.04),0 24px 48px -24px rgba(20,40,75,.35)}
+.browser .bar{display:flex;align-items:center;gap:6px;padding:9px 12px;background:#EEF0F4;border-bottom:1px solid var(--rule)}
+.browser .bar i{width:10px;height:10px;border-radius:50%;background:#D3D7E0}.browser .bar i:first-child{background:#E5867B}.browser .bar i:nth-child(2){background:#E9C46A}.browser .bar i:nth-child(3){background:#8DC891}
+.browser .bar span{flex:1;margin-left:10px;padding:4px 12px;border-radius:999px;background:#fff;color:var(--mute);font:500 12px/1.3 var(--sans);overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.feat .browser img{border:0;aspect-ratio:16/10;object-fit:cover;object-position:top;display:block}
+.feat{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:36px;align-items:start}
+.feat img{width:100%;height:auto;border:1px solid var(--rule);display:block}
+.feat h3{font:600 13px/1.3 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin:0 0 8px}
+.feat ul{margin:0 0 22px;padding-left:20px}.feat li{margin:0 0 6px}
+.schools{columns:3 260px;column-gap:32px;list-style:none;padding:0;margin:0 0 28px}
+.schools li{break-inside:avoid;padding:4px 0;border-bottom:1px solid var(--rule);font-size:16px}
+.schools small{display:block;color:var(--mute);font:400 13px/1.3 var(--sans)}
+.disc p{max-width:760px}.rm{display:inline-block;margin:6px 0 4px;padding:12px 18px;background:var(--navy);color:#fff;font:600 16px/1.2 var(--sans);text-decoration:none}
+.rm:focus-visible{outline:2px solid var(--pen);outline-offset:2px}
+@media (max-width:760px){.feat{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<style>
+:root{--rx-accent:#F2B705;--rx-ink:#111A33;--rx-bg:#F3F4F7;--rx-head:var(--display,var(--serif,Georgia,'Times New Roman',serif));--rx-ui:var(--sans,var(--mono,system-ui,-apple-system,sans-serif))}
+#rx-report :where(.layout,.rc,.wrap,.cover)>*{min-width:0}
+/* scene images carry width/height attributes; without height:auto the attribute beats the template's aspect-ratio and the crop turns tall */
+#rx-report :is(.strip,.fig) img{height:auto}
+/* The edition bar is sticky; it hides while reading down and returns on scroll up, so it never sits on a heading. */
+#rx-report .bar{transition:transform .28s ease}
+.rx-bar-away #rx-report .bar{transform:translateY(-110%)}
+#rx-report :is(section,header,div,figure)[id]{scroll-margin-top:72px}
+@media (prefers-reduced-motion:reduce){#rx-report .bar{transition:none}}
+@media (max-width:640px){#rx-report .bar .lab+.lab{display:none}}
+body{overflow-x:clip}
+.rx-for{font:400 clamp(16px,1.6vw,20px)/1.45 var(--rx-ui);color:#DDE2EE;max-width:52ch;margin:14px 0 0}
+/* scroll reveal (only when motion is on: .rx-anim is set by the page script) */
+.rx-anim .rx-rv{opacity:0;transform:translate3d(0,28px,0);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.rx-anim .rx-rv.rx-in{opacity:1;transform:none}
+.rx-anim :is(.abstract,.rx-ag-steps) > .rx-rv:nth-child(2){transition-delay:.1s}.rx-anim :is(.abstract,.rx-ag-steps) > .rx-rv:nth-child(3){transition-delay:.2s}.rx-anim :is(.abstract,.rx-ag-steps) > .rx-rv:nth-child(4){transition-delay:.3s}
+.rx-anim .rc .shot img{transform:scale(1.08);transition:transform 1.6s cubic-bezier(.2,.7,.2,1)}
+.rx-anim .rc.rx-in .shot img{transform:none}
+.rx-anim .rc .grade{opacity:0;transform:scale(1.9) rotate(-14deg)}
+.rx-anim .rc.rx-in .grade{animation:rx-stamp .5s .55s cubic-bezier(.3,1.6,.5,1) forwards}
+@keyframes rx-stamp{0%{opacity:0;transform:scale(1.9) rotate(-14deg)}70%{opacity:1}100%{opacity:1;transform:scale(1) rotate(-6deg)}}
+.rx-anim .rc .subj{opacity:0;transform:translate3d(-8px,0,0);transition:opacity .5s,transform .5s}
+.rx-anim .rc.rx-in .subj{opacity:1;transform:none}
+.rx-anim .rc.rx-in .subj:nth-of-type(1){transition-delay:0.25s}.rx-anim .rc.rx-in .subj:nth-of-type(2){transition-delay:0.32s}.rx-anim .rc.rx-in .subj:nth-of-type(3){transition-delay:0.39s}.rx-anim .rc.rx-in .subj:nth-of-type(4){transition-delay:0.46s}.rx-anim .rc.rx-in .subj:nth-of-type(5){transition-delay:0.53s}.rx-anim .rc.rx-in .subj:nth-of-type(6){transition-delay:0.60s}.rx-anim .rc.rx-in .subj:nth-of-type(7){transition-delay:0.67s}.rx-anim .rc.rx-in .subj:nth-of-type(8){transition-delay:0.74s}
+@media (prefers-reduced-motion:reduce){.rx-anim .rx-rv,.rx-anim .rc .grade,.rx-anim .rc .subj,.rx-anim .rc .shot img{opacity:1!important;transform:none!important;animation:none!important;transition:none!important}}
+.rx-break{margin:0;position:relative;overflow:hidden;height:clamp(260px,52vw,620px);background:#0B1020}
+.rx-break img{width:100%;height:118%;object-fit:cover;transform:translate3d(0,calc(var(--bp,0) * -15%),0);will-change:transform}
+.rx-break figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 20px 18px;background:linear-gradient(0deg,rgba(8,12,26,.8),rgba(8,12,26,0));color:#E9ECF4;font:400 15px/1.4 var(--rx-ui)}
+.rx-break figcaption{padding-inline:max(20px,calc((100% - 1160px) / 2))}
+.rx-ag{background:#fff;color:var(--rx-ink);border-top:1px solid rgba(0,0,0,.08)}
+.rx-ag-band{position:relative;height:clamp(300px,42vw,520px);overflow:hidden;background:#0B1020}
+.rx-ag-band img{width:100%;height:100%;object-fit:cover}
+.rx-ag-band::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,12,26,.88),rgba(8,12,26,.35) 60%,rgba(8,12,26,.1))}
+.rx-ag-band-copy{position:absolute;left:0;right:0;bottom:0;z-index:1;max-width:1200px;margin:0 auto;padding:0 20px 36px;color:#fff}
+.rx-ag-kick{font:600 12px var(--rx-ui);letter-spacing:.14em;text-transform:uppercase;color:#C9D0E2;margin:0 0 10px}
+.rx-ag-band h2{font:500 clamp(36px,5.4vw,72px)/1 var(--rx-head);margin:0;max-width:14ch;color:#fff}
+.rx-ag-in{max-width:1200px;margin:0 auto;padding:56px 20px 72px;font:400 16px/1.6 var(--rx-ui)}
+.rx-ag-lede{font:400 clamp(19px,1.9vw,23px)/1.5 var(--rx-head);max-width:58ch;margin:0 0 40px}
+.rx-ag-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:56px}
+.rx-ag h3{font:500 clamp(22px,2.2vw,28px)/1.15 var(--rx-head);margin:0 0 14px}
+.rx-ag-h3{margin-top:56px!important}
+.rx-ag-tbl{width:100%;border-collapse:collapse;margin-top:16px;font-size:15px}
+.rx-ag-tbl th{text-align:left;font:600 11px var(--rx-ui);letter-spacing:.1em;text-transform:uppercase;color:#596079;border-bottom:2px solid var(--rx-ink);padding:0 8px 8px 0}
+.rx-ag-tbl td{border-bottom:1px solid #E1E4EC;padding:10px 8px 10px 0;font-variant-numeric:tabular-nums}
+.rx-ag-tbl tr.hi td{background:linear-gradient(90deg,color-mix(in srgb,var(--rx-accent) 26%,transparent),transparent);font-weight:600}
+.rx-ag-note{font-size:13px;color:#596079;margin-top:10px}
+.rx-ag-list{list-style:none;margin:0;padding:0;border-top:2px solid var(--rx-ink)}
+.rx-ag-list li{display:grid;grid-template-columns:72px minmax(0,1fr);gap:16px;padding:16px 0;border-bottom:1px solid #E1E4EC}
+.rx-ag-pct{font:500 34px/1 var(--rx-head);font-variant-numeric:tabular-nums}
+.rx-ag-list b{font:500 19px/1.25 var(--rx-head)}
+.rx-ag-eff{font:600 10.5px var(--rx-ui);font-style:normal;letter-spacing:.08em;text-transform:uppercase;border:1px solid #C9CEDA;border-radius:999px;padding:3px 8px;margin-left:6px;vertical-align:2px;color:#596079}
+.rx-ag-list p{margin:6px 0 4px;color:#30384F}
+.rx-ag-list q{display:block;font:italic 400 16px/1.45 var(--rx-head);color:#596079}
+.rx-ag-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;border-top:2px solid var(--rx-ink);padding-top:22px}
+.rx-ag-steps span{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--rx-accent);color:#111;font:600 14px var(--rx-ui);margin-bottom:10px}
+.rx-ag-steps b{display:block;font:500 20px/1.25 var(--rx-head);margin-bottom:6px}
+.rx-ag-steps p{margin:0;color:#30384F}
+.rx-ag-cta{margin:36px 0 0;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.rx-ag-cta a{background:var(--rx-ink);color:#fff;text-decoration:none;font:600 15px var(--rx-ui);padding:14px 22px;border-radius:999px}
+.rx-ag-cta span{color:#596079;font-size:14px}
+.rx-lic{background:#131A30;border:1px solid #2C3550;border-left:4px solid var(--rx-accent);border-radius:10px;padding:12px 14px;color:#fff!important;font-weight:500}
+.rx-lic a{color:var(--rx-accent);font-weight:700;margin-right:6px}
+.rx-get-h3{font-weight:600;color:#fff!important;margin:18px 0 8px!important}
+.rx-cite{position:relative;padding-right:76px!important}
+.rx-code code{font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap;word-break:break-all;color:#C9D0E2}
+.rx-copybtn{position:absolute;top:10px;right:10px;font:600 12px var(--rx-ui);background:var(--rx-accent);color:#111;border:0;border-radius:999px;padding:7px 12px;cursor:pointer}
+.rx-copybtn:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.rx-small{font-size:14px;margin-top:14px}
+@media (max-width:860px){.rx-ag-grid,.rx-ag-steps{grid-template-columns:minmax(0,1fr);gap:32px}}
+@media (prefers-reduced-motion:reduce){.rx-break img{transform:none!important}}
+html[data-motion='off'] .rx-break img{transform:none!important}
+.rx-skip{position:absolute;left:-9999px;top:8px;z-index:100;background:#fff;color:#111;padding:10px 14px;font:600 14px var(--rx-ui)}
+.rx-skip:focus{left:8px}
+.rx-nav{background:#0B1020;color:#E8EBF3;font:500 14px/1.2 var(--rx-ui)}
+.rx-nav .rx-in{max-width:1200px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.rx-nav a{color:inherit;text-decoration:none}
+.rx-brand{display:flex;align-items:center;gap:8px;font-weight:600;letter-spacing:-.01em;margin-right:auto}
+.rx-brand img{width:26px;height:26px}
+.rx-brand small{font-weight:400;color:#9AA3B8}
+.rx-pill{border:1px solid #39425A;padding:8px 12px;border-radius:999px;white-space:nowrap}
+.rx-pill:hover,.rx-pill:focus-visible{border-color:var(--rx-accent);outline:none}
+.rx-pill.rx-solid{background:var(--rx-accent);border-color:var(--rx-accent);color:#111}
+.rx-tag{display:inline-block;background:#C0312B;color:#fff;font:600 11px/1 var(--rx-ui);letter-spacing:.12em;text-transform:uppercase;padding:6px 8px;border-radius:3px}
+.rx-hero{position:relative;background:#0B1020;color:#fff}
+.rx-stage{position:relative;height:min(calc(100svh - 96px),920px);min-height:560px;overflow:hidden}
+.rx-anim .rx-hero{height:170svh}
+.rx-anim .rx-stage{position:sticky;top:0;height:100svh;max-height:none}
+.rx-layers{position:absolute;inset:-4% 0;transform:translate3d(0,calc(var(--p,0) * -6%),0) scale(calc(1 + var(--p,0) * .05));will-change:transform}
+.rx-layers img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 50%}
+.rx-layers img+img{opacity:0}
+.rx-anim .rx-f0{animation:rx-kb 26s ease-in-out infinite alternate}
+@keyframes rx-kb{from{transform:scale(1.02) translate3d(0,0,0)}to{transform:scale(1.13) translate3d(-2.5%,-1.5%,0)}}
+@keyframes rx-x1{0%,28.3%{opacity:0}33.3%,61.7%{opacity:1}66.7%,100%{opacity:0}}
+.rx-anim .rx-f1{animation:rx-x1 27s linear infinite,rx-kb 27s ease-in-out infinite alternate}
+@keyframes rx-x2{0%,61.7%{opacity:0}66.7%,95.0%{opacity:1}100.0%,100%{opacity:0}}
+.rx-anim .rx-f2{animation:rx-x2 27s linear infinite,rx-kb 27s ease-in-out infinite alternate}
+.rx-light{position:absolute;inset:-20%;background:linear-gradient(105deg,transparent 35%,rgba(255,236,190,.16) 45%,rgba(255,236,190,.05) 52%,transparent 60%);mix-blend-mode:screen;opacity:.0}
+.rx-anim .rx-light{animation:rx-sweep 14s ease-in-out infinite;opacity:1}
+@keyframes rx-sweep{0%{transform:translate3d(-30%,0,0)}50%{transform:translate3d(20%,0,0)}100%{transform:translate3d(-30%,0,0)}}
+.rx-dust{position:absolute;inset:0;pointer-events:none}
+.rx-dust i{position:absolute;width:3px;height:3px;border-radius:50%;background:radial-gradient(circle,rgba(255,240,210,.9),rgba(255,240,210,0) 70%);opacity:0}
+.rx-anim .rx-dust i{animation:rx-mote 18s linear infinite}
+@keyframes rx-mote{0%{opacity:0;transform:translate3d(0,0,0)}15%{opacity:.8}85%{opacity:.6}100%{opacity:0;transform:translate3d(60px,-220px,0)}}
+.rx-scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,12,26,.9) 0%,rgba(8,12,26,.72) 34%,rgba(8,12,26,.18) 64%,rgba(8,12,26,.05) 100%),linear-gradient(0deg,rgba(8,12,26,.85) 0%,rgba(8,12,26,0) 42%);opacity:calc(.92 + var(--p,0) * .08)}
+.rx-grain{position:absolute;inset:-50%;opacity:.13;mix-blend-mode:overlay;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.rx-anim .rx-grain{animation:rx-grain 1s steps(6) infinite}
+@keyframes rx-grain{0%{transform:translate(0,0)}20%{transform:translate(-4%,3%)}40%{transform:translate(3%,-5%)}60%{transform:translate(-6%,-2%)}80%{transform:translate(5%,4%)}100%{transform:translate(0,0)}}
+.rx-copy{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;max-width:1200px;margin:0 auto;padding:0 20px calc(clamp(36px,7vh,80px) + var(--rx-off,0px))}
+.rx-kick{font:600 12px/1.4 var(--rx-ui);letter-spacing:.14em;text-transform:uppercase;color:#C9D0E2;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.rx-title{font:500 clamp(38px,6.4vw,92px)/.98 var(--rx-head);letter-spacing:-.015em;margin:16px 0 0;max-width:15ch;text-wrap:balance;color:#fff}
+.rx-big{display:flex;align-items:flex-end;gap:clamp(14px,2.4vw,28px);margin-top:clamp(18px,4vh,40px);flex-wrap:wrap}
+.rx-num{position:relative;isolation:isolate;font:500 clamp(84px,15vw,200px)/.82 var(--rx-head);letter-spacing:-.04em;font-variant-numeric:lining-nums tabular-nums;color:#fff}
+.rx-num::after{content:"";position:absolute;left:-.04em;right:-.04em;bottom:.02em;height:.13em;background:var(--rx-accent);opacity:.9;z-index:-1;transform-origin:0 50%;transform:scaleX(var(--mark,1))}
+.rx-num span{position:relative;z-index:1}
+.rx-num small{font-size:.42em;margin-left:.04em}
+.rx-line{font:400 clamp(18px,2.1vw,25px)/1.35 var(--rx-head);max-width:26ch;color:#E9ECF4;padding-bottom:.6em}
+.rx-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:clamp(18px,4vh,36px);max-width:860px}
+.rx-stat{border-top:1px solid rgba(255,255,255,.35);padding-top:10px;font:400 14px/1.4 var(--rx-ui);color:#C9D0E2}
+.rx-stat b{display:block;font:500 clamp(26px,3vw,38px)/1 var(--rx-head);color:#fff;margin-bottom:4px}
+.rx-anim .rx-stat{opacity:var(--o,0);transform:translate3d(0,calc((1 - var(--o,0)) * 18px),0)}
+.rx-anim .rx-stat:nth-child(1){--o:clamp(0,(var(--p,0) - .04) * 7,1)}
+.rx-anim .rx-stat:nth-child(2){--o:clamp(0,(var(--p,0) - .14) * 7,1)}
+.rx-anim .rx-stat:nth-child(3){--o:clamp(0,(var(--p,0) - .24) * 7,1)}
+.rx-anim .rx-num{--mark:clamp(0,var(--p,0) * 5 + var(--m0,0),1)}
+.rx-acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:clamp(18px,4vh,34px);font:600 14px var(--rx-ui)}
+.rx-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 20px;border-radius:999px;text-decoration:none;border:1px solid rgba(255,255,255,.5);color:#fff;background:rgba(8,12,26,.35);backdrop-filter:blur(6px)}
+.rx-btn.rx-solid{background:var(--rx-accent);border-color:var(--rx-accent);color:#111}
+.rx-btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.rx-cue{position:absolute;right:22px;bottom:22px;font:600 11px var(--rx-ui);letter-spacing:.16em;text-transform:uppercase;color:#C9D0E2;writing-mode:vertical-rl;opacity:calc(1 - var(--p,0) * 6)}
+.rx-cue::after{content:"";display:inline-block;width:1px;height:46px;background:#C9D0E2;margin-top:10px}
+.rx-anim .rx-cue::after{animation:rx-cue 2.2s ease-in-out infinite}
+@keyframes rx-cue{0%,100%{transform:scaleY(.3);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}}
+.rx-sample{background:#FFF4D6;color:#3B2F00;border-bottom:1px solid #E9D48A;font:500 14px/1.45 var(--rx-ui)}
+.rx-sample div{max-width:1200px;margin:0 auto;padding:10px 20px}
+.rx-get{background:#0B1020;color:#E8EBF3;font:400 16px/1.6 var(--rx-ui)}
+.rx-get .rx-in{max-width:1200px;margin:0 auto;padding:64px 20px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:48px}
+.rx-get h2{font:500 clamp(30px,4vw,48px)/1.04 var(--rx-head);color:#fff;margin:0 0 14px}
+.rx-get p{color:#C9D0E2;margin:0 0 14px;max-width:56ch}
+.rx-get ul{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:10px}
+.rx-get li a{display:flex;justify-content:space-between;gap:12px;padding:14px 16px;border:1px solid #2C3550;border-radius:10px;color:#fff;text-decoration:none}
+.rx-get li a:hover,.rx-get li a:focus-visible{border-color:var(--rx-accent);outline:none}
+.rx-get li small{color:#9AA3B8;white-space:nowrap}
+.rx-cite{overflow-wrap:anywhere;background:#131A30;border:1px solid #2C3550;border-radius:10px;padding:16px;font:400 14px/1.55 var(--rx-ui);color:#DDE2EE;word-wrap:break-word}
+.rx-share{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.rx-share a{font:600 13px var(--rx-ui);color:#fff;border:1px solid #39425A;border-radius:999px;padding:9px 14px;text-decoration:none}
+.rx-foot{background:#070A14;color:#9AA3B8;font:400 14px/1.6 var(--rx-ui)}
+.rx-foot .rx-in{max-width:1200px;margin:0 auto;padding:28px 20px;display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
+.rx-foot a{color:#DDE2EE;text-decoration:none;margin-right:16px}
+.rx-fab{position:fixed;right:16px;bottom:16px;z-index:40;display:inline-flex;gap:8px;align-items:center;background:var(--rx-accent);color:#111;font:600 14px var(--rx-ui);padding:13px 18px;border-radius:999px;text-decoration:none;box-shadow:0 10px 30px -10px rgba(0,0,0,.5);transform:translate3d(0,140%,0);transition:transform .35s}
+.rx-fab.on{transform:none}
+.rx-fab:focus-visible{outline:3px solid #111;outline-offset:2px}
+.rx-print-cover{display:none}
+@media (max-width:760px){
+  .rx-stats{grid-template-columns:1fr 1fr}.rx-stat:nth-child(3){display:none}
+  .rx-get .rx-in{grid-template-columns:minmax(0,1fr);gap:28px;padding-block:48px}
+  .rx-get li a{flex-wrap:wrap}
+  .rx-nav .rx-hide{display:none}
+  .rx-layers img{object-position:70% 50%}
+  .rx-cue{display:none}
+  .rx-scrim{background:linear-gradient(0deg,rgba(8,12,26,.94) 0%,rgba(8,12,26,.7) 55%,rgba(8,12,26,.35) 100%)}
+}
+@media (prefers-reduced-motion:reduce){.rx-hero *,.rx-fab{animation:none!important;transition:none!important}}
+html[data-motion='off'] .rx-hero *{animation:none!important}
+@media (max-width:560px){#rx-report .subj{grid-template-columns:38px minmax(0,1fr)}#rx-report .subj .g{text-align:left}}
+@page{size:A4;margin:14mm 0 16mm;
+  @bottom-left{content:"Clikiti Research · The State of School Websites 2026 · clikiti.com/research/education";font:7pt/1.2 system-ui,sans-serif;color:#667;padding-left:14mm}
+  @bottom-right{content:counter(page) " / " counter(pages);font:7pt/1.2 system-ui,sans-serif;color:#667;padding-right:14mm}}
+@page :first{margin:0;@bottom-left{content:none}@bottom-right{content:none}}
+@media print{
+  html,body{background:#fff!important}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact;animation:none!important;transition:none!important;box-shadow:none!important;text-shadow:none!important;backdrop-filter:none!important}
+  .rx-nav,.rx-hero,.rx-fab,.rx-share,.rx-skip,.rx-sample,.chips,.read,.rx-size,.rx-copybtn,.rx-ag-cta{display:none!important}
+  .rx-break{height:300px!important;break-inside:avoid}.rx-break img{transform:none!important;height:100%!important}
+  .rx-ag{break-before:page}.rx-ag-band{height:280px!important}.rx-ag-list li,.rx-ag-steps li,.rx-ag-tbl{break-inside:avoid}
+  .rx-lic{background:#fff!important;color:#111!important;border-color:#ccc!important}.rx-get-h3{color:#111!important}.rx-code code{color:#333!important}
+  .wrap{max-width:none!important;padding-inline:64px!important}
+  .rx-print-cover{display:flex!important;flex-direction:column;height:297mm;background:#0B1020;color:#fff;break-after:page;font-family:var(--rx-ui);overflow:hidden}
+  html.rx-pdf .rx-print-cover{height:calc(297mm / 0.7 - 2px)}
+  .rx-print-cover img{width:100%;height:46%;object-fit:cover;display:block}
+  .rx-pc-body{padding:56px 72px 52px;display:flex;flex-direction:column;flex:1}
+  .rx-pc-kick{font:600 15px/1.4 var(--rx-ui);letter-spacing:.14em;text-transform:uppercase;color:#C9D0E2}
+  .rx-pc-title{font:500 76px/1 var(--rx-head);margin:22px 0 0;color:#fff;max-width:16ch}
+  .rx-pc-big{display:flex;align-items:flex-end;gap:28px;margin-top:40px}
+  .rx-pc-big b{font:500 150px/.85 var(--rx-head);color:#fff;border-bottom:12px solid var(--rx-accent)}
+  .rx-pc-big span{font:400 27px/1.35 var(--rx-head);max-width:22ch;color:#E9ECF4}
+  .rx-pc-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:44px;font:400 16px/1.4 var(--rx-ui);color:#C9D0E2}
+  .rx-pc-stats div{border-top:1px solid #556;padding-top:10px}
+  .rx-pc-stats b{display:block;font:500 40px/1.1 var(--rx-head);color:#fff;margin-bottom:4px}
+  .rx-pc-foot{margin-top:auto;display:flex;justify-content:space-between;font:500 16px var(--rx-ui);color:#C9D0E2}
+  .rx-pc-foot a{color:#fff}
+  .rx-pc-for{margin-top:28px;font:400 17px/1.45 var(--rx-ui);color:#DDE2EE;max-width:60ch}
+  .rx-pc-sample{margin-top:28px;background:#FFF4D6;color:#3B2F00;padding:14px 18px;font:500 16px/1.4 var(--rx-ui)}
+  .bar{position:static!important}
+  .margin{position:static!important}
+  .sec,.final{padding-block:40px!important}
+  #s1,#s2,#s3{break-before:page}
+  h1,h2,h3,.sechead,.sechead .n{break-after:avoid}
+  .final,.rc,.paper,.q,.abstract,figure,tr,.pillars>div,.ethic,.fig1,.strip,.rx-cite,.subj,.site{break-inside:avoid}
+  .fig1 svg{min-width:0!important}
+  .rx-get{background:#fff!important;color:#111!important;break-inside:avoid}
+  .rx-get .rx-in{padding-inline:64px!important}
+  .rx-get h2,.rx-get li a{color:#111!important}
+  .rx-get p,.rx-get li small{color:#333!important}
+  .rx-get li a,.rx-cite{border-color:#ccc!important;background:#fff!important;color:#111!important}
+  .rx-foot{background:#fff!important;color:#333!important}
+  .rx-foot .rx-in{padding-inline:64px!important}
+  .rx-foot a{color:#111!important}
+  a{text-decoration:none}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://clikiti.com/#organization","name":"Clikiti","url":"https://clikiti.com","logo":"https://clikiti.com/clikiti-logo-round.svg"},{"@type":"Report","@id":"https://clikiti.com/research/education/2026-q4#report","headline":"The State of School Websites 2026","name":"The State of School Websites 2026","description":"Selling websites to private schools and tutoring centres? We scanned 114 of their sites: only 68% show what the school costs without the parent having to ask. Median score 74/100. The fixable problems to pitch, Q4 2026.","url":"https://clikiti.com/research/education/2026-q4","mainEntityOfPage":"https://clikiti.com/research/education/2026-q4","inLanguage":"en","datePublished":"2026-10-12T18:09:38.740Z","dateModified":"2026-10-13T04:31:12.263Z","author":{"@id":"https://clikiti.com/#organization"},"creator":{"@id":"https://clikiti.com/#organization"},"publisher":{"@id":"https://clikiti.com/#organization"},"image":"https://clikiti.com/research/education/2026-q4/og.jpg","about":["school websites","private school websites","tutoring websites","web design for private schools"],"keywords":"school websites, private school websites, tutoring websites, web design for private schools, web design for tutoring centres, agency prospecting, school website redesign, school website accessibility, WCAG, Core Web Vitals","isAccessibleForFree":true,"license":"https://creativecommons.org/licenses/by/4.0/","copyrightHolder":{"@id":"https://clikiti.com/#organization"},"creditText":"Clikiti (clikiti.com)","audience":{"@type":"BusinessAudience","audienceType":"Web design agencies and freelancers selling to private schools and tutoring centres"},"encoding":[{"@type":"MediaObject","encodingFormat":"application/pdf","contentUrl":"https://clikiti.com/research/education/2026-q4/report.pdf"},{"@type":"MediaObject","encodingFormat":"text/markdown","contentUrl":"https://clikiti.com/research/education/2026-q4/report.md"}],"isBasedOn":{"@id":"https://clikiti.com/research/education/2026-q4#dataset"}},{"@type":"Dataset","@id":"https://clikiti.com/research/education/2026-q4#dataset","name":"The State of School Websites 2026: aggregate data (Q4 2026)","description":"Aggregate results of scanning 114 private school and tutoring websites in Q4 2026: share passing each check, median scores by segment. No individual site is identified.","url":"https://clikiti.com/research/education/2026-q4","creator":{"@id":"https://clikiti.com/#organization"},"publisher":{"@id":"https://clikiti.com/#organization"},"datePublished":"2026-10-12T18:09:38.740Z","dateModified":"2026-10-13T04:31:12.263Z","temporalCoverage":"2026-10-13","measurementTechnique":"Automated website scans: HTML and link analysis, a phone-sized headless browser render (load time, contrast, keyboard paths) and a rule-based check of the questions visitors ask, each tied to a cited standard (WCAG 2.2, Core Web Vitals).","variableMeasured":[{"@type":"PropertyValue","name":"Websites scanned (sample size)","value":114},{"@type":"PropertyValue","name":"Median overall score","value":74,"minValue":0,"maxValue":100},{"@type":"PropertyValue","name":"Margin of error (95% confidence, percentage points)","value":9.2},{"@type":"PropertyValue","name":"Share answering: Can I reach a person?","value":9,"unitText":"percent"},{"@type":"PropertyValue","name":"Share answering: Is it recognised?","value":27,"unitText":"percent"},{"@type":"PropertyValue","name":"Share answering: When are the holidays?","value":46,"unitText":"percent"},{"@type":"PropertyValue","name":"Share answering: Can we visit?","value":59,"unitText":"percent"},{"@type":"PropertyValue","name":"Share answering: What does it cost?","value":68,"unitText":"percent"},{"@type":"PropertyValue","name":"Share answering: Can we afford it?","value":76,"unitText":"percent"},{"@type":"PropertyValue","name":"Share failing: Text contrast passes 4.5:1","value":80,"unitText":"percent","description":"WCAG 1.4.3"},{"@type":"PropertyValue","name":"Share failing: Loads in under 2.5 s on a phone","value":57,"unitText":"percent","description":"Core Web Vitals · LCP"},{"@type":"PropertyValue","name":"Share failing: Images have text descriptions","value":17,"unitText":"percent","description":"WCAG 1.1.1"}],"keywords":["school websites","private school websites","tutoring websites","web design for private schools","web design for tutoring centres","agency prospecting","school website redesign","school website accessibility","WCAG","Core Web Vitals"],"isAccessibleForFree":true,"license":"https://creativecommons.org/licenses/by/4.0/","copyrightHolder":{"@id":"https://clikiti.com/#organization"},"creditText":"Clikiti (clikiti.com)","distribution":[{"@type":"DataDownload","encodingFormat":"application/pdf","contentUrl":"https://clikiti.com/research/education/2026-q4/report.pdf","name":"Report (PDF)"},{"@type":"DataDownload","encodingFormat":"text/markdown","contentUrl":"https://clikiti.com/research/education/2026-q4/report.md","name":"Report (Markdown)"},{"@type":"DataDownload","encodingFormat":"application/json","contentUrl":"https://clikiti.com/research/education/2026-q4/data.json","name":"Aggregate data (JSON)"},{"@type":"DataDownload","encodingFormat":"text/csv","contentUrl":"https://clikiti.com/research/education/2026-q4/data.csv","name":"Aggregate data (CSV)"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Clikiti","item":"https://clikiti.com"},{"@type":"ListItem","position":2,"name":"Research","item":"https://clikiti.com/research"},{"@type":"ListItem","position":3,"name":"The State of School Websites 2026","item":"https://clikiti.com/research/education/2026-q4"}]}]}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7G3VREW8EF"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7G3VREW8EF');</script></head>
+<body>
+<a class="rx-skip" href="#rx-report">Skip to the report</a>
+<header class="rx-nav"><div class="rx-in">
+  <a class="rx-brand" href="../../"><img src="../../clikiti-logo-round.svg" alt="" width="26" height="26"><span>clikiti</span><small class="rx-hide">/ research</small></a>
+  <a class="rx-pill rx-hide" href="../">All reports</a>
+  <a class="rx-pill" href="2026-q4/report.md" type="text/markdown">Markdown</a>
+  <a class="rx-pill rx-solid" href="2026-q4/report.pdf" type="application/pdf" download>Download PDF</a>
+</div></header>
+
+<section class="rx-hero" id="rx-hero" aria-label="Headline finding">
+  <div class="rx-stage">
+    <div class="rx-layers" aria-hidden="true"><img class="rx-f0" src="2026-q4/hero/hero-1-1600.webp" srcset="2026-q4/hero/hero-1-800.webp 800w, 2026-q4/hero/hero-1-1600.webp 1600w, 2026-q4/hero/hero-1-2560.webp 2560w" sizes="100vw" width="1600" height="679" alt="" fetchpriority="high"><img class="rx-f1" src="2026-q4/hero/hero-2-1600.webp" srcset="2026-q4/hero/hero-2-800.webp 800w, 2026-q4/hero/hero-2-1600.webp 1600w, 2026-q4/hero/hero-2-2560.webp 2560w" sizes="100vw" width="1600" height="679" alt="" loading="lazy" decoding="async"><img class="rx-f2" src="2026-q4/hero/hero-3-1600.webp" srcset="2026-q4/hero/hero-3-800.webp 800w, 2026-q4/hero/hero-3-1600.webp 1600w, 2026-q4/hero/hero-3-2560.webp 2560w" sizes="100vw" width="1600" height="679" alt="" loading="lazy" decoding="async"></div>
+    <div class="rx-light" aria-hidden="true"></div>
+    <div class="rx-dust" aria-hidden="true"><i style="left:0%;top:30%;animation-delay:-0.0s;animation-duration:14s"></i><i style="left:37%;top:83%;animation-delay:-1.3s;animation-duration:16s"></i><i style="left:74%;top:71%;animation-delay:-2.6s;animation-duration:18s"></i><i style="left:11%;top:59%;animation-delay:-3.9s;animation-duration:20s"></i><i style="left:48%;top:47%;animation-delay:-5.2s;animation-duration:22s"></i><i style="left:85%;top:35%;animation-delay:-6.5s;animation-duration:14s"></i><i style="left:22%;top:88%;animation-delay:-7.8s;animation-duration:16s"></i><i style="left:59%;top:76%;animation-delay:-9.1s;animation-duration:18s"></i><i style="left:96%;top:64%;animation-delay:-10.4s;animation-duration:20s"></i><i style="left:33%;top:52%;animation-delay:-11.7s;animation-duration:22s"></i><i style="left:70%;top:40%;animation-delay:-13.0s;animation-duration:14s"></i><i style="left:7%;top:93%;animation-delay:-14.3s;animation-duration:16s"></i><i style="left:44%;top:81%;animation-delay:-15.6s;animation-duration:18s"></i><i style="left:81%;top:69%;animation-delay:-16.9s;animation-duration:20s"></i></div>
+    <div class="rx-scrim" aria-hidden="true"></div>
+    <div class="rx-grain" aria-hidden="true"></div>
+    <div class="rx-copy">
+      <p class="rx-kick"><span>Clikiti Research · State of the web · Q4 2026</span></p>
+      <p class="rx-title">The State of School Websites 2026</p>
+      <p class="rx-for">For small agencies and freelancers who sell websites to private schools and tutoring centres: what their websites miss, and what you can fix.</p>
+      <div class="rx-big">
+        <p class="rx-num" data-count="68" style="margin:0"><span>68</span><small>%</small></p>
+        <p class="rx-line" style="margin:0">of 114 private school and tutoring websites show what the school costs without the parent having to ask.</p>
+      </div>
+      <div class="rx-stats"><div class="rx-stat"><b>74<small style="font-size:.5em">/100</small></b>median overall score</div><div class="rx-stat"><b>3 of 6</b>questions parents ask that a typical site answers</div><div class="rx-stat"><b>80%</b>fail WCAG 1.4.3: text contrast passes 4.5:1</div></div>
+      <div class="rx-acts"><a class="rx-btn rx-solid" href="#rx-report">Read the report</a><a class="rx-btn" href="#rx-agencies">For agencies</a><a class="rx-btn" href="2026-q4/report.pdf" type="application/pdf" download>PDF · 3.9 MB</a><a class="rx-btn" href="2026-q4/report.md" type="text/markdown">Markdown</a></div>
+    </div>
+    <span class="rx-cue" aria-hidden="true">Scroll</span>
+  </div>
+</section>
+<section class="rx-print-cover" aria-hidden="true">
+  <img src="2026-q4/hero/hero-1-1600.webp" alt="" loading="lazy">
+  <div class="rx-pc-body">
+    <div class="rx-pc-kick">Clikiti Research · State of the web · Q4 2026</div>
+    <div class="rx-pc-title">The State of School Websites 2026</div>
+    <div class="rx-pc-big"><b>68%</b><span>of 114 private school and tutoring websites show what the school costs without the parent having to ask.</span></div>
+    <div class="rx-pc-stats"><div><b>74/100</b>median overall score</div><div><b>3 of 6</b>questions parents ask that a typical site answers</div><div><b>80%</b>fail WCAG 1.4.3: text contrast passes 4.5:1</div></div>
+    <div class="rx-pc-for">For small agencies and freelancers who sell websites to private schools and tutoring centres. Free to use and cite under CC BY 4.0. Credit Clikiti with a link.</div>
+    
+    <div class="rx-pc-foot"><span>114 sites · scanned October 2026 · ±9.2 pts</span><a href="2026-q4/">clikiti.com/research/education/2026-q4</a></div>
+  </div>
+</section>
+<main id="rx-report" tabindex="-1">
+
+
+<div class="bar"><div class="wrap"><span class="lab" id="ribL"></span><span class="lab">The Prospectus Series · Education · 2026</span></div></div>
+
+<header class="cover">
+  <div class="wrap">
+    <div>
+      <span class="lab">Clikiti Index · The state of school websites, 2026</span>
+      <h1>What parents find in the <i>first ten minutes</i></h1>
+      <p class="lede">We read the websites of 114 independent schools and small private schools and tutoring and learning centres in the US the way a parent does: on a phone, with the questions a family asks first.</p>
+      <nav class="contents" aria-label="Contents">
+        <a href="#s1"><span>§1</span>The questions parents ask</a>
+        <a href="#s2"><span>§2</span>How the three kinds of school compare</a>
+        <a href="#s3" id="tocS3"><span>§3</span>Four report cards</a>
+        <a href="#s4"><span>§4</span>Who the site leaves out</a>
+        <a href="#s5"><span>§5</span>Method in brief</a>
+        <a href="#rx-agencies"><span>§6</span>What this means for agencies</a>
+        <a href="#methodology" id="tocMeth"><span>A</span>Methodology</a>
+        <a href="#schools" id="tocSchools"><span>B</span>Schools in this study</a>
+      </nav>
+    </div>
+    <figure class="fig"><img src="2026-q4/scenes/scene-parents-2-1600.webp" srcset="2026-q4/scenes/scene-parents-2-800.webp 800w, 2026-q4/scenes/scene-parents-2-1600.webp 1600w, 2026-q4/scenes/scene-parents-2-2400.webp 2400w" sizes="(max-width: 960px) 100vw, 50vw" width="1600" height="1195" alt="Two parents on a sofa in the evening comparing school websites on a tablet" loading="lazy" decoding="async"><figcaption><b>Fig. 0.</b> Where the choice is made: on a sofa, in the evening, on a phone or a tablet. Generated image; the people are fictional.</figcaption></figure>
+  </div>
+</header>
+
+<section class="sec" id="summary">
+  <div class="wrap">
+    <div class="layout">
+      <div class="sechead" style="margin:0">
+        <span class="n">Summary</span>
+        <h2>Parents ask <span id="nQ">ten</span> questions. <span id="hLead">Most sites answer</span> <mark id="hAns">four</mark>.</h2>
+        <p>Across 114 school websites, the median site answers three of the six parent questions this edition can test. 68% show tuition in dollars on the home page or a page it links to; 59% let a family book a tour or open day online.<sup><a href="#fn1" id="r1">1</a></sup></p>
+      </div>
+      <aside class="margin" id="readnote"></aside>
+    </div>
+    <div class="abstract" id="abstract"></div>
+  </div>
+</section>
+
+<figure class="rx-break"><img src="2026-q4/scenes/scene-openday-1600.webp" srcset="2026-q4/scenes/scene-openday-800.webp 800w, 2026-q4/scenes/scene-openday-1600.webp 1600w, 2026-q4/scenes/scene-openday-2400.webp 2400w" width="1600" height="893" alt="Families walking up a leafy path to a brick school on an open day" loading="lazy" decoding="async" sizes="100vw"><figcaption>Open day. Most families have read the website long before they walk up this path.</figcaption></figure>
+<section class="sec alt" id="s1">
+  <div class="wrap">
+    <div class="layout">
+      <div>
+        <div class="sechead"><span class="n">§1</span><h2>The questions parents <em class="i">actually</em> ask</h2>
+          <p>We turned <span class="nq">ten</span> parent questions into <span class="nq">ten</span> checks. The bars show how many sites answer each one without making the parent ask.</p></div>
+        <div class="chips" id="chips" role="group" aria-label="School type"></div>
+        <div class="qs" id="qs"></div>
+        <p class="cap"><b>Figure 1.</b> Share of sites that answer each question on the home page or a page it links to, read from the served HTML. Sorted from least to most answered. The questions were written for schools: tutoring centres rarely publish tuition or open days, so their rates for fees and tours are not comparable with schools.</p>
+      </div>
+      <aside class="margin"><b>Why this order</b>A parent decides in this order: can we afford it, can we get in, can we visit. A site that makes the family guess at the first one often loses them before the second.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s2">
+  <div class="wrap">
+    <div class="layout">
+      <div>
+        <div class="sechead"><span class="n">§2</span><h2>Three kinds of school, <em class="i">side by side</em></h2>
+          <p>Independent schools (58): median score 73, fees shown on 91%, a visit bookable online on 72%. Small private schools (31): median score 75, fees shown on 74%, a visit bookable online on 77%. Tutoring and learning centres (25): median score 78, fees shown on 4%, a visit bookable online on 4%. The parent questions were written for schools, so the tutoring rates for fees and visits are not comparable.</p></div>
+        <div class="fig1"><div style="overflow-x:auto"><svg id="f1" viewBox="0 0 1000 330" role="img" aria-label="Score distribution of 114 school websites by type"></svg></div>
+          <div class="read" id="rd">Hover or focus a dot to see the school.</div>
+          <div class="legend"><span><i style="background:var(--pen)"></i>Under 40</span><span><i style="background:var(--navy)"></i>40–79</span><span><i style="background:var(--good)"></i>80 and above</span></div></div>
+        <p class="cap"><b>Figure 2.</b> Overall score out of 100, one dot per school. The yellow mark is the median for each type.</p>
+      </div>
+      <aside class="margin"><b>On scoring</b>The score is Clikiti's overall website score (rubric v2): usability 30%, speed 25%, accessibility 25%, SEO 10%, trust 10%. It measures the website, not the school. The parent-question checks are reported separately and do not feed it.<sup><a href="#fn2">2</a></sup></aside>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="feature">
+  <div class="wrap">
+    <div class="sechead"><span class="n">Best in class</span><h2>Emerson Waldorf School</h2>
+      <p>Small private school, Chapel Hill, NC. It answers 4 of the 6 parent questions this edition tests, passes every speed and accessibility check. Its overall website score is 85/100. Named as a positive example; every other site in this report is anonymous.</p></div>
+    <div class="feat">
+      <figure class="fig" style="margin:0"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>emersonwaldorf.org</span></div><img src="2026-q4/img/feature.webp" alt="The home page of Emerson Waldorf School" loading="lazy"></div><figcaption>The home page as published, captured 2026-10-13 with pop-ups closed. <a href="https://www.emersonwaldorf.org/" rel="noopener" target="_blank">Visit emersonwaldorf.org</a></figcaption></figure>
+      <div><h3>What it does well</h3><ul><li>Shows what it costs without the family having to ask: “Tuition EC Half-Day: $15,730”</li><li>Lets a family book a visit online, from a “Plan A Visit” action</li><li>States its accreditation (“SAIS”)</li><li>Explains financial aid on its tuition page</li><li>Real phone visitors see the main content in 1.7 s (Chrome UX Report, 75th percentile; good is 2.5 s or less)</li><li>No text fails the WCAG 1.4.3 contrast minimum</li><li>Every image has a text description (WCAG 1.1.1)</li><li>Clikiti pillar scores of 90 or more: usability 100, accessibility 99, SEO 95, trust 94</li></ul><h3>Where it could still improve</h3><ul><li>Term dates: the calendar page builds its dates in the browser, so the page a phone or search engine first receives carries none</li><li>Contact: the phone number is not a tappable link, and office hours are not stated</li><li>Speed pillar 45/100 (driven by the throttled mobile Lighthouse run; real phone visitors load it fast)</li></ul></div>
+    </div>
+  </div>
+</section>
+<section class="sec alt" id="s3" data-needs-specimens>
+  <div class="wrap">
+    <div class="sechead" id="s3head"><span class="n">§3</span><h2>Four report cards</h2>
+      <p>Four real sites from this edition, one strong, two in the middle and one weak. Each card shows the kind of moment its findings describe; the school itself stays anonymous, and each subject grade is computed from the checks above. The large letter on each card is the overall website score, not the parent checks.</p></div>
+    <div class="cards" id="cards"></div>
+    <div class="strip">
+      <figure><img src="2026-q4/scenes/scene-teacher-1600.webp" srcset="2026-q4/scenes/scene-teacher-800.webp 800w, 2026-q4/scenes/scene-teacher-1600.webp 1600w, 2026-q4/scenes/scene-teacher-2400.webp 2400w" sizes="(max-width: 960px) 100vw, 50vw" width="1600" height="1195" alt="A teacher shelving books in an oak school library while two students read behind him" loading="lazy" decoding="async" style="object-position:68% 40%"><figcaption><b>The staff.</b> Parents want to know who will teach their child.</figcaption></figure>
+      <figure><img src="2026-q4/scenes/scene-office-1600.webp" srcset="2026-q4/scenes/scene-office-800.webp 800w, 2026-q4/scenes/scene-office-1600.webp 1600w, 2026-q4/scenes/scene-office-2400.webp 2400w" sizes="(max-width: 960px) 100vw, 50vw" width="1600" height="1195" alt="An admissions officer smiling on the phone at her desk" loading="lazy" decoding="async"><figcaption><b>The admissions office.</b> Most sites make reaching this person the hard part.</figcaption></figure>
+      <figure><img src="2026-q4/scenes/scene-tutor-2-1600.webp" srcset="2026-q4/scenes/scene-tutor-2-800.webp 800w, 2026-q4/scenes/scene-tutor-2-1600.webp 1600w, 2026-q4/scenes/scene-tutor-2-2400.webp 2400w" sizes="(max-width: 960px) 100vw, 50vw" width="1600" height="1195" alt="A tutor helping a teenage student with a workbook at a round table" loading="lazy" decoding="async"><figcaption><b>The lesson.</b> Show what a session looks like.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s4">
+  <div class="wrap">
+    <div class="layout">
+      <div>
+        <div class="sechead"><span class="n">§4</span><h2>The families <em class="i">left out</em></h2>
+          <p>Schools serve families with disabilities and families who read in a second language. Their websites often fail those families first.<sup><a href="#fn3">3</a></sup></p></div>
+        <div class="tw"><table class="tbl" id="tbl"></table></div>
+        <p class="cap"><b>Table 1.</b> Accessibility and speed checks, share of the 114 sites that fail.</p>
+      </div>
+      <aside class="margin"><b>Why it matters here</b>A parent using a screen reader or a keyboard cannot choose a school whose admissions form they cannot open. Some of these failures are also legal exposure for the school.</aside>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt" id="s5">
+  <div class="wrap">
+    <div class="sechead"><span class="n">§5</span><h2>Method in brief</h2></div>
+    <div class="pillars">
+      <div><span class="lab">Step 1 · all 114 sites</span><h3>Read</h3><p>The home page and up to nine pages it links to, read as a server delivers them: links, forms, text and markup. The parent questions are answered here, by fixed published rules (Appendix A4).</p></div>
+      <div><span class="lab">Step 2 · all 114 sites</span><h3>Measure</h3><p>Google Lighthouse (PageSpeed Insights) in a phone and a desktop render, with Chrome UX Report field data where it exists: load time, contrast and image descriptions. Repeatable.</p></div>
+      <div><span class="lab">Step 3 · all 114 sites, score only</span><h3>Review</h3><p>An expert usability review of each home page against Nielsen's heuristics, used only in the usability part of the score. Every issue must name the heuristic, a severity and the element, or it is dropped.</p></div>
+    </div>
+    <p class="methlink" id="methLink"><a href="#methodology">Read the full methodology</a> <span>Sample, definitions, scoring, precision and limitations, in Appendix A.</span></p>
+  </div>
+</section>
+
+
+<section class="rx-ag" id="rx-agencies" aria-labelledby="rx-ag-h">
+  <div class="rx-ag-band">
+    <img src="2026-q4/scenes/scene-agency-1600.webp" srcset="2026-q4/scenes/scene-agency-800.webp 800w, 2026-q4/scenes/scene-agency-1600.webp 1600w, 2026-q4/scenes/scene-agency-2400.webp 2400w" sizes="100vw" width="1600" height="893" alt="An agency owner showing a laptop to a school head and a bursar in a panelled office" loading="lazy" decoding="async">
+    <div class="rx-ag-band-copy"><p class="rx-ag-kick">For agencies and freelancers</p><h2 id="rx-ag-h">What this means for agencies</h2></div>
+  </div>
+  <div class="rx-ag-in">
+    <p class="rx-ag-lede">For small agencies and freelancers who sell websites to private schools and tutoring centres. We scanned 114 of their websites: 1% score under 60 out of 100, and 54% leave at least three of the questions parents ask unanswered. Here is where the winnable work is, which problems to lead a pitch with, and how to show them without days of spec design.</p>
+    <div class="rx-ag-grid">
+      <div>
+        <h3>Who is realistic to win</h3>
+        <p><b>Independent schools</b> are the most winnable: the lowest median score in this report (73 out of 100), and 0% of them score under 60. Their problems are visible, specific and fixable by a small team.</p>
+        <table class="rx-ag-tbl"><thead><tr><th>Type</th><th>Sites</th><th>Median</th><th>Under 60</th></tr></thead><tbody>
+        <tr class="hi"><td>Independent schools</td><td>58</td><td>73</td><td>0%</td></tr><tr><td>Small private schools</td><td>31</td><td>75</td><td>0%</td></tr><tr><td>Tutoring and learning centres</td><td>25</td><td>78</td><td>4%</td></tr>
+        </tbody></table>
+        <p class="rx-ag-note">Score out of 100. "Under 60" is the share of sites that miss most of what a parent looks for.</p>
+      </div>
+      <div>
+        <h3>5 problems to lead a pitch with</h3>
+        <ol class="rx-ag-list">
+        <li><span class="rx-ag-pct">91%</span><div><b>Can I reach a person?</b> <em class="rx-ag-eff">Quick fix</em><p>Tappable phone and email in the header, with office hours.</p><q>On a phone, reaching a person takes more than one tap.</q></div></li><li><span class="rx-ag-pct">80%</span><div><b>Text contrast passes 4.5:1</b> <em class="rx-ag-eff">Quick fix</em><p>Raise text contrast to at least 4.5:1 in the theme.</p><q>Parts of the site are hard to read, and it is a WCAG failure.</q></div></li><li><span class="rx-ag-pct">73%</span><div><b>Is it recognised?</b> <em class="rx-ag-eff">Quick fix</em><p>Show accreditation clearly, with the accrediting body named and linked.</p><q>Your best proof of quality is invisible on the site.</q></div></li><li><span class="rx-ag-pct">57%</span><div><b>Loads in under 2.5 s on a phone</b> <em class="rx-ag-eff">Build</em><p>Resize and compress the hero image, defer scripts, aim for under 2.5 s on a phone.</p><q>Your home page takes several seconds to appear on a parent's phone.</q></div></li><li><span class="rx-ag-pct">54%</span><div><b>When are the holidays?</b> <em class="rx-ag-eff">Quick fix</em><p>Term dates as a web page, not a scanned PDF.</p><q>Current families hunt for term dates every holiday.</q></div></li>
+        </ol>
+        <p class="rx-ag-note">Share of sites with the problem. WCAG items are accessibility failures. Every check cites a standard in the method section.</p>
+      </div>
+    </div>
+    <h3 class="rx-ag-h3">How to show a prospect their problems, and a redesign</h3>
+    <ol class="rx-ag-steps"><li><span>1</span><b>Lead with their problem, not your services</b><p>Open with one question the site fails, for example &quot;Can I reach a person?&quot; (91% of sites in this report miss it), and show the exact page where the answer should be.</p></li><li><span>2</span><b>Put a number on it</b><p>Compare their site with the sector: across 114 private schools and tutoring centres sites, the median scores 74 out of 100 and answers 3 of the 6 questions parents ask. A number travels further inside the client than an opinion.</p></li><li><span>3</span><b>Show the fix without days of spec work</b><p>A rough redesign that answers those questions persuades better than a proposal, but it usually costs a designer a day or two per prospect. You can sketch it by hand, or use Clikiti: the scan is free and shows any site's problems in about a minute, and paid plans draft a redesign of the home page from the prospect's own brand, from about $2.33 per pitch.</p></li></ol>
+    <p class="rx-ag-cta"><a href="../../#scan">Scan a prospect's site free</a> <span>No sign-up. You see what the prospect would see.</span></p>
+  </div>
+</section>
+<section class="final">
+  <div class="wrap">
+    <span class="lab" style="color:#B7C1D8">For agencies</span>
+    <h2 style="margin-top:14px">Help every school be <mark>easy to choose</mark></h2>
+    <p>Clikiti reads a school's site the way a parent does, shows the report card, and generates the redesign you send before the first call.</p>
+    <a class="cta" href="../../" target="_blank" rel="noopener">See your market on Clikiti</a>
+  </div>
+</section>
+
+<section class="sec meth" id="methodology">
+  <div class="wrap">
+    <div class="sechead"><span class="n">Appendix A</span><h2>Methodology</h2>
+      <p>How this study was designed, who was included, what was measured and how far the results can be relied on. It is written so that an agency can share it with a school leader who wants to check the evidence behind a pitch.</p></div>
+
+    <div class="mgrid">
+      <div class="mfact"><b>114</b><span>websites studied</span></div>
+      <div class="mfact"><b>3</b><span>types of organisation</span></div>
+      <div class="mfact"><b>39</b><span>states, plus Washington DC</span></div>
+      <div class="mfact"><b>&plusmn;9.2</b><span>points, margin of error at 95%</span></div>
+      <div class="mfact"><b>2026-10-12</b><span>date the sites were read</span></div>
+    </div>
+
+    <h3>A1. The research question</h3>
+    <p>When a family researches a private school or tutoring centre online, can they find the answers they need first, quickly, on a phone?</p>
+    <p><b>Population.</b> Independent schools, small private schools and tutoring or learning centres in the United States: the organisations a small or mid-size web agency can realistically win as clients.</p>
+
+    <h3>A2. Who was studied</h3>
+    <p>The sample was built from published membership lists and local listings, then screened so that every site in it is one an independent agency could realistically win.</p>
+    <table class="mt"><thead><tr><th>Source</th><th>What it contributes</th><th class="num">Sites</th></tr></thead><tbody>
+      <tr><td>NAIS member schools</td><td>Schools listed by the National Association of Independent Schools</td><td class="num">56</td></tr><tr><td>AWSNA member schools</td><td>Waldorf schools listed by the Association of Waldorf Schools of North America</td><td class="num">20</td></tr><tr><td>Known independent schools</td><td>Further independent schools identified by the research team</td><td class="num">13</td></tr><tr><td>Local tutoring listings</td><td>Tutoring and learning centres found in local business listings by city</td><td class="num">16</td></tr><tr><td>Known tutoring and test-prep companies</td><td>Tutoring and test-prep companies identified by the research team</td><td class="num">9</td></tr>
+    </tbody></table>
+    <div class="mcols">
+      <div><h4>Included</h4><ul><li>A single school or centre with its own website (not a page on a district or platform site)</li><li>Based in the United States</li><li>Home page responds and shows the organisation it claims to be (each home page title was checked before scanning)</li></ul></div>
+      <div><h4>Excluded</h4><ul><li>National brands and multi-city chains or franchises, whose websites are run centrally</li><li>Large institutions with several thousand students, and universities and colleges</li><li>Public, district and government sites</li><li>Parked, placeholder, password-protected or unreachable sites</li><li>Duplicates, and sites already used in another Clikiti study</li></ul></div>
+    </div>
+    <table class="mt"><thead><tr><th>From list to sample</th><th class="num">Sites</th></tr></thead><tbody><tr><td>Candidates listed</td><td class="num">136</td></tr><tr><td>Removed at screening: no response (8), access refused (3), parked (1), password-protected or redirected to another organisation (2)</td><td class="num">&minus;14</td></tr><tr><td>Removed at editorial review: national tutoring or test-prep brands (6), large institution (1)</td><td class="num">&minus;7</td></tr><tr><td>Cohort</td><td class="num">115</td></tr><tr><td>Removed because the site's robots.txt asks crawlers not to visit</td><td class="num">&minus;1</td></tr><tr><td>Studied in this edition</td><td class="num">114</td></tr></tbody></table>
+    <table class="mt"><thead><tr><th>Region (US Census)</th><th class="num">Independent schools</th><th class="num">Small private schools</th><th class="num">Tutoring and learning centres</th><th class="num">All</th></tr></thead><tbody>
+      <tr><td>Northeast</td><td class="num">9</td><td class="num">5</td><td class="num">4</td><td class="num">18</td></tr><tr><td>Midwest</td><td class="num">12</td><td class="num">6</td><td class="num">4</td><td class="num">22</td></tr><tr><td>South</td><td class="num">21</td><td class="num">7</td><td class="num">5</td><td class="num">33</td></tr><tr><td>West</td><td class="num">16</td><td class="num">13</td><td class="num">12</td><td class="num">41</td></tr>
+      <tr class="tot"><td>All regions</td><td class="num">58</td><td class="num">31</td><td class="num">25</td><td class="num">114</td></tr>
+    </tbody></table>
+
+    <h3>A3. How the sites were read</h3>
+    <p><b>Pages.</b> The home page, then for each of eight topics (tuition, financial aid, admissions, visits, calendar, accreditation, about, contact) the best-matching link on the home page. Tuition, aid and visit pages not linked from the home page are also looked for one step further, on the admissions page. On average 5.9 pages were read per site.</p>
+    <p><b>Speed and accessibility.</b> Google PageSpeed Insights (Lighthouse) on a mid-range phone profile and on desktop, plus Chrome UX Report data from real visitors over the previous 28 days where Google publishes it for the site.</p>
+    <p><b>Crawler conduct.</b> One request at a time to each site, at least 400 ms apart, at most ten pages per site; robots.txt is read and obeyed for every page requested; a site that refuses is left out and never retried. The crawler identifies itself as <code>Mozilla/5.0 (compatible; ClikitiResearch/1.0; +https://clikiti.com)</code>.</p>
+
+    <h3>A4. What was measured</h3>
+    <p>6 questions families ask before they visit, answered from what each site publishes, and 3 technical checks against published standards. A check passes only when the rule below is met; anything the crawler cannot confirm counts as not answered.</p>
+    <table class="mt mm"><thead><tr><th>Question</th><th>Counts as answered when</th><th>Standard</th></tr></thead><tbody>
+      <tr><td><b>What does it cost?</b><small>Tuition or fees shown without asking</small></td><td>A tuition or fee amount in dollars appears on the home, tuition, admissions or financial aid page, with the words tuition or fee just before it. Amounts that describe awards, averages, ranges, loans or fundraising do not count.</td><td>Clikiti parent question 1 of 10</td></tr><tr><td><b>Can we visit?</b><small>A tour or open day can be booked online</small></td><td>A link or button that books a tour, visit, open house or information session, or a booking form or scheduling service for a visit, on the home, visit or admissions page. A general application portal on its own does not count.</td><td>Clikiti parent question 3 of 10</td></tr><tr><td><b>Is it recognised?</b><small>Accreditation shown</small></td><td>The site states that the school is accredited, or names an accrediting body (for example WASC, NEASC, ISACS, CAIS, Cognia, Middle States or ACSI), on the home, accreditation, about or admissions page.</td><td>Clikiti parent question 5 of 10</td></tr><tr><td><b>Can we afford it?</b><small>Financial aid or payment plans explained</small></td><td>Financial aid, tuition assistance or a payment plan is explained: either a dedicated page of at least 120 words, or a statement on the tuition or admissions page that says who qualifies, how to apply or by when.</td><td>Clikiti parent question 6 of 10</td></tr><tr><td><b>When are the holidays?</b><small>Term dates published as a page</small></td><td>A calendar or term-dates link on the home page leads to a web page (not a PDF) whose text contains dates or term events such as the first day of school or winter break.</td><td>Clikiti parent question 8 of 10</td></tr><tr><td><b>Can I reach a person?</b><small>Phone and email tappable, hours stated</small></td><td>The home or contact page has a tappable phone link, a tappable email link and stated office hours. All three are needed.</td><td>Clikiti parent question 10 of 10</td></tr>
+      <tr class="sub"><td colspan="3">Technical checks</td></tr>
+      <tr><td><b>Loads in under 2.5 s on a phone</b><small>Loads in under 2.5 s on a phone</small></td><td>Real visitors on phones see the main content within 2.5 seconds (Chrome UX Report, 75th percentile). Where Google publishes no visitor data, the phone lab test is used.</td><td>Core Web Vitals · LCP</td></tr><tr><td><b>Text contrast passes 4.5:1</b><small>Text contrast passes 4.5:1</small></td><td>No text on the home page fails the WCAG 1.4.3 minimum contrast of 4.5:1, in either the phone or desktop test.</td><td>WCAG 1.4.3</td></tr><tr><td><b>Images have text descriptions</b><small>Images have text descriptions</small></td><td>Every meaningful image on the home page has a text description (WCAG 1.1.1).</td><td>WCAG 1.1.1</td></tr>
+    </tbody></table>
+
+    <h3>A5. The website score and the report-card grades</h3>
+    <p>Each site's overall score (0 to 100) is Clikiti's website score, rubric 2.0.0. It measures the website, not the school, and the parent questions above do not feed it. It is a weighted mean of five pillars:</p>
+    <table class="mt"><thead><tr><th>Pillar</th><th class="num">Weight</th><th>Based on</th></tr></thead><tbody>
+      <tr><td><b>Usability</b></td><td class="num">30%</td><td>Checks of the home page for broken links and images, and an expert review of the page as rendered on a phone and on a desktop screen, against Jakob Nielsen's ten usability heuristics. Each issue must name the heuristic, a severity on the Nielsen Norman Group scale and the exact element or wording; issues without all three are discarded, and two independent passes must agree.</td></tr><tr><td><b>Speed</b></td><td class="num">25%</td><td>Google Lighthouse on a mid-range phone (60%) and on desktop (20%), and real-visitor Core Web Vitals from the Chrome UX Report (20%) where available.</td></tr><tr><td><b>Accessibility</b></td><td class="num">25%</td><td>Google Lighthouse accessibility audits (70%) and Clikiti's own WCAG checks of the served page (30%).</td></tr><tr><td><b>Search</b></td><td class="num">10%</td><td>Google Lighthouse SEO audits (60%) and Clikiti's own search checks of the served page (40%).</td></tr><tr><td><b>Trust</b></td><td class="num">10%</td><td>Google Lighthouse best-practice audits (40%) and security header checks (60%).</td></tr>
+    </tbody></table>
+    <p>Within a pillar, each issue costs points by severity (critical, high, medium, low) and by how many times it occurs; issues based on judgement count at 70% of measured ones, and duplicates of the same root cause count once. On the report cards, the large letter is this overall score (A 90 and above, B 75, C 45, D 30, F below 30). Each subject letter is the share of that subject's checks passed: all of them is an A, none is an F.</p>
+
+    <h3>A6. Precision</h3>
+    <p>With 114 sites, a share reported for the whole sample is precise to within &plusmn;9.2 percentage points at 95% confidence (worst case, a 50% share; 1.96&nbsp;&times;&nbsp;&radic;(0.25/n)). By type: independent schools &plusmn;12.9 (n&nbsp;=&nbsp;58); small private schools &plusmn;17.6 (n&nbsp;=&nbsp;31); tutoring and learning centres &plusmn;19.6 (n&nbsp;=&nbsp;25). Differences between types smaller than these margins should be read as similar. Percentages are rounded to whole numbers; medians are the middle value of the sites in a group.</p>
+
+    <h3>A7. Quality control</h3>
+    <ul><li>Every home page in the cohort was fetched and its title checked against the listed organisation before scanning</li><li>Detection rules were revised five times against the pages they read; each revision re-checked every site</li><li>Every published figure is recomputed from the data at build time, and a statement in the text that the data does not support stops the build</li><li>Results are published only after automated checks for missing data, anonymity, accessibility of the report itself and the margin of error statement pass</li></ul>
+
+    <h3>A8. Limitations</h3>
+    <ul><li>A point-in-time snapshot: sites change, and a site may have improved or declined since it was read.</li><li>Only public pages were read: the home page and the pages it links to. Application portals, logged-in areas and multi-step forms were not tested.</li><li>The parent questions are answered from the page as a server delivers it. Content that only appears after scripts run in the browser (some calendars, for example) is not seen, which the study counts as a gap a search engine or a slow phone would also meet.</li><li>Automated accessibility tests find only part of what WCAG covers; keyboard and screen-reader use need a manual audit.</li><li>The sample is a structured list of real, pitchable organisations, not a random draw. Margins of error are given as a guide to precision, not as a guarantee that the results hold for every school in the country.</li><li>The parent questions were written for schools. Tutoring centres rarely publish fees or open days, so their results on those questions are not comparable with schools.</li><li>Five further checks (admissions steps and dates, teachers' qualifications, a typical day, safeguarding, and keyboard operation) were left out from this edition because they cannot yet be tested reliably from the served page.</li></ul>
+
+    <h3>A9. Data, licence and corrections</h3>
+    <p>The aggregate results are published as CSV and JSON beside this report under the Creative Commons Attribution 4.0 licence: you may reuse, adapt and share them, including in client proposals, with a credit to Clikiti and a link. No per-site results are published. Corrections and removal requests are reviewed and answered personally; see the end of this report.</p>
+  </div>
+</section>
+<section class="sec alt" id="schools">
+  <div class="wrap">
+    <div class="sechead"><span class="n">Appendix B</span><h2>Schools in this study</h2>
+      <p>The 114 websites in this edition, by type. This list says who was scanned and nothing more: results in this report are shown only in aggregate or anonymously.</p></div>
+    <h3>Independent schools <small>(58)</small></h3><ul class="schools"><li><a href="https://www.aa.edu/" rel="nofollow noopener" target="_blank">Albuquerque Academy</a><small>Albuquerque, NM</small></li><li><a href="https://www.allendalecolumbia.org/" rel="nofollow noopener" target="_blank">Allendale Columbia School</a><small>Rochester, NY</small></li><li><a href="https://www.berkeleyprep.org/" rel="nofollow noopener" target="_blank">Berkeley Preparatory School</a><small>Tampa, FL</small></li><li><a href="https://www.brownell.edu/" rel="nofollow noopener" target="_blank">Brownell Talbot School</a><small>Omaha, NE</small></li><li><a href="https://www.bbns.org/" rel="nofollow noopener" target="_blank">Buckingham Browne &amp; Nichols</a><small>Cambridge, MA</small></li><li><a href="https://www.casady.org/" rel="nofollow noopener" target="_blank">Casady School</a><small>Oklahoma City, OK</small></li><li><a href="https://www.castilleja.org/" rel="nofollow noopener" target="_blank">Castilleja School</a><small>Palo Alto, CA</small></li><li><a href="https://www.catlin.edu/" rel="nofollow noopener" target="_blank">Catlin Gabel School</a><small>Portland, OR</small></li><li><a href="https://www.charlottelatin.org/" rel="nofollow noopener" target="_blank">Charlotte Latin School</a><small>Charlotte, NC</small></li><li><a href="https://www.coloradoacademy.org/" rel="nofollow noopener" target="_blank">Colorado Academy</a><small>Denver, CO</small></li><li><a href="https://www.crystal.org/" rel="nofollow noopener" target="_blank">Crystal Springs Uplands School</a><small>Hillsborough, CA</small></li><li><a href="https://www.dcds.edu/" rel="nofollow noopener" target="_blank">Detroit Country Day School</a><small>Beverly Hills, MI</small></li><li><a href="https://www.ensworth.com/" rel="nofollow noopener" target="_blank">Ensworth School</a><small>Nashville, TN</small></li><li><a href="https://www.francisparker.org/" rel="nofollow noopener" target="_blank">Francis Parker School</a><small>San Diego, CA</small></li><li><a href="https://www.fwparker.org/" rel="nofollow noopener" target="_blank">Francis W. Parker School</a><small>Chicago, IL</small></li><li><a href="https://www.gilman.edu/" rel="nofollow noopener" target="_blank">Gilman School</a><small>Baltimore, MD</small></li><li><a href="https://www.hb.edu/" rel="nofollow noopener" target="_blank">Hathaway Brown School</a><small>Shaker Heights, OH</small></li><li><a href="https://www.headroyce.org/" rel="nofollow noopener" target="_blank">Head-Royce School</a><small>Oakland, CA</small></li><li><a href="https://www.hollandhall.org/" rel="nofollow noopener" target="_blank">Holland Hall</a><small>Tulsa, OK</small></li><li><a href="https://www.hopkins.edu/" rel="nofollow noopener" target="_blank">Hopkins School</a><small>New Haven, CT</small></li><li><a href="https://www.newmanschool.org/" rel="nofollow noopener" target="_blank">Isidore Newman School</a><small>New Orleans, LA</small></li><li><a href="https://www.kentdenver.org/" rel="nofollow noopener" target="_blank">Kent Denver School</a><small>Englewood, CO</small></li><li><a href="https://www.lakesideschool.org/" rel="nofollow noopener" target="_blank">Lakeside School</a><small>Seattle, WA</small></li><li><a href="https://www.latinschool.org/" rel="nofollow noopener" target="_blank">Latin School of Chicago</a><small>Chicago, IL</small></li><li><a href="https://www.musowls.org/" rel="nofollow noopener" target="_blank">Memphis University School</a><small>Memphis, TN</small></li><li><a href="https://www.micds.org/" rel="nofollow noopener" target="_blank">MICDS</a><small>St. Louis, MO</small></li><li><a href="https://www.oes.edu/" rel="nofollow noopener" target="_blank">Oregon Episcopal School</a><small>Portland, OR</small></li><li><a href="https://www.paceacademy.org/" rel="nofollow noopener" target="_blank">Pace Academy</a><small>Atlanta, GA</small></li><li><a href="https://www.packer.edu/" rel="nofollow noopener" target="_blank">Packer Collegiate Institute</a><small>Brooklyn, NY</small></li><li><a href="https://www.parktudor.org/" rel="nofollow noopener" target="_blank">Park Tudor School</a><small>Indianapolis, IN</small></li><li><a href="https://www.pembrokehill.org/" rel="nofollow noopener" target="_blank">Pembroke Hill School</a><small>Kansas City, MO</small></li><li><a href="https://www.pcds.org/" rel="nofollow noopener" target="_blank">Phoenix Country Day School</a><small>Paradise Valley, AZ</small></li><li><a href="https://www.ransomeverglades.org/" rel="nofollow noopener" target="_blank">Ransom Everglades School</a><small>Miami, FL</small></li><li><a href="https://www.ravenscroft.org/" rel="nofollow noopener" target="_blank">Ravenscroft School</a><small>Raleigh, NC</small></li><li><a href="https://www.riverstoneschool.org/" rel="nofollow noopener" target="_blank">Riverstone International School</a><small>Boise, ID</small></li><li><a href="https://www.rowlandhall.org/" rel="nofollow noopener" target="_blank">Rowland Hall</a><small>Salt Lake City, UT</small></li><li><a href="https://www.sagehillschool.org/" rel="nofollow noopener" target="_blank">Sage Hill School</a><small>Newport Coast, CA</small></li><li><a href="https://www.shadysideacademy.org/" rel="nofollow noopener" target="_blank">Shady Side Academy</a><small>Pittsburgh, PA</small></li><li><a href="https://www.sidwell.edu/" rel="nofollow noopener" target="_blank">Sidwell Friends School</a><small>Washington, DC</small></li><li><a href="https://www.gosaints.org/" rel="nofollow noopener" target="_blank">St. Andrew's Episcopal School</a><small>Ridgeland, MS</small></li><li><a href="https://www.smtexas.org/" rel="nofollow noopener" target="_blank">St. Mark's School of Texas</a><small>Dallas, TX</small></li><li><a href="https://www.sstx.org/" rel="nofollow noopener" target="_blank">St. Stephen's Episcopal School</a><small>Austin, TX</small></li><li><a href="https://www.altamontschool.org/" rel="nofollow noopener" target="_blank">The Altamont School</a><small>Birmingham, AL</small></li><li><a href="https://www.blakeschool.org/" rel="nofollow noopener" target="_blank">The Blake School</a><small>Minneapolis, MN</small></li><li><a href="https://www.bolles.org/" rel="nofollow noopener" target="_blank">The Bolles School</a><small>Jacksonville, FL</small></li><li><a href="https://www.bush.edu/" rel="nofollow noopener" target="_blank">The Bush School</a><small>Seattle, WA</small></li><li><a href="https://www.dalton.org/" rel="nofollow noopener" target="_blank">The Dalton School</a><small>New York, NY</small></li><li><a href="https://www.episcopalacademy.org/" rel="nofollow noopener" target="_blank">The Episcopal Academy</a><small>Newtown Square, PA</small></li><li><a href="https://www.harker.org/" rel="nofollow noopener" target="_blank">The Harker School</a><small>San Jose, CA</small></li><li><a href="https://www.hockaday.org/" rel="nofollow noopener" target="_blank">The Hockaday School</a><small>Dallas, TX</small></li><li><a href="https://www.kinkaid.org/" rel="nofollow noopener" target="_blank">The Kinkaid School</a><small>Houston, TX</small></li><li><a href="https://www.lovett.org/" rel="nofollow noopener" target="_blank">The Lovett School</a><small>Atlanta, GA</small></li><li><a href="https://www.potomacschool.org/" rel="nofollow noopener" target="_blank">The Potomac School</a><small>McLean, VA</small></li><li><a href="https://www.7hills.org/" rel="nofollow noopener" target="_blank">The Seven Hills School</a><small>Cincinnati, OH</small></li><li><a href="https://www.wheelerschool.org/" rel="nofollow noopener" target="_blank">The Wheeler School</a><small>Providence, RI</small></li><li><a href="https://www.us.edu/" rel="nofollow noopener" target="_blank">University School</a><small>Hunting Valley, OH</small></li><li><a href="https://www.usm.org/" rel="nofollow noopener" target="_blank">University School of Milwaukee</a><small>Milwaukee, WI</small></li><li><a href="https://www.waynflete.org/" rel="nofollow noopener" target="_blank">Waynflete School</a><small>Portland, ME</small></li></ul>
+<h3>Small private schools <small>(31)</small></h3><ul class="schools"><li><a href="https://aspencountryday.org/" rel="nofollow noopener" target="_blank">Aspen Country Day School</a><small>Aspen, CO</small></li><li><a href="https://www.austinwaldorf.org/" rel="nofollow noopener" target="_blank">Austin Waldorf School</a><small>Austin, TX</small></li><li><a href="https://www.brooklynfreeschool.org/" rel="nofollow noopener" target="_blank">Brooklyn Free School</a><small>Brooklyn, NY</small></li><li><a href="https://www.cedarspringslearningcenter.org/" rel="nofollow noopener" target="_blank">Cedar Springs Learning Center (formerly Cedar Springs Waldorf School)</a><small>Placerville, CA</small></li><li><a href="https://www.chicagowaldorf.org/" rel="nofollow noopener" target="_blank">Chicago Waldorf School</a><small>Chicago, IL</small></li><li><a href="https://www.cincinnatiwaldorfschool.org/" rel="nofollow noopener" target="_blank">Cincinnati Waldorf School</a><small>Cincinnati, OH</small></li><li><a href="https://denverwaldorf.org/" rel="nofollow noopener" target="_blank">Denver Waldorf School</a><small>Denver, CO</small></li><li><a href="https://www.emersonwaldorf.org/" rel="nofollow noopener" target="_blank">Emerson Waldorf School</a><small>Chapel Hill, NC</small></li><li><a href="https://honoluluwaldorf.org/" rel="nofollow noopener" target="_blank">Honolulu Waldorf School</a><small>Honolulu, HI</small></li><li><a href="https://www.ithacawaldorf.org/" rel="nofollow noopener" target="_blank">Ithaca Waldorf School</a><small>Ithaca, NY</small></li><li><a href="https://www.lakechamplainwaldorfschool.org/" rel="nofollow noopener" target="_blank">Lake Champlain Waldorf School</a><small>Shelburne, VT</small></li><li><a href="https://www.lwgms.org/" rel="nofollow noopener" target="_blank">Lake Washington Girls Middle School</a><small>Seattle, WA</small></li><li><a href="https://madisonwaldorf.org/" rel="nofollow noopener" target="_blank">Madison Waldorf School</a><small>Madison, WI</small></li><li><a href="https://mismt.org/" rel="nofollow noopener" target="_blank">Missoula International School</a><small>Missoula, MT</small></li><li><a href="https://www.oakgrovelutheran.com/" rel="nofollow noopener" target="_blank">Oak Grove Lutheran School</a><small>Fargo, ND</small></li><li><a href="https://pacificnorthern.org/" rel="nofollow noopener" target="_blank">Pacific Northern Academy</a><small>Anchorage, AK</small></li><li><a href="https://www.portlandwaldorf.org/" rel="nofollow noopener" target="_blank">Portland Waldorf School</a><small>Milwaukie, OR</small></li><li><a href="https://prairiehillwaldorf.org/" rel="nofollow noopener" target="_blank">Prairie Hill Waldorf School</a><small>Pewaukee, WI</small></li><li><a href="https://www.sacwaldorf.org/" rel="nofollow noopener" target="_blank">Sacramento Waldorf School</a><small>Fair Oaks, CA</small></li><li><a href="https://www.seattlegirlsschool.org/" rel="nofollow noopener" target="_blank">Seattle Girls' School</a><small>Seattle, WA</small></li><li><a href="https://www.thecollegeschool.org/" rel="nofollow noopener" target="_blank">The College School</a><small>Webster Groves, MO</small></li><li><a href="https://www.evergreenschool.org/" rel="nofollow noopener" target="_blank">The Evergreen School</a><small>Shoreline, WA</small></li><li><a href="https://www.miquon.org/" rel="nofollow noopener" target="_blank">The Miquon School</a><small>Conshohocken, PA</small></li><li><a href="https://www.postoakschool.org/" rel="nofollow noopener" target="_blank">The Post Oak School</a><small>Houston, TX</small></li><li><a href="https://tucsonwaldorf.org/" rel="nofollow noopener" target="_blank">Tucson Waldorf School</a><small>Tucson, AZ</small></li><li><a href="https://www.waldorfatlanta.org/" rel="nofollow noopener" target="_blank">Waldorf School of Atlanta</a><small>Decatur, GA</small></li><li><a href="https://www.waldorfschoolofbaltimore.org/" rel="nofollow noopener" target="_blank">Waldorf School of Baltimore</a><small>Baltimore, MD</small></li><li><a href="https://waldorfnola.org/" rel="nofollow noopener" target="_blank">Waldorf School of New Orleans</a><small>New Orleans, LA</small></li><li><a href="https://www.princetonwaldorf.org/" rel="nofollow noopener" target="_blank">Waldorf School of Princeton</a><small>Princeton, NJ</small></li><li><a href="https://waldorfsandiego.org/" rel="nofollow noopener" target="_blank">Waldorf School of San Diego</a><small>San Diego, CA</small></li><li><a href="https://www.washingtonwaldorf.org/" rel="nofollow noopener" target="_blank">Washington Waldorf School</a><small>Bethesda, MD</small></li></ul>
+<h3>Tutoring and learning centres <small>(25)</small></h3><ul class="schools"><li><a href="https://www.bespokeeducation.com/" rel="nofollow noopener" target="_blank">Bespoke Education</a><small>New York, NY</small></li><li><a href="https://www.cardinaleducation.com/" rel="nofollow noopener" target="_blank">Cardinal Education</a><small>Palo Alto, CA</small></li><li><a href="https://www.columbustutoringservices.com/" rel="nofollow noopener" target="_blank">Columbus Tutoring Services</a><small>Columbus, OH</small></li><li><a href="https://ectutoring.com/" rel="nofollow noopener" target="_blank">Educational Connections</a><small>Fairfax, VA</small></li><li><a href="https://www.highperformancetutoring.com/" rel="nofollow noopener" target="_blank">High Performance Tutoring</a><small>Salt Lake City, UT</small></li><li><a href="https://highergroundlearning.com/" rel="nofollow noopener" target="_blank">Higher Ground Learning</a><small>Salt Lake City, UT</small></li><li><a href="https://inspirica.com/" rel="nofollow noopener" target="_blank">Inspirica</a><small>Westport, CT</small></li><li><a href="https://www.ivybound.net/" rel="nofollow noopener" target="_blank">Ivy Bound Test Prep</a><small>Farmington, CT</small></li><li><a href="https://learningmattersinc.org/" rel="nofollow noopener" target="_blank">Learning Matters, Inc.</a><small>Nashville, TN</small></li><li><a href="https://mindfish.com/" rel="nofollow noopener" target="_blank">Mindfish Test Prep</a><small>Denver, CO</small></li><li><a href="https://www.miriamstl.org/" rel="nofollow noopener" target="_blank">Miriam School and Learning Center</a><small>St. Louis, MO</small></li><li><a href="https://www.myguruedge.com/en-us/" rel="nofollow noopener" target="_blank">MyGuru</a><small>Chicago, IL</small></li><li><a href="https://www.nextgenacademics.com/" rel="nofollow noopener" target="_blank">NextGen Academics</a><small>Seattle, WA</small></li><li><a href="https://prepmatters.com/" rel="nofollow noopener" target="_blank">PrepMatters</a><small>Bethesda, MD</small></li><li><a href="https://primelearningcenter.com/" rel="nofollow noopener" target="_blank">Prime Learning Center</a><small>Bellevue, WA</small></li><li><a href="https://www.shierystutoring.com/" rel="nofollow noopener" target="_blank">Shiery's Tutoring</a><small>Bellevue, WA</small></li><li><a href="https://sophosacademics.com/" rel="nofollow noopener" target="_blank">Sophos Academics</a><small>Phoenix, AZ</small></li><li><a href="https://tampabaytutors.com/" rel="nofollow noopener" target="_blank">Tampa Bay Tutors</a><small>Tampa, FL</small></li><li><a href="https://www.testtitans.com/" rel="nofollow noopener" target="_blank">Test Titans</a><small>Dallas, TX</small></li><li><a href="https://theartoflearningaz.com/" rel="nofollow noopener" target="_blank">The Art of Learning</a><small>Phoenix, AZ</small></li><li><a href="https://themathlabaz.com/" rel="nofollow noopener" target="_blank">The Math Lab</a><small>Scottsdale, AZ</small></li><li><a href="https://tutormeeducation.com/" rel="nofollow noopener" target="_blank">Tutor Me Education</a><small>Los Angeles, CA</small></li><li><a href="https://tutorportland.com/" rel="nofollow noopener" target="_blank">Tutor Portland</a><small>Portland, OR</small></li><li><a href="https://www.tutoringboston.com/" rel="nofollow noopener" target="_blank">Tutoring Boston</a><small>Newton, MA</small></li><li><a href="https://www.willowtreetutoring.com/" rel="nofollow noopener" target="_blank">Willow Tree Tutoring</a><small>St. Peters, MO</small></li></ul>
+  </div>
+</section>
+<section class="sec disc" id="disclaimer">
+  <div class="wrap">
+    <div class="sechead"><span class="n">Disclaimer</span><h2>About this study</h2></div>
+    <p>This report is based on automated scans of publicly available home pages, and pages they link to, run on 2026-10-12. Its findings are a point-in-time technical snapshot of each website. They are not a judgement of any school's education, safety or quality, and automated checks may contain errors. Clikiti is not affiliated with, and does not endorse, any school listed here; trademarks belong to their owners. The report is provided “as is” under CC BY 4.0, without warranty of any kind. Every person in this report's photographs is AI-generated; none is a real person. The one school screenshot is the featured school's own home page, shown unaltered.</p>
+    <p><a class="rm" href="mailto:hello@clikiti.com?subject=Remove%20my%20school%20from%20the%20State%20of%20School%20Websites%20study&amp;body=Please%20remove%20my%20school%20from%20this%20study.%0A%0ASchool%20name%3A%0ASchool%20website%3A%0AMy%20role%20at%20the%20school%3A%0AHow%20to%20contact%20me%3A">Remove my school from this study</a></p>
+    <p>We review every request and reply when it's done; removed schools are excluded from future editions.</p>
+  </div>
+</section>
+<footer class="wrap notes"><span class="lab">Notes</span>
+<ol>
+  <li id="fn1"></li>
+  <li id="fn2"></li>
+  <li id="fn3"></li>
+  <li id="fn4"></li>
+  <li id="fn5" hidden></li>
+</ol></footer>
+
+<script>
+(function(){
+  var D={"vertical":"education","look":"prospectus","edition":"2026-Q4","source":"corpus","generatedAt":"2026-10-13T04:30:55.797Z","fictional":false,"segments":[{"id":"ind","name":"Independent schools","short":"Independent","count":58,"mean":60,"sd":15},{"id":"small","name":"Small private schools","short":"Small","count":31,"mean":46,"sd":15},{"id":"tut","name":"Tutoring and learning centres","short":"Tutoring","count":25,"mean":55,"sd":15}],"checks":[{"id":"cost","label":"Tuition or fees shown without asking","question":"What does it cost?","standard":"Parent question 1","hard":11,"tilt":{"ind":-12,"small":-2,"tut":6},"failsOn":["intent:edu-cost"]},{"id":"tour","label":"A tour or open day can be booked online","question":"Can we visit?","standard":"Parent question 3","hard":1,"tilt":{"ind":4,"small":-6,"tut":10},"failsOn":["intent:edu-tour"]},{"id":"accr","label":"Accreditation shown","question":"Is it recognised?","standard":"Parent question 5","hard":3,"tilt":{"ind":6,"small":-2,"tut":-12},"failsOn":["intent:edu-accr"]},{"id":"aid","label":"Financial aid or payment plans explained","question":"Can we afford it?","standard":"Parent question 6","hard":10,"tilt":{"ind":2,"small":-10,"tut":-6},"failsOn":["intent:edu-aid"]},{"id":"cal","label":"Term dates published as a page","question":"When are the holidays?","standard":"Parent question 8","hard":0,"tilt":{"ind":8,"small":-4,"tut":-2},"failsOn":["intent:edu-cal"]},{"id":"contact","label":"Phone and email tappable, hours stated","question":"Can I reach a person?","standard":"Parent question 10","hard":-3,"tilt":{"ind":0,"small":-4,"tut":6},"failsOn":["intent:edu-contact"]},{"id":"lcp","label":"Loads in under 2.5 s on a phone","standard":"Core Web Vitals · LCP","hard":-10,"failsOn":["metric:lcp-mobile-slow"]},{"id":"con","label":"Text contrast passes 4.5:1","standard":"WCAG 1.4.3","hard":-12,"failsOn":["chk:color-contrast","lh:color-contrast"]},{"id":"alt","label":"Images have text descriptions","standard":"WCAG 1.1.1","hard":-6,"failsOn":["chk:img-alt","lh:image-alt"]}],"sites":[{"name":"Tutoring #001","segment":"tut","score":77,"flags":{"cost":false,"tour":false,"accr":false,"aid":false,"cal":false,"contact":false,"lcp":false,"con":false,"alt":true},"m":{}},{"name":"Small #001","segment":"small","score":75,"flags":{"cost":true,"tour":true,"accr":false,"aid":true,"cal":false,"contact":false,"lcp":true,"con":true,"alt":true},"m":{"lcpFieldMs":2425}},{"name":"Independent #001","segment":"ind","score":70,"flags":{"cost":true,"tour":false,"accr":true,"aid":true,"cal":false,"contact":true,"lcp":true,"con":false,"alt":false},"m":{"lcpFieldMs":1691}},{"name":"Small #002","segment":"small","score":77,"flags":{"cost":true,"tour":true,"accr":true,"aid":true,"cal":true,"contact":false,"lcp":false,"con":false,"alt":true},"m":{"lcpFieldMs":3367}},{"name":"Small #003","segment":"small","score":68,"flags":{"cost":true,"tour":true,"accr":true,"aid":true,"cal":true,"contact":false,"lcp":false,"con":true,"alt":true},"m":{}},{"name":"Tutoring #002","segment":"tut","score":79,"flags":{"cost":false,"tour":false,"accr":false,"aid":false,"cal":false,"contact":false,"lcp":false,"con":false,"alt":true},"m":{}},{"name":"Independent #002","segment":"ind","score":77,"flags":{"cost":true,"tour":true,"accr":false,"aid":true,"cal":true,"contact":false,"lcp":true,"con":false,"alt":true},"m":{"lcpFieldMs":2473}},{"name":"Independent #003","segment":"ind","score":76,"flags":{"cost":true,"tour":true,"accr":false,"aid":true,"cal":false,"contact":false,"lcp":true,"con":false,"alt":true},"m":{"lcpFieldMs":1426}},{"name":"Independent #004","segment":"ind","score":71,"flags":{"cost":true,"tour":true,"accr":false,"aid":true,"cal":true,"contact":false,"lcp":false,"con":true,"alt":true},"m":{"lcpFieldMs":5824}},{"name":"Tutoring #003","segment":"tut","score":82,"flags":{"cost":false,"tour":false,"accr":false,"aid":false,"cal":false,"contact":true,"lcp":false,"con":false,"alt":true},"m":{}},{"name":"Tutoring #004","segment":"tut","score":59,"flags":{"cost":false,"tour":false,"accr":false,"aid":false,"cal":false,"contact":false,"lcp":false,"con":false,"alt":true},"m":{"lcpFieldMs":2760}},{"name":"Independent #005","segment":"ind","score":69,"flags":{"cost":true,"tour":true,"accr":false,"aid":true,"cal":true,"contact":false,"lcp":false,"con":false,"alt":true},"m":{"lcpFieldMs":3055}},{"name":"Independent #006","segment":"ind","score":83,"flags":{"cost":true,"tour":false,"accr":false,"aid":true,"cal":false,"contact":false,"lcp":true,"con":true,"alt":true},"m":{"lcpFieldMs":1534}},{"name":"Independent #007","segment":"ind","score":80,"flags":{"cost":true,"tour":true,"accr":true,"aid":true,"cal":false,"contact":false,"lcp":false,"con":true,"alt":true},"m":{}},{"name":"Independent #008","segment":"ind","score":73,"flags":{"cost":false,"tour":true,"accr":false,"aid":false,"cal":true,"contact":true,"lcp":true,"con":false,"alt":true},"m":{"lcpFieldMs":1983}},{"name":"Independent #009","segment":"ind","score":68,"flags":{"cost":true,"tour":true,"accr":false,"aid":true,"cal":true,"contact":false,"lcp":false,"con":true,"alt":false},"m":{"lcpFieldMs":4074}},{"name":"Small #004","segment":"small","score":71,"flags":{"cost":true,"tour":true,"accr":false,"aid":true,"cal":true,"contact":false,"lcp":false,"con":false,"alt":true},"m":{}},{"name":"Independent #010","segment":"ind","score":78,"flags":{"cost":true,"tour":false,"accr":true,"aid":true,"cal":true,"contact":false,"lcp":true,"con":false,"alt":true},"m":{"lcpFieldMs":2203}},{"name":"Independent #011","segment":"ind","score":70,"flags":{"cost":true,"tour":false,"accr":true,"aid":true,"cal":true,"contact":false,"lcp":false,"con":false,"alt":true},"m":{"lcpFieldMs":3255}},{"name":"Tutoring #005","segment":"tut","score":79,"flags":{"cost":false,"tour":false,"accr":false,"aid":false,"cal":false,"contact":false,"lcp":false,"con":false,"alt":false},"m":{}},{"name":"Small #005","segment":"small","score":71,"flags":{"cost":false,"tour":true,"accr":true,"aid":true,"cal":false,"contact":false,"lcp":true,"con":false,"alt":true},"m":{"lcpFieldMs":2268}},{"name":"Small #006","segment":"small","score":77,"flags":{"cost":true,"tour":false,"accr":true,"aid":false,"cal":false,"contact":false,"lcp":true,"con":false,"alt":true},"m":{"lcpFieldMs":1533}},{"name":"Tutoring #006","segment":"tut","score":79,"flags":{"cost":false,"tour":false,"accr":false,"aid":false,"cal":false,"contact":false,"lcp":false,"con":false,"alt":true},"m":{}},{"name":"Independent #012","segment":"ind","score":67,"flags":{"cost":true,"tour":true,"accr":false,"aid":true,"cal":true,"contact":false,"lcp":true,"con":false,"alt":false},"m":{"lcpFieldMs":1949}},{"name":"Small #007","segment":"small","score":75,"flags":{"cost":true,"tour":true,"accr":true,"aid":true,"cal":true,"contact":false,"lcp":false,"con":false,"alt":true},"m":{"lcpFieldMs":2601}},{"name":"Tutoring #007","segment":"tut","score":88,"flags":{"cost":false,"tour":false,"accr":false,"aid":false,"cal":false,"contact":false,"lcp":false,"con":false,"alt":true},"m":{}},{"name":"Small #008","segment":"small","score":71,"flags":{"cost":true,"tour":true,"accr":false,"aid":true,"cal":false,"contact":false,"lcp":true,"con":false,"alt":false},"m":{"lcpFieldMs":1898}},{"name":"Independent #013","segment":"ind","score":69,"flags":{"cost":true,"tour":true,"accr":false,"aid":true,"cal":true,"contact":false,"lcp":false,"con":false,"alt":false},"m":{"lcpFieldMs":2731}},{"name":"Small #009","segment":"small","score":77,"flags":{"cost":true,"tour":true,"accr":true,"aid":true,"cal":true,"contact":false,"lcp":false,"con":false,"alt":true},"m":{}},{"name":"Small #010","segment":"small","score":81,"flags":{"cost":false,"tour":true,"accr":true,"aid":true,"cal":false,"contact":false,"lcp":false,"con":false,"alt":true},"m":{}},{"name":"Small #011","segment":"small","score":74,"flags":{"cost":true,"tour":true,"accr":true,"aid":true,"cal":false,"contact":false,"lcp":false,"con":false,"alt":false},"m":{}},{"name":"Tutoring #008","segment":"tut","score":67,"flags":{"cost":false,"tour":false,"accr":false,"aid":false,"cal":false,"contact":false,"lcp":false,"con":false,"alt":false},"m":{"lcpFieldMs":2877}},{"name":"Independent #014","segment":"ind","score":70,"flags":{"cost":true,"tour":true,"accr":true,"aid":true,"cal":true,"contact":false,"lcp":false,"con":false,"alt":true},"m":{"lcpFieldMs":2902}},{"name":"Small #012","segment":"small","score":81,"flags":{"cost":false,"tour":true,"accr":false,"aid":true,"cal":false,"contact":false,"lcp":true,"con":false,"alt":true},"m":{"lcpFieldMs":833}},{"name":"Independent #015","segment":"ind","score":74,"flags":{"cost":true,"tour":true,"accr":false,"aid":true,"cal":true,"contact":false,"lcp":false,"con":false,"alt":true},"m":{"lcpFieldMs":2789}},{"name":"Small #013","segment":"small","score":85,"flags":{"cost":false,"tour":true,"accr":false,"aid":true,"cal":false,"contact":false,"lcp":true,"con":false,"alt":true},"m":{"lcpFieldMs":1635}},{"name":"Small #014","segment":"small","score":84,"flags":{"cost":true,"tour":false,"accr":false,"aid":true,"cal":false,"contact":false,"lcp":true,"con":true,"alt":true},"m":{"lcpFieldMs":1325}},{"name":"Tutoring #009","segment":"tut","score":72,"flags":{"cost":false,"tour":false,"accr":false,"aid":false,"cal":false,"contact":false,"lcp":false,"con":false,"alt":false},"m":{}},{"name":"Small #015","segment":"small","score":79,"flags":{"cost":true,"tour":true,"accr":false,"aid":true,"cal":true,"contact":false,"lcp":false,"con":false,"alt":true},"m":{}},{"name":"Independent #016","segment":"ind","score":78,"flags":{"cost":true,"tour":true,"accr":true,"aid":true,"cal":true,"contact":false,"lcp":true,"con":false,"alt":true},"m":{"lcpFieldMs":1160}},{"name":"Independent #017","segment":"ind","score":75,"flags":{"cost":false,"tour":false,"accr":true,"aid":true,"cal":true,"contact":false,"lcp":true,"con":false,"alt":true},"m":{"lcpFieldMs":1877}},{"name":"Tutoring #010","segment":"tut","score":72,"flags":{"cost":false,"tour":false,"accr":false,"aid":true,"cal":false,"contact":false,"lcp":false,"con":false,"alt":true},"m":{}},{"name":"Independent #018","segment":"ind","score":72,"flags":{"cost":true,"tour":true,"accr":false,"aid":true,"cal":true,"contact":false,"lcp":false,"con":false,"alt":true},"m":{"lcpFieldMs":3926}},{"name":"Small #016","segment":"small","score":65,"flags":{"cost":true,"tour":false,"accr":false,"aid":true,"cal":false,"contact":false,"lcp":false,"con":false,"alt":true},"m":{}},{"name":"Independent #019","segment":"ind","score":69,"flags":{"cost":true,"tour":true,"accr":false,"aid":true,"cal":true,"contact":false,"lcp":false,"con":true,"alt":true},"m":{"lcpFieldMs":3306}},{"name":"Independent #020","segment":"ind","score":73,"flags":{"cost":true,"tour":true,"accr":true,"aid":true,"cal":true,"contact":true,"lcp":true,"con":true,"alt":true},"m":{"lcpFieldMs":1977}},{"name":"Tutoring #011","segment":"tut","score":63,"flags":{"cost":true,"tour":true,"accr":false,"aid":true,"cal":true,"contact":false,"lcp":false,"con":true,"alt":false},"m":{"lcpFieldMs":2619}},{"name":"Small #017","segment":"small","score":73,"flags":{"cost":true,"tour":true,"accr":false,"aid":true,"cal":true,"contact":false,"lcp":false,"con":false,"alt":true},"m":{"lcpFieldMs":2516}},{"name":"Tutoring #012","segment":"tut","score":85,"flags":{"cost":false,"tour":false,"accr":false,"aid":false,"cal":false,"contact":true,"lcp":false,"con":false,"alt":true},"m":{}},{"name":"Independent #021","segment":"ind","score":80,"flags":{"cost":true,"tour":true,"accr":false,"aid":true,"cal":false,"contact":true,"lcp":true,"con":false,"alt":false},"m":{"lcpFieldMs":1508}},{"name":"Tutoring #013","segment":"tut","score":76,"flags":{"cost":false,"tour":false,"accr":false,"aid":false,"cal":false,"contact":false,"lcp":false,"con":false,"alt":true},"m":{}},{"name":"Independent #022","segment":"ind","score":77,"flags":{"cost":true,"tour":false,"accr":true,"aid":true,"cal":false,"contact":false,"lcp":true,"con":false,"alt":false},"m":{"lcpFieldMs":1425}},{"name":"Small #018","segment":"small","score":68,"flags":{"cost":true,"tour":true,"accr":false,"aid":true,"cal":false,"contact":false,"lcp":false,"con":false,"alt":true},"m":{}},{"name":"Independent #023","segment":"ind","score":80,"flags":{"cost":true,"tour":true,"accr":false,"aid":true,"cal":false,"contact":false,"lcp":true,"con":false,"alt":true},"m":{"lcpFieldMs":2132}},{"name":"Independent #024","segment":"ind","score":74,"flags":{"cost":true,"tour":true,"accr":false,"aid":true,"cal":true,"contact":false,"lcp":false,"con":false,"alt":true},"m":{"lcpFieldMs":2925}},{"name":"Independent #025","segment":"ind","score":68,"flags":{"cost":true,"tour":true,"accr":true,"aid":true,"cal":false,"contact":false,"lcp":false,"con":false,"alt":false},"m":{"lcpFieldMs":2782}},{"name":"Small #019","segment":"small","score":72,"flags":{"cost":false,"tour":false,"accr":false,"aid":false,"cal":false,"contact":false,"lcp":false,"con":true,"alt":true},"m":{}},{"name":"Independent #026","segment":"ind","score":72,"flags":{"cost":false,"tour":false,"accr":false,"aid":false,"cal":true,"contact":false,"lcp":true,"con":false,"alt":true},"m":{"lcpFieldMs":1801}},{"name":"Independent #027","segment":"ind","score":77,"flags":{"cost":true,"tour":true,"accr":false,"aid":true,"cal":true,"contact":false,"lcp":true,"con":false,"alt":true},"m":{"lcpFieldMs":2246}},{"name":"Small #020","segment":"small","score":82,"flags":{"cost":true,"tour":true,"accr":false,"aid":true,"cal":false,"contact":false,"lcp":false,"con":false,"alt":true},"m":{}},{"name":"Independent #028","segment":"ind","score":73,"flags":{"cost":true,"tour":false,"accr":false,"aid":true,"cal":true,"contact":false,"lcp":false,"con":false,"alt":true},"m":{"lcpFieldMs":2574}},{"name":"Tutoring #014","segment":"tut","score":87,"flags":{"cost":false,"tour":false,"accr":false,"aid":false,"cal":false,"contact":false,"lcp":false,"con":false,"alt":true},"m":{"lcpFieldMs":2914}},{"name":"Tutoring #015","segment":"tut","score":72,"flags":{"cost":false,"tour":false,"accr":false,"aid":false,"cal":false,"contact":false,"lcp":true,"con":false,"alt":true},"m":{"lcpFieldMs":1468}},{"name":"Small #021","segment":"small","score":72,"flags":{"cost":true,"tour":true,"accr":true,"aid":true,"cal":true,"contact":false,"lcp":true,"con":false,"alt":true},"m":{"lcpFieldMs":1860}},{"name":"Small #022","segment":"small","score":72,"flags":{"cost":true,"tour":true,"accr":false,"aid":true,"cal":false,"contact":false,"lcp":true,"con":false,"alt":false},"m":{"lcpFieldMs":2190}},{"name":"Independent #029","segment":"ind","score":79,"flags":{"cost":true,"tour":false,"accr":true,"aid":true,"cal":true,"contact":false,"lcp":true,"con":false,"alt":true},"m":{"lcpFieldMs":1808}},{"name":"Independent #030","segment":"ind","score":73,"flags":{"cost":true,"tour":true,"accr":true,"aid":true,"cal":false,"contact":false,"lcp":true,"con":false,"alt":true},"m":{"lcpFieldMs":1634}},{"name":"Independent #031","segment":"ind","score":73,"flags":{"cost":false,"tour":true,"accr":false,"aid":true,"cal":false,"contact":false,"lcp":true,"con":false,"alt":false},"m":{"lcpFieldMs":1715}},{"name":"Small #023","segment":"small","score":85,"flags":{"cost":true,"tour":true,"accr":true,"aid":true,"cal":false,"contact":false,"lcp":true,"con":true,"alt":true},"m":{"lcpFieldMs":1653}},{"name":"Small #024","segment":"small","score":83,"flags":{"cost":false,"tour":true,"accr":true,"aid":true,"cal":false,"contact":false,"lcp":true,"con":true,"alt":true},"m":{"lcpFieldMs":1040}},{"name":"Tutoring #016","segment":"tut","score":70,"flags":{"cost":false,"tour":false,"accr":false,"aid":false,"cal":false,"contact":false,"lcp":false,"con":false,"alt":false},"m":{}},{"name":"Independent #032","segment":"ind","score":61,"flags":{"cost":false,"tour":true,"accr":false,"aid":true,"cal":true,"contact":false,"lcp":true,"con":false,"alt":true},"m":{"lcpFieldMs":2394}},{"name":"Independent #033","segment":"ind","score":73,"flags":{"cost":true,"tour":true,"accr":false,"aid":true,"cal":true,"contact":false,"lcp":true,"con":false,"alt":true},"m":{"lcpFieldMs":2266}},{"name":"Independent #034","segment":"ind","score":76,"flags":{"cost":true,"tour":true,"accr":true,"aid":true,"cal":true,"contact":false,"lcp":true,"con":false,"alt":true},"m":{"lcpFieldMs":2450}},{"name":"Small #025","segment":"small","score":73,"flags":{"cost":true,"tour":true,"accr":false,"aid":true,"cal":true,"contact":false,"lcp":false,"con":true,"alt":true},"m":{}},{"name":"Independent #035","segment":"ind","score":86,"flags":{"cost":true,"tour":false,"accr":false,"aid":true,"cal":true,"contact":false,"lcp":false,"con":false,"alt":false},"m":{"lcpFieldMs":2918}},{"name":"Independent #036","segment":"ind","score":67,"flags":{"cost":true,"tour":true,"accr":false,"aid":true,"cal":false,"contact":false,"lcp":false,"con":false,"alt":true},"m":{"lcpFieldMs":3426}},{"name":"Tutoring #017","segment":"tut","score":80,"flags":{"cost":false,"tour":false,"accr":false,"aid":false,"cal":false,"contact":false,"lcp":false,"con":false,"alt":true},"m":{}},{"name":"Tutoring #018","segment":"tut","score":83,"flags":{"cost":false,"tour":false,"accr":false,"aid":false,"cal":false,"contact":false,"lcp":false,"con":false,"alt":true},"m":{"lcpFieldMs":4074}},{"name":"Independent #037","segment":"ind","score":71,"flags":{"cost":true,"tour":true,"accr":false,"aid":true,"cal":true,"contact":true,"lcp":true,"con":false,"alt":true},"m":{"lcpFieldMs":2444}},{"name":"Independent #038","segment":"ind","score":75,"flags":{"cost":true,"tour":true,"accr":true,"aid":true,"cal":true,"contact":false,"lcp":true,"con":true,"alt":true},"m":{"lcpFieldMs":2304}},{"name":"Small #026","segment":"small","score":80,"flags":{"cost":true,"tour":true,"accr":false,"aid":true,"cal":true,"contact":false,"lcp":false,"con":true,"alt":true},"m":{}},{"name":"Independent #039","segment":"ind","score":75,"flags":{"cost":true,"tour":true,"accr":false,"aid":true,"cal":false,"contact":false,"lcp":false,"con":false,"alt":false},"m":{"lcpFieldMs":2720}},{"name":"Independent #040","segment":"ind","score":72,"flags":{"cost":true,"tour":true,"accr":true,"aid":true,"cal":false,"contact":false,"lcp":true,"con":true,"alt":true},"m":{"lcpFieldMs":2041}},{"name":"Independent #041","segment":"ind","score":67,"flags":{"cost":true,"tour":true,"accr":false,"aid":true,"cal":true,"contact":true,"lcp":false,"con":false,"alt":true},"m":{"lcpFieldMs":3217}},{"name":"Independent #042","segment":"ind","score":69,"flags":{"cost":true,"tour":true,"accr":false,"aid":true,"cal":true,"contact":false,"lcp":true,"con":false,"alt":true},"m":{"lcpFieldMs":1618}},{"name":"Tutoring #019","segment":"tut","score":81,"flags":{"cost":false,"tour":false,"accr":false,"aid":false,"cal":false,"contact":false,"lcp":false,"con":false,"alt":true},"m":{}},{"name":"Tutoring #020","segment":"tut","score":78,"flags":{"cost":false,"tour":false,"accr":false,"aid":false,"cal":false,"contact":false,"lcp":false,"con":true,"alt":false},"m":{}},{"name":"Independent #043","segment":"ind","score":85,"flags":{"cost":true,"tour":true,"accr":false,"aid":true,"cal":false,"contact":false,"lcp":true,"con":false,"alt":true},"m":{"lcpFieldMs":1086}},{"name":"Independent #044","segment":"ind","score":80,"flags":{"cost":true,"tour":true,"accr":true,"aid":true,"cal":false,"contact":false,"lcp":false,"con":false,"alt":true},"m":{"lcpFieldMs":3226}},{"name":"Independent #045","segment":"ind","score":73,"flags":{"cost":true,"tour":true,"accr":false,"aid":true,"cal":false,"contact":false,"lcp":true,"con":false,"alt":true},"m":{"lcpFieldMs":2255}},{"name":"Independent #046","segment":"ind","score":74,"flags":{"cost":true,"tour":false,"accr":false,"aid":true,"cal":true,"contact":false,"lcp":true,"con":false,"alt":true},"m":{"lcpFieldMs":1647}},{"name":"Tutoring #021","segment":"tut","score":85,"flags":{"cost":false,"tour":false,"accr":false,"aid":false,"cal":false,"contact":false,"lcp":false,"con":false,"alt":true},"m":{}},{"name":"Independent #047","segment":"ind","score":69,"flags":{"cost":true,"tour":false,"accr":false,"aid":true,"cal":true,"contact":false,"lcp":false,"con":false,"alt":true},"m":{"lcpFieldMs":2563}},{"name":"Independent #048","segment":"ind","score":69,"flags":{"cost":true,"tour":true,"accr":true,"aid":true,"cal":true,"contact":true,"lcp":false,"con":true,"alt":true},"m":{"lcpFieldMs":2875}},{"name":"Independent #049","segment":"ind","score":80,"flags":{"cost":true,"tour":true,"accr":false,"aid":true,"cal":true,"contact":false,"lcp":false,"con":false,"alt":true},"m":{"lcpFieldMs":2865}},{"name":"Independent #050","segment":"ind","score":63,"flags":{"cost":true,"tour":false,"accr":false,"aid":true,"cal":true,"contact":false,"lcp":false,"con":false,"alt":true},"m":{"lcpFieldMs":2709}},{"name":"Small #027","segment":"small","score":63,"flags":{"cost":true,"tour":true,"accr":true,"aid":true,"cal":true,"contact":false,"lcp":false,"con":true,"alt":true},"m":{"lcpFieldMs":2907}},{"name":"Small #028","segment":"small","score":75,"flags":{"cost":true,"tour":true,"accr":false,"aid":true,"cal":true,"contact":false,"lcp":false,"con":false,"alt":true},"m":{"lcpFieldMs":2933}},{"name":"Independent #051","segment":"ind","score":75,"flags":{"cost":true,"tour":true,"accr":false,"aid":true,"cal":true,"contact":false,"lcp":true,"con":false,"alt":true},"m":{"lcpFieldMs":1776}},{"name":"Independent #052","segment":"ind","score":73,"flags":{"cost":true,"tour":true,"accr":true,"aid":true,"cal":true,"contact":false,"lcp":true,"con":false,"alt":true},"m":{"lcpFieldMs":2165}},{"name":"Tutoring #022","segment":"tut","score":78,"flags":{"cost":false,"tour":false,"accr":false,"aid":false,"cal":false,"contact":false,"lcp":false,"con":true,"alt":true},"m":{}},{"name":"Independent #053","segment":"ind","score":73,"flags":{"cost":true,"tour":true,"accr":false,"aid":true,"cal":true,"contact":false,"lcp":true,"con":true,"alt":true},"m":{"lcpFieldMs":2330}},{"name":"Independent #054","segment":"ind","score":67,"flags":{"cost":true,"tour":true,"accr":false,"aid":true,"cal":true,"contact":false,"lcp":true,"con":false,"alt":true},"m":{"lcpFieldMs":1831}},{"name":"Tutoring #023","segment":"tut","score":79,"flags":{"cost":false,"tour":false,"accr":false,"aid":false,"cal":false,"contact":false,"lcp":false,"con":false,"alt":true},"m":{}},{"name":"Small #029","segment":"small","score":73,"flags":{"cost":true,"tour":false,"accr":false,"aid":true,"cal":false,"contact":true,"lcp":false,"con":false,"alt":true},"m":{"lcpFieldMs":2841}},{"name":"Small #030","segment":"small","score":71,"flags":{"cost":false,"tour":false,"accr":false,"aid":true,"cal":false,"contact":false,"lcp":true,"con":false,"alt":true},"m":{"lcpFieldMs":1613}},{"name":"Tutoring #024","segment":"tut","score":67,"flags":{"cost":false,"tour":false,"accr":false,"aid":false,"cal":false,"contact":false,"lcp":false,"con":false,"alt":true},"m":{}},{"name":"Independent #055","segment":"ind","score":80,"flags":{"cost":true,"tour":false,"accr":false,"aid":true,"cal":false,"contact":false,"lcp":false,"con":true,"alt":true},"m":{"lcpFieldMs":2759}},{"name":"Independent #056","segment":"ind","score":76,"flags":{"cost":true,"tour":true,"accr":true,"aid":true,"cal":false,"contact":false,"lcp":true,"con":false,"alt":true},"m":{"lcpFieldMs":2374}},{"name":"Small #031","segment":"small","score":81,"flags":{"cost":false,"tour":false,"accr":false,"aid":true,"cal":false,"contact":false,"lcp":true,"con":false,"alt":true},"m":{"lcpFieldMs":1403}},{"name":"Tutoring #025","segment":"tut","score":69,"flags":{"cost":false,"tour":false,"accr":false,"aid":false,"cal":false,"contact":false,"lcp":false,"con":false,"alt":true},"m":{}},{"name":"Independent #057","segment":"ind","score":81,"flags":{"cost":true,"tour":false,"accr":false,"aid":true,"cal":true,"contact":false,"lcp":true,"con":false,"alt":true},"m":{"lcpFieldMs":2348}},{"name":"Independent #058","segment":"ind","score":84,"flags":{"cost":true,"tour":false,"accr":false,"aid":true,"cal":true,"contact":false,"lcp":true,"con":false,"alt":true},"m":{"lcpFieldMs":1614}}],"specimens":[{"id":"cap-1","name":"Independent schools, South","kind":"Independent schools, South · score 73","img":"cap-1","alt":"Illustration: a mother books a school visit on her phone while her son eats breakfast beside her","head":"","score":73,"miss":[],"notes":{},"verdict":"Answers 6 of 6 parent questions. Passes every check in this edition.","extra":{"draft":true,"capture":true}},{"id":"cap-2","name":"Small private schools, Midwest","kind":"Small private schools, Midwest · score 79","img":"cap-2","alt":"Illustration: a father reads a school website on a park bench while his daughter reads a book","head":"","score":79,"miss":["accr","contact","lcp","con"],"notes":{},"verdict":"Answers 4 of 6 parent questions. Fails: Accreditation shown; Phone and email tappable, hours stated; Loads in under 2.5 s on a phone; Text contrast passes 4.5:1.","extra":{"draft":true,"capture":true}},{"id":"cap-3","name":"Independent schools, West","kind":"Independent schools, West · score 80","img":"cap-3","alt":"Illustration: a grandmother and her granddaughter compare schools on a laptop","head":"","score":80,"miss":["tour","accr","cal","contact","lcp"],"notes":{},"verdict":"Answers 2 of 6 parent questions. Fails: A tour or open day can be booked online; Accreditation shown; Term dates published as a page; Phone and email tappable, hours stated; Loads in under 2.5 s on a phone.","extra":{"draft":true,"capture":true}},{"id":"cap-4","name":"Tutoring and learning centres, West","kind":"Tutoring and learning centres, West · score 67","img":"cap-4","alt":"Illustration: a mother on hold on the phone in the hallway while her son takes off his shoes","head":"","score":67,"miss":["cost","tour","accr","aid","cal","contact","lcp","con","alt"],"notes":{},"verdict":"Answers 0 of 6 parent questions. Fails: Tuition or fees shown without asking; A tour or open day can be booked online; Accreditation shown; Financial aid or payment plans explained; Term dates published as a page; Phone and email tappable, hours stated; Loads in under 2.5 s on a phone; Text contrast passes 4.5:1; Images have text descriptions.","extra":{"draft":true,"capture":true}}],"copy":{"lede":"We read the websites of 114 independent schools and small private schools and tutoring and learning centres in the US the way a parent does: on a phone, with the questions a family asks first.","tocS2":"How the three kinds of school compare","ethic":"Every person in this report's photographs is AI-generated; none is a real person, pupil or member of staff. The scene beside each report card illustrates the kind of moment its findings describe; the card's grades come from a real, anonymous site in the study.","s3Body":"Four real sites from this edition, one strong, two in the middle and one weak. Each card shows the kind of moment its findings describe; the school itself stays anonymous, and each subject grade is computed from the checks above. The large letter on each card is the overall website score, not the parent checks.","sumBody":"Across 114 school websites, the median site answers three of the six parent questions this edition can test. 68% show tuition in dollars on the home page or a page it links to; 59% let a family book a tour or open day online.","fig1Cap":"Share of sites that answer each question on the home page or a page it links to, read from the served HTML. Sorted from least to most answered. The questions were written for schools: tutoring centres rarely publish tuition or open days, so their rates for fees and tours are not comparable with schools.","s2Head":"Three kinds of school, \u003cem class=\"i\"\u003eside by side\u003c/em\u003e","s2Body":"Independent schools (58): median score 73, fees shown on 91%, a visit bookable online on 72%. Small private schools (31): median score 75, fees shown on 74%, a visit bookable online on 77%. Tutoring and learning centres (25): median score 78, fees shown on 4%, a visit bookable online on 4%. The parent questions were written for schools, so the tutoring rates for fees and visits are not comparable.","scoringNote":"The score is Clikiti's overall website score (rubric v2): usability 30%, speed 25%, accessibility 25%, SEO 10%, trust 10%. It measures the website, not the school. The parent-question checks are reported separately and do not feed it.","tier0Lab":"Step 1 · all 114 sites","tier0":"The home page and up to nine pages it links to, read as a server delivers them: links, forms, text and markup. The parent questions are answered here, by fixed published rules (Appendix A4).","tier1Lab":"Step 2 · all 114 sites","tier1":"Google Lighthouse (PageSpeed Insights) in a phone and a desktop render, with Chrome UX Report field data where it exists: load time, contrast and image descriptions. Repeatable.","tier2Lab":"Step 3 · all 114 sites, score only","tier2":"An expert usability review of each home page against Nielsen's heuristics, used only in the usability part of the score. Every issue must name the heuristic, a severity and the element, or it is dropped."},"method":{"market":"US","cohort":115,"n":114,"excluded":[{"reason":"not scanned","n":1}],"moePct":9.2,"moeBySegment":{"ind":12.9,"small":17.6,"tut":19.6},"droppedChecks":["apply","staff","day","safe","key"],"droppedSegments":[],"scannedFrom":"2026-10-12","scannedTo":"2026-10-12"},"nouns":{"site":"school","Site":"School","sites":"schools","Sites":"Schools","reader":"school leader","asker":"parent","questionSet":"parent","questionTotal":10,"askedBy":"families ask before they visit","notJudged":"any school's education, safety or quality","frame":"published membership lists and local listings"},"cardGroups":[["Admissions",["apply","tour","aid"]],["Transparency",["cost","accr","staff"]],["Daily life",["day","cal","contact"]],["Accessibility",["con","alt","key"]],["Speed",["lcp"]]],"appendix":[{"segment":"ind","name":"Independent schools","sites":[{"name":"Albuquerque Academy","place":"Albuquerque, NM","url":"https://www.aa.edu/"},{"name":"Allendale Columbia School","place":"Rochester, NY","url":"https://www.allendalecolumbia.org/"},{"name":"Berkeley Preparatory School","place":"Tampa, FL","url":"https://www.berkeleyprep.org/"},{"name":"Brownell Talbot School","place":"Omaha, NE","url":"https://www.brownell.edu/"},{"name":"Buckingham Browne & Nichols","place":"Cambridge, MA","url":"https://www.bbns.org/"},{"name":"Casady School","place":"Oklahoma City, OK","url":"https://www.casady.org/"},{"name":"Castilleja School","place":"Palo Alto, CA","url":"https://www.castilleja.org/"},{"name":"Catlin Gabel School","place":"Portland, OR","url":"https://www.catlin.edu/"},{"name":"Charlotte Latin School","place":"Charlotte, NC","url":"https://www.charlottelatin.org/"},{"name":"Colorado Academy","place":"Denver, CO","url":"https://www.coloradoacademy.org/"},{"name":"Crystal Springs Uplands School","place":"Hillsborough, CA","url":"https://www.crystal.org/"},{"name":"Detroit Country Day School","place":"Beverly Hills, MI","url":"https://www.dcds.edu/"},{"name":"Ensworth School","place":"Nashville, TN","url":"https://www.ensworth.com/"},{"name":"Francis Parker School","place":"San Diego, CA","url":"https://www.francisparker.org/"},{"name":"Francis W. Parker School","place":"Chicago, IL","url":"https://www.fwparker.org/"},{"name":"Gilman School","place":"Baltimore, MD","url":"https://www.gilman.edu/"},{"name":"Hathaway Brown School","place":"Shaker Heights, OH","url":"https://www.hb.edu/"},{"name":"Head-Royce School","place":"Oakland, CA","url":"https://www.headroyce.org/"},{"name":"Holland Hall","place":"Tulsa, OK","url":"https://www.hollandhall.org/"},{"name":"Hopkins School","place":"New Haven, CT","url":"https://www.hopkins.edu/"},{"name":"Isidore Newman School","place":"New Orleans, LA","url":"https://www.newmanschool.org/"},{"name":"Kent Denver School","place":"Englewood, CO","url":"https://www.kentdenver.org/"},{"name":"Lakeside School","place":"Seattle, WA","url":"https://www.lakesideschool.org/"},{"name":"Latin School of Chicago","place":"Chicago, IL","url":"https://www.latinschool.org/"},{"name":"Memphis University School","place":"Memphis, TN","url":"https://www.musowls.org/"},{"name":"MICDS","place":"St. Louis, MO","url":"https://www.micds.org/"},{"name":"Oregon Episcopal School","place":"Portland, OR","url":"https://www.oes.edu/"},{"name":"Pace Academy","place":"Atlanta, GA","url":"https://www.paceacademy.org/"},{"name":"Packer Collegiate Institute","place":"Brooklyn, NY","url":"https://www.packer.edu/"},{"name":"Park Tudor School","place":"Indianapolis, IN","url":"https://www.parktudor.org/"},{"name":"Pembroke Hill School","place":"Kansas City, MO","url":"https://www.pembrokehill.org/"},{"name":"Phoenix Country Day School","place":"Paradise Valley, AZ","url":"https://www.pcds.org/"},{"name":"Ransom Everglades School","place":"Miami, FL","url":"https://www.ransomeverglades.org/"},{"name":"Ravenscroft School","place":"Raleigh, NC","url":"https://www.ravenscroft.org/"},{"name":"Riverstone International School","place":"Boise, ID","url":"https://www.riverstoneschool.org/"},{"name":"Rowland Hall","place":"Salt Lake City, UT","url":"https://www.rowlandhall.org/"},{"name":"Sage Hill School","place":"Newport Coast, CA","url":"https://www.sagehillschool.org/"},{"name":"Shady Side Academy","place":"Pittsburgh, PA","url":"https://www.shadysideacademy.org/"},{"name":"Sidwell Friends School","place":"Washington, DC","url":"https://www.sidwell.edu/"},{"name":"St. Andrew's Episcopal School","place":"Ridgeland, MS","url":"https://www.gosaints.org/"},{"name":"St. Mark's School of Texas","place":"Dallas, TX","url":"https://www.smtexas.org/"},{"name":"St. Stephen's Episcopal School","place":"Austin, TX","url":"https://www.sstx.org/"},{"name":"The Altamont School","place":"Birmingham, AL","url":"https://www.altamontschool.org/"},{"name":"The Blake School","place":"Minneapolis, MN","url":"https://www.blakeschool.org/"},{"name":"The Bolles School","place":"Jacksonville, FL","url":"https://www.bolles.org/"},{"name":"The Bush School","place":"Seattle, WA","url":"https://www.bush.edu/"},{"name":"The Dalton School","place":"New York, NY","url":"https://www.dalton.org/"},{"name":"The Episcopal Academy","place":"Newtown Square, PA","url":"https://www.episcopalacademy.org/"},{"name":"The Harker School","place":"San Jose, CA","url":"https://www.harker.org/"},{"name":"The Hockaday School","place":"Dallas, TX","url":"https://www.hockaday.org/"},{"name":"The Kinkaid School","place":"Houston, TX","url":"https://www.kinkaid.org/"},{"name":"The Lovett School","place":"Atlanta, GA","url":"https://www.lovett.org/"},{"name":"The Potomac School","place":"McLean, VA","url":"https://www.potomacschool.org/"},{"name":"The Seven Hills School","place":"Cincinnati, OH","url":"https://www.7hills.org/"},{"name":"The Wheeler School","place":"Providence, RI","url":"https://www.wheelerschool.org/"},{"name":"University School","place":"Hunting Valley, OH","url":"https://www.us.edu/"},{"name":"University School of Milwaukee","place":"Milwaukee, WI","url":"https://www.usm.org/"},{"name":"Waynflete School","place":"Portland, ME","url":"https://www.waynflete.org/"}]},{"segment":"small","name":"Small private schools","sites":[{"name":"Aspen Country Day School","place":"Aspen, CO","url":"https://aspencountryday.org/"},{"name":"Austin Waldorf School","place":"Austin, TX","url":"https://www.austinwaldorf.org/"},{"name":"Brooklyn Free School","place":"Brooklyn, NY","url":"https://www.brooklynfreeschool.org/"},{"name":"Cedar Springs Learning Center (formerly Cedar Springs Waldorf School)","place":"Placerville, CA","url":"https://www.cedarspringslearningcenter.org/"},{"name":"Chicago Waldorf School","place":"Chicago, IL","url":"https://www.chicagowaldorf.org/"},{"name":"Cincinnati Waldorf School","place":"Cincinnati, OH","url":"https://www.cincinnatiwaldorfschool.org/"},{"name":"Denver Waldorf School","place":"Denver, CO","url":"https://denverwaldorf.org/"},{"name":"Emerson Waldorf School","place":"Chapel Hill, NC","url":"https://www.emersonwaldorf.org/"},{"name":"Honolulu Waldorf School","place":"Honolulu, HI","url":"https://honoluluwaldorf.org/"},{"name":"Ithaca Waldorf School","place":"Ithaca, NY","url":"https://www.ithacawaldorf.org/"},{"name":"Lake Champlain Waldorf School","place":"Shelburne, VT","url":"https://www.lakechamplainwaldorfschool.org/"},{"name":"Lake Washington Girls Middle School","place":"Seattle, WA","url":"https://www.lwgms.org/"},{"name":"Madison Waldorf School","place":"Madison, WI","url":"https://madisonwaldorf.org/"},{"name":"Missoula International School","place":"Missoula, MT","url":"https://mismt.org/"},{"name":"Oak Grove Lutheran School","place":"Fargo, ND","url":"https://www.oakgrovelutheran.com/"},{"name":"Pacific Northern Academy","place":"Anchorage, AK","url":"https://pacificnorthern.org/"},{"name":"Portland Waldorf School","place":"Milwaukie, OR","url":"https://www.portlandwaldorf.org/"},{"name":"Prairie Hill Waldorf School","place":"Pewaukee, WI","url":"https://prairiehillwaldorf.org/"},{"name":"Sacramento Waldorf School","place":"Fair Oaks, CA","url":"https://www.sacwaldorf.org/"},{"name":"Seattle Girls' School","place":"Seattle, WA","url":"https://www.seattlegirlsschool.org/"},{"name":"The College School","place":"Webster Groves, MO","url":"https://www.thecollegeschool.org/"},{"name":"The Evergreen School","place":"Shoreline, WA","url":"https://www.evergreenschool.org/"},{"name":"The Miquon School","place":"Conshohocken, PA","url":"https://www.miquon.org/"},{"name":"The Post Oak School","place":"Houston, TX","url":"https://www.postoakschool.org/"},{"name":"Tucson Waldorf School","place":"Tucson, AZ","url":"https://tucsonwaldorf.org/"},{"name":"Waldorf School of Atlanta","place":"Decatur, GA","url":"https://www.waldorfatlanta.org/"},{"name":"Waldorf School of Baltimore","place":"Baltimore, MD","url":"https://www.waldorfschoolofbaltimore.org/"},{"name":"Waldorf School of New Orleans","place":"New Orleans, LA","url":"https://waldorfnola.org/"},{"name":"Waldorf School of Princeton","place":"Princeton, NJ","url":"https://www.princetonwaldorf.org/"},{"name":"Waldorf School of San Diego","place":"San Diego, CA","url":"https://waldorfsandiego.org/"},{"name":"Washington Waldorf School","place":"Bethesda, MD","url":"https://www.washingtonwaldorf.org/"}]},{"segment":"tut","name":"Tutoring and learning centres","sites":[{"name":"Bespoke Education","place":"New York, NY","url":"https://www.bespokeeducation.com/"},{"name":"Cardinal Education","place":"Palo Alto, CA","url":"https://www.cardinaleducation.com/"},{"name":"Columbus Tutoring Services","place":"Columbus, OH","url":"https://www.columbustutoringservices.com/"},{"name":"Educational Connections","place":"Fairfax, VA","url":"https://ectutoring.com/"},{"name":"High Performance Tutoring","place":"Salt Lake City, UT","url":"https://www.highperformancetutoring.com/"},{"name":"Higher Ground Learning","place":"Salt Lake City, UT","url":"https://highergroundlearning.com/"},{"name":"Inspirica","place":"Westport, CT","url":"https://inspirica.com/"},{"name":"Ivy Bound Test Prep","place":"Farmington, CT","url":"https://www.ivybound.net/"},{"name":"Learning Matters, Inc.","place":"Nashville, TN","url":"https://learningmattersinc.org/"},{"name":"Mindfish Test Prep","place":"Denver, CO","url":"https://mindfish.com/"},{"name":"Miriam School and Learning Center","place":"St. Louis, MO","url":"https://www.miriamstl.org/"},{"name":"MyGuru","place":"Chicago, IL","url":"https://www.myguruedge.com/en-us/"},{"name":"NextGen Academics","place":"Seattle, WA","url":"https://www.nextgenacademics.com/"},{"name":"PrepMatters","place":"Bethesda, MD","url":"https://prepmatters.com/"},{"name":"Prime Learning Center","place":"Bellevue, WA","url":"https://primelearningcenter.com/"},{"name":"Shiery's Tutoring","place":"Bellevue, WA","url":"https://www.shierystutoring.com/"},{"name":"Sophos Academics","place":"Phoenix, AZ","url":"https://sophosacademics.com/"},{"name":"Tampa Bay Tutors","place":"Tampa, FL","url":"https://tampabaytutors.com/"},{"name":"Test Titans","place":"Dallas, TX","url":"https://www.testtitans.com/"},{"name":"The Art of Learning","place":"Phoenix, AZ","url":"https://theartoflearningaz.com/"},{"name":"The Math Lab","place":"Scottsdale, AZ","url":"https://themathlabaz.com/"},{"name":"Tutor Me Education","place":"Los Angeles, CA","url":"https://tutormeeducation.com/"},{"name":"Tutor Portland","place":"Portland, OR","url":"https://tutorportland.com/"},{"name":"Tutoring Boston","place":"Newton, MA","url":"https://www.tutoringboston.com/"},{"name":"Willow Tree Tutoring","place":"St. Peters, MO","url":"https://www.willowtreetutoring.com/"}]}],"methodology":{"question":"When a family researches a private school or tutoring centre online, can they find the answers they need first, quickly, on a phone?","population":"Independent schools, small private schools and tutoring or learning centres in the United States: the organisations a small or mid-size web agency can realistically win as clients.","frame":[{"source":"NAIS member schools","detail":"Schools listed by the National Association of Independent Schools","n":56},{"source":"AWSNA member schools","detail":"Waldorf schools listed by the Association of Waldorf Schools of North America","n":20},{"source":"Known independent schools","detail":"Further independent schools identified by the research team","n":13},{"source":"Local tutoring listings","detail":"Tutoring and learning centres found in local business listings by city","n":16},{"source":"Known tutoring and test-prep companies","detail":"Tutoring and test-prep companies identified by the research team","n":9}],"inclusion":["A single school or centre with its own website (not a page on a district or platform site)","Based in the United States","Home page responds and shows the organisation it claims to be (each home page title was checked before scanning)"],"exclusion":["National brands and multi-city chains or franchises, whose websites are run centrally","Large institutions with several thousand students, and universities and colleges","Public, district and government sites","Parked, placeholder, password-protected or unreachable sites","Duplicates, and sites already used in another Clikiti study"],"funnel":[{"step":"Candidates listed","n":136},{"step":"Removed at screening: no response (8), access refused (3), parked (1), password-protected or redirected to another organisation (2)","n":-14},{"step":"Removed at editorial review: national tutoring or test-prep brands (6), large institution (1)","n":-7},{"step":"Cohort","n":115},{"step":"Removed because the site's robots.txt asks crawlers not to visit","n":-1},{"step":"Studied in this edition","n":114}],"regions":[{"region":"Northeast","n":18,"bySegment":{"ind":9,"small":5,"tut":4}},{"region":"Midwest","n":22,"bySegment":{"ind":12,"small":6,"tut":4}},{"region":"South","n":33,"bySegment":{"ind":21,"small":7,"tut":5}},{"region":"West","n":41,"bySegment":{"ind":16,"small":13,"tut":12}}],"states":39,"dc":true,"crawler":"Mozilla/5.0 (compatible; ClikitiResearch/1.0; +https://clikiti.com)","politeness":"One request at a time to each site, at least 400 ms apart, at most ten pages per site; robots.txt is read and obeyed for every page requested; a site that refuses is left out and never retried.","pages":"The home page, then for each of eight topics (tuition, financial aid, admissions, visits, calendar, accreditation, about, contact) the best-matching link on the home page. Tuition, aid and visit pages not linked from the home page are also looked for one step further, on the admissions page. On average 5.9 pages were read per site.","performance":"Google PageSpeed Insights (Lighthouse) on a mid-range phone profile and on desktop, plus Chrome UX Report data from real visitors over the previous 28 days where Google publishes it for the site.","measures":{"cost":"A tuition or fee amount in dollars appears on the home, tuition, admissions or financial aid page, with the words tuition or fee just before it. Amounts that describe awards, averages, ranges, loans or fundraising do not count.","tour":"A link or button that books a tour, visit, open house or information session, or a booking form or scheduling service for a visit, on the home, visit or admissions page. A general application portal on its own does not count.","accr":"The site states that the school is accredited, or names an accrediting body (for example WASC, NEASC, ISACS, CAIS, Cognia, Middle States or ACSI), on the home, accreditation, about or admissions page.","aid":"Financial aid, tuition assistance or a payment plan is explained: either a dedicated page of at least 120 words, or a statement on the tuition or admissions page that says who qualifies, how to apply or by when.","cal":"A calendar or term-dates link on the home page leads to a web page (not a PDF) whose text contains dates or term events such as the first day of school or winter break.","contact":"The home or contact page has a tappable phone link, a tappable email link and stated office hours. All three are needed.","lcp":"Real visitors on phones see the main content within 2.5 seconds (Chrome UX Report, 75th percentile). Where Google publishes no visitor data, the phone lab test is used.","con":"No text on the home page fails the WCAG 1.4.3 minimum contrast of 4.5:1, in either the phone or desktop test.","alt":"Every meaningful image on the home page has a text description (WCAG 1.1.1)."},"review":["Every home page in the cohort was fetched and its title checked against the listed organisation before scanning","Detection rules were revised five times against the pages they read; each revision re-checked every site","Every published figure is recomputed from the data at build time, and a statement in the text that the data does not support stops the build","Results are published only after automated checks for missing data, anonymity, accessibility of the report itself and the margin of error statement pass"],"limitations":["A point-in-time snapshot: sites change, and a site may have improved or declined since it was read.","Only public pages were read: the home page and the pages it links to. Application portals, logged-in areas and multi-step forms were not tested.","The parent questions are answered from the page as a server delivers it. Content that only appears after scripts run in the browser (some calendars, for example) is not seen, which the study counts as a gap a search engine or a slow phone would also meet.","Automated accessibility tests find only part of what WCAG covers; keyboard and screen-reader use need a manual audit.","The sample is a structured list of real, pitchable organisations, not a random draw. Margins of error are given as a guide to precision, not as a guarantee that the results hold for every school in the country.","The parent questions were written for schools. Tutoring centres rarely publish fees or open days, so their results on those questions are not comparable with schools.","Five further checks (admissions steps and dates, teachers' qualifications, a typical day, safeguarding, and keyboard operation) were left out from this edition because they cannot yet be tested reliably from the served page."]},"disclaimer":{"scannedFrom":"2026-10-12","scannedTo":"2026-10-12","removalMailto":"hello@clikiti.com","subject":"Remove my school from the State of School Websites study"},"feature":{"name":"Emerson Waldorf School","url":"https://www.emersonwaldorf.org/","place":"Chapel Hill, NC","segment":"Small private schools","score":85,"answered":4,"questions":6,"techPassed":["lcp","con","alt"],"techFailed":[],"img":"feature","alt":"The home page of Emerson Waldorf School","caption":"The home page as published, captured 2026-10-13 with pop-ups closed.","strengths":["Shows what it costs without the family having to ask: “Tuition EC Half-Day: $15,730”","Lets a family book a visit online, from a “Plan A Visit” action","States its accreditation (“SAIS”)","Explains financial aid on its tuition page","Real phone visitors see the main content in 1.7 s (Chrome UX Report, 75th percentile; good is 2.5 s or less)","No text fails the WCAG 1.4.3 contrast minimum","Every image has a text description (WCAG 1.1.1)","Clikiti pillar scores of 90 or more: usability 100, accessibility 99, SEO 95, trust 94"],"improve":["Term dates: the calendar page builds its dates in the browser, so the page a phone or search engine first receives carries none","Contact: the phone number is not a tappable link, and office hours are not stated","Speed pillar 45/100 (driven by the throttled mobile Lighthouse run; real phone visitors load it fast)"]}};
+  function cl(x,a,b){return Math.max(a,Math.min(b,x))}
+  function med(a){var b=a.slice().sort(function(x,y){return x-y}),m=b.length>>1;return b.length%2?b[m]:(b[m-1]+b[m])/2}
+  var SEG=D.segments.map(function(s){return [s.id,s.name,s.count,s.mean]});
+  var Q=D.checks.filter(function(c){return c.question}).map(function(c){return [c.id,c.question,c.label]});
+  var T=D.checks.filter(function(c){return !c.question}).map(function(c){return [c.id,c.label,c.standard]});
+  var sites=D.sites.map(function(s){return {seg:s.segment,f:s.flags,score:s.score,name:s.name}});
+  var ALL=D.checks.map(function(c){return c.id});
+  var NS=sites.length;
+  var HAS={};D.checks.forEach(function(c){HAS[c.id]=1});
+  function has(){for(var i=0;i<arguments.length;i++)if(!HAS[arguments[i]])return false;return true}
+  var M=D.method||null;
+  function pct(n){return Math.round(n/NS*100)}
+  var NUMW=['zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen'];
+  var moeTxt=M?'Margin of error: ±'+M.moePct+' points at 95% confidence for a share of all '+NS+' sites'+(D.segments.length>1?' ('+D.segments.map(function(s){return s.name+' ±'+M.moeBySegment[s.id]}).join(', ')+')':'')+'.':'';
+  [].forEach.call(document.querySelectorAll('.nsites'),function(e){e.textContent=NS});
+  document.getElementById('ribL').innerHTML=D.fictional?'<b>Sample</b> · fictional data · fictional schools':'Edition <b>'+D.edition+'</b> · '+NS+' sites';
+  document.getElementById('readnote').innerHTML=D.fictional?'<b>Reading note</b>All schools and figures here are invented. The method, the checks and the layout are real. Footnotes are at the end.':'<b>Reading note</b>Figures come from automated scans of '+NS+' school websites'+(M&&M.market?' in the '+M.market:'')+'. '+(D.feature?'Results are anonymous except one best-in-class school. ':'Schools are not named. ')+moeTxt+' Footnotes are at the end.';
+  document.getElementById('fn1').textContent=D.fictional?'All schools, domains, scores and percentages in this report are invented to demonstrate the design and the method.':'Every figure is computed from the scan data for this edition: '+NS+' of '+(M?M.cohort:NS)+' sites in the cohort'+(M&&M.scannedFrom?', scanned '+M.scannedFrom+' to '+M.scannedTo:'')+'. '+moeTxt+(M&&M.excluded.length?' Left out: '+M.excluded.map(function(e){return e.n+' ('+e.reason+')'}).join(', ')+'.':'')+(D.feature?' Results are not attributed to named schools, except the best-in-class example; elsewhere each is shown as its type and a number. The appendix lists who was scanned.':' Schools are not named; each is shown as its type and a number.');
+  var QW=NUMW[Q.length]||String(Q.length),CW=NUMW[D.checks.length]||String(D.checks.length);
+  document.getElementById('nQ').textContent=QW;
+  [].forEach.call(document.querySelectorAll('.nq'),function(e){e.textContent=QW});
+  document.getElementById('fn2').textContent=D.fictional?'Fourteen checks: ten parent questions, plus load time, contrast, image descriptions and keyboard use.':CW.charAt(0).toUpperCase()+CW.slice(1)+' checks: '+QW+' parent questions, plus '+T.map(function(t){return t[1].charAt(0).toLowerCase()+t[1].slice(1)}).join('; ')+'.'+(M&&M.droppedChecks.length?' Not measured in this edition, because no automated test is reliable enough yet: '+M.droppedChecks.length+' further checks from the full method.':'');
+  document.getElementById('fn3').textContent=D.fictional?'Contrast follows WCAG 1.4.3, image descriptions 1.1.1, keyboard operation 2.1.1, and tap targets 2.5.8.':'Standards: '+T.map(function(t){return t[1]+' ('+t[2]+')'}).join('; ')+'.';
+  if(!D.fictional){var f5=document.getElementById('fn5');f5.hidden=false;f5.textContent='Photographs are illustrations created with generative AI for this report; every person shown is fictional. The one website screenshot is the featured school\'s own home page. The usability review in A5 is carried out by an automated vision model under the rules stated there.'}
+  if(!D.methodology){document.getElementById('tocMeth').hidden=true;document.getElementById('methLink').hidden=true}
+  if(!D.appendix){document.getElementById('tocSchools').hidden=true}
+  document.getElementById('fn4').textContent=D.fictional?'Scan window for this sample: October 2026. Images were generated for this sample and show no real place.':'Scanned October 2026.';
+  if(!D.specimens.length){document.getElementById('s3').hidden=true;document.getElementById('tocS3').hidden=true}
+  var medAll=Math.round(med(sites.map(function(s){return s.score})));
+  var meanAns=sites.reduce(function(a,s){return a+Q.filter(function(q){return s.f[q[0]]}).length},0)/NS;
+  var words=['zero','one','two','three','four','five','six','seven','eight','nine','ten'];
+  if(D.fictional){document.getElementById('hAns').textContent=words[Math.round(meanAns)]}
+  else{var medAns=med(sites.map(function(s){return Q.filter(function(q){return s.f[q[0]]}).length}));document.getElementById('hLead').textContent='The median site answers';document.getElementById('hAns').textContent=NUMW[Math.round(medAns)]||String(Math.round(medAns))}
+  var priceTour=sites.filter(function(s){return s.f.cost&&s.f.apply&&s.f.tour}).length;
+  var kb=Math.round(sites.filter(function(s){return !s.f.key}).length/NS*100);
+  var tuit=Math.round(sites.filter(function(s){return s.f.cost}).length/NS*100);
+  var AB=[[medAll,'/100',D.fictional?'Median score. A typical school is partly easy to choose.':'Median Clikiti score across all '+NS+' sites.']];
+  if(has('cost'))AB.push([tuit,'%','of sites show what the school costs without asking.']);
+  if(has('cost','apply','tour'))AB.push([priceTour,'','schools answer price, applying and visiting on their site.']);
+  else if(has('cost','tour'))AB.push([sites.filter(function(s){return s.f.cost&&s.f.tour}).length,'','schools show the price and let a family book a visit online.']);
+  if(has('key'))AB.push([kb,'%','have an admissions form a keyboard user cannot complete.']);
+  else if(has('con'))AB.push([pct(sites.filter(function(s){return !s.f.con}).length),'%','have text that fails the WCAG contrast minimum.']);
+  document.getElementById('abstract').innerHTML=AB.map(function(x){return '<div><b class="num">'+x[0]+'<small>'+x[1]+'</small></b><span>'+x[2]+'</span></div>'}).join('');
+
+  /* figure 1: questions with segment filter */
+  var cur='all',chips=document.getElementById('chips'),qs=document.getElementById('qs');
+  chips.innerHTML=[['all','All '+NS]].concat(SEG.map(function(s){return [s[0],s[1]+' · '+s[2]]})).map(function(c){return '<button type="button" class="chip" data-k="'+c[0]+'" aria-pressed="'+(c[0]==='all')+'">'+c[1]+'</button>'}).join('');
+  function drawQ(){var pool=sites.filter(function(s){return cur==='all'||s.seg===cur});
+    var rows=Q.map(function(q){return {q:q,n:Math.round(pool.filter(function(s){return s.f[q[0]]}).length/pool.length*100)}}).sort(function(a,b){return a.n-b.n});
+    qs.innerHTML=rows.map(function(r){return '<div class="q"><div><b>'+r.q[1]+'</b><small>'+r.q[2]+'</small></div><div class="tr"><u class="'+(r.n<50?'low':'')+'" style="width:'+r.n+'%"></u></div><div class="v num">'+r.n+'%</div></div>'}).join('')}
+  chips.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;cur=b.getAttribute('data-k');[].forEach.call(chips.children,function(x){x.setAttribute('aria-pressed',x===b)});drawQ()});
+  drawQ();
+
+  /* figure 2: dot plot */
+  var svg=document.getElementById('f1'),rd=document.getElementById('rd'),L=210,Rr=960,rowH=92,top=10,o='',NR=SEG.length;
+  svg.setAttribute('viewBox','0 0 1000 '+(top+rowH*NR+40));
+  function col(v){return v>=80?'#2A6F4E':v<40?'#C0312B':'#14284B'}
+  for(var t=0;t<=100;t+=20){var x=L+(Rr-L)*t/100;o+='<line x1="'+x+'" x2="'+x+'" y1="'+top+'" y2="'+(top+rowH*NR)+'" stroke="#D1D5DF" stroke-dasharray="2 5"/><text x="'+x+'" y="'+(top+rowH*NR+22)+'" font-size="12" text-anchor="middle">'+t+'</text>'}
+  SEG.forEach(function(s,ri){var y0=top+ri*rowH,base=y0+rowH-14,list=sites.filter(function(x){return x.seg===s[0]}).sort(function(a,b){return a.score-b.score}),bins={};
+    o+='<line x1="0" x2="'+Rr+'" y1="'+(y0+rowH)+'" y2="'+(y0+rowH)+'" stroke="#D1D5DF"/><text x="0" y="'+(base-26)+'" font-size="15" style="fill:#111A33;font-family:Newsreader,Georgia,serif">'+s[1]+'</text><text x="0" y="'+(base-8)+'" font-size="12">'+s[2]+' sites</text>';
+    var m=med(list.map(function(x){return x.score})),mx=L+(Rr-L)*m/100;
+    o+='<rect x="'+(mx-3)+'" y="'+(y0+6)+'" width="6" height="'+(rowH-14)+'" fill="#F2B705"/>';
+    list.forEach(function(x){var k=Math.round(x.score/2.4);bins[k]=(bins[k]||0)+1;var cx=L+(Rr-L)*x.score/100,cy=base-(bins[k]-1)*11;
+      o+='<circle class="dot" tabindex="0" data-n="'+x.name+'" data-s="'+x.score+'" cx="'+cx.toFixed(1)+'" cy="'+cy.toFixed(1)+'" r="4.6" fill="'+col(x.score)+'"/>'});
+    o+='<text x="'+(mx+9)+'" y="'+(y0+18)+'" font-size="12" style="fill:#111A33;font-weight:600">median '+Math.round(m)+'</text>'});
+  svg.innerHTML=o;
+  function show(e){var t=e.target;if(t.getAttribute&&t.getAttribute('data-n')){rd.innerHTML='<b>'+t.getAttribute('data-n')+'</b> · score '+t.getAttribute('data-s')}}
+  svg.addEventListener('mouseover',show);svg.addEventListener('focusin',show);
+
+  /* report cards */
+  var GR=(D.cardGroups||[['Admissions',['apply','tour','aid']],['Transparency',['cost','accr','staff']],['Daily life',['day','cal','contact']],['Accessibility',['con','alt','key']],['Speed',['lcp']]]).map(function(g){return [g[0],g[1].filter(function(k){return HAS[k]})]}).filter(function(g){return g[1].length});
+  function letter(p){return p>=1?'A':p>=.67?'B':p>=.34?'C':p>0?'D':'F'}
+  function ovl(n){return n>=90?'A':n>=75?'B':n>=45?'C':n>=30?'D':'F'}
+  var SP=D.specimens.map(function(s){return {n:s.name,t:s.kind,img:s.img==='css'?'css':s.img+'.webp',alt:s.alt,head:s.head,cta:s.cta||'Menu',cls:s.img==='css'?'stock':'',overall:ovl(s.score),score:s.score,miss:s.miss,v:s.verdict,com:(s.extra&&s.extra.com)||{}}});
+  document.getElementById('cards').innerHTML=SP.map(function(s,i){
+    var miss={};s.miss.forEach(function(k){miss[k]=1});
+    var rows=GR.map(function(gr){var keys=gr[1],pass=keys.filter(function(k){return !miss[k]}).length,L=letter(pass/keys.length),c=s.com[gr[0]]||['',''];
+      return '<div class="subj"><span class="s">'+gr[0]+'</span><span class="g '+(L==='A'?'hi':(L==='D'||L==='F')?'lo':'')+'">'+L+'</span><p>'+c[0]+(c[1]?'<small>'+c[1]+'</small>':'')+'</p></div>'}).join('');
+    var cap=s.img.indexOf('cap-')===0;
+    var site='<div class="site '+s.cls+'"><div class="shot">'+(s.img==='css'?'<div class="stockart" role="img" aria-label="'+s.alt+'"><i class="b1"></i><i class="b2"></i><i class="b3"></i><i class="ap"></i><i class="st"></i></div>':'<img src="/research/education/2026-q4/img/'+s.img+'" alt="'+s.alt+'" loading="lazy">')+(cap?'':'<div class="shd"></div><div class="nav"><b>'+s.n+'</b><span>About</span><span>Admissions</span><span>Life</span><em>'+s.cta+'</em></div><div class="tx"><h4>'+s.head+'</h4></div>')+'</div><div class="meta"><h3>'+s.n+'</h3><span class="lab">'+s.t+'</span><p class="verdict">'+s.v+'</p></div></div>';
+    var card='<div class="paper"><div class="ph"><div><span class="lab">Report · Autumn term '+new Date(D.generatedAt).getUTCFullYear()+'</span><b>'+s.n+'</b></div><div class="grade" aria-label="Overall grade '+s.overall+'">'+s.overall+'</div></div>'+rows+'<div class="sig"><span>Overall score '+s.score+' / 100</span>Clikiti</div></div>';
+    return '<article class="rc '+(i%2?'flip':'')+'">'+site+card+'</article>'}).join('');
+
+  /* table 1 */
+  var tr=T.map(function(t){return {t:t[1],s:t[2],n:Math.round(sites.filter(function(s){return !s.f[t[0]]}).length/NS*100)}}).concat(has('safe')?[{t:'Safeguarding policy hard to find',s:'Parent question 9',n:Math.round(sites.filter(function(s){return !s.f.safe}).length/NS*100)}]:[]).sort(function(a,b){return b.n-a.n});
+  document.getElementById('tbl').innerHTML='<thead><tr><th>Check</th><th>Standard</th><th style="text-align:right;padding-right:0">Fail</th></tr></thead><tbody>'+tr.map(function(r){return '<tr><td><b>'+r.t+'</b></td><td>'+r.s+'</td><td class="n num">'+r.n+'%</td></tr>'}).join('')+'</tbody>';
+})();
+</script>
+
+</main>
+<section class="rx-get" aria-labelledby="rx-get-h"><div class="rx-in">
+  <div>
+    <h2 id="rx-get-h">Take it, quote it, share it</h2>
+    <p class="rx-lic"><a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a> Free to use and cite under CC BY 4.0. Credit Clikiti with a link.</p>
+    <p>Only 68% of the 114 private school and tutoring websites we scanned show what the school costs without the parent having to ask. The report, the method and the aggregate numbers are open: use them in your pitches, posts and proposals.</p>
+    <ul>
+      <li><a href="2026-q4/report.pdf" type="application/pdf" download><span>Download the PDF</span><small>A4<span class="rx-size"> · 3.9 MB</span></small></a></li>
+      <li><a href="2026-q4/report.md" type="text/markdown"><span>Read as Markdown</span><small>text, for people and AI</small></a></li>
+      <li><a href="/research/education/2026-q4/data.csv" type="text/csv" download><span>Aggregate data</span><small>CSV · no site named</small></a></li>
+      <li><a href="2026-q4/data.json" type="application/json"><span>Aggregate data</span><small>JSON · no site named</small></a></li>
+    </ul>
+  </div>
+  <div>
+    <p class="rx-get-h3">Cite (APA)</p>
+    <div class="rx-cite"><span id="rx-apa">Clikiti. (2026, October 12). The state of school websites 2026 (Q4 2026) [Report]. https://clikiti.com/research/education/2026-q4</span><button type="button" class="rx-copybtn" data-copy="rx-apa">Copy</button></div>
+    <p class="rx-get-h3">Embed the chart</p>
+    <div class="rx-cite rx-code"><code id="rx-embed">&lt;figure style=&quot;margin:0;max-width:720px&quot;&gt;&lt;a href=&quot;https://clikiti.com/research/education&quot;&gt;&lt;img src=&quot;https://clikiti.com/research/education/2026-q4/chart.png&quot; alt=&quot;Chart: share of private school and tutoring websites answering each question parents ask (Q4 2026)&quot; width=&quot;1200&quot; height=&quot;675&quot; style=&quot;width:100%;height:auto&quot;&gt;&lt;/a&gt;&lt;figcaption style=&quot;font:13px/1.4 sans-serif&quot;&gt;Source: &lt;a href=&quot;https://clikiti.com/research/education&quot;&gt;Clikiti, The State of School Websites 2026&lt;/a&gt; (Q4 2026). &lt;a href=&quot;https://creativecommons.org/licenses/by/4.0/&quot; rel=&quot;license&quot;&gt;CC BY 4.0&lt;/a&gt;.&lt;/figcaption&gt;&lt;/figure&gt;</code><button type="button" class="rx-copybtn" data-copy="rx-embed">Copy</button></div>
+    <p class="rx-small">114 sites · scanned October 2026 · margin of error up to ±9.2 percentage points at 95% confidence.</p>
+    <div class="rx-share" aria-label="Share">
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fclikiti.com%2Fresearch%2Feducation%2F2026-q4" rel="noopener" target="_blank">LinkedIn</a>
+      <a href="https://twitter.com/intent/tweet?text=Only%2068%25%20of%20the%20114%20private%20school%20and%20tutoring%20websites%20we%20scanned%20show%20what%20the%20school%20costs%20without%20the%20parent%20having%20to%20ask.&amp;url=https%3A%2F%2Fclikiti.com%2Fresearch%2Feducation%2F2026-q4" rel="noopener" target="_blank">X</a>
+      <a href="mailto:?subject=The%20State%20of%20School%20Websites%202026&amp;body=Only%2068%25%20of%20the%20114%20private%20school%20and%20tutoring%20websites%20we%20scanned%20show%20what%20the%20school%20costs%20without%20the%20parent%20having%20to%20ask.%20https%3A%2F%2Fclikiti.com%2Fresearch%2Feducation%2F2026-q4">Email</a>
+    </div>
+  </div>
+</div></section>
+<footer class="rx-foot"><div class="rx-in">
+  <div><a href="../../">Clikiti</a> · Research from automated scans, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>. Aggregate figures; no business is named in the data.</div>
+  <nav aria-label="Footer"><a href="../">Research</a><a href="../../benchmarks/">Benchmarks</a><a href="../../gallery/">Gallery</a><a href="../../#scan">Free scan</a><a href="../../privacy/">Privacy</a></nav>
+</div></footer>
+<a class="rx-fab" id="rx-fab" href="2026-q4/report.pdf" type="application/pdf" download aria-label="Download the PDF (3.9 MB)">Download PDF</a>
+<script>
+var REVEAL="#rx-report .sechead, #rx-report .fig, #rx-report .rc, #rx-report .qs, #rx-report .abstract > *, #rx-report .feat, #rx-report .schools, #rx-agencies .rx-ag-grid > *, #rx-agencies .rx-ag-steps > *, .rx-break figcaption";
+(function(){
+  var root=document.documentElement,hero=document.getElementById('rx-hero'),fab=document.getElementById('rx-fab');
+  var pdf=/[?&]pdf\b/.test(location.search);
+  if(pdf){root.setAttribute('data-motion','off');root.classList.add('rx-pdf');[].forEach.call(document.querySelectorAll('img[loading="lazy"]'),function(i){i.loading='eager'})}
+  var still=pdf||root.getAttribute('data-motion')==='off'||(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches);
+  var num=hero&&hero.querySelector('[data-count]');
+  function onScroll(){
+    var y=window.scrollY||0;
+    if(fab)fab.classList.toggle('on',y>window.innerHeight*.9);
+    if(still||!hero)return;
+    var r=hero.getBoundingClientRect(),track=Math.max(1,hero.offsetHeight-window.innerHeight);
+    var p=Math.min(1,Math.max(0,-r.top/track));
+    hero.style.setProperty('--p',p.toFixed(4));
+    hero.style.setProperty('--rx-off',Math.max(0,r.top).toFixed(0)+'px');
+  }
+  [].forEach.call(document.querySelectorAll('.rx-copybtn'),function(b){b.addEventListener('click',function(){var t=document.getElementById(b.getAttribute('data-copy')).textContent;(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){b.textContent='Copied'},function(){var r=document.createRange();r.selectNodeContents(document.getElementById(b.getAttribute('data-copy')));var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selected'});setTimeout(function(){b.textContent='Copy'},2000)})});
+  var bar=document.querySelector('#rx-report .bar'),lastY=window.scrollY||0;
+  function onBar(){
+    if(!bar)return;var y=window.scrollY||0,d=y-lastY;if(Math.abs(d)<4)return;lastY=y;
+    // Hide only once it is stuck to the top; going up (or back near the hero) brings it back.
+    var stuck=bar.getBoundingClientRect().top<=1;
+    root.classList.toggle('rx-bar-away',d>0&&stuck);
+  }
+  window.addEventListener('scroll',function(){requestAnimationFrame(onBar)},{passive:true});
+  var breaks=[].slice.call(document.querySelectorAll('.rx-break'));
+  function onBreaks(){if(still)return;breaks.forEach(function(f){var r=f.getBoundingClientRect(),h=window.innerHeight;if(r.bottom<0||r.top>h)return;f.style.setProperty('--bp',((h-r.top)/(h+r.height)).toFixed(3))})}
+  window.addEventListener('scroll',function(){requestAnimationFrame(onBreaks)},{passive:true});
+  window.addEventListener('scroll',function(){requestAnimationFrame(onScroll)},{passive:true});
+  window.addEventListener('resize',onScroll);
+  if(still||!hero){onScroll();return}
+  root.classList.add('rx-anim');
+  onScroll();
+  // Reveal the report as it scrolls in: headings, figures, cards, bars and grades.
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('rx-in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -12% 0px'});
+    [].forEach.call(document.querySelectorAll(REVEAL),function(el){el.classList.add('rx-rv');io.observe(el)});
+  }
+  if(num){
+    var to=+num.getAttribute('data-count'),span=num.querySelector('span'),t0=0,dur=1700;
+    span.textContent='0';
+    function step(t){if(!t0)t0=t;var k=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-k,3);span.textContent=String(Math.round(to*e));hero.style.setProperty('--m0',(e*.35).toFixed(3));if(k<1)requestAnimationFrame(step)}
+    setTimeout(function(){requestAnimationFrame(step)},350);
+    window.addEventListener('beforeprint',function(){span.textContent=String(to)});
+  }
+})();
+</script>
+</body>
+</html>

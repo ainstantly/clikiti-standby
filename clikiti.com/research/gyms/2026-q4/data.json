@@ -1,0 +1,282 @@
+{
+  "title": "The State of Independent Gym Websites 2026",
+  "edition": "2026-Q4",
+  "period": "Q4 2026",
+  "sample": false,
+  "source": "corpus",
+  "note": "Aggregates computed from automated scans. No individual site is identified.",
+  "url": "https://clikiti.com/research/gyms/2026-q4",
+  "scannedAt": "2026-10-15T23:38:33.728Z",
+  "publishedAt": "2026-10-15T23:35:38.150Z",
+  "modifiedAt": "2026-10-15T23:38:47.146Z",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "Free to use and cite under CC BY 4.0. Credit Clikiti with a link.",
+  "citation": "Clikiti. (2026, October 15). The state of independent gym websites 2026 (Q4 2026) [Report]. https://clikiti.com/research/gyms/2026-q4",
+  "audience": "Web agencies and freelancers selling to independent gyms, CrossFit boxes, boxing and martial arts gyms and boutique studios",
+  "sampleSize": 165,
+  "marginOfErrorPts": 7.6,
+  "medianScore": 80,
+  "meanScore": 79,
+  "meanQuestionsAnswered": 3.8,
+  "questionCount": 9,
+  "findings": [
+    "Only 20% of the 165 independent gym and fitness studio websites we scanned say where to park or whether there is childcare.",
+    "A typical site answers four of the nine questions would-be members ask before choosing (mean 3.8).",
+    "The median overall score is 80 out of 100 (mean 79).",
+    "The least-answered questions are \"Where do I park, and can I bring my kids?\" (20%), \"Who will coach me, and are they qualified?\" (29%) and \"Do other members vouch for it?\" (31%).",
+    "The best-answered are \"Can I try it first?\" (67%) and \"What does it cost to join?\" (64%).",
+    "By kind of business, the highest median score is 80 (independent gyms), against 80 for boutique studios, 79 for CrossFit and functional fitness and 78 for boxing and martial arts.",
+    "94% fail \"Loads in under 2.5 s on a phone\" (Core Web Vitals · LCP).",
+    "79% fail \"ExerciseGym, HealthClub or SportsActivityLocation structured data\" (Schema.org · ExerciseGym).",
+    "76% fail \"Text contrast passes 4.5:1\" (WCAG 1.4.3)."
+  ],
+  "questions": [
+    {
+      "id": "amenity",
+      "question": "Where do I park, and can I bring my kids?",
+      "label": "Parking or childcare stated",
+      "standard": "Member question 8",
+      "passPct": 20,
+      "bySegment": {
+        "gym": 23,
+        "cf": 19,
+        "combat": 9,
+        "studio": 30
+      }
+    },
+    {
+      "id": "coaches",
+      "question": "Who will coach me, and are they qualified?",
+      "label": "Coaches named, with their certifications",
+      "standard": "Member question 4",
+      "passPct": 29,
+      "bySegment": {
+        "gym": 21,
+        "cf": 25,
+        "combat": 32,
+        "studio": 37
+      }
+    },
+    {
+      "id": "reviews",
+      "question": "Do other members vouch for it?",
+      "label": "Reviews marked up, in a widget or quoted",
+      "standard": "Member question 9",
+      "passPct": 31,
+      "bySegment": {
+        "gym": 33,
+        "cf": 42,
+        "combat": 26,
+        "studio": 26
+      }
+    },
+    {
+      "id": "cancel",
+      "question": "Am I locked in? How do I cancel?",
+      "label": "Contract or cancellation terms stated",
+      "standard": "Member question 6",
+      "passPct": 33,
+      "bySegment": {
+        "gym": 41,
+        "cf": 33,
+        "combat": 26,
+        "studio": 33
+      }
+    },
+    {
+      "id": "hours",
+      "question": "When can I come in?",
+      "label": "Opening hours or 24-hour access stated",
+      "standard": "Member question 7",
+      "passPct": 35,
+      "bySegment": {
+        "gym": 69,
+        "cf": 36,
+        "combat": 19,
+        "studio": 21
+      }
+    },
+    {
+      "id": "schedule",
+      "question": "When are the classes?",
+      "label": "Class schedule on the site",
+      "standard": "Member question 3",
+      "passPct": 48,
+      "bySegment": {
+        "gym": 23,
+        "cf": 89,
+        "combat": 45,
+        "studio": 42
+      }
+    },
+    {
+      "id": "beginner",
+      "question": "I have never done this. Where do I start?",
+      "label": "A way in for beginners",
+      "standard": "Member question 5",
+      "passPct": 50,
+      "bySegment": {
+        "gym": 28,
+        "cf": 72,
+        "combat": 55,
+        "studio": 44
+      }
+    },
+    {
+      "id": "price",
+      "question": "What does it cost to join?",
+      "label": "A membership or class price shown",
+      "standard": "Member question 1",
+      "passPct": 64,
+      "bySegment": {
+        "gym": 72,
+        "cf": 81,
+        "combat": 36,
+        "studio": 72
+      }
+    },
+    {
+      "id": "trial",
+      "question": "Can I try it first?",
+      "label": "A free trial, intro offer, drop-in or day pass",
+      "standard": "Member question 2",
+      "passPct": 67,
+      "bySegment": {
+        "gym": 67,
+        "cf": 83,
+        "combat": 66,
+        "studio": 53
+      }
+    }
+  ],
+  "technical": [
+    {
+      "id": "lcp",
+      "label": "Loads in under 2.5 s on a phone",
+      "standard": "Core Web Vitals · LCP",
+      "failPct": 94,
+      "bySegment": {
+        "gym": 95,
+        "cf": 94,
+        "combat": 98,
+        "studio": 88
+      }
+    },
+    {
+      "id": "schema",
+      "label": "ExerciseGym, HealthClub or SportsActivityLocation structured data",
+      "standard": "Schema.org · ExerciseGym",
+      "failPct": 79,
+      "bySegment": {
+        "gym": 87,
+        "cf": 42,
+        "combat": 85,
+        "studio": 98
+      }
+    },
+    {
+      "id": "con",
+      "label": "Text contrast passes 4.5:1",
+      "standard": "WCAG 1.4.3",
+      "failPct": 76,
+      "bySegment": {
+        "gym": 72,
+        "cf": 75,
+        "combat": 74,
+        "studio": 81
+      }
+    },
+    {
+      "id": "alt",
+      "label": "Images have text descriptions",
+      "standard": "WCAG 1.1.1",
+      "failPct": 16,
+      "bySegment": {
+        "gym": 18,
+        "cf": 6,
+        "combat": 19,
+        "studio": 19
+      }
+    }
+  ],
+  "segments": [
+    {
+      "id": "gym",
+      "name": "Independent gyms",
+      "sites": 39,
+      "median": 80,
+      "weakPct": 0
+    },
+    {
+      "id": "cf",
+      "name": "CrossFit and functional fitness",
+      "sites": 36,
+      "median": 79,
+      "weakPct": 0
+    },
+    {
+      "id": "combat",
+      "name": "Boxing and martial arts",
+      "sites": 47,
+      "median": 78,
+      "weakPct": 0
+    },
+    {
+      "id": "studio",
+      "name": "Boutique studios",
+      "sites": 43,
+      "median": 80,
+      "weakPct": 0
+    }
+  ],
+  "agencyProblems": [
+    {
+      "id": "lcp",
+      "label": "Loads in under 2.5 s on a phone",
+      "standard": "Core Web Vitals · LCP",
+      "failPct": 94,
+      "fix": "Resize and compress the hero image and the class videos, defer the booking widget, aim for under 2.5 s on a phone.",
+      "pitch": "Your home page takes several seconds to appear on a phone in the car park.",
+      "effort": "Build"
+    },
+    {
+      "id": "amenity",
+      "label": "Parking or childcare stated",
+      "standard": "Member question 8",
+      "failPct": 80,
+      "question": "Where do I park, and can I bring my kids?",
+      "fix": "One line on parking and one on childcare (or that there is none), on the contact or first-visit page.",
+      "pitch": "Parents and drivers want to know two practical things before the first class, and your site answers neither.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "schema",
+      "label": "ExerciseGym, HealthClub or SportsActivityLocation structured data",
+      "standard": "Schema.org · ExerciseGym",
+      "failPct": 79,
+      "fix": "Add ExerciseGym, HealthClub or SportsActivityLocation structured data with the address, phone and opening hours.",
+      "pitch": "Search engines and assistants have to guess where you are and when you are open.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "con",
+      "label": "Text contrast passes 4.5:1",
+      "standard": "WCAG 1.4.3",
+      "failPct": 76,
+      "fix": "Raise text contrast to at least 4.5:1 in the theme, including text set over photographs.",
+      "pitch": "Grey text on dark photographs is hard to read, and it is a WCAG failure.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "coaches",
+      "label": "Coaches named, with their certifications",
+      "standard": "Member question 4",
+      "failPct": 71,
+      "question": "Who will coach me, and are they qualified?",
+      "fix": "A coaches page with each coach named, a photograph and the certifications they hold (CrossFit Level 2, NASM, belt rank, RYT 200, a Pilates certification).",
+      "pitch": "Your coaches are qualified, and the site never says so. A first-timer wants to know who will be in the room.",
+      "effort": "Content"
+    }
+  ]
+}

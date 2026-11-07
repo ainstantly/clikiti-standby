@@ -1,0 +1,283 @@
+{
+  "title": "The State of Independent Home-Service Trades Websites 2026",
+  "edition": "2026-Q4",
+  "period": "Q4 2026",
+  "sample": false,
+  "source": "corpus",
+  "note": "Aggregates computed from automated scans. No individual site is identified.",
+  "url": "https://clikiti.com/research/trades/2026-q4",
+  "scannedAt": "2026-10-15T12:49:49.178Z",
+  "publishedAt": "2026-10-15T12:25:34.972Z",
+  "modifiedAt": "2026-10-15T12:50:05.654Z",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "Free to use and cite under CC BY 4.0. Credit Clikiti with a link.",
+  "citation": "Clikiti. (2026, October 15). The state of independent home-service trades websites 2026 (Q4 2026) [Report]. https://clikiti.com/research/trades/2026-q4",
+  "audience": "Web agencies and freelancers selling to independent plumbing, HVAC, electrical, roofing and appliance repair businesses",
+  "sampleSize": 165,
+  "marginOfErrorPts": 7.6,
+  "medianScore": 77,
+  "meanScore": 78,
+  "meanQuestionsAnswered": 4,
+  "questionCount": 9,
+  "findings": [
+    "Only 17% of the 165 independent home-service trade websites we scanned state a warranty with its terms: on parts or labour, in months or years.",
+    "A typical site answers four of the nine questions homeowners ask before choosing (mean 4).",
+    "The median overall score is 77 out of 100 (mean 78).",
+    "The least-answered questions are \"What if it fails again?\" (17%), \"What will the visit cost?\" (18%) and \"Can I spread the cost?\" (27%).",
+    "The best-answered are \"Do you work in my area?\" (80%) and \"How do I reach you, and when are you open?\" (64%).",
+    "By kind of business, the highest median score is 83 (appliance repair and handyman), against 75 for plumbing and hvac, 75 for electrical and 75 for roofing and exteriors.",
+    "93% fail \"Loads in under 2.5 s on a phone\" (Core Web Vitals · LCP).",
+    "73% fail \"Text contrast passes 4.5:1\" (WCAG 1.4.3).",
+    "61% fail \"Plumber, HVACBusiness, Electrician or RoofingContractor structured data\" (Schema.org · HomeAndConstructionBusiness)."
+  ],
+  "questions": [
+    {
+      "id": "warranty",
+      "question": "What if it fails again?",
+      "label": "Warranty or guarantee stated with its terms",
+      "standard": "Homeowner question 7",
+      "passPct": 17,
+      "bySegment": {
+        "plumb": 14,
+        "elec": 10,
+        "roof": 24,
+        "appl": 22
+      }
+    },
+    {
+      "id": "price",
+      "question": "What will the visit cost?",
+      "label": "A price shown: a service call, a fee, a rate or a job",
+      "standard": "Homeowner question 8",
+      "passPct": 18,
+      "bySegment": {
+        "plumb": 30,
+        "elec": 2,
+        "roof": 24,
+        "appl": 14
+      }
+    },
+    {
+      "id": "financing",
+      "question": "Can I spread the cost?",
+      "label": "Financing offered",
+      "standard": "Homeowner question 6",
+      "passPct": 27,
+      "bySegment": {
+        "plumb": 57,
+        "elec": 10,
+        "roof": 33,
+        "appl": 3
+      }
+    },
+    {
+      "id": "licensed",
+      "question": "Are you licensed?",
+      "label": "Licence number shown as text",
+      "standard": "Homeowner question 4",
+      "passPct": 28,
+      "bySegment": {
+        "plumb": 39,
+        "elec": 33,
+        "roof": 33,
+        "appl": 3
+      }
+    },
+    {
+      "id": "reviews",
+      "question": "Do my neighbours vouch for you?",
+      "label": "Reviews marked up, in a widget or quoted",
+      "standard": "Homeowner question 9",
+      "passPct": 52,
+      "bySegment": {
+        "plumb": 70,
+        "elec": 40,
+        "roof": 57,
+        "appl": 35
+      }
+    },
+    {
+      "id": "emergency",
+      "question": "Can someone come tonight?",
+      "label": "Emergency, 24/7 or same-day service stated",
+      "standard": "Homeowner question 3",
+      "passPct": 53,
+      "bySegment": {
+        "plumb": 68,
+        "elec": 50,
+        "roof": 48,
+        "appl": 43
+      }
+    },
+    {
+      "id": "book",
+      "question": "Can I book without calling?",
+      "label": "Book or request an estimate online",
+      "standard": "Homeowner question 5",
+      "passPct": 60,
+      "bySegment": {
+        "plumb": 68,
+        "elec": 52,
+        "roof": 69,
+        "appl": 49
+      }
+    },
+    {
+      "id": "contact",
+      "question": "How do I reach you, and when are you open?",
+      "label": "Tappable phone plus opening hours",
+      "standard": "Homeowner question 1",
+      "passPct": 64,
+      "bySegment": {
+        "plumb": 82,
+        "elec": 62,
+        "roof": 64,
+        "appl": 43
+      }
+    },
+    {
+      "id": "area",
+      "question": "Do you work in my area?",
+      "label": "Service area named: towns, ZIP codes or an area page",
+      "standard": "Homeowner question 2",
+      "passPct": 80,
+      "bySegment": {
+        "plumb": 80,
+        "elec": 71,
+        "roof": 93,
+        "appl": 76
+      }
+    }
+  ],
+  "technical": [
+    {
+      "id": "lcp",
+      "label": "Loads in under 2.5 s on a phone",
+      "standard": "Core Web Vitals · LCP",
+      "failPct": 93,
+      "bySegment": {
+        "plumb": 86,
+        "elec": 100,
+        "roof": 98,
+        "appl": 89
+      }
+    },
+    {
+      "id": "con",
+      "label": "Text contrast passes 4.5:1",
+      "standard": "WCAG 1.4.3",
+      "failPct": 73,
+      "bySegment": {
+        "plumb": 75,
+        "elec": 76,
+        "roof": 76,
+        "appl": 62
+      }
+    },
+    {
+      "id": "schema",
+      "label": "Plumber, HVACBusiness, Electrician or RoofingContractor structured data",
+      "standard": "Schema.org · HomeAndConstructionBusiness",
+      "failPct": 61,
+      "bySegment": {
+        "plumb": 45,
+        "elec": 71,
+        "roof": 40,
+        "appl": 89
+      }
+    },
+    {
+      "id": "alt",
+      "label": "Images have text descriptions",
+      "standard": "WCAG 1.1.1",
+      "failPct": 22,
+      "bySegment": {
+        "plumb": 16,
+        "elec": 29,
+        "roof": 19,
+        "appl": 27
+      }
+    }
+  ],
+  "segments": [
+    {
+      "id": "plumb",
+      "name": "Plumbing and HVAC",
+      "sites": 44,
+      "median": 75,
+      "weakPct": 0
+    },
+    {
+      "id": "elec",
+      "name": "Electrical",
+      "sites": 42,
+      "median": 75,
+      "weakPct": 0
+    },
+    {
+      "id": "roof",
+      "name": "Roofing and exteriors",
+      "sites": 42,
+      "median": 75,
+      "weakPct": 0
+    },
+    {
+      "id": "appl",
+      "name": "Appliance repair and handyman",
+      "sites": 37,
+      "median": 83,
+      "weakPct": 0
+    }
+  ],
+  "agencyProblems": [
+    {
+      "id": "lcp",
+      "label": "Loads in under 2.5 s on a phone",
+      "standard": "Core Web Vitals · LCP",
+      "failPct": 93,
+      "fix": "Resize and compress the hero image, defer scripts, aim for under 2.5 s on a phone.",
+      "pitch": "Your home page takes several seconds to appear on the phone of someone standing in a flooded basement.",
+      "effort": "Build"
+    },
+    {
+      "id": "warranty",
+      "label": "Warranty or guarantee stated with its terms",
+      "standard": "Homeowner question 7",
+      "failPct": 83,
+      "question": "What if it fails again?",
+      "fix": "State the warranty on parts and on labour, in months or years, on the home page and the service pages.",
+      "pitch": "\"What if it fails again?\" is the second question a homeowner asks, and your site has no answer.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "price",
+      "label": "A price shown: a service call, a fee, a rate or a job",
+      "standard": "Homeowner question 8",
+      "failPct": 82,
+      "question": "What will the visit cost?",
+      "fix": "Publish the service-call or diagnostic fee, and a starting price or range for the common jobs.",
+      "pitch": "Homeowners fear the bill first. Your site gives them no number at all, not even the trip charge.",
+      "effort": "Content"
+    },
+    {
+      "id": "financing",
+      "label": "Financing offered",
+      "standard": "Homeowner question 6",
+      "failPct": 73,
+      "question": "Can I spread the cost?",
+      "fix": "A financing page that names the lender and the terms, linked from big-ticket service pages.",
+      "pitch": "A new furnace or roof is a five-figure decision. Your site never says it can be paid monthly.",
+      "effort": "Content"
+    },
+    {
+      "id": "con",
+      "label": "Text contrast passes 4.5:1",
+      "standard": "WCAG 1.4.3",
+      "failPct": 73,
+      "fix": "Raise text contrast to at least 4.5:1 in the theme.",
+      "pitch": "Parts of the site are hard to read, and it is a WCAG failure.",
+      "effort": "Quick fix"
+    }
+  ]
+}

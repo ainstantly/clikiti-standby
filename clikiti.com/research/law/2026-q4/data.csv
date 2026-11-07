@@ -1,0 +1,31 @@
+# The State of Law Firm Websites 2026 (Q4 2026). CC BY 4.0, credit Clikiti with a link: https://clikiti.com/research/law
+"section","id","label","standard","metric","value"
+"summary","sites","Websites scanned","","count",125
+"summary","median","Median overall score","","score_0_100",76
+"summary","mean","Mean overall score","","score_0_100",77
+"summary","moe","Margin of error (95%)","","percentage_points",8.8
+"summary","weak","Sites scoring under 60","","percent",0
+"question","contact","Can I reach someone now?","Client question 5","percent_pass",39
+"question","admit","Are they licensed here?","Client question 2","percent_pass",43
+"question","reviews","Do clients vouch for them?","Client question 8","percent_pass",45
+"question","results","Have they won cases like mine?","Client question 7","percent_pass",46
+"question","intake","Can I ask without calling?","Client question 6","percent_pass",50
+"question","consult","What does it cost to talk?","Client question 4","percent_pass",54
+"question","attorney","Who will handle my case?","Client question 1","percent_pass",63
+"question","areas","Do they handle my kind of case?","Client question 3","percent_pass",91
+"technical","con","Text contrast passes 4.5:1","WCAG 1.4.3","percent_fail",86
+"technical","lcp","Loads in under 2.5 s on a phone","Core Web Vitals · LCP","percent_fail",68
+"technical","schema","LegalService or Attorney structured data","Schema.org · LegalService","percent_fail",42
+"technical","alt","Images have text descriptions","WCAG 1.1.1","percent_fail",12
+"segment","pi","Personal injury","","median_score",77
+"segment","pi","Personal injury","","percent_under_60",0
+"segment","pi","Personal injury","","sites",34
+"segment","family","Family and estate","","median_score",75
+"segment","family","Family and estate","","percent_under_60",0
+"segment","family","Family and estate","","sites",35
+"segment","crim","Criminal defence and immigration","","median_score",77
+"segment","crim","Criminal defence and immigration","","percent_under_60",0
+"segment","crim","Criminal defence and immigration","","sites",30
+"segment","biz","Small business and employment","","median_score",79
+"segment","biz","Small business and employment","","percent_under_60",0
+"segment","biz","Small business and employment","","sites",26

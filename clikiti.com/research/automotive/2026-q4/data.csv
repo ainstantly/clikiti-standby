@@ -1,0 +1,30 @@
+# The State of Independent Auto Websites 2026 (Q4 2026). CC BY 4.0, credit Clikiti with a link: https://clikiti.com/research/automotive
+"section","id","label","standard","metric","value"
+"summary","sites","Websites scanned","","count",174
+"summary","median","Median overall score","","score_0_100",76
+"summary","mean","Mean overall score","","score_0_100",76
+"summary","moe","Margin of error (95%)","","percentage_points",7.4
+"summary","weak","Sites scoring under 60","","percent",1
+"question","price","Roughly what will it cost?","Customer question 6","percent_pass",29
+"question","warranty","Do you stand behind the work?","Customer question 5","percent_pass",40
+"question","certified","Are you qualified?","Customer question 3","percent_pass",47
+"question","reviews","Do other drivers vouch for you?","Customer question 7","percent_pass",47
+"question","book","Can I book without calling?","Customer question 4","percent_pass",56
+"question","makes","Do you handle my car?","Customer question 2","percent_pass",70
+"question","contact","How do I reach you, and when are you open?","Customer question 1","percent_pass",85
+"technical","lcp","Loads in under 2.5 s on a phone","Core Web Vitals · LCP","percent_fail",87
+"technical","con","Text contrast passes 4.5:1","WCAG 1.4.3","percent_fail",77
+"technical","schema","AutoRepair, AutoBodyShop or AutoDealer structured data","Schema.org · AutomotiveBusiness","percent_fail",51
+"technical","alt","Images have text descriptions","WCAG 1.1.1","percent_fail",25
+"segment","rep","General repair and service","","median_score",77
+"segment","rep","General repair and service","","percent_under_60",0
+"segment","rep","General repair and service","","sites",55
+"segment","tire","Tire, brake and quick service","","median_score",76
+"segment","tire","Tire, brake and quick service","","percent_under_60",0
+"segment","tire","Tire, brake and quick service","","sites",31
+"segment","body","Collision and body","","median_score",76
+"segment","body","Collision and body","","percent_under_60",0
+"segment","body","Collision and body","","sites",45
+"segment","dlr","Independent used-car dealers","","median_score",72
+"segment","dlr","Independent used-car dealers","","percent_under_60",5
+"segment","dlr","Independent used-car dealers","","sites",43

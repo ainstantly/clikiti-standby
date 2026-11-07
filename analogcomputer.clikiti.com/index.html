@@ -1,0 +1,1375 @@
+<!doctype html>
+<html lang="en">
+<head><meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Two Ways to Think</title>
+<meta name="description" content="A cinematic explainer: how an H100-class GPU computes, how a new analog in-memory chip computes, and what happens if it scales from 40 nm to 2 nm.">
+<meta property="og:title" content="Two Ways to Think">
+<meta property="og:description" content="How today's AI chips think, how an analog chip thinks, and why moving numbers is the real cost.">
+<meta property="og:image" content="https://analogcomputer.clikiti.com/og.jpg">
+<meta property="og:type" content="website">
+<link rel="alternate" hreflang="en" href="https://analogcomputer.clikiti.com/">
+<link rel="alternate" hreflang="es" href="https://analogcomputer.clikiti.com/?lang=es">
+<link rel="alternate" hreflang="x-default" href="https://analogcomputer.clikiti.com/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#030405">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{ --bg:#030405; --ink:#eef1f2; --muted:#8b949a; --line:rgba(255,255,255,.12); --amber:#ff8a2a; --cyan:#6ff3ff; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{overflow-x:clip}
+  body{background:var(--bg);color:var(--ink);font-family:"Inter Tight",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  canvas#gl{position:fixed;inset:0;width:100vw;height:100vh;display:block;z-index:0}
+  .mono{font-family:"JetBrains Mono",ui-monospace,monospace}
+  .hud{position:fixed;z-index:3;pointer-events:none}
+  .brand{top:22px;left:28px;font:500 11px "JetBrains Mono";letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  .brand b{color:var(--ink);font-weight:500}
+  .act{left:28px;bottom:40px;font:500 11px "JetBrains Mono";letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .act b{color:var(--accent,var(--amber));font-weight:500}
+  .rail{left:28px;bottom:26px;width:200px;height:1px;background:var(--line)}
+  .rail i{display:block;height:100%;width:0;background:var(--accent,var(--amber))}
+  .hint{right:28px;bottom:22px;font:400 11px "JetBrains Mono";letter-spacing:.14em;color:var(--muted);text-transform:uppercase;transition:opacity .6s}
+  .controls{position:fixed;top:16px;right:24px;z-index:5;display:flex;gap:8px;align-items:center}
+  .cc{pointer-events:auto;font:600 11px "JetBrains Mono";letter-spacing:.08em;color:var(--muted);background:rgba(0,0,0,.45);border:1px solid var(--line);border-radius:6px;padding:7px 9px;cursor:pointer;backdrop-filter:blur(6px)}
+  .cc[hidden]{display:none}
+  .cc.on{color:#030405;background:var(--ink);border-color:var(--ink)}
+  .sound{pointer-events:auto;display:flex;align-items:center;gap:8px;font:500 11px "JetBrains Mono";letter-spacing:.14em;text-transform:uppercase;color:var(--ink);background:rgba(0,0,0,.45);border:1px solid var(--line);border-radius:999px;padding:8px 14px;cursor:pointer;backdrop-filter:blur(6px)}
+  .lang{text-decoration:none;display:inline-block}
+  .autotag{right:28px;bottom:22px;display:flex;align-items:center;gap:8px;font:500 11px "JetBrains Mono";letter-spacing:.12em;text-transform:uppercase;color:var(--ink);background:rgba(0,0,0,.45);border:1px solid var(--line);border-radius:999px;padding:7px 12px;backdrop-filter:blur(6px);opacity:0;transform:translateY(6px);transition:opacity .5s,transform .5s}
+  .autotag i{width:6px;height:6px;border-radius:50%;background:var(--accent,var(--amber));animation:autopulse 1.6s ease-in-out infinite}
+  @keyframes autopulse{50%{opacity:.25}}
+  body.auto .autotag{opacity:1;transform:none}
+  body.video .autotag{display:none!important}
+  .sound.blocked{border-color:var(--amber);color:var(--amber)}
+  .sound i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.3)}
+  .sound.on i{background:var(--accent,var(--amber));box-shadow:0 0 10px var(--accent,var(--amber))}
+  .caption{position:fixed;left:50%;bottom:62px;transform:translateX(-50%);z-index:4;max-width:min(760px,88vw);text-align:center;font:400 15px/1.5 "Inter Tight";color:#e9eef0;text-shadow:0 1px 14px #000;opacity:0;transition:opacity .4s;pointer-events:none}
+  .caption.on{opacity:1}
+  .meter{position:fixed;right:28px;top:50%;transform:translateY(-50%);z-index:3;pointer-events:none;text-align:right;opacity:0;transition:opacity .5s}
+  .meter.on{opacity:1}
+  .meter .k{display:block}
+  .meter b{display:block;font:400 54px "Inter Tight";letter-spacing:-.03em;color:var(--amber);margin-top:6px}
+  .meter span{font:400 11px "JetBrains Mono";color:var(--muted);letter-spacing:.08em}
+
+  #story{position:relative;z-index:2}
+  .ch{min-height:165vh;padding:0 28px;display:flex;align-items:center}
+  .ch.short{min-height:115vh} .ch.long{min-height:300vh;align-items:flex-start;padding-top:28vh} .ch.tall{min-height:200vh}
+  .ch.right{justify-content:flex-end}
+  .ch.center{justify-content:center;text-align:center}
+  .card{max-width:460px;padding:28px 0;position:relative;opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}
+  .card.in{opacity:1;transform:none}
+  .card::before{content:"";position:absolute;inset:-60px -90px;z-index:-1;background:radial-gradient(closest-side,rgba(3,4,5,.8),rgba(3,4,5,0));pointer-events:none}
+  .center .card{max-width:780px}
+  .k{font:500 11px "JetBrains Mono";letter-spacing:.18em;text-transform:uppercase;color:var(--accent,var(--amber))}
+  h1,h2{font-weight:400;letter-spacing:-.025em;line-height:1.03;margin-top:14px}
+  h1{font-size:clamp(44px,7vw,96px)}
+  h2{font-size:clamp(32px,4.4vw,58px)}
+  .card p{font-size:17px;line-height:1.58;color:#c3cacd;margin-top:16px;text-shadow:0 1px 18px rgba(0,0,0,.9)}
+  .card p strong{color:var(--ink);font-weight:500}
+  .card p em{color:var(--ink)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .center .chips,.center .stat{justify-content:center}
+  .chip{font:400 12px "JetBrains Mono";border:1px solid var(--line);background:rgba(0,0,0,.45);backdrop-filter:blur(6px);border-radius:999px;padding:6px 11px;color:#d7dde0}
+  .stat{display:flex;gap:28px;margin-top:22px;flex-wrap:wrap}
+  .stat div b{display:block;font:400 clamp(38px,4.6vw,60px) "Inter Tight";letter-spacing:-.03em;line-height:1}
+  .stat div span{display:block;font:400 11px "JetBrains Mono";letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+  .warm b{color:var(--amber)} .cool b{color:var(--cyan)}
+  .eq{font:400 15px "JetBrains Mono";color:var(--cyan);margin-top:16px;line-height:1.9;text-shadow:0 0 18px rgba(111,243,255,.35)}
+  .note{font-size:13px!important;color:var(--muted)!important;border-left:1px solid var(--line);padding-left:14px}
+  .center .note{text-align:left;max-width:600px;margin-left:auto;margin-right:auto}
+  .bars{margin-top:18px;display:grid;gap:8px}
+  .bars div{display:grid;grid-template-columns:150px 1fr 70px;gap:10px;align-items:center;font:400 12px "JetBrains Mono";color:#cfd6d9}
+  .bars i{display:block;height:6px;border-radius:3px;background:var(--amber);box-shadow:0 0 12px rgba(255,138,42,.5)}
+  .bars div.c i{background:var(--cyan);box-shadow:0 0 12px rgba(111,243,255,.5)}
+  .refine{font:400 26px "JetBrains Mono";color:var(--cyan);margin-top:14px;text-shadow:0 0 16px rgba(111,243,255,.4)}
+  .refine small{display:block;font-size:11px;color:var(--muted);letter-spacing:.08em;margin-top:6px}
+  .nodes{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px}
+  .nodes button{font:500 12px "JetBrains Mono";color:var(--ink);background:rgba(0,0,0,.5);border:1px solid var(--line);border-radius:999px;padding:7px 12px;cursor:pointer}
+  .nodes button.on{border-color:var(--cyan);box-shadow:0 0 0 1px var(--cyan) inset;color:var(--cyan)}
+  .proj{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .proj div{border:1px solid var(--line);border-radius:10px;padding:12px;background:rgba(0,0,0,.5)}
+  .proj b{display:block;font:400 30px "Inter Tight";color:var(--cyan);letter-spacing:-.02em}
+  .proj span{font:400 11px "JetBrains Mono";color:var(--muted);letter-spacing:.06em}
+  .proj .wide{grid-column:1/-1;font-size:13px;color:#c3cacd;line-height:1.5}
+  .formula{font:400 12px "JetBrains Mono"!important;color:#9fb3ba!important;margin-top:12px;line-height:1.7!important}
+  .tag{position:fixed;left:0;top:0;z-index:2;pointer-events:none;font:500 10.5px "JetBrains Mono";letter-spacing:.08em;text-transform:uppercase;color:var(--ink);white-space:nowrap;opacity:0;transition:opacity .35s}
+  .tag small{display:block;color:var(--muted);text-transform:none;letter-spacing:0;font-weight:400}
+  .tag::before{content:"";position:absolute;left:-26px;top:7px;width:20px;height:1px;background:var(--accent,var(--amber))}
+
+  .wm{display:none}
+  body.video{overflow:hidden}
+  body.video #story,body.video #atelier,body.video .controls,body.video .caption,body.video .hint,body.video .act,body.video .rail{display:none!important}
+  body.video .brand{top:6.2vh;left:3.2vw;font-size:.95vw}
+  body.video .wm{display:block;top:6.2vh;right:3.2vw;font:500 .95vw "JetBrains Mono";letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  body.video .tag{font-size:.82vw} body.video .tag::before{left:-1.6vw;width:1.2vw;top:.55vw}
+  body.video .meter{right:4vw} body.video .meter b{font-size:5vw} body.video .meter span{font-size:.9vw}
+  #vt{position:fixed;inset:0;z-index:3;pointer-events:none;display:none}
+  body.video #vt{display:block}
+  .vt-card{position:absolute;bottom:13vh;max-width:44vw}
+  .vt-card.left{left:6vw} .vt-card.right{right:6vw} .vt-card.center{left:50%;transform:translateX(-50%);text-align:center;max-width:70vw;bottom:auto;top:32vh}
+  .vt-card::before{content:"";position:absolute;inset:-10vw -12vw;z-index:-1;background:radial-gradient(closest-side,rgba(3,4,5,.78),rgba(3,4,5,0))}
+  .vt-k{font:500 1.2vw "JetBrains Mono";letter-spacing:.22em;text-transform:uppercase;color:var(--accent,var(--amber))}
+  .vt-t{font:400 4.4vw/1.02 "Inter Tight";letter-spacing:-.03em;margin-top:1.4vw}
+  .vt-t.big{font-size:5.6vw}
+  .vt-t .w,.vt-k .c{display:inline-block;will-change:transform,opacity,filter}
+  .vt-stats{display:flex;gap:3vw;margin-top:2vw}
+  .center .vt-stats,.center .vt-chips{justify-content:center}
+  .vt-stats b{display:block;font:400 5vw/1 "Inter Tight";letter-spacing:-.03em;color:var(--accent,var(--amber))}
+  .vt-stats span{display:block;font:400 .95vw "JetBrains Mono";letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:.7vw}
+  .vt-chips{display:flex;flex-wrap:wrap;gap:.8vw;margin-top:2vw}
+  .vt-chips span{font:400 1.25vw "JetBrains Mono";border:1px solid var(--line);background:rgba(0,0,0,.5);border-radius:999px;padding:.6vw 1.1vw;color:#dfe5e8;display:inline-block}
+  .vt-live{font:400 2vw/1.3 "JetBrains Mono";max-width:60vw;color:var(--cyan);margin-top:1.8vw;text-shadow:0 0 1.5vw rgba(111,243,255,.4)}
+  .vt-live small{display:block;font-size:1vw;color:var(--muted);letter-spacing:.08em;margin-top:.6vw}
+  #atelier{position:relative;z-index:2;background:linear-gradient(#03040500,#030405 14vh);padding:24vh 28px 90px}
+  #atelier .wrap{max-width:1000px;margin:0 auto}
+  #atelier p.lead{max-width:620px;color:#c3cacd;font-size:18px;line-height:1.55;margin-top:18px}
+  .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+  .btn{display:inline-flex;align-items:center;font:500 15px "Inter Tight";color:#030405;background:var(--ink);border-radius:999px;padding:14px 22px;text-decoration:none;transition:transform .15s,box-shadow .2s}
+  .btn:hover{transform:translateY(-1px);box-shadow:0 0 0 4px rgba(111,243,255,.18)}
+  .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  .made{margin-top:64px;font:500 11px "JetBrains Mono";letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .made b{color:var(--ink);font-weight:500}
+  .sources{margin-top:18px;font-size:12.5px;color:var(--muted);line-height:1.9}
+  .sources a{color:#cfd6d9}
+  @media (max-width:760px){
+    .hint,.meter,.tag,.rail{display:none}
+    .brand{left:16px;top:20px;font-size:10px;letter-spacing:.14em}
+    .brand span{display:none}
+    .act{left:16px;top:40px;bottom:auto;font-size:10px}
+    .controls{top:12px;right:12px;flex-direction:column;align-items:flex-end;gap:6px}
+    .controls .sound{order:0}.controls .lang{order:1}.controls .cc:not(.lang){order:2}
+    .sound{padding:7px 11px}
+    .ch,.ch.right,.ch.center{padding:0;align-items:flex-end;justify-content:stretch;text-align:left}
+    .ch.long{padding-top:0;align-items:flex-end}
+    .card,.center .card{max-width:none;width:100%;padding:28px 18px 34px;background:linear-gradient(rgba(3,4,5,0),rgba(3,4,5,.88) 22%,rgba(3,4,5,.94));}
+    .card::before{display:none}
+    .center .chips,.center .stat{justify-content:flex-start}
+    .center .note{margin-left:0}
+    h1{font-size:40px} h2{font-size:31px}
+    .card p{font-size:15.5px;line-height:1.55}
+    .bars div{grid-template-columns:104px 1fr 54px;font-size:11px}
+    .proj b{font-size:26px}
+    .formula{font-size:10.5px!important}
+    .autotag{right:auto;left:16px;bottom:auto;top:60px;font-size:9.5px;letter-spacing:.08em;padding:5px 10px;white-space:nowrap}
+    body.auto .caption{top:94px}
+    .caption{top:66px;bottom:auto;font-size:12.5px;line-height:1.45;background:rgba(3,4,5,.72);padding:8px 12px;border-radius:10px;width:calc(100vw - 32px)}
+    .ch[data-c="0"]{min-height:100vh}
+    #atelier{padding:16vh 18px 70px}
+    #atelier p.lead{font-size:16px}
+    .btn{width:100%;justify-content:center}
+  }
+</style>
+</head>
+<body>
+<canvas id="gl"></canvas>
+<div id="tags"></div>
+<div class="hud brand"><b>Two ways to think</b><span> · how chips compute</span></div>
+<div class="hud act" id="act"><b>Act I</b> · The digital way · 01/16</div>
+<div class="hud rail"><i id="rail"></i></div>
+<div class="hud hint" id="hint">Scroll</div>
+<div class="hud autotag" id="autotag" aria-hidden="true" aria-live="polite"><i></i><span>Autoplay · move or scroll to take over</span></div>
+<div class="controls"><a class="cc lang" id="lang" href="?lang=es" hreflang="es" lang="es" aria-label="Leer en español">ES</a><button class="cc" id="cc" aria-pressed="false" aria-label="Closed captions" hidden>CC</button><button class="sound" id="sound" aria-pressed="false"><i></i><span>Sound off</span></button></div>
+<div class="hud wm">Clikiti Atelier</div>
+<div id="vt"></div>
+<div class="caption" id="caption"></div>
+<div class="meter" id="meter"><span class="k mono">Energy for one number's trip</span><b id="meterv">0 pJ</b><span id="meters">vs 3.7 pJ for the math itself</span></div>
+
+<main id="story">
+  <section class="ch" data-c="0"><div class="card">
+    <div class="k">Act I · 01 · The heavyweight</div>
+    <h1>Every answer has to travel.</h1>
+    <p>This is an H100-class AI accelerator: <strong>one 814 mm² slab of silicon with 80 billion transistors</strong>, ringed by towers of stacked memory. Chips like this answer your chatbot questions. To see why a different kind of chip matters, we first need to see how this one thinks.</p>
+  </div></section>
+
+  <section class="ch right" data-c="1"><div class="card">
+    <div class="k">02 · What AI actually does</div>
+    <h2>Mostly, it multiplies.</h2>
+    <p>An AI model is a giant table of numbers called <strong>weights</strong>. Answering means multiplying your input by those tables, over and over: <em>multiply, add, repeat</em>.</p>
+    <p>A model with 70 billion weights does about <strong>140 billion multiply-adds for every word</strong> it writes. Everything else on this page is about how fast, and at what energy cost, a chip can do that.</p>
+  </div></section>
+
+  <section class="ch" data-c="2"><div class="card">
+    <div class="k">03 · Ones and zeros</div>
+    <h2>Math made of switches.</h2>
+    <p>A digital chip stores every number as a row of <strong>bits</strong>: ones and zeros, each held by transistors that are either on or off. A multiply is a little machine of thousands of transistors flipping in a precise order, once every clock tick.</p>
+    <p>An H100 packs <strong>528 tensor cores</strong>, little grids of multiply-add units built to chew through blocks of numbers at once.</p>
+    <div class="chips"><span class="chip">16-bit number = 16 switches</span><span class="chip">~1.98 GHz clock</span><span class="chip">989 trillion FP16 ops/s</span></div>
+  </div></section>
+
+  <section class="ch right" data-c="3"><div class="card">
+    <div class="k">04 · A city of processors</div>
+    <h2>132 neighbourhoods, one river.</h2>
+    <p>Zoom into the die and it looks like a city. There are 132 identical blocks called <strong>streaming multiprocessors (SMs)</strong>, each with four tensor cores and its own small, fast memory. Through the middle runs a 50 MB river of shared cache.</p>
+    <p>The city is fast. But it has a problem: the numbers it needs mostly don't live here.</p>
+    <div class="chips"><span class="chip">132 SMs</span><span class="chip">256 KB fast memory per SM</span><span class="chip">50 MB L2 cache</span><span class="chip">4 nm-class process</span></div>
+  </div></section>
+
+  <section class="ch right" data-c="4"><div class="card">
+    <div class="k">05 · Take it apart</div>
+    <h2>The numbers live in the towers.</h2>
+    <p>The weights don't fit on the die. They sit in <strong>HBM</strong>, high-bandwidth memory built as stacks of DRAM chips. A wafer-thin <strong>silicon interposer</strong> carries thousands of wires between the towers and the city.</p>
+    <div class="chips"><span class="chip">5 active HBM3 stacks · 80 GB</span><span class="chip">8+ DRAM layers per stack</span><span class="chip">3.35 TB/s</span><span class="chip">up to 700 W</span></div>
+  </div></section>
+
+  <section class="ch long" data-c="5"><div class="card">
+    <div class="k">06 · Ride along</div>
+    <h2>Follow one number.</h2>
+    <p>Before a weight can be multiplied, it has to make a trip: <strong>out of a DRAM cell, down the stack, across the interposer, through the caches, into the registers, and finally into a tensor core</strong>. Each checkpoint costs energy. Watch the meter.</p>
+    <p class="note">Energy per 32-bit access at 45 nm (Horowitz, ISSCC 2014). Modern chips are cheaper per step, but the ratio between moving and computing has stayed stubborn.</p>
+  </div></section>
+
+  <section class="ch" data-c="6"><div class="card">
+    <div class="k">07 · The wall</div>
+    <h2>The cores sit and wait.</h2>
+    <p>To keep every tensor core busy, an H100 needs about <strong>295 operations of work for every byte</strong> it pulls from memory (989 trillion ops ÷ 3.35 trillion bytes per second).</p>
+    <p>A chatbot writing one word at a time does roughly <strong>one operation per byte</strong> of weights. So for a single conversation, the math units are idle more than 99% of the time, stuck in traffic. Data centres batch hundreds of users together to hide it.</p>
+    <p>This is the <strong>von Neumann bottleneck</strong>: memory here, compute there, and a bridge in between.</p>
+  </div></section>
+
+  <section class="ch right" data-c="7"><div class="card">
+    <div class="k">08 · Where the energy goes</div>
+    <h2>Most of the watts move data.</h2>
+    <p>Power climbs up through hundreds of pillars into the die. Most of it isn't spent on the math. It goes to <strong>charging and discharging wires</strong> to move ones and zeros around, and all of it leaves as heat.</p>
+    <div class="bars">
+      <div><span>DRAM fetch</span><i style="width:100%"></i><span>640 pJ</span></div>
+      <div><span>1 MB cache read</span><i style="width:16%"></i><span>100 pJ</span></div>
+      <div><span>8 KB cache read</span><i style="width:2.5%"></i><span>10 pJ</span></div>
+      <div class="c"><span>The multiply</span><i style="width:1%"></i><span>3.7 pJ</span></div>
+    </div>
+    <p>One H100 at 700 W, running all year, uses about <strong>6.1 MWh</strong>, and data centres run them by the tens of thousands.</p>
+  </div></section>
+
+  <section class="ch short center" data-c="8"><div class="card">
+    <div class="k" style="color:var(--cyan)">Act II · 09 · The question</div>
+    <h1>What if the memory<br>did the math?</h1>
+  </div></section>
+
+  <section class="ch right" data-c="9"><div class="card">
+    <div class="k" style="color:var(--cyan)">10 · A different chip</div>
+    <h2>No towers. No bridge.</h2>
+    <p>In October 2025, a team at <strong>Peking University</strong> led by Sun Zhong published an analog chip in <em>Nature Electronics</em>. Inside, there's no separate memory and no separate math unit. There's a grid of wires with a tiny memory cell at every crossing, and the grid itself does the computing.</p>
+    <div class="chips"><span class="chip">RRAM crossbar arrays</span><span class="chip">1 Mb array for multiply</span><span class="chip">8×8 array for one-step solve</span><span class="chip">40 nm-class process*</span></div>
+  </div></section>
+
+  <section class="ch tall" data-c="10"><div class="card">
+    <div class="k" style="color:var(--cyan)">11 · A number stored as physics</div>
+    <h2>One cell, one number.</h2>
+    <p>Each crossing holds a <strong>resistive memory cell (RRAM)</strong>: a sandwich of metal, a thin oxide layer, and metal. A voltage pulse grows a tiny conductive <strong>filament</strong> through the oxide. A thicker filament lets more current through.</p>
+    <p>That ease of flow, its <strong>conductance</strong>, <em>is</em> the stored number. It stays put with the power off, and it can be read without moving it anywhere.</p>
+    <div class="chips"><span class="chip">metal / oxide / metal</span><span class="chip">conductance = value</span><span class="chip">non-volatile</span></div>
+  </div></section>
+
+  <section class="ch" data-c="11"><div class="card">
+    <div class="k" style="color:var(--cyan)">12 · Compute in memory</div>
+    <h2>Every multiply at once.</h2>
+    <p><strong>Step 1.</strong> Converters (DACs) turn your input numbers into voltages on the rows.<br>
+       <strong>Step 2.</strong> At every cell, <strong>Ohm's law</strong> does a multiply for free: current = conductance × voltage.<br>
+       <strong>Step 3.</strong> On every column, <strong>Kirchhoff's law</strong> adds the currents together.<br>
+       <strong>Step 4.</strong> Converters (ADCs) read the column currents back out as numbers.</p>
+    <p>A whole grid of multiply-adds happens in one physical instant. The weights never move.</p>
+    <div class="eq">I = G · V &nbsp;·&nbsp; Iⱼ = Σᵢ Gᵢⱼ Vᵢ</div>
+  </div></section>
+
+  <section class="ch right" data-c="12"><div class="card">
+    <div class="k" style="color:var(--cyan)">13 · Solving in one step</div>
+    <h2>Close the loop. Let it settle.</h2>
+    <p>Feed the outputs back to the inputs through amplifiers and the circuit stops being a calculator. It becomes an <strong>equation solver</strong>: it physically settles on the answer to <strong>Ax = b</strong>, the kind of problem behind 6G signal detection, simulations and AI training.</p>
+    <p>Analog answers are fuzzy, so the chip refines them. A second array, with numbers split into <strong>bit slices</strong>, checks the error and corrects it until the result matches digital precision (reported at 24-bit).</p>
+    <div class="refine" id="refine">x ≈ 0.7<small id="refine-e">error ≈ 10⁻¹</small></div>
+  </div></section>
+
+  <section class="ch center" data-c="13"><div class="card">
+    <div class="k" style="color:var(--cyan)">14 · Heat, or physics</div>
+    <h1>Two ways to think.</h1>
+    <div class="stat cool"><div><b>1,000×</b><span>throughput</span></div><div><b>100×</b><span>energy efficiency</span></div></div>
+    <p>Reported by the team against top digital processors, H100 included, on matrix-equation workloads at the same precision.</p>
+    <p class="note">What it isn't, yet: a GPU replacement. It's a lab system (an 8×8 inversion array, 16×16 problems solved), built for matrix equations, not for running a whole chatbot. *The 40 nm figure comes from secondary reporting.</p>
+  </div></section>
+
+  <section class="ch tall" data-c="14"><div class="card">
+    <div class="k" style="color:var(--cyan)">Act III · 15 · What if it scales?</div>
+    <h2>From 40 nm to 2 nm.</h2>
+    <p>The H100 is built at 4 nm-class. This analog chip worked at 40 nm-class, a process from around 2008. So what happens if it moves to modern nodes? Pick one:</p>
+    <div class="nodes" id="nodes">
+      <button data-i="0" class="on">40 nm</button><button data-i="1">28 nm</button><button data-i="2">22 nm</button><button data-i="3">7 nm</button><button data-i="4">4 nm</button><button data-i="5">2 nm</button>
+    </div>
+    <div class="proj">
+      <div><b id="pj-e">1.0×</b><span>less energy per solve</span></div>
+      <div><b id="pj-d">1.0×</b><span>more compute per mm²</span></div>
+      <div class="wide" id="pj-note">Demonstrated: Peking University, 2025. This is today.</div>
+    </div>
+    <p><strong>What shrinks well:</strong> the converters and control logic. They're ordinary transistors, and studies find they can burn 80–96% of an analog chip's energy. <strong>What fights back:</strong> thinner wires have more resistance and distort the currents, the filament physics doesn't shrink like a transistor, and cell-to-cell variation grows. RRAM itself ships at 22 nm today, not at 2 nm.</p>
+    <p class="formula">energy gain = 1 / ((1 − f) + f / s) · f ≈ 0.9 of energy in converters · s = converter gain at that node<br>density gain = 1 / (0.3 / cell + 0.7 / logic) · 70% of area in periphery · cell capped at 22 nm-class</p>
+    <p class="note">This is a scenario, not a measurement: our estimate from logic-density and published RRAM data. GPUs shrink too, so the head-to-head gap doesn't simply multiply.</p>
+  </div></section>
+
+  <section class="ch center" data-c="15"><div class="card">
+    <div class="k" style="color:var(--cyan)">16 · The direction</div>
+    <h1>Stop moving the numbers.</h1>
+    <p>The likely future isn't a 2 nm RRAM chip. It's a <strong>stack</strong>: analog memory layers built above (or bonded onto) advanced-node logic, so the converters get the newest transistors and the numbers never leave home. Whether it wins depends on wires, variability and software. The physics is already on its side.</p>
+  </div></section>
+</main>
+
+<footer id="atelier">
+  <div class="wrap">
+    <div class="k">Clikiti Atelier</div>
+    <h2>Your product deserves a story like this.</h2>
+    <p class="lead">Cinematic, research-backed scroll stories for launches, deep tech and places worth visiting. Directed by people, fact-checked, narrated, and built to run smoothly on any phone.</p>
+    <div class="cta">
+      <a class="btn" href="https://clikiti.com/atelier?utm_source=analogcomputer&amp;utm_medium=showcase&amp;utm_campaign=atelier">Commission an Atelier page →</a>
+      <a class="btn ghost" href="https://clikiti.com/?utm_source=analogcomputer&amp;utm_medium=showcase">Explore Clikiti</a>
+    </div>
+    <div class="made">Made with <b>Clikiti Atelier</b></div>
+    <div class="sources">
+      Sources ·
+      <a href="https://newsen.pku.edu.cn/PKUmedia/15269.html" target="_blank" rel="noopener">Peking University</a> ·
+      <a href="https://www.scmp.com/news/china/science/article/3329820/chinas-analogue-ai-chip-could-work-1000-times-faster-nvidia-gpu-study" target="_blank" rel="noopener">SCMP</a> ·
+      <a href="https://zionzhao.blogspot.com/2025/10/chinas-analogue-ai-chip-hype-evidence.html" target="_blank" rel="noopener">Paper walkthrough</a> ·
+      <a href="https://chipsandcheese.com/p/nvidias-h100-funny-l2-and-tons-of-bandwidth" target="_blank" rel="noopener">Chips and Cheese: H100</a> ·
+      <a href="https://www.angstronomics.com/p/the-truth-of-tsmc-5nm" target="_blank" rel="noopener">5 nm density</a> ·
+      <a href="https://www.tomshardware.com/tech-industry/sram-scaling-isnt-dead-after-all-tsmcs-2nm-process-tech-claims-major-improvements" target="_blank" rel="noopener">2 nm density</a> ·
+      <a href="https://www.eenewseurope.com/en/tsmc-offers-22nm-rram-taking-mram-on-to-16nm" target="_blank" rel="noopener">22 nm RRAM</a> ·
+      <a href="https://arxiv.org/pdf/2406.08413" target="_blank" rel="noopener">Compute-in-memory overview</a> ·
+      <a href="https://arxiv.org/pdf/2410.20560v1.pdf" target="_blank" rel="noopener">IR drop in RRAM arrays</a> ·
+      Horowitz, “Computing's energy problem”, ISSCC 2014.
+      Not affiliated with NVIDIA or Peking University. Projections are estimates.
+    </div>
+  </div>
+</footer>
+
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
+import { Reflector } from 'three/addons/objects/Reflector.js';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
+import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+
+const VIDEO = new URLSearchParams(location.search).has('video');
+const LANG = new URLSearchParams(location.search).get('lang') === 'es' ? 'es' : 'en';
+if (LANG === 'es') document.documentElement.lang = 'es';
+if (VIDEO) document.body.classList.add('video');
+// ---------- language: English by default, Spanish with ?lang=es (the ES / EN button switches) ----------
+const UI = LANG === 'es'
+  ? { soundOn: 'Con sonido', soundOff: 'Sin sonido', soundTap: 'Toca para oír', auto: 'Reproducción automática · mueve o desliza para tomar el control', autoTouch: 'Automático · toca para seguir tú', act: 'Acto', scroll: 'Desliza', cc: 'Subtítulos', title: 'Dos formas de pensar' }
+  : { soundOn: 'Sound on', soundOff: 'Sound off', soundTap: 'Tap for sound', auto: 'Autoplay · move or scroll to take over', autoTouch: 'Autoplay · touch to take over', act: 'Act', scroll: 'Scroll', cc: 'Closed captions', title: 'Two Ways to Think' };
+const num = x => LANG === 'es' ? String(x).replace('.', ',') : String(x);
+{
+  const langBtn = document.getElementById('lang');
+  langBtn.href = LANG === 'es' ? location.pathname : `${location.pathname}?lang=es`;
+  langBtn.textContent = LANG === 'es' ? 'EN' : 'ES';
+  langBtn.hreflang = langBtn.lang = LANG === 'es' ? 'en' : 'es';
+  langBtn.setAttribute('aria-label', LANG === 'es' ? 'Read in English' : 'Leer en español');
+}
+if (LANG === 'es') {
+  document.title = UI.title;
+  document.getElementById('cc').setAttribute('aria-label', UI.cc);
+  document.getElementById('hint').textContent = UI.scroll;
+  document.querySelector('#autotag span').textContent = UI.auto;
+  document.getElementById('act').innerHTML = '<b>Acto I</b> · La forma digital · 01/16';
+  document.querySelector('#sound span').textContent = UI.soundOff;
+  const chips = a => `<div class="chips">${a.map(c => `<span class="chip">${c}</span>`).join('')}</div>`;
+  const CY = ' style="color:var(--cyan)"';
+  const STORY_ES = [
+    `<div class="k">Acto I · 01 · El peso pesado</div><h1>Cada respuesta tiene que viajar.</h1>
+     <p>Este es un acelerador de IA de clase H100: <strong>una sola pieza de silicio de 814 mm² con 80 mil millones de transistores</strong>, rodeada de torres de memoria apilada. Chips como este responden las preguntas que le haces a tu chatbot. Para ver por qué importa un tipo de chip distinto, primero hay que ver cómo piensa este.</p>`,
+    `<div class="k">02 · Qué hace realmente la IA</div><h2>Sobre todo, multiplica.</h2>
+     <p>Un modelo de IA es una tabla gigante de números llamados <strong>pesos</strong>. Responder significa multiplicar tu entrada por esas tablas, una y otra vez: <em>multiplica, suma, repite</em>.</p>
+     <p>Un modelo con 70 mil millones de pesos hace unas <strong>140 mil millones de multiplicaciones y sumas por cada palabra</strong> que escribe. Todo lo demás en esta página trata de qué tan rápido, y con cuánta energía, puede hacerlo un chip.</p>`,
+    `<div class="k">03 · Unos y ceros</div><h2>Matemáticas hechas de interruptores.</h2>
+     <p>Un chip digital guarda cada número como una fila de <strong>bits</strong>: unos y ceros, cada uno sostenido por transistores que están encendidos o apagados. Una multiplicación es una pequeña máquina de miles de transistores que cambian en un orden preciso, una vez por cada tic del reloj.</p>
+     <p>Un H100 tiene <strong>528 tensor cores</strong>, pequeñas cuadrículas de unidades que multiplican y suman, hechas para procesar bloques de números a la vez.</p>
+     ${chips(['Número de 16 bits = 16 interruptores', 'Reloj de ~1,98 GHz', '989 billones de ops FP16/s'])}`,
+    `<div class="k">04 · Una ciudad de procesadores</div><h2>132 barrios, un río.</h2>
+     <p>Si te acercas al chip, parece una ciudad. Hay 132 bloques idénticos llamados <strong>multiprocesadores de streaming (SM)</strong>, cada uno con cuatro tensor cores y su propia memoria pequeña y rápida. Por el medio corre un río de 50 MB de caché compartida.</p>
+     <p>La ciudad es rápida. Pero tiene un problema: la mayoría de los números que necesita no viven aquí.</p>
+     ${chips(['132 SMs', '256 KB de memoria rápida por SM', '50 MB de caché L2', 'Proceso clase 4 nm'])}`,
+    `<div class="k">05 · Desarmarlo</div><h2>Los números viven en las torres.</h2>
+     <p>Los pesos no caben en el chip. Están en la <strong>HBM</strong>, memoria de alto ancho de banda hecha con pilas de chips DRAM. Un <strong>interposer de silicio</strong> finísimo lleva miles de cables entre las torres y la ciudad.</p>
+     ${chips(['5 pilas HBM3 activas · 80 GB', '8+ capas de DRAM por pila', '3,35 TB/s', 'hasta 700 W'])}`,
+    `<div class="k">06 · Acompáñalo</div><h2>Sigue a un número.</h2>
+     <p>Antes de multiplicarse, un peso tiene que hacer un viaje: <strong>sale de una celda DRAM, baja por la pila, cruza el interposer, pasa por las cachés, entra en los registros y por fin llega a un tensor core</strong>. Cada parada cuesta energía. Mira el contador.</p>
+     <p class="note">Energía por acceso de 32 bits a 45 nm (Horowitz, ISSCC 2014). Los chips modernos gastan menos por paso, pero la proporción entre mover y calcular apenas ha cambiado.</p>`,
+    `<div class="k">07 · El muro</div><h2>Los núcleos esperan.</h2>
+     <p>Para mantener ocupados todos sus tensor cores, un H100 necesita unas <strong>295 operaciones de trabajo por cada byte</strong> que trae de la memoria (989 billones de ops ÷ 3,35 billones de bytes por segundo).</p>
+     <p>Un chatbot que escribe palabra por palabra hace más o menos <strong>una operación por byte</strong> de pesos. Así que, en una sola conversación, las unidades de cálculo están paradas más del 99% del tiempo, atascadas en el tráfico. Los centros de datos juntan a cientos de usuarios para disimularlo.</p>
+     <p>Este es el <strong>cuello de botella de von Neumann</strong>: la memoria aquí, el cálculo allá, y un puente en medio.</p>`,
+    `<div class="k">08 · A dónde va la energía</div><h2>Casi todos los vatios mueven datos.</h2>
+     <p>La energía sube por cientos de pilares hasta el chip. La mayor parte no se gasta en las cuentas. Se va en <strong>cargar y descargar cables</strong> para mover unos y ceros de un lado a otro, y toda sale como calor.</p>
+     <div class="bars">
+       <div><span>Traer de DRAM</span><i style="width:100%"></i><span>640 pJ</span></div>
+       <div><span>Leer 1 MB de caché</span><i style="width:16%"></i><span>100 pJ</span></div>
+       <div><span>Leer 8 KB de caché</span><i style="width:2.5%"></i><span>10 pJ</span></div>
+       <div class="c"><span>La multiplicación</span><i style="width:1%"></i><span>3,7 pJ</span></div>
+     </div>
+     <p>Un H100 a 700 W, encendido todo el año, consume unos <strong>6,1 MWh</strong>, y los centros de datos los usan por decenas de miles.</p>`,
+    `<div class="k"${CY}>Acto II · 09 · La pregunta</div><h1>¿Y si la memoria<br>hiciera las cuentas?</h1>`,
+    `<div class="k"${CY}>10 · Un chip distinto</div><h2>Sin torres. Sin puente.</h2>
+     <p>En octubre de 2025, un equipo de la <strong>Universidad de Pekín</strong> dirigido por Sun Zhong publicó un chip analógico en <em>Nature Electronics</em>. Por dentro no hay una memoria aparte ni una unidad de cálculo aparte. Hay una cuadrícula de cables con una diminuta celda de memoria en cada cruce, y la propia cuadrícula hace el cálculo.</p>
+     ${chips(['Matrices RRAM en cruce', 'Matriz de 1 Mb para multiplicar', 'Matriz 8×8 para resolver en un paso', 'Proceso clase 40 nm*'])}`,
+    `<div class="k"${CY}>11 · Un número guardado como física</div><h2>Una celda, un número.</h2>
+     <p>Cada cruce tiene una <strong>celda de memoria resistiva (RRAM)</strong>: un sándwich de metal, una capa fina de óxido y metal. Un pulso de voltaje hace crecer un diminuto <strong>filamento</strong> conductor a través del óxido. Un filamento más grueso deja pasar más corriente.</p>
+     <p>Esa facilidad para dejar pasar corriente, su <strong>conductancia</strong>, <em>es</em> el número guardado. Se mantiene aunque se apague la energía, y se puede leer sin moverlo a ningún sitio.</p>
+     ${chips(['metal / óxido / metal', 'conductancia = valor', 'no volátil'])}`,
+    `<div class="k"${CY}>12 · Cómputo en memoria</div><h2>Todas las multiplicaciones a la vez.</h2>
+     <p><strong>Paso 1.</strong> Unos conversores (DAC) convierten tus números de entrada en voltajes sobre las filas.<br>
+        <strong>Paso 2.</strong> En cada celda, la <strong>ley de Ohm</strong> hace una multiplicación gratis: corriente = conductancia × voltaje.<br>
+        <strong>Paso 3.</strong> En cada columna, la <strong>ley de Kirchhoff</strong> suma las corrientes.<br>
+        <strong>Paso 4.</strong> Otros conversores (ADC) leen las corrientes de las columnas y las devuelven como números.</p>
+     <p>Una cuadrícula entera de multiplicaciones y sumas ocurre en un solo instante físico. Los pesos nunca se mueven.</p>
+     <div class="eq">I = G · V &nbsp;·&nbsp; Iⱼ = Σᵢ Gᵢⱼ Vᵢ</div>`,
+    `<div class="k"${CY}>13 · Resolver en un paso</div><h2>Cierra el lazo. Deja que se asiente.</h2>
+     <p>Si devuelves las salidas a las entradas a través de amplificadores, el circuito deja de ser una calculadora. Se convierte en un <strong>solucionador de ecuaciones</strong>: se asienta físicamente en la respuesta de <strong>Ax = b</strong>, el tipo de problema detrás de la detección de señales 6G, las simulaciones y el entrenamiento de IA.</p>
+     <p>Las respuestas analógicas son aproximadas, así que el chip las refina. Una segunda matriz, con los números divididos en <strong>porciones de bits</strong>, mide el error y lo corrige hasta que el resultado iguala la precisión digital (reportada en 24 bits).</p>
+     <div class="refine" id="refine">x ≈ 0,7<small id="refine-e">error ≈ 10⁻¹</small></div>`,
+    `<div class="k"${CY}>14 · Calor o física</div><h1>Dos formas de pensar.</h1>
+     <div class="stat cool"><div><b>1.000×</b><span>rendimiento</span></div><div><b>100×</b><span>eficiencia energética</span></div></div>
+     <p>Según el equipo, frente a los mejores procesadores digitales, el H100 incluido, en problemas de ecuaciones matriciales con la misma precisión.</p>
+     <p class="note">Lo que todavía no es: un reemplazo de la GPU. Es un sistema de laboratorio (una matriz de inversión de 8×8 que resuelve problemas de 16×16), hecho para ecuaciones matriciales, no para ejecutar un chatbot entero. *La cifra de 40 nm viene de reportes secundarios.</p>`,
+    `<div class="k"${CY}>Acto III · 15 · ¿Y si escala?</div><h2>De 40 nm a 2 nm.</h2>
+     <p>El H100 se fabrica en clase 4 nm. Este chip analógico funcionó en clase 40 nm, un proceso de alrededor de 2008. ¿Qué pasa si se lleva a nodos modernos? Elige uno:</p>
+     <div class="nodes" id="nodes">
+       <button data-i="0" class="on">40 nm</button><button data-i="1">28 nm</button><button data-i="2">22 nm</button><button data-i="3">7 nm</button><button data-i="4">4 nm</button><button data-i="5">2 nm</button>
+     </div>
+     <div class="proj">
+       <div><b id="pj-e">1,0×</b><span>menos energía por solución</span></div>
+       <div><b id="pj-d">1,0×</b><span>más cómputo por mm²</span></div>
+       <div class="wide" id="pj-note">Demostrado: Universidad de Pekín, 2025. Esto es hoy.</div>
+     </div>
+     <p><strong>Lo que se encoge bien:</strong> los conversores y la lógica de control. Son transistores normales, y los estudios encuentran que pueden consumir entre el 80 y el 96% de la energía de un chip analógico. <strong>Lo que se resiste:</strong> los cables más finos tienen más resistencia y distorsionan las corrientes, la física del filamento no se encoge como un transistor, y la variación entre celdas crece. La RRAM se fabrica hoy a 22 nm, no a 2 nm.</p>
+     <p class="formula">ganancia de energía = 1 / ((1 − f) + f / s) · f ≈ 0,9 de la energía en conversores · s = ganancia del conversor en ese nodo<br>ganancia de densidad = 1 / (0,3 / celda + 0,7 / lógica) · 70% del área en la periferia · celda limitada a clase 22 nm</p>
+     <p class="note">Es un escenario, no una medición: nuestra estimación a partir de la densidad lógica y datos publicados de RRAM. Las GPU también se encogen, así que la diferencia entre ambos no se multiplica sin más.</p>`,
+    `<div class="k"${CY}>16 · La dirección</div><h1>Dejar de mover los números.</h1>
+     <p>El futuro probable no es un chip RRAM de 2 nm. Es una <strong>pila</strong>: capas de memoria analógica construidas encima de (o unidas a) lógica de nodo avanzado, para que los conversores tengan los transistores más nuevos y los números nunca salgan de casa. Que gane depende de los cables, la variabilidad y el software. La física ya está de su lado.</p>`,
+  ];
+  document.querySelectorAll('#story .ch .card').forEach((card, i) => { if (STORY_ES[i]) card.innerHTML = STORY_ES[i]; });
+  const foot = document.querySelector('#atelier .wrap');
+  foot.querySelector('h2').textContent = 'Tu producto merece una historia así.';
+  foot.querySelector('.lead').textContent = 'Historias cinematográficas con scroll, respaldadas por investigación, para lanzamientos, tecnología de frontera y lugares que vale la pena visitar. Dirigidas por personas, verificadas, narradas y hechas para funcionar con fluidez en cualquier teléfono.';
+  const [b1, b2] = foot.querySelectorAll('.cta a'); b1.textContent = 'Encarga una página Atelier →'; b2.textContent = 'Conoce Clikiti';
+  foot.querySelector('.made').innerHTML = 'Hecho con <b>Clikiti Atelier</b>';
+  const src = foot.querySelector('.sources');
+  src.innerHTML = src.innerHTML.replace('Sources ·', 'Fuentes ·').replace('Paper walkthrough', 'Lectura del artículo').replace('Not affiliated with NVIDIA or Peking University. Projections are estimates.', 'Sin afiliación con NVIDIA ni con la Universidad de Pekín. Las proyecciones son estimaciones.');
+}
+const MOBILE = innerWidth < 760 && !VIDEO;
+const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+const smooth = (a, b, x) => { const t = clamp((x - a) / (b - a)); return t * t * (3 - 2 * t); };
+const lerp = (a, b, t) => a + (b - a) * t;
+const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+const rnd = (() => { let s = 11; return () => (s = (s * 16807) % 2147483647) / 2147483647; })();
+const V = (x, y, z) => new THREE.Vector3(x, y, z);
+const HDR = (r, g, b, k = 1) => new THREE.Color(r * k, g * k, b * k);
+
+// ---------- renderer & post ----------
+const canvas = document.getElementById('gl');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: false, powerPreference: 'high-performance', preserveDrawingBuffer: VIDEO });
+const PR = VIDEO ? devicePixelRatio : Math.min(devicePixelRatio, MOBILE ? 1.5 : 1.6);
+renderer.setPixelRatio(PR); renderer.setSize(innerWidth, innerHeight);
+renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.1;
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x030405);
+scene.fog = new THREE.FogExp2(0x030405, 0.03);
+const camera = new THREE.PerspectiveCamera(34, innerWidth / innerHeight, 0.03, 400);
+
+const rt = new THREE.WebGLRenderTarget(innerWidth * PR, innerHeight * PR, { type: THREE.HalfFloatType, samples: MOBILE ? 0 : 4 });
+const composer = new EffectComposer(renderer, rt);
+composer.addPass(new RenderPass(scene, camera));
+composer.addPass(new ShaderPass({
+  uniforms: { tDiffuse: { value: null } },
+  vertexShader: `varying vec2 vUv; void main(){ vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.); }`,
+  fragmentShader: `uniform sampler2D tDiffuse; varying vec2 vUv; void main(){ vec4 c=texture2D(tDiffuse,vUv);
+    if(isnan(c.r)||isnan(c.g)||isnan(c.b)||isinf(c.r)||isinf(c.g)||isinf(c.b)) c=vec4(0.,0.,0.,1.);
+    gl_FragColor=vec4(min(max(c.rgb,0.),vec3(3.2)),1.); }`
+}));
+const bloom = new UnrealBloomPass(new THREE.Vector2(innerWidth, innerHeight), 0.85, 0.55, 0.88);
+composer.addPass(bloom);
+composer.addPass(new OutputPass());
+const grade = new ShaderPass({
+  uniforms: { tDiffuse: { value: null }, time: { value: 0 }, fade: { value: 0 }, tilt: { value: 0 }, focusY: { value: .5 }, aspect: { value: innerWidth / innerHeight },
+    heatPos: { value: new THREE.Vector2(.5, .5) }, heatAmt: { value: 0 }, tint: { value: new THREE.Vector3(1, 1, 1) } },
+  vertexShader: `varying vec2 vUv; void main(){ vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.); }`,
+  fragmentShader: `uniform sampler2D tDiffuse; uniform float time,fade,tilt,focusY,aspect,heatAmt; uniform vec2 heatPos; uniform vec3 tint; varying vec2 vUv;
+    float h(vec2 p){ return fract(sin(dot(p,vec2(12.9898,78.233)))*43758.5453); }
+    void main(){
+      vec2 uv=vUv;
+      vec2 dh=(uv-heatPos)*vec2(aspect,1.); float hm=heatAmt*exp(-dot(dh,dh)*7.)*smoothstep(heatPos.y-.12,heatPos.y+.05,uv.y);
+      uv+=vec2(sin(uv.y*90.-time*5.)*.0028,cos(uv.x*70.+time*4.)*.0018)*hm;
+      float b=tilt*smoothstep(.08,.5,abs(uv.y-focusY));
+      vec3 c=vec3(0.);
+      for(int i=0;i<12;i++){ float a=float(i)*2.39996; float r=sqrt(float(i)/12.); vec2 o=vec2(cos(a),sin(a))*r*b*vec2(1./aspect,1.)*.018;
+        vec2 d=uv-.5; float ca=.0018*dot(d,d)*6.;
+        c+=vec3(texture2D(tDiffuse,uv+o+d*ca).r,texture2D(tDiffuse,uv+o).g,texture2D(tDiffuse,uv+o-d*ca).b); }
+      c/=12.;
+      c*=tint;
+      vec2 d=vUv-.5; c*=1.-.6*smoothstep(.12,.62,dot(d,d)*1.6);
+      c+=(h(vUv*vec2(1920.,1080.)+fract(time)*100.)-.5)*.05;
+      c*=1.-fade;
+      float bar=step(abs(vUv.y-.5),.5-.045);
+      gl_FragColor=vec4(c*bar,1.);
+    }`
+});
+composer.addPass(grade);
+
+// ---------- studio environments built from light panels ----------
+function studio(rimColor) {
+  const env = new THREE.Scene();
+  env.add(new THREE.Mesh(new THREE.BoxGeometry(40, 20, 40), new THREE.MeshBasicMaterial({ color: 0x050607, side: THREE.BackSide })));
+  const panel = (w, h, c, k, pos) => { const m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), new THREE.MeshBasicMaterial({ color: new THREE.Color(c).multiplyScalar(k), side: THREE.DoubleSide })); m.position.set(...pos); m.lookAt(0, 0, 0); env.add(m); };
+  panel(12, 6, 0xffffff, 2.2, [0, 9.5, 0.01]);
+  panel(18, .8, rimColor, 4.5, [-12, 3, -8]);
+  panel(18, .8, rimColor, 4.5, [12, 3, -8]);
+  panel(6, 3, 0xffffff, .8, [10, 2, 10]);
+  panel(30, .3, 0xffffff, 1.5, [0, 1, 19]);
+  const pm = new THREE.PMREMGenerator(renderer);
+  return pm.fromScene(env, 0.03).texture;
+}
+const ENV_WARM = studio(0xff8a2a), ENV_COOL = studio(0x6ff3ff);
+scene.environment = ENV_WARM; scene.environmentIntensity = 0.9;
+
+// ---------- canvas textures & points ----------
+function tex(w, h, draw, srgb = true) {
+  const c = document.createElement('canvas'); c.width = w; c.height = h; draw(c.getContext('2d'), w, h);
+  const t = new THREE.CanvasTexture(c); if (srgb) t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; return t;
+}
+const softDot = tex(64, 64, g => { const r = g.createRadialGradient(32, 32, 0, 32, 32, 32); r.addColorStop(0, 'rgba(255,255,255,1)'); r.addColorStop(.35, 'rgba(255,255,255,.35)'); r.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = r; g.fillRect(0, 0, 64, 64); }, false);
+const pointMats = [];
+function mkPoints({ color, size, maxPx, opacity }) {
+  const m = new THREE.ShaderMaterial({
+    uniforms: { map: { value: softDot }, color: { value: new THREE.Color(color) }, size: { value: size }, maxPx: { value: maxPx }, opacity: { value: opacity }, scale: { value: innerHeight / 2 } },
+    vertexShader: `uniform float size,maxPx,scale; varying float vF; void main(){ vec4 mv=modelViewMatrix*vec4(position,1.); float d=-mv.z; gl_PointSize=min(size*scale/max(d,.001),maxPx); vF=smoothstep(.4,2.,d); gl_Position=projectionMatrix*mv; }`,
+    fragmentShader: `uniform sampler2D map; uniform vec3 color; uniform float opacity; varying float vF; void main(){ float a=texture2D(map,gl_PointCoord).a; gl_FragColor=vec4(color,a*opacity*vF); }`,
+    transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+  });
+  pointMats.push(m); return m;
+}
+
+// ---------- materials ----------
+const mat = {
+  graphite: new THREE.MeshPhysicalMaterial({ color: 0x0c1116, roughness: .45, metalness: .7, clearcoat: .4, clearcoatRoughness: .35 }),
+  dram: new THREE.MeshPhysicalMaterial({ color: 0x1b1e22, roughness: .3, metalness: .8, clearcoat: .6, clearcoatRoughness: .3 }),
+  dramTop: new THREE.MeshPhysicalMaterial({ color: 0x3a3f46, roughness: .2, metalness: .9, clearcoat: .8, clearcoatRoughness: .2 }),
+  gold: new THREE.MeshStandardMaterial({ color: 0xd9a24a, roughness: .25, metalness: 1 }),
+  copper: new THREE.MeshStandardMaterial({ color: 0xc27a4a, roughness: .3, metalness: 1 }),
+  steel: new THREE.MeshStandardMaterial({ color: 0xb8c6cc, roughness: .22, metalness: 1 }),
+  glassDark: new THREE.MeshPhysicalMaterial({ color: 0x0b0d10, roughness: .06, metalness: .2, clearcoat: 1, clearcoatRoughness: .04, transparent: true, opacity: .82 }),
+  glow: c => new THREE.MeshBasicMaterial({ color: c, toneMapped: false }),
+};
+const cyanLine = HDR(.35, 1.6, 2.0, 1.2);
+
+// ---------- set origins ----------
+const SETS = { pkg: V(0, 0, 0), mat: V(70, 0, 0), city: V(140, 0, 0), tc: V(210, 0, 0), tun: V(280, 0, 0), voidd: V(350, 0, 0), ana: V(420, 0, 0), cell: V(490, 0, 0), scale: V(560, 0, 0), ver: V(640, 0, 0) };
+const setGroup = {}; for (const k in SETS) { const g = new THREE.Group(); g.position.copy(SETS[k]); scene.add(g); setGroup[k] = g; }
+const anchors = {};
+const anchor = (name, parent, x, y, z) => { const o = new THREE.Object3D(); o.position.set(x, y, z); parent.add(o); anchors[name] = o; return o; };
+
+// ===================== SET pkg: H100-class module =====================
+const substrateTex = tex(1024, 854, (g, w, h) => {
+  g.fillStyle = '#0b120e'; g.fillRect(0, 0, w, h);
+  for (let i = 0; i < 9000; i++) { g.fillStyle = `rgba(255,255,255,${rnd() * .025})`; g.fillRect(rnd() * w, rnd() * h, 1, 1); }
+  g.fillStyle = '#b8873a';
+  for (let y = 30; y < h - 20; y += 13) for (let x = 30; x < w - 20; x += 13) { const inner = x > 140 && x < w - 140 && y > 120 && y < h - 120; if (!inner && rnd() > .08) { g.beginPath(); g.arc(x, y, 3.2, 0, 7); g.fill(); } }
+  g.fillStyle = '#2a2f2c'; for (let i = 0; i < 70; i++) { const x = 150 + rnd() * (w - 300), y = rnd() > .5 ? 60 + rnd() * 50 : h - 110 + rnd() * 50; g.fillRect(x, y, 14, 8); }
+});
+const interposerGlow = tex(1024, 780, (g, w, h) => {
+  g.fillStyle = '#000'; g.fillRect(0, 0, w, h); g.strokeStyle = '#fff'; g.lineWidth = 1.3;
+  for (let i = 0; i < 300; i++) { const left = rnd() > .5, y0 = 40 + rnd() * (h - 80), x0 = left ? 70 + rnd() * 160 : w - 70 - rnd() * 160, x1 = left ? 340 + rnd() * 40 : w - 340 - rnd() * 40, y1 = 140 + rnd() * (h - 280);
+    g.globalAlpha = .25 + rnd() * .75; g.beginPath(); g.moveTo(x0, y0); g.lineTo((x0 + x1) / 2, y0); g.lineTo((x0 + x1) / 2, y1); g.lineTo(x1, y1); g.stroke(); }
+}, false);
+const dieTex = tex(1024, 1080, (g, w, h) => {
+  g.fillStyle = '#121418'; g.fillRect(0, 0, w, h);
+  const film = g.createLinearGradient(0, 0, w, h); ['#3b1f5c', '#1f4f7a', '#1f7a5e', '#7a6a1f', '#7a2f3b', '#3b1f5c'].forEach((c, i, a) => film.addColorStop(i / (a.length - 1), c));
+  g.globalAlpha = .55; g.fillStyle = film; g.fillRect(0, 0, w, h);
+  const f2 = g.createRadialGradient(w * .3, h * .3, 10, w * .5, h * .5, w * .8); f2.addColorStop(0, 'rgba(120,255,220,.35)'); f2.addColorStop(.5, 'rgba(255,120,200,.15)'); f2.addColorStop(1, 'rgba(0,0,0,0)');
+  g.fillStyle = f2; g.fillRect(0, 0, w, h); g.globalAlpha = 1;
+  g.strokeStyle = 'rgba(255,255,255,.10)'; g.lineWidth = 2;
+  for (let r = 0; r < 11; r++) for (let c = 0; c < 12; c++) g.strokeRect(30 + c * 80, 30 + r * 92 + (r >= 6 ? 30 : 0), 70, 78);
+  g.fillStyle = 'rgba(200,220,255,.08)'; g.fillRect(30, 30 + 6 * 92 - 8, w - 60, 34);
+});
+const digital = new THREE.Group(); scene.add(digital);
+const substrate = new THREE.Mesh(new THREE.BoxGeometry(12, .24, 10), [mat.graphite, mat.graphite, new THREE.MeshPhysicalMaterial({ map: substrateTex, roughness: .55, metalness: .35, clearcoat: .35, clearcoatRoughness: .4 }), mat.graphite, mat.graphite, mat.graphite]);
+substrate.position.y = -.12; digital.add(substrate);
+const edgeMat = new THREE.MeshStandardMaterial({ color: 0x0a0d0c, emissive: 0xff6a10, emissiveIntensity: .5, roughness: .6 });
+for (const [w, d, x, z] of [[12.02, .02, 0, 5], [12.02, .02, 0, -5], [.02, 10.02, 6, 0], [.02, 10.02, -6, 0]]) { const e = new THREE.Mesh(new THREE.BoxGeometry(w, .03, d), edgeMat); e.position.set(x, -.02, z); digital.add(e); }
+const interposer = new THREE.Group(); digital.add(interposer);
+const ipMat = new THREE.MeshPhysicalMaterial({ color: 0x15161a, roughness: .38, metalness: .6, emissive: 0xff7a1a, emissiveMap: interposerGlow, emissiveIntensity: .3, clearcoat: .6, clearcoatRoughness: .35 });
+const ipMesh = new THREE.Mesh(new THREE.BoxGeometry(8.6, .1, 6.6), ipMat); ipMesh.position.y = .05; interposer.add(ipMesh);
+const die = new THREE.Group(); digital.add(die);
+const dieMat = new THREE.MeshPhysicalMaterial({ map: dieTex, roughness: .2, metalness: .55, clearcoat: 1, clearcoatRoughness: .16, emissive: 0xffffff, emissiveMap: dieTex, emissiveIntensity: .1 });
+const dieMesh = new THREE.Mesh(new THREE.BoxGeometry(3.4, .09, 3.6), dieMat); dieMesh.position.y = .16; die.add(dieMesh);
+const dieHeat = new THREE.Mesh(new THREE.BoxGeometry(3.42, .095, 3.62), new THREE.MeshBasicMaterial({ color: HDR(1, .35, .08, 1), transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false }));
+dieHeat.position.y = .16; die.add(dieHeat);
+const dieFrame = new THREE.Mesh(new THREE.BoxGeometry(3.7, .05, 3.9), mat.graphite); dieFrame.position.y = .125; die.add(dieFrame);
+{ const b = new THREE.InstancedMesh(new THREE.SphereGeometry(.035, 8, 6), mat.gold, 484), m = new THREE.Matrix4(); let i = 0;
+  for (let a = 0; a < 22; a++) for (let c = 0; c < 22; c++) { m.makeTranslation(-1.55 + a * 3.1 / 21, .1, -1.65 + c * 3.3 / 21); b.setMatrixAt(i++, m); } die.add(b); }
+const TILE_N = 12, tileSeed = Array.from({ length: TILE_N * TILE_N }, () => rnd());
+const tiles = new THREE.InstancedMesh(new THREE.BoxGeometry(.2, .01, .22), mat.glow(0xffffff), TILE_N * TILE_N); tiles.position.y = .21; die.add(tiles);
+anchor('die', die, 0, .3, 0);
+const hbm = [], HBM_POS = [[-3.55, -2.15], [-3.55, 0], [-3.55, 2.15], [3.55, -2.15], [3.55, 0], [3.55, 2.15]];
+for (const [x, z] of HBM_POS) { const g = new THREE.Group(); g.position.set(x, .1, z); digital.add(g); const slices = [];
+  for (let s = 0; s < 9; s++) { const sl = new THREE.Mesh(new THREE.BoxGeometry(1.35, s === 8 ? .1 : .085, 1.95), s === 8 ? mat.dramTop : mat.dram); sl.position.y = .05 + s * .1; g.add(sl); slices.push(sl); }
+  hbm.push({ g, slices }); }
+anchor('hbm', hbm[3].slices[8], 0, .1, 0); anchor('ip', ipMesh, -4.3, 0, 3.3); anchor('sub', substrate, 6, 0, 5);
+const filGeo = new THREE.BufferGeometry(), fp = []; for (let i = 0; i < 110; i++) { const x = (rnd() - .5) * 8, z = (rnd() - .5) * 6; fp.push(x, 0, z, x, 1, z); }
+filGeo.setAttribute('position', new THREE.Float32BufferAttribute(fp, 3));
+const filMat = new THREE.LineBasicMaterial({ color: HDR(1, .45, .12, 3), transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false });
+const filaments = new THREE.LineSegments(filGeo, filMat); digital.add(filaments);
+const JAM_N = MOBILE ? 1400 : 2600;
+const jam = new THREE.InstancedMesh(new THREE.BoxGeometry(.026, .018, .018), mat.glow(0xffffff), JAM_N); jam.instanceMatrix.setUsage(THREE.DynamicDrawUsage); digital.add(jam);
+const jamData = Array.from({ length: JAM_N }, (_, i) => ({ lane: i % 6, s: rnd(), z: (rnd() - .5) * 1.8, y: .14 + rnd() * rnd() * .42, sp: .6 + rnd() * .8, ph: rnd() * 6.28 }));
+const PIL_N = 220;
+const pillars = new THREE.InstancedMesh(new THREE.CylinderGeometry(.035, .035, 1, 6), new THREE.MeshBasicMaterial({ color: 0xffffff, toneMapped: false, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false }), PIL_N);
+{ const m = new THREE.Matrix4(); for (let i = 0; i < PIL_N; i++) { m.compose(V((rnd() - .5) * 3.2, -1.6, (rnd() - .5) * 3.4), new THREE.Quaternion(), V(1, 2.9, 1)); pillars.setMatrixAt(i, m); pillars.setColorAt(i, HDR(1, .45, .1, .25 + rnd() * .35)); } }
+digital.add(pillars);
+const board = new THREE.Mesh(new THREE.BoxGeometry(14, .2, 11), new THREE.MeshPhysicalMaterial({ color: 0x0a0f0c, roughness: .6, metalness: .3 })); board.position.y = -3.2; digital.add(board);
+const sink = new THREE.Group(); digital.add(sink);
+{ const bp = new THREE.Mesh(new THREE.BoxGeometry(8, .25, 6.5), mat.copper); sink.add(bp);
+  const fins = new THREE.InstancedMesh(new THREE.BoxGeometry(.06, 1.8, 6.3), mat.copper, 44), m = new THREE.Matrix4();
+  for (let i = 0; i < 44; i++) { m.makeTranslation(-3.8 + i * (7.6 / 43), 1.0, 0); fins.setMatrixAt(i, m); } sink.add(fins); }
+const pulsesE = new THREE.InstancedMesh(new THREE.SphereGeometry(.05, 8, 6), mat.glow(0xffffff), 160); pulsesE.instanceMatrix.setUsage(THREE.DynamicDrawUsage); digital.add(pulsesE);
+const pulseESeed = Array.from({ length: 160 }, () => [(rnd() - .5) * 3.2, (rnd() - .5) * 3.4, rnd()]);
+
+// ===================== SET mat: what AI does =====================
+const digitsTex = tex(768, 960, (g, w, h) => {
+  g.fillStyle = '#000'; g.fillRect(0, 0, w, h); g.font = '22px ui-monospace, Menlo, monospace'; g.textBaseline = 'top';
+  for (let r = 0; r < 36; r++) for (let c = 0; c < 22; c++) { g.fillStyle = `rgba(255,255,255,${.25 + rnd() * .75})`; g.fillText(String(Math.floor(rnd() * 10)), 14 + c * 34, 14 + r * 26); }
+}, false);
+const scanTex = tex(8, 128, (g, w, h) => { const gr = g.createLinearGradient(0, 0, 0, h); gr.addColorStop(0, 'rgba(255,255,255,0)'); gr.addColorStop(.5, '#fff'); gr.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = gr; g.fillRect(0, 0, w, h); }, false);
+const M = setGroup.mat;
+const panes = [];
+for (const s of [-1, 1]) {
+  const g = new THREE.Group(); g.position.set(s * 1.7, 0, 0); g.rotation.y = s * .42; M.add(g);
+  g.add(new THREE.Mesh(new THREE.PlaneGeometry(4, 5), new THREE.MeshPhysicalMaterial({ color: 0x9fb6c4, roughness: .04, metalness: .1, clearcoat: 1, transparent: true, opacity: .1, side: THREE.DoubleSide, depthWrite: false })));
+  const edge = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.PlaneGeometry(4, 5)), new THREE.LineBasicMaterial({ color: HDR(1, .6, .3, 1.2), transparent: true, opacity: .5, toneMapped: false })); g.add(edge);
+  const d = new THREE.Mesh(new THREE.PlaneGeometry(3.8, 4.8), new THREE.MeshBasicMaterial({ map: digitsTex, color: HDR(1.4, .7, .25, 1), transparent: true, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide, toneMapped: false }));
+  d.position.z = .01; g.add(d);
+  const scan = new THREE.Mesh(new THREE.PlaneGeometry(3.9, .32), new THREE.MeshBasicMaterial({ map: scanTex, color: HDR(1, .5, .15, 2.2), transparent: true, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide, toneMapped: false }));
+  scan.position.z = .02; g.add(scan);
+  panes.push({ g, scan });
+}
+const vec = new THREE.Mesh(new THREE.PlaneGeometry(.4, 5), new THREE.MeshBasicMaterial({ map: digitsTex, color: HDR(1.6, .9, .35, 1.2), transparent: true, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide, toneMapped: false }));
+M.add(vec);
+const RES_N = 220;
+const results = new THREE.InstancedMesh(new THREE.BoxGeometry(.05, .03, .03), mat.glow(0xffffff), RES_N); results.instanceMatrix.setUsage(THREE.DynamicDrawUsage); M.add(results);
+const resSeed = Array.from({ length: RES_N }, () => [rnd(), (rnd() - .5) * .25, (rnd() - .5) * .3]);
+anchor('matA', panes[0].g, -1.6, 2.6, 0); anchor('matV', vec, 0, 2.7, 0); anchor('matR', M, 4.2, .4, 1.2);
+
+// ===================== SET city: the die as 132 SMs =====================
+const C = setGroup.city;
+const streetTex = tex(2048, 1664, (g, w, h) => {
+  g.fillStyle = '#07090b'; g.fillRect(0, 0, w, h); g.strokeStyle = 'rgba(255,150,60,.35)'; g.lineWidth = 2;
+  for (let i = 0; i < 1400; i++) { const x = rnd() * w, y = rnd() * h, l = 20 + rnd() * 120; g.globalAlpha = .2 + rnd() * .6; g.beginPath(); g.moveTo(x, y); rnd() > .5 ? g.lineTo(x + l, y) : g.lineTo(x, y + l); g.stroke(); }
+  g.globalAlpha = 1;
+});
+const cityFloor = new THREE.Mesh(new THREE.PlaneGeometry(16, 13), new THREE.MeshStandardMaterial({ map: streetTex, emissive: 0xffffff, emissiveMap: streetTex, emissiveIntensity: .35, roughness: .6, metalness: .4 }));
+cityFloor.rotation.x = -Math.PI / 2; C.add(cityFloor);
+const smTex = tex(256, 192, (g, w, h) => {
+  const gr = g.createLinearGradient(0, 0, w, h); gr.addColorStop(0, '#22263a'); gr.addColorStop(.5, '#1d3a3a'); gr.addColorStop(1, '#3a2a22'); g.fillStyle = gr; g.fillRect(0, 0, w, h);
+  g.strokeStyle = 'rgba(255,255,255,.18)'; g.lineWidth = 1; for (let x = 8; x < w; x += 12) { g.beginPath(); g.moveTo(x, 8); g.lineTo(x, h - 8); g.stroke(); } for (let y = 8; y < h; y += 12) { g.beginPath(); g.moveTo(8, y); g.lineTo(w - 8, y); g.stroke(); }
+  g.fillStyle = 'rgba(0,0,0,.55)'; for (const [x, y] of [[20, 20], [140, 20], [20, 110], [140, 110]]) g.fillRect(x, y, 96, 62);
+});
+const SM_COLS = 12, SM_ROWS = 11, SMX = 1.12, SMZ = .92, RIVER = 1.5;
+const smPos = [];
+for (let r = 0; r < SM_ROWS; r++) for (let c = 0; c < SM_COLS; c++) smPos.push([(c - (SM_COLS - 1) / 2) * SMX, (r - (SM_ROWS - 1) / 2) * SMZ + (r >= 6 ? RIVER / 2 : -RIVER / 2)]);
+const sms = new THREE.InstancedMesh(new THREE.BoxGeometry(1.0, .16, .8), new THREE.MeshPhysicalMaterial({ map: smTex, roughness: .25, metalness: .6, clearcoat: .8, clearcoatRoughness: .2 }), smPos.length);
+const tcs = new THREE.InstancedMesh(new THREE.BoxGeometry(.16, .3, .16), mat.dram, smPos.length * 4);
+const tcCaps = new THREE.InstancedMesh(new THREE.BoxGeometry(.15, .012, .15), mat.glow(0xffffff), smPos.length * 4);
+{ const m = new THREE.Matrix4(); smPos.forEach(([x, z], i) => { m.makeTranslation(x, .08, z); sms.setMatrixAt(i, m);
+    [[-.27, -.2], [.27, -.2], [-.27, .2], [.27, .2]].forEach(([dx, dz], k) => { m.makeTranslation(x + dx, .31, z + dz); tcs.setMatrixAt(i * 4 + k, m); m.makeTranslation(x + dx, .465, z + dz); tcCaps.setMatrixAt(i * 4 + k, m); tcCaps.setColorAt(i * 4 + k, new THREE.Color(0, 0, 0)); }); }); }
+C.add(sms, tcs, tcCaps);
+const capSeed = Array.from({ length: smPos.length * 4 }, () => rnd());
+const L2_N = 1400;
+const l2 = new THREE.InstancedMesh(new THREE.BoxGeometry(.085, .05, .085), new THREE.MeshPhysicalMaterial({ color: 0x8fa3b8, roughness: .15, metalness: .95, clearcoat: 1 }), L2_N);
+{ const m = new THREE.Matrix4(); let i = 0; for (let a = 0; a < 140 && i < L2_N; a++) for (let b = 0; b < 10 && i < L2_N; b++) { m.makeTranslation(-6.6 + a * .095, .03, -.43 + b * .095); l2.setMatrixAt(i++, m); } }
+C.add(l2);
+const TRAF_N = 500;
+const traffic = new THREE.InstancedMesh(new THREE.BoxGeometry(.09, .02, .02), mat.glow(0xffffff), TRAF_N); traffic.instanceMatrix.setUsage(THREE.DynamicDrawUsage); C.add(traffic);
+const trafSeed = Array.from({ length: TRAF_N }, () => ({ along: rnd() > .35, lane: Math.floor(rnd() * 12), s: rnd(), sp: .5 + rnd() }));
+anchor('cityRiver', C, 3.5, .3, 0); anchor('citySM', C, smPos[100][0], .6, smPos[100][1]);
+
+// ===================== SET tc: inside a tensor core =====================
+const T = setGroup.tc;
+const tcFloor = new THREE.Mesh(new THREE.PlaneGeometry(12, 10), new THREE.MeshPhysicalMaterial({ color: 0x07080a, roughness: .35, metalness: .7, clearcoat: .8 })); tcFloor.rotation.x = -Math.PI / 2; tcFloor.position.y = -.26; T.add(tcFloor);
+const MACS = [], macBox = new RoundedBoxGeometry(.44, .44, .44, 3, .05);
+for (let i = 0; i < 4; i++) for (let j = 0; j < 4; j++) {
+  const x = -1.05 + j * .7, z = -1.05 + i * .7;
+  const shell = new THREE.Mesh(macBox, mat.glassDark); shell.position.set(x, 0, z); T.add(shell);
+  const core = new THREE.Mesh(new THREE.BoxGeometry(.16, .16, .16), mat.glow(0xffffff)); core.position.set(x, 0, z); T.add(core);
+  const base = new THREE.Mesh(new THREE.BoxGeometry(.52, .04, .52), mat.gold); base.position.set(x, -.24, z); T.add(base);
+  MACS.push({ core, i, j });
+}
+for (let i = 0; i < 4; i++) { const ln = new THREE.Mesh(new THREE.BoxGeometry(3.2, .02, .03), mat.gold); ln.position.set(-2.6, -.2, -1.05 + i * .7); T.add(ln); }
+for (let j = 0; j < 4; j++) { const ln = new THREE.Mesh(new THREE.BoxGeometry(.03, .02, 2.6), mat.gold); ln.position.set(-1.05 + j * .7, -.2, -2.4); T.add(ln); }
+const accum = new THREE.Mesh(new THREE.BoxGeometry(2.8, .22, .36), new THREE.MeshPhysicalMaterial({ color: 0x8a6a2a, metalness: 1, roughness: .2, emissive: 0xff7a1a, emissiveIntensity: .2 })); accum.position.set(0, -.12, 1.75); T.add(accum);
+const bits = new THREE.InstancedMesh(new THREE.BoxGeometry(.07, .03, .03), mat.glow(0xffffff), 64); bits.instanceMatrix.setUsage(THREE.DynamicDrawUsage); T.add(bits);
+anchor('tcGrid', T, 1.3, .5, -1.2); anchor('tcAcc', T, 1.5, 0, 1.75);
+
+// ===================== SET tun: the trip =====================
+const U = setGroup.tun;
+const TUN_L = 120, TUN_Z0 = 5, R0 = 3.2, R1 = 1.1;
+const tunMat = new THREE.ShaderMaterial({
+  uniforms: { time: { value: 0 } }, side: THREE.BackSide,
+  vertexShader: `varying vec2 vUv; varying float vD; void main(){ vUv=uv; vec4 mv=modelViewMatrix*vec4(position,1.); vD=-mv.z; gl_Position=projectionMatrix*mv; }`,
+  fragmentShader: `uniform float time; varying vec2 vUv; varying float vD;
+    float h(float n){ return fract(sin(n*12.9898)*43758.5453); }
+    void main(){
+      float lanes=96.; float a=vUv.x*lanes; float id=floor(a); float f=fract(a);
+      float line=smoothstep(.36,.5,f)*smoothstep(.64,.5,f);
+      float r=h(id); float sp=.5+r*.9;
+      float d=fract(vUv.y*34.-time*sp+r*7.);
+      float pk=smoothstep(0.,.03,d)*smoothstep(.2,.03,d)*step(.35,r);
+      vec3 col=vec3(.025,.02,.016)+line*vec3(.32,.17,.06)*(.5+.5*h(id+3.));
+      col+=line*pk*vec3(2.6,1.15,.32)*(.6+r);
+      col*=exp(-vD*.028);
+      gl_FragColor=vec4(col,1.);
+    }`
+});
+const tunnel = new THREE.Mesh(new THREE.CylinderGeometry(R0, R1, TUN_L, 96, 1, true), tunMat);
+tunnel.rotation.x = Math.PI / 2; tunnel.position.z = TUN_Z0 - TUN_L / 2; U.add(tunnel);
+const tunR = z => lerp(R0, R1, clamp((TUN_Z0 - z) / TUN_L));
+const CHECK = [
+  { z: -8, t: 'HBM · DRAM cell', s: 'read 32 bits', pj: 640 },
+  { z: -24, t: 'Through-silicon via', s: 'down the stack', pj: 0 },
+  { z: -42, t: 'Silicon interposer', s: 'millimetres of wire', pj: 0 },
+  { z: -62, t: 'L2 cache · 50 MB', s: 'large SRAM read', pj: 100 },
+  { z: -80, t: 'SM shared memory', s: 'small SRAM read', pj: 20 },
+  { z: -94, t: 'Registers', s: 'next to the math', pj: 10 },
+  { z: -106, t: 'Tensor core', s: 'the multiply', pj: 3.7 },
+];
+if (LANG === 'es') [['HBM · celda DRAM', 'leer 32 bits'], ['Vía a través del silicio', 'bajando por la pila'], ['Interposer de silicio', 'milímetros de cable'], ['Caché L2 · 50 MB', 'lectura de SRAM grande'], ['Memoria compartida del SM', 'lectura de SRAM pequeña'], ['Registros', 'junto a la operación'], ['Tensor core', 'la multiplicación']].forEach(([t, sub], i) => { CHECK[i].t = t; CHECK[i].s = sub; });
+const rings = CHECK.map(c => { const r = new THREE.Mesh(new THREE.TorusGeometry(tunR(c.z) * .92, .035, 10, 120), mat.glow(cyanLine.clone())); r.position.z = c.z; U.add(r); anchor('ring' + c.z, r, tunR(c.z) * .55, tunR(c.z) * .3, 0); return r; });
+
+// ===================== SET ana: RRAM crossbar chip =====================
+const analog = new THREE.Group(); scene.add(analog);
+analog.add(new THREE.Mesh(new RoundedBoxGeometry(4, .5, 4, 4, .12), mat.graphite));
+for (const [w, d, x, z] of [[4, .18, 0, -1.91], [4, .18, 0, 1.91], [.18, 4, -1.91, 0], [.18, 4, 1.91, 0]]) { const r = new THREE.Mesh(new THREE.BoxGeometry(w, .2, d), mat.graphite); r.position.set(x, .33, z); analog.add(r); }
+const N = 12, SPAN = 3.0, stp = SPAN / (N - 1), at = i => -SPAN / 2 + i * stp;
+for (let i = 0; i < N; i++) { const row = new THREE.Mesh(new THREE.BoxGeometry(SPAN + .5, .014, .014), mat.steel); row.position.set(0, .29, at(i)); analog.add(row);
+  const col = new THREE.Mesh(new THREE.BoxGeometry(.014, .014, SPAN + .5), mat.steel); col.position.set(at(i), .33, 0); analog.add(col); }
+const G = Array.from({ length: N * N }, () => .15 + rnd() * .85);
+const cells = new THREE.InstancedMesh(new THREE.SphereGeometry(.05, 16, 12), mat.glow(0xffffff), N * N);
+{ const m = new THREE.Matrix4(); for (let i = 0; i < N; i++) for (let j = 0; j < N; j++) { m.makeTranslation(at(j), .31, at(i)); cells.setMatrixAt(i * N + j, m); cells.setColorAt(i * N + j, new THREE.Color(0, 0, 0)); } } analog.add(cells);
+const dacs = [], adcs = [];
+for (let i = 0; i < N; i++) { const d = new THREE.Mesh(new THREE.BoxGeometry(.16, .05, .12), mat.glow(0xffffff)); d.position.set(-1.72, .3, at(i)); analog.add(d); dacs.push(d);
+  const a = new THREE.Mesh(new THREE.BoxGeometry(.12, .05, .16), mat.glow(0xffffff)); a.position.set(at(i), .3, 1.72); analog.add(a); adcs.push(a); }
+anchor('dac', analog, -1.85, .35, -1.6); anchor('adc', analog, 1.6, .35, 1.85); anchor('cellA', analog, at(7), .35, at(4));
+const ROWP = 6, COLP = 9;
+const pulses = new THREE.InstancedMesh(new THREE.BoxGeometry(1, 1, 1), mat.glow(0xffffff), N * ROWP + N * COLP); pulses.instanceMatrix.setUsage(THREE.DynamicDrawUsage); analog.add(pulses);
+for (let i = 0; i < N * ROWP + N * COLP; i++) pulses.setColorAt(i, new THREE.Color(0, 0, 0));
+const dashTex = tex(256, 8, (g, w, h) => { const gr = g.createLinearGradient(0, 0, w, 0); gr.addColorStop(0, 'rgba(255,255,255,0)'); gr.addColorStop(.7, 'rgba(255,255,255,.35)'); gr.addColorStop(.95, '#fff'); gr.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = gr; g.fillRect(0, 0, w, h); }, false);
+dashTex.wrapS = THREE.RepeatWrapping; dashTex.repeat.set(6, 1);
+const loopCurve = new THREE.CatmullRomCurve3([V(1.5, .3, 1.95), V(2.15, .3, 2.15), V(2.25, .3, 0), V(2.15, .3, -2.15), V(0, .3, -2.3), V(-2.15, .3, -2.15), V(-2.25, .3, 0), V(-1.85, .3, .2)]);
+const loopMat = new THREE.MeshBasicMaterial({ map: dashTex, color: HDR(.35, 1.6, 2, 1.4), transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false });
+analog.add(new THREE.Mesh(new THREE.TubeGeometry(loopCurve, 220, .016, 8, false), loopMat));
+const amps = [];
+for (const t of [.12, .3, .5, .7, .88]) { const p = loopCurve.getPointAt(t), tg = loopCurve.getTangentAt(t);
+  const a = new THREE.Mesh(new THREE.ConeGeometry(.1, .22, 3), new THREE.MeshPhysicalMaterial({ color: 0x0c1116, metalness: .7, roughness: .3, emissive: 0x6ff3ff, emissiveIntensity: 0 }));
+  a.position.copy(p).add(V(0, .05, 0)); a.quaternion.setFromUnitVectors(V(0, 1, 0), tg); analog.add(a); amps.push(a); }
+anchor('loop', analog, 2.3, .4, -1.2);
+const convRings = [];
+for (let k = 0; k < 6; k++) { const r = new THREE.Mesh(new THREE.TorusGeometry(1, .008, 6, 96), new THREE.MeshBasicMaterial({ color: HDR(.4, 1.7, 2.1, 1), transparent: true, opacity: 0, toneMapped: false, blending: THREE.AdditiveBlending, depthWrite: false }));
+  r.rotation.x = -Math.PI / 2; r.position.y = .9; analog.add(r); convRings.push(r); }
+const convDot = new THREE.Mesh(new THREE.SphereGeometry(.05, 16, 12), mat.glow(HDR(.5, 2, 2.4, 1))); convDot.position.y = .9; convDot.scale.setScalar(.0001); analog.add(convDot);
+const hinge = new THREE.Group(); hinge.position.set(0, .43, -2); analog.add(hinge);
+const lid = new THREE.Mesh(new RoundedBoxGeometry(4, .22, 4, 4, .1), mat.graphite); lid.position.set(0, .11, 2); hinge.add(lid);
+const beam = new THREE.Mesh(new THREE.CylinderGeometry(.012, .012, 9, 8), new THREE.MeshBasicMaterial({ color: HDR(.4, 1.8, 2.2, 2), transparent: true, opacity: 0, toneMapped: false, blending: THREE.AdditiveBlending }));
+beam.rotation.z = Math.PI / 2; beam.position.set(1.5, .3, 0); analog.add(beam);
+
+// ===================== SET cell: one RRAM cell =====================
+const R = setGroup.cell;
+const th0 = Math.atan2(3.2, 5.5) + Math.PI / 4, thL = Math.PI * 1.5;
+const layerDefs = [
+  { y0: -1.0, y1: -.42, m: new THREE.MeshPhysicalMaterial({ color: 0x9aa4ad, metalness: 1, roughness: .28, clearcoat: .3, side: THREE.DoubleSide }) },
+  { y0: -.42, y1: .42, m: new THREE.MeshPhysicalMaterial({ color: 0x7fc6d0, metalness: 0, roughness: .08, clearcoat: 1, transparent: true, opacity: .3, emissive: 0x2ab8c8, emissiveIntensity: .05, side: THREE.DoubleSide, depthWrite: false }) },
+  { y0: .42, y1: 1.0, m: new THREE.MeshPhysicalMaterial({ color: 0x5d646c, metalness: 1, roughness: .22, clearcoat: .5, side: THREE.DoubleSide }) },
+];
+for (const L of layerDefs) {
+  const h = L.y1 - L.y0, yc = (L.y0 + L.y1) / 2;
+  const cyl = new THREE.Mesh(new THREE.CylinderGeometry(1, 1, h, 128, 1, true, th0, thL), L.m); cyl.position.y = yc; R.add(cyl);
+  for (const [yy, sgn] of [[L.y1, 1], [L.y0, -1]]) { const cap = new THREE.Mesh(new THREE.CircleGeometry(1, 96, th0 - Math.PI / 2, thL), L.m); cap.rotation.x = -Math.PI / 2 * sgn; cap.position.y = yy; R.add(cap); }
+  for (const th of [th0, th0 + thL]) { const p = new THREE.Mesh(new THREE.PlaneGeometry(1, h), L.m); p.position.set(.5 * Math.sin(th), yc, .5 * Math.cos(th)); p.rotation.y = th - Math.PI / 2; R.add(p); }
+}
+const wordLine = new THREE.Mesh(new THREE.BoxGeometry(9, .22, .5), mat.steel); wordLine.position.y = -1.13; R.add(wordLine);
+const bitLine = new THREE.Mesh(new THREE.BoxGeometry(.5, .22, 9), mat.steel); bitLine.position.y = 1.13; R.add(bitLine);
+function bolt(a, b, n, jit) { const pts = []; for (let i = 0; i <= n; i++) { const t = i / n, p = a.clone().lerp(b, t); if (i > 0 && i < n) p.add(V((rnd() - .5) * jit, (rnd() - .5) * jit * .3, (rnd() - .5) * jit)); pts.push(p); } return pts; }
+const filMain = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(bolt(V(0, -.42, 0), V(0, .42, 0), 20, .16)), 120, .022, 8), mat.glow(HDR(.4, 1.8, 2.2, 1)));
+R.add(filMain);
+const branches = [];
+for (let k = 0; k < 7; k++) { const t0 = .1 + rnd() * .7, y = -.42 + t0 * .84, a = rnd() * 6.28, l = .18 + rnd() * .28;
+  const m = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(bolt(V(0, y, 0), V(Math.cos(a) * l, Math.min(.4, y + l * .5), Math.sin(a) * l), 8, .06)), 40, .009, 6), mat.glow(HDR(.35, 1.5, 1.9, 1)));
+  R.add(m); branches.push({ m, t0 }); }
+const VAC_N = 380, vacPos = new Float32Array(VAC_N * 3), vacSeed = [];
+for (let i = 0; i < VAC_N; i++) vacSeed.push([.15 + rnd() * .8, rnd() * 6.28, -.4 + rnd() * .8]);
+const vacGeo = new THREE.BufferGeometry(); vacGeo.setAttribute('position', new THREE.BufferAttribute(vacPos, 3));
+const vacMat = mkPoints({ color: HDR(.4, 1.6, 2, 1), size: .02, maxPx: 5, opacity: .8 });
+R.add(new THREE.Points(vacGeo, vacMat));
+const curP = new THREE.InstancedMesh(new THREE.SphereGeometry(.06, 10, 8), mat.glow(HDR(.4, 1.8, 2.2, 1.4)), 30); curP.instanceMatrix.setUsage(THREE.DynamicDrawUsage); R.add(curP);
+anchor('cellTop', R, 0, .72, 0); anchor('cellOx', R, -.8, 0, .5); anchor('cellBot', R, 0, -.72, 0); anchor('cellFil', R, 0, .1, 0);
+
+// ===================== SET scale: thousands of tiles =====================
+const S = setGroup.scale;
+const gridTex = tex(128, 128, (g, w, h) => { g.fillStyle = '#000'; g.fillRect(0, 0, w, h); g.strokeStyle = '#fff'; g.lineWidth = 3; for (let i = 0; i <= 8; i++) { const p = 8 + i * 14; g.beginPath(); g.moveTo(p, 8); g.lineTo(p, h - 8); g.stroke(); g.beginPath(); g.moveTo(8, p); g.lineTo(w - 8, p); g.stroke(); } g.fillStyle = '#fff'; for (let i = 0; i <= 8; i++) for (let j = 0; j <= 8; j++) { g.beginPath(); g.arc(8 + i * 14, 8 + j * 14, 3, 0, 7); g.fill(); } }, false);
+const logicTex = tex(256, 256, (g, w, h) => { g.fillStyle = '#050403'; g.fillRect(0, 0, w, h); g.strokeStyle = 'rgba(255,140,60,.5)'; for (let i = 0; i < 160; i++) { const x = rnd() * w, y = rnd() * h; g.beginPath(); g.moveTo(x, y); rnd() > .5 ? g.lineTo(x + 40 * rnd(), y) : g.lineTo(x, y + 40 * rnd()); g.stroke(); } });
+logicTex.wrapS = logicTex.wrapT = THREE.RepeatWrapping; logicTex.repeat.set(60, 60);
+const logic = new THREE.Mesh(new THREE.PlaneGeometry(300, 300), new THREE.MeshStandardMaterial({ map: logicTex, emissive: 0xffffff, emissiveMap: logicTex, emissiveIntensity: .25, roughness: .7 }));
+logic.rotation.x = -Math.PI / 2; logic.position.y = -.25; S.add(logic);
+const SC = MOBILE ? 60 : 110;
+const tileMat = new THREE.ShaderMaterial({
+  uniforms: { map: { value: gridTex }, time: { value: 0 }, origin: { value: SETS.scale.clone() } },
+  vertexShader: `uniform float time; uniform vec3 origin; varying vec2 vUv; varying float vG; varying float vTop; varying float vFade;
+    void main(){ vec4 wp=modelMatrix*instanceMatrix*vec4(position,1.); vec3 c=(modelMatrix*instanceMatrix*vec4(0.,0.,0.,1.)).xyz;
+      float d=length(c.xz-origin.xz-vec2(0.,2.)); float w=pow(.5+.5*sin(d*.55-time*1.8),8.);
+      float hs=fract(sin(dot(c.xz,vec2(12.9898,78.233)))*43758.5453);
+      vG=w*1.6+hs*.3+.15; vTop=step(.5,normal.y); vUv=uv; vec4 mv=viewMatrix*wp; vFade=exp(-(-mv.z)*.05); gl_Position=projectionMatrix*mv; }`,
+  fragmentShader: `uniform sampler2D map; varying vec2 vUv; varying float vG; varying float vTop; varying float vFade;
+    void main(){ vec3 g=texture2D(map,vUv).rgb; vec3 col=vec3(.012,.03,.036)+vTop*g*vec3(.3,1.35,1.65)*vG; col+=(1.-vTop)*vec3(.02,.06,.07)*vG; gl_FragColor=vec4(col*vFade,1.); }`
+});
+const scaleTiles = new THREE.InstancedMesh(new THREE.BoxGeometry(1, .14, 1), tileMat, SC * SC); scaleTiles.frustumCulled = false; S.add(scaleTiles);
+const NODES = [
+  { nm: 40, logic: 1, cell: 1, s: 1, note: 'Demonstrated: Peking University, 2025. This is today.', es: 'Demostrado: Universidad de Pekín, 2025. Esto es hoy.' },
+  { nm: 28, logic: 2, cell: 1.8, s: 1.5, note: 'RRAM is offered in foundry processes at this generation.', es: 'Las fundiciones ya ofrecen RRAM en procesos de esta generación.' },
+  { nm: 22, logic: 2.2, cell: 2.5, s: 1.8, note: 'Embedded RRAM ships at 22 nm today. In this scenario, the cells stop shrinking here.', es: 'La RRAM integrada se fabrica hoy a 22 nm. En este escenario, las celdas dejan de encogerse aquí.' },
+  { nm: 7, logic: 12, cell: 2.5, s: 3.5, note: 'Converters move to modern logic; the RRAM layers stay 22 nm-class above them.', es: 'Los conversores pasan a lógica moderna; las capas de RRAM siguen en clase 22 nm encima de ellos.' },
+  { nm: 4, logic: 18, cell: 2.5, s: 4.5, note: 'H100-class logic for the converters. Wire resistance becomes the main enemy.', es: 'Lógica de clase H100 para los conversores. La resistencia de los cables se vuelve el enemigo principal.' },
+  { nm: 2, logic: 30, cell: 2.5, s: 5.5, note: '2 nm-class logic (density not yet confirmed). Gains flatten: the cells and wires, not the transistors, set the limit.', es: 'Lógica de clase 2 nm (densidad aún sin confirmar). Las ganancias se aplanan: el límite lo ponen las celdas y los cables, no los transistores.' },
+];
+const eGain = n => 1 / (.1 + .9 / n.s), dGain = n => 1 / (.3 / n.cell + .7 / n.logic);
+let nodeAnim = 1, nodeAnimTarget = 1;
+function layoutTiles(dens) {
+  const sp = 1.15 / Math.sqrt(dens), sz = .9 * sp, m = new THREE.Matrix4(), qq = new THREE.Quaternion(); let i = 0;
+  for (let a = 0; a < SC; a++) for (let b = 0; b < SC; b++) { m.compose(V((a - SC / 2) * sp, 0, 6 - b * sp), qq, V(sz, 1, sz)); scaleTiles.setMatrixAt(i++, m); }
+  scaleTiles.instanceMatrix.needsUpdate = true;
+}
+layoutTiles(1);
+function setNode(i) {
+  const n = NODES[i];
+  document.querySelectorAll('#nodes button').forEach(b => b.classList.toggle('on', +b.dataset.i === i));
+  document.getElementById('pj-e').textContent = num(eGain(n).toFixed(1)) + '×';
+  document.getElementById('pj-d').textContent = num(dGain(n).toFixed(1)) + '×';
+  document.getElementById('pj-note').textContent = LANG === 'es' ? n.es : n.note;
+  nodeAnimTarget = dGain(n);
+}
+document.querySelectorAll('#nodes button').forEach(b => b.addEventListener('click', () => setNode(+b.dataset.i)));
+
+// ===================== SET ver: verdict floor =====================
+const mirror = new Reflector(new THREE.PlaneGeometry(80, 80), { clipBias: .003, textureWidth: innerWidth * .5, textureHeight: innerHeight * .5, color: 0x202326 });
+mirror.rotation.x = -Math.PI / 2; mirror.position.y = -.6; setGroup.ver.add(mirror);
+const veil = new THREE.Mesh(new THREE.PlaneGeometry(80, 80), new THREE.MeshBasicMaterial({ color: 0x030405, transparent: true, opacity: .72 }));
+veil.rotation.x = -Math.PI / 2; veil.position.y = -.595; setGroup.ver.add(veil);
+
+// ---------- dust & light rig ----------
+const DUST_N = MOBILE ? 400 : 1000, dpos = new Float32Array(DUST_N * 3);
+for (let i = 0; i < DUST_N; i++) { dpos[i * 3] = (rnd() - .5) * 30; dpos[i * 3 + 1] = rnd() * 12 - 2; dpos[i * 3 + 2] = (rnd() - .5) * 30; }
+const dustGeo = new THREE.BufferGeometry(); dustGeo.setAttribute('position', new THREE.BufferAttribute(dpos, 3));
+const dustMat = mkPoints({ color: 0xffffff, size: .025, maxPx: 3.5, opacity: .3 });
+const dust = new THREE.Points(dustGeo, dustMat); scene.add(dust);
+const rig = new THREE.Group(); scene.add(rig);
+const rigTarget = new THREE.Object3D(); rig.add(rigTarget);
+const key = new THREE.SpotLight(0xffffff, 40, 60, .55, .8, 2); key.position.set(-5, 9, 5); key.target = rigTarget; rig.add(key);
+const rim = new THREE.DirectionalLight(0xff7a1a, 3); rim.position.set(-5, 8.5, -8); rim.target = rigTarget; rig.add(rim);
+rig.add(new THREE.HemisphereLight(0xffffff, 0x0a0a0a, .25));
+const glowLight = new THREE.PointLight(0xff5a10, 1.5, 9, 2); glowLight.position.set(0, 2.2, 0); rig.add(glowLight);
+
+// ---------- chapters: set + framing relative to set (a→b), lens ----------
+const CH = [
+  { set: 'pkg', act: 'I', a: [9, 5.2, 13.5, -2.6, .2, .8, 32], b: [7.5, 3.8, 11.5, -2.4, .3, .8, 32] },
+  { set: 'mat', act: 'I', a: [-3, 1.6, 9.5, 1.7, 0, 0, 34], b: [-6, .6, 7.5, 1.9, 0, 0, 36], tilt: .5 },
+  { set: 'tc', act: 'I', a: [3.8, 3.4, 5.8, -1.4, 0, 0, 34], b: [2.4, 1.5, 3.7, -1.2, 0, .2, 38], tilt: .8 },
+  { set: 'city', act: 'I', a: [-9.5, 4.2, 10, 2.4, 0, 0, 36], b: [-6, 1.5, 4.8, 2.6, 0, -1, 40], tilt: 1.1 },
+  { set: 'pkg', act: 'I', a: [17, 10, 11, 2.8, 2, -2, 36], b: [-11, 8, 15, 3.8, 2, 1.8, 36] },
+  { set: 'tun', act: 'I', a: [0, 0, 4, 0, 0, -10, 64], b: [0, 0, -103, 0, 0, -125, 64] },
+  { set: 'pkg', act: 'I', a: [-4.5, 2.6, 6.5, -2.4, .3, 0, 40], b: [-2.2, .95, 2.9, -2.3, .2, -1.2, 44] },
+  { set: 'pkg', act: 'I', a: [-4, 2.4, 22, 3.6, -.4, 0, 32], b: [-1, 1.2, 19, 3.8, -.5, 0, 32], tilt: .5 },
+  { set: 'voidd', act: 'II', a: [0, 0, 10, 0, 0, 0, 34], b: [0, 0, 9, 0, 0, 0, 34] },
+  { set: 'ana', act: 'II', a: [6.6, 4.4, 5.6, 1.4, .3, -1, 30], b: [4.4, 3.6, 4.6, 1.5, .3, -.6, 32] },
+  { set: 'cell', act: 'II', a: [3.6, 1.4, 6.2, -1.1, 0, 0, 38], b: [1.7, .45, 3.3, -.75, 0, 0, 42], tilt: .7 },
+  { set: 'ana', act: 'II', a: [-2.2, 9.6, 1.6, -2.2, .3, .25, 34], b: [-2, 8.4, 1.4, -2, .3, .25, 34] },
+  { set: 'ana', act: 'II', a: [3.6, 5.6, 6.6, 1.6, .3, 0, 34], b: [2.5, 4.4, 5.2, 1.5, .4, 0, 34] },
+  { set: 'ver', act: 'II', a: [-.4, 7.5, 19, -.4, -1.4, 0, 34], b: [-.4, 6, 16.5, -.4, -1.2, 0, 34] },
+  { set: 'scale', act: 'III', a: [0, 1.4, 7, 3, .2, -4, 40], b: [0, 3.2, 9.5, 3, 0, -6, 40], tilt: .9 },
+  { set: 'scale', act: 'III', a: [0, 3.2, 9.5, 3, 0, -6, 40], b: [0, 24, 30, 0, 0, -14, 40] },
+];
+const ACT_NAME = LANG === 'es' ? { I: 'La forma digital', II: 'La forma analógica', III: 'La proyección' } : { I: 'The digital way', II: 'The analog way', III: 'The projection' };
+
+// ---------- labels ----------
+const TAGS = [
+  { c: 1, a: 'matA', t: 'Weights', s: 'billions of numbers' }, { c: 1, a: 'matV', t: 'Your input', s: 'a column of numbers' }, { c: 1, a: 'matR', t: 'Results', s: 'multiply · add · repeat' },
+  { c: 2, a: 'tcGrid', t: 'Multiply-add units', s: '4×4 grid in one tensor core' }, { c: 2, a: 'tcAcc', t: 'Accumulator', s: 'partial sums add up here' },
+  { c: 3, a: 'citySM', t: 'Streaming multiprocessor', s: '1 of 132 · 4 tensor cores' }, { c: 3, a: 'cityRiver', t: 'L2 cache', s: '50 MB shared river' },
+  { c: 4, a: 'die', t: 'GH100 die', s: '814 mm² · 80B transistors' }, { c: 4, a: 'hbm', t: 'HBM3 stack', s: 'DRAM layers · the towers' }, { c: 4, a: 'ip', t: 'Silicon interposer', s: 'the bridge' }, { c: 4, a: 'sub', t: 'Package substrate', s: 'power in' },
+  ...CHECK.map(k => ({ c: 5, a: 'ring' + k.z, t: k.t, s: k.pj ? `${k.s} · ${k.pj} pJ` : k.s, ring: k.z })),
+  { c: 9, a: 'dac', t: 'Input converters', s: 'numbers → voltages' }, { c: 9, a: 'adc', t: 'Output converters', s: 'currents → numbers' },
+  { c: 10, a: 'cellTop', t: 'Top electrode', s: 'metal' }, { c: 10, a: 'cellOx', t: 'Oxide layer', s: 'where the number lives' }, { c: 10, a: 'cellFil', t: 'Filament', s: 'thicker = more conductance' }, { c: 10, a: 'cellBot', t: 'Bottom electrode', s: 'metal' },
+  { c: 11, a: 'dac', t: '1 · voltages in', s: 'one per row' }, { c: 11, a: 'cellA', t: '2 · Ohm multiplies', s: 'I = G · V at every cell' }, { c: 11, a: 'adc', t: '3 · Kirchhoff adds', s: 'currents sum per column' },
+  { c: 12, a: 'loop', t: 'Feedback loop', s: 'amplifiers close the circuit' },
+];
+if (LANG === 'es') {
+  const ES = [['Pesos', 'miles de millones de números'], ['Tu entrada', 'una columna de números'], ['Resultados', 'multiplica · suma · repite'], ['Unidades multiplica-suma', 'cuadrícula 4×4 en un tensor core'], ['Acumulador', 'aquí se suman los parciales'],
+    ['Multiprocesador (SM)', '1 de 132 · 4 tensor cores'], ['Caché L2', 'un río compartido de 50 MB'], ['Chip GH100', '814 mm² · 80 mil millones de transistores'], ['Pila HBM3', 'capas de DRAM · las torres'], ['Interposer de silicio', 'el puente'], ['Sustrato', 'entra la energía']];
+  const ES2 = [['Conversores de entrada', 'números → voltajes'], ['Conversores de salida', 'corrientes → números'], ['Electrodo superior', 'metal'], ['Capa de óxido', 'donde vive el número'], ['Filamento', 'más grueso = más conductancia'], ['Electrodo inferior', 'metal'],
+    ['1 · entran voltajes', 'uno por fila'], ['2 · Ohm multiplica', 'I = G · V en cada celda'], ['3 · Kirchhoff suma', 'las corrientes se suman por columna'], ['Lazo de realimentación', 'los amplificadores cierran el circuito']];
+  let k = 0, k2 = 0; TAGS.forEach(t => { if (t.ring !== undefined) return; const src = k < ES.length ? ES[k++] : ES2[k2++]; if (src) { t.t = src[0]; t.s = src[1]; } });
+  document.querySelector('.brand').innerHTML = '<b>Dos formas de pensar</b><span> · cómo calculan los chips</span>';
+  document.querySelector('#meter .k').textContent = 'Energía del viaje de un número'; document.getElementById('meters').textContent = 'frente a 3,7 pJ de la operación';
+}
+const tagWrap = document.getElementById('tags');
+TAGS.forEach(t => { t.el = document.createElement('div'); t.el.className = 'tag'; t.el.innerHTML = `${t.t}<small>${t.s}</small>`; tagWrap.appendChild(t.el); });
+const tv = new THREE.Vector3();
+function placeTags(ci, u) {
+  for (const t of TAGS) {
+    let show = t.c === ci ? smooth(.12, .22, u) * (1 - smooth(.85, .95, u)) : 0;
+    if (t.ring !== undefined && t.c === ci) { const dz = camera.position.z - (SETS.tun.z + t.ring); show = dz > 1.5 && dz < 22 ? smooth(22, 14, dz) * smooth(1.5, 4, dz) : 0; }
+    if (ci === 4 && t.c === 4) show *= smooth(.3, .45, u) * (1 - smooth(.7, .8, u));
+    if (show < .02) { t.el.style.opacity = 0; continue; }
+    anchors[t.a].getWorldPosition(tv); tv.project(camera);
+    if (tv.z > 1) { t.el.style.opacity = 0; continue; }
+    t.el.style.opacity = show;
+    const x = (tv.x + 1) / 2 * innerWidth, y = (1 - tv.y) / 2 * innerHeight;
+    t.el.style.transform = `translate(${Math.min(innerWidth - 220, x + 30)}px, ${y - 8}px)`;
+  }
+}
+
+// ---------- scroll & HUD ----------
+const sections = [...document.querySelectorAll('#story .ch')];
+let secTop = [], secH = [];
+function measure() { secTop = sections.map(s => s.offsetTop); secH = sections.map(s => s.offsetHeight); }
+measure();
+let smoothY = scrollY;
+const cardEls = [...document.querySelectorAll('.card')];
+function revealCards() { const h = innerHeight; for (const c of cardEls) { const r = c.getBoundingClientRect(); c.classList.toggle('in', r.top < h * .92 && r.bottom > h * .08); } }
+const actEl = document.getElementById('act'), rail = document.getElementById('rail'), hint = document.getElementById('hint');
+const meter = document.getElementById('meter'), meterV = document.getElementById('meterv');
+const refineEl = document.getElementById('refine'), refineE = document.getElementById('refine-e');
+let REFINE = [['x ≈ 0.7', 'error ≈ 10⁻¹ · analog first guess'], ['x ≈ 0.73', 'error ≈ 10⁻² · correction 1'], ['x ≈ 0.7312', 'error ≈ 10⁻⁴ · correction 2'], ['x ≈ 0.731204', 'error ≈ 10⁻⁶ · correction 3'], ['x ≈ 0.73120418', 'error ≈ 10⁻⁸ · 24-bit class']];
+if (LANG === 'es') REFINE = [['x ≈ 0,7', 'error ≈ 10⁻¹ · primera estimación analógica'], ['x ≈ 0,73', 'error ≈ 10⁻² · corrección 1'], ['x ≈ 0,7312', 'error ≈ 10⁻⁴ · corrección 2'], ['x ≈ 0,731204', 'error ≈ 10⁻⁶ · corrección 3'], ['x ≈ 0,73120418', 'error ≈ 10⁻⁸ · clase 24 bits']];
+const storyEl = document.getElementById('story');
+
+// ---------- narration ----------
+let LINES = [
+  "Here's a question worth asking. When you type something into a chatbot, where does the answer actually come from? Very often, from a chip like this one. Eighty billion transistors. And, it turns out, a surprising amount of waiting.",
+  "Strip away the mystique, and an AI model is mostly a gigantic table of numbers. To answer you, it multiplies, adds, and repeats. For a large model, that's about a hundred and forty billion multiplications for every single word.",
+  "Inside, every number is written in ones and zeros, held by tiny switches. A multiplication is thousands of those switches flipping in exactly the right order, billions of times a second. This chip has five hundred and twenty-eight little factories built for exactly that.",
+  "Zoom in, and it looks like a city. A hundred and thirty-two neighbourhoods of processors, with a river of fast memory running through the middle. It's wonderfully quick. But there's a catch: most of the numbers it needs don't live here.",
+  "They live out in these towers: stacks of memory chips, joined to the city by a bridge of silicon carrying thousands of wires.",
+  "So let's follow one number on its commute. Out of its memory cell, down the tower, across the bridge, through the caches, and finally into the machine that does the maths. Keep an eye on the meter. The journey costs about two hundred times more energy than the sum itself.",
+  "And here's the real bottleneck. To stay busy, this chip wants about three hundred operations for every byte it fetches. A chatbot writing one word at a time manages roughly one. So, much of the time, one of the most powerful chips on the planet is simply waiting for its numbers to arrive.",
+  "Which is why so much of the power goes not on thinking, but on fetching. Seven hundred watts in, and every last one of them out again as heat.",
+  "Which raises a rather lovely question. What if the memory could do the maths itself?",
+  "That's exactly what a team at Peking University has built. No towers. No bridge. Just a grid of wires, with a tiny memory cell sitting at every crossing.",
+  "Each cell is a sandwich: metal, a sliver of oxide, metal. Send a pulse through, and a filament grows across the oxide, a bit like a tiny bolt of lightning frozen in place. The thicker it is, the more current gets through. And that, astonishingly, is the number.",
+  "Now for the clever bit. Put voltages on the rows, and Ohm's law does the multiplying at every cell, for free. Kirchhoff's law adds up the currents down every column. An entire grid of sums, in a single instant, and the numbers never move.",
+  "Wire the outputs back into the inputs, and the circuit simply settles on the answer to an equation, the way water finds its own level. A second grid then tidies up the rough edges, until it's as precise as a digital chip.",
+  "The team reports a thousand times the throughput and a hundred times the energy efficiency, on these kinds of problems. A word of caution, though: it's early, it's small, and it isn't about to replace your graphics card. But it is a genuinely different way to think.",
+  "So what happens if it grows up? The surrounding circuitry shrinks beautifully on modern chips. The memory cells and the wires, rather less so. Run the numbers, and at two nanometres you might get around four times less energy, and seven times more computing per square millimetre. Promising. But not magic.",
+  "The likely future isn't one tiny miracle chip. It's a stack: memory that thinks, sitting on top of the very best logic. And the big idea is wonderfully simple. Stop moving the numbers.",
+];
+if (LANG === 'es') LINES = ["Una pregunta que vale la pena hacerse: cuando le escribes algo a un chatbot, ¿de dónde sale realmente la respuesta? Muy a menudo, de un chip como este. Ochenta mil millones de transistores. Y, curiosamente, muchísima espera.", "Quitémosle el misterio: un modelo de inteligencia artificial es, sobre todo, una tabla gigantesca de números. Para responderte, multiplica, suma y repite. En un modelo grande, son unos ciento cuarenta mil millones de multiplicaciones por cada palabra.", "Por dentro, cada número está escrito en unos y ceros, guardados en diminutos interruptores. Una multiplicación son miles de esos interruptores cambiando en el orden exacto, miles de millones de veces por segundo. Este chip tiene quinientas veintiocho pequeñas fábricas hechas justo para eso.", "Si nos acercamos, parece una ciudad. Ciento treinta y dos barrios de procesadores, con un río de memoria rápida que la cruza por el medio. Es rapidísima. Pero hay un problema: la mayoría de los números que necesita no viven aquí.", "Viven en estas torres: pilas de chips de memoria, unidas a la ciudad por un puente de silicio con miles de cables.", "Así que sigamos a un número en su viaje diario. Sale de su celda de memoria, baja por la torre, cruza el puente, pasa por las cachés y por fin llega a la máquina que hace las cuentas. Fíjate en el contador: el viaje cuesta unas doscientas veces más energía que la propia operación.", "Y aquí está el verdadero cuello de botella. Para mantenerse ocupado, este chip necesita unas trescientas operaciones por cada byte que trae de la memoria. Un chatbot que escribe palabra por palabra hace más o menos una. Así que, buena parte del tiempo, uno de los chips más potentes del planeta simplemente está esperando a que lleguen sus números.", "Por eso tanta energía se va no en pensar, sino en ir a buscar datos. Entran setecientos vatios, y todos y cada uno vuelven a salir convertidos en calor.", "Lo cual nos deja una pregunta preciosa. ¿Y si la memoria pudiera hacer las cuentas ella misma?", "Eso es exactamente lo que ha construido un equipo de la Universidad de Pekín. Sin torres. Sin puente. Solo una cuadrícula de cables, con una diminuta celda de memoria en cada cruce.", "Cada celda es un sándwich: metal, una lámina finísima de óxido, y metal. Si mandas un pulso, crece un filamento a través del óxido, como un pequeño rayo congelado. Cuanto más grueso, más corriente deja pasar. Y eso, por asombroso que parezca, es el número.", "Ahora viene lo ingenioso. Pones voltajes en las filas, y la ley de Ohm hace la multiplicación en cada celda, gratis. La ley de Kirchhoff suma las corrientes de cada columna. Una cuadrícula entera de cuentas, en un solo instante, y los números nunca se mueven.", "Conecta las salidas de vuelta a las entradas, y el circuito encuentra por sí solo la solución de una ecuación, como el agua que busca su nivel. Después, una segunda cuadrícula pule los detalles, hasta que es tan precisa como un chip digital.", "El equipo reporta mil veces más rendimiento y cien veces más eficiencia energética en este tipo de problemas. Eso sí, con cautela: es pronto, es pequeño, y no va a reemplazar tu tarjeta gráfica mañana. Pero es una forma realmente distinta de pensar.", "¿Y qué pasa si crece? Los circuitos que lo rodean se encogen de maravilla en los chips modernos. Las celdas de memoria y los cables, no tanto. Haciendo números, a dos nanómetros podrías conseguir unas cuatro veces menos energía y siete veces más cómputo por milímetro cuadrado. Prometedor. Pero no es magia.", "El futuro probable no es un chip milagroso y diminuto. Es una pila: memoria que piensa, apoyada sobre la mejor lógica posible. Y la gran idea es maravillosamente sencilla. Dejar de mover los números."];
+const AUDIO_DIR = LANG === 'es' ? 'audio/es' : 'audio';
+// ?v=2: the edge had cached an HTML fallback for audio/es/ch1.mp3 (7-day cache), so the voice URLs carry a version
+const voiceSrc = i => new URL(`${AUDIO_DIR}/ch${i + 1}.mp3?v=2`, location.href).href;
+// ---------- sound ----------
+// Instagram, Facebook and TikTok's in-app browsers, Android WebViews and iOS Safari only let an <audio> element play
+// from script if that same element was first started inside a tap. Chapters start from a timer after a scroll, which
+// is not a tap, so the page keeps ONE voice element (its src changes per chapter) plus the music players, and starts
+// every one of them inside the Sound tap. iOS also ignores element.volume: there the voice stops with pause() and
+// the music is a quieter pre-mixed file (music/score-quiet.mp3, -15 dB) that loops without ducking.
+const CAN_VOL = (() => { try { const a = new Audio(); a.volume = .5; return Math.abs(a.volume - .5) < .01; } catch (e) { return false; } })();
+const voiceEl = new Audio(); voiceEl.preload = 'auto'; voiceEl.setAttribute('playsinline', '');
+const soundBtn = document.getElementById('sound'), ccBtn = document.getElementById('cc'), caption = document.getElementById('caption');
+let voiceDoneFor = -1, soundOn = false, ccOn = false, spoken = -1, settleTimer = 0, playing = false, currentChapter = 0, fadeTimer = 0, blocked = false, resumeOnShow = false;
+// background score: two players crossfading for a seamless loop, ducked under the narrator (one looping quiet player where volume is fixed)
+const MUSIC_BASE = .26, MUSIC_DUCK = .11;
+const music = (CAN_VOL ? ['music/score.mp3', 'music/score.mp3'] : ['music/score-quiet.mp3']).map(src => {
+  const m = new Audio(src); m.preload = 'none'; m.setAttribute('playsinline', ''); if (CAN_VOL) m.volume = 0; else m.loop = true; return m;
+});
+let mIdx = 0, musicTick = 0;
+function setSoundLabel() { soundBtn.querySelector('span').textContent = !soundOn ? UI.soundOff : blocked ? UI.soundTap : UI.soundOn; soundBtn.classList.toggle('blocked', soundOn && blocked); }
+function tryPlay(el) {
+  let p; try { p = el.play(); } catch (e) { return; }
+  if (p && p.catch) p.catch(err => { if (err && err.name === 'NotAllowedError' && soundOn) { blocked = true; setSoundLabel(); } });
+}
+// a muted play-and-pause inside the tap lets this player start later from script
+function unlock(el) {
+  if (!el.paused) return; el.muted = true; let p; try { p = el.play(); } catch (e) { el.muted = false; return; }
+  const done = () => { if (el !== music[mIdx] || !soundOn) el.pause(); el.muted = false; };
+  if (p && p.then) p.then(done, () => { el.muted = false; }); else done();
+}
+function musicLoop() {
+  const cur = music[mIdx], nxt = music[1 - mIdx];
+  if (soundOn && cur.duration && cur.currentTime > cur.duration - 5 && nxt.paused) { nxt.currentTime = 0; nxt.volume = 0; tryPlay(nxt); mIdx = 1 - mIdx; }
+  const want = soundOn ? (playing ? MUSIC_DUCK : MUSIC_BASE) : 0;
+  music.forEach((m, i) => { const t = i === mIdx ? want : 0; m.volume = Math.max(0, Math.min(1, m.volume + (t - m.volume) * .12)); if (!soundOn && m.volume < .005 && !m.paused) m.pause(); if (i !== mIdx && m.volume < .005 && !m.paused) m.pause(); });
+}
+function startMusic() { tryPlay(music[mIdx]); if (CAN_VOL) { clearInterval(musicTick); musicTick = setInterval(musicLoop, 60); } }
+function stopMusic() { if (!CAN_VOL) music.forEach(m => m.pause()); } // with volume control, musicLoop fades the score out and pauses it
+function showCaption(i) { caption.textContent = LINES[i]; caption.classList.toggle('on', soundOn && ccOn && playing && spoken === i); }
+function fadeOut(then) {
+  clearInterval(fadeTimer);
+  fadeTimer = setInterval(() => { voiceEl.volume = Math.max(0, voiceEl.volume - .15); if (voiceEl.volume <= 0) { clearInterval(fadeTimer); voiceEl.pause(); if (then) then(); } }, 30);
+}
+function stopVoice() { if (playing) { if (CAN_VOL) fadeOut(); else voiceEl.pause(); } playing = false; caption.classList.remove('on'); }
+function speak(i) {
+  spoken = i;
+  if (!soundOn) { stopVoice(); return; }
+  const go = () => {
+    clearInterval(fadeTimer); if (!soundOn || spoken !== i) return;
+    const src = voiceSrc(i);
+    if (voiceEl.src !== src) voiceEl.src = src; else { try { voiceEl.currentTime = 0; } catch (e) {} }
+    if (CAN_VOL) voiceEl.volume = 1;
+    playing = true; voiceDoneFor = -1; showCaption(i); tryPlay(voiceEl);
+  };
+  // the first chapter after the Sound tap must start synchronously, inside the tap
+  if (playing && CAN_VOL) { playing = false; caption.classList.remove('on'); fadeOut(go); } else { stopVoice(); go(); }
+}
+voiceEl.onended = () => { playing = false; voiceDoneFor = spoken; caption.classList.remove('on'); };
+function onChapter(i) { clearTimeout(settleTimer); if (i === spoken) return; settleTimer = setTimeout(() => speak(i), 450); }
+soundBtn.onclick = () => {
+  soundOn = !soundOn; blocked = false; soundBtn.classList.toggle('on', soundOn); soundBtn.setAttribute('aria-pressed', soundOn); setSoundLabel();
+  ccBtn.hidden = !soundOn;
+  if (soundOn) { startMusic(); music.forEach((m, i) => { if (i !== mIdx) unlock(m); }); speak(currentChapter); }
+  else { clearTimeout(settleTimer); stopVoice(); stopMusic(); }
+};
+// safety net: if a browser still refused to play, the next tap anywhere on the page starts the sound again
+function retryOnTap(e) {
+  if (!soundOn || !blocked || (e.target.closest && e.target.closest('.controls'))) return;
+  blocked = false; setSoundLabel();
+  if (music[mIdx].paused) tryPlay(music[mIdx]);
+  if (playing && voiceEl.paused) tryPlay(voiceEl);
+}
+addEventListener('pointerup', retryOnTap, true); addEventListener('touchend', retryOnTap, { capture: true, passive: true });
+// switching apps (Instagram, a call) pauses everything; coming back resumes it
+document.addEventListener('visibilitychange', () => {
+  if (!soundOn) return;
+  if (document.hidden) { resumeOnShow = playing; clearInterval(fadeTimer); voiceEl.pause(); music.forEach(m => m.pause()); }
+  else { startMusic(); if (resumeOnShow && playing) tryPlay(voiceEl); }
+});
+// ---------- autoplay: after 5 s without input the film plays itself, one chapter per narration ----------
+// It drifts through the chapter while the narrator speaks (or for a reading time when sound is off), then glides to
+// the next chapter. Any wheel, touch, key, click, real mouse movement or manual scroll hands control back at once.
+const AUTO_IDLE = 5000, GLIDE_MS = 2200;
+let lastInput = performance.now(), auto = null, autoY = -1;
+const autoTag = document.getElementById('autotag');
+autoTag.querySelector('span').textContent = matchMedia('(pointer: coarse)').matches ? UI.autoTouch : UI.auto;
+const easeIO = t => t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+const maxY = () => document.documentElement.scrollHeight - innerHeight;
+const chapterY = (i, u) => clamp(secTop[i] + secH[i] * u - innerHeight * .5, 0, maxY());
+const readMs = i => Math.max(6, LINES[i].length / 15) * 1000;
+function setAuto(on) { document.body.classList.toggle('auto', on); autoTag.setAttribute('aria-hidden', String(!on)); }
+function stopAuto() { if (!auto) return; auto = null; setAuto(false); }
+function takeOver() { lastInput = performance.now(); stopAuto(); }
+function autoTo(y) { autoY = Math.round(y); scrollTo(0, autoY); }
+function startAuto() {
+  measure(); auto = { i: currentChapter, phase: 'dwell', t0: performance.now(), y0: scrollY, y1: 0, end: false };
+  setAuto(true); requestAnimationFrame(autoStep);
+}
+function autoStep(now) {
+  const a = auto; if (!a) return;
+  if (a.phase === 'dwell') {
+    const est = readMs(a.i), k = clamp((now - a.t0) / est);
+    autoTo(lerp(a.y0, Math.max(a.y0, chapterY(a.i, .7)), k));
+    const cap = soundOn && !blocked ? est * 1.6 + 3000 : est;
+    const heard = soundOn && !blocked && voiceDoneFor === a.i && now - a.t0 > 1200;
+    if (heard || now - a.t0 > cap) {
+      a.end = a.i >= CH.length - 1;
+      a.phase = 'glide'; a.t0 = now; a.y0 = scrollY;
+      a.y1 = a.end ? clamp(document.getElementById('atelier').offsetTop, 0, maxY()) : chapterY(a.i + 1, .3);
+    }
+  } else {
+    const k = clamp((now - a.t0) / GLIDE_MS);
+    autoTo(lerp(a.y0, a.y1, easeIO(k)));
+    if (k >= 1) { if (a.end) { stopAuto(); return; } a.i += 1; a.phase = 'dwell'; a.t0 = now; a.y0 = scrollY; }
+  }
+  requestAnimationFrame(autoStep);
+}
+if (!VIDEO) {
+  for (const ev of ['wheel', 'touchstart', 'pointerdown', 'keydown']) addEventListener(ev, takeOver, { passive: true, capture: true });
+  addEventListener('pointermove', e => { if (e.pointerType === 'mouse' && Math.abs(e.movementX) + Math.abs(e.movementY) > 2) takeOver(); }, { passive: true });
+  addEventListener('scroll', () => { if (auto && Math.abs(scrollY - autoY) > 40) takeOver(); }, { passive: true });
+  document.addEventListener('visibilitychange', () => { if (document.hidden) stopAuto(); else lastInput = performance.now(); });
+  setInterval(() => {
+    if (auto || document.hidden || performance.now() - lastInput < AUTO_IDLE || !secH.length) return;
+    if (scrollY > storyEl.offsetHeight - innerHeight * .6) return; // already at the end card
+    startAuto();
+  }, 500);
+}
+ccBtn.onclick = () => { ccOn = !ccOn; ccBtn.classList.toggle('on', ccOn); ccBtn.setAttribute('aria-pressed', ccOn); if (playing) showCaption(spoken); else caption.classList.remove('on'); };
+
+
+// ---------- video mode: virtual clock, chapter timeline, kinetic type ----------
+const VT = document.getElementById('vt');
+let VCARDS = [...document.querySelectorAll('#story .ch')].map(sec => {
+  const card = sec.querySelector('.card'), side = sec.classList.contains('right') ? 'right' : sec.classList.contains('center') ? 'center' : 'left';
+  const h = card.querySelector('h1,h2');
+  return { side, kicker: card.querySelector('.k').textContent.trim(), title: h.innerHTML.replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim(), big: h.tagName === 'H1',
+    chips: [...card.querySelectorAll('.chip')].slice(0, 4).map(c => c.textContent), stats: [...card.querySelectorAll('.stat > div')].map(d => [d.querySelector('b').textContent, d.querySelector('span').textContent]) };
+});
+VCARDS[7].stats = [['640 pJ', 'fetch 32 bits from DRAM'], ['3.7 pJ', 'the multiply']];
+VCARDS[6].stats = [['295', 'ops needed per byte'], ['~1', 'what a chatbot does']];
+VCARDS.push({ side: 'center', kicker: 'Clikiti Atelier', title: 'Your product deserves a story like this.', big: true, chips: ['clikiti.com/atelier'], stats: [] });
+if (LANG === 'es') {
+  const ES = [
+    ['Acto I · 01 · El peso pesado', 'Cada respuesta tiene que viajar.', [], []],
+    ['02 · Qué hace realmente la IA', 'Sobre todo, multiplica.', [], []],
+    ['03 · Unos y ceros', 'Matemáticas hechas de interruptores.', ['Número de 16 bits = 16 interruptores', 'Reloj de ~1,98 GHz', '989 billones de ops FP16/s'], []],
+    ['04 · Una ciudad de procesadores', '132 barrios, un río.', ['132 SMs', '256 KB de memoria rápida por SM', '50 MB de caché L2', 'Proceso clase 4 nm'], []],
+    ['05 · Desarmarlo', 'Los números viven en las torres.', ['5 pilas HBM3 activas · 80 GB', '8+ capas de DRAM por pila', '3,35 TB/s', 'hasta 700 W'], []],
+    ['06 · Acompáñalo', 'Sigue a un número.', [], []],
+    ['07 · El muro', 'Los núcleos esperan.', [], [['295', 'ops necesarias por byte'], ['~1', 'lo que hace un chatbot']]],
+    ['08 · A dónde va la energía', 'Casi todos los vatios mueven datos.', [], [['640 pJ', 'traer 32 bits de DRAM'], ['3,7 pJ', 'la multiplicación']]],
+    ['Acto II · 09 · La pregunta', '¿Y si la memoria hiciera las cuentas?', [], []],
+    ['10 · Un chip distinto', 'Sin torres. Sin puente.', ['Matrices RRAM en cruce', 'Matriz de 1 Mb para multiplicar', 'Matriz 8×8 para resolver en un paso', 'Proceso clase 40 nm*'], []],
+    ['11 · Un número guardado como física', 'Una celda, un número.', ['metal / óxido / metal', 'conductancia = valor', 'no volátil'], []],
+    ['12 · Cómputo en memoria', 'Todas las multiplicaciones a la vez.', [], []],
+    ['13 · Resolver en un paso', 'Cierra el lazo. Deja que se asiente.', [], []],
+    ['14 · Calor o física', 'Dos formas de pensar.', [], [['1.000×', 'rendimiento'], ['100×', 'eficiencia energética']]],
+    ['Acto III · 15 · ¿Y si escala?', 'De 40 nm a 2 nm.', [], []],
+    ['16 · La dirección', 'Dejar de mover los números.', [], []],
+    ['Clikiti Atelier', 'Tu producto merece una historia así.', ['clikiti.com/atelier'], []],
+  ];
+  VCARDS = VCARDS.map((c, i) => ({ ...c, kicker: ES[i][0], title: ES[i][1], chips: ES[i][2], stats: ES[i][3] }));
+}
+const MIN_D = [9, 9, 9, 9, 8, 18, 9, 9, 6, 8, 10, 9, 10, 10, 20, 9];
+let vTime = 0, vTimeline = null, vtCur = -1, vtEls = null, vNode = -1;
+const eo = x => 1 - Math.pow(1 - clamp(x), 3);
+async function buildTimeline() {
+  const durs = await Promise.all(LINES.map((_, i) => new Promise(res => { const a = new Audio(); a.preload = 'metadata'; a.onloadedmetadata = () => res(a.duration); a.onerror = () => res(6); a.src = `${AUDIO_DIR}/ch${i + 1}.mp3`; })));
+  const starts = [], lens = []; let t = 0;
+  durs.forEach((d, i) => { const L = Math.max(MIN_D[i], d + 2.6); starts.push(t); lens.push(L); t += L; });
+  starts.push(t); lens.push(7); t += 7; // end card
+  vTimeline = { starts, lens, total: t, voiceAt: starts.slice(0, LINES.length).map(x => x + .9), voiceDur: durs };
+  return vTimeline;
+}
+function videoChapter(T) { const { starts, lens } = vTimeline; let i = 0; for (let k = 0; k < starts.length; k++) if (T >= starts[k]) i = k; return { vi: i, tau: T - starts[i], L: lens[i] }; }
+function fmtCount(str, p) {
+  const m = str.match(/^([~]?)([\d,.]+)(.*)$/); if (!m) return str;
+  const DEC = LANG === 'es' ? ',' : '.', TH = LANG === 'es' ? '.' : ',';
+  const raw = m[2].split(TH).join(''), dec = (raw.split(DEC)[1] || '').length, n = parseFloat(raw.replace(DEC, '.'));
+  let v = (n * p).toFixed(dec); const grouped = m[2].includes(TH);
+  v = Number(v).toLocaleString(LANG === 'es' ? 'de-DE' : 'en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec, useGrouping: grouped });
+  return m[1] + v + m[3];
+}
+function updateVT(vi, tau, L) {
+  const c = VCARDS[vi];
+  if (vi !== vtCur) {
+    vtCur = vi;
+    const words = c.title.split(' ').map(w => `<span class="w">${w}</span>`).join(' ');
+    const chars = [...c.kicker].map(ch => `<span class="c">${ch === ' ' ? '&nbsp;' : ch}</span>`).join('');
+    VT.innerHTML = `<div class="vt-card ${c.side}"><div class="vt-k">${chars}</div><div class="vt-t ${c.big ? 'big' : ''}">${words}</div>` +
+      (c.stats.length ? `<div class="vt-stats">${c.stats.map(([b, sp]) => `<div><b data-v="${b}">${b}</b><span>${sp}</span></div>`).join('')}</div>` : '') +
+      `<div class="vt-live"></div>` + (c.chips.length ? `<div class="vt-chips">${c.chips.map(x => `<span>${x}</span>`).join('')}</div>` : '') + `</div>`;
+    vtEls = { card: VT.firstChild, w: [...VT.querySelectorAll('.w')], c: [...VT.querySelectorAll('.c')], chips: [...VT.querySelectorAll('.vt-chips span')], stats: [...VT.querySelectorAll('.vt-stats b')], statBox: [...VT.querySelectorAll('.vt-stats > div')], live: VT.querySelector('.vt-live') };
+  }
+  const out = eo((tau - (L - .8)) / .6), e = vtEls;
+  e.card.style.opacity = eo(tau / .4) * (1 - out);
+  const nc = Math.max(1, e.c.length), typed = clamp((tau - .15) / .7); e.c.forEach((el, k) => { el.style.opacity = k / nc < typed ? 1 : 0; });
+  e.w.forEach((el, k) => { const p = eo((tau - (.45 + k * .075)) / .65); el.style.opacity = p; el.style.transform = `translateY(${(1 - p) * .55 - out * .2}em)`; el.style.filter = `blur(${((1 - p) * 10).toFixed(2)}px)`; });
+  e.statBox.forEach((el, k) => { const p = eo((tau - (1.1 + k * .3)) / .5); el.style.opacity = p; el.style.transform = `translateY(${(1 - p) * 1.2}vw)`; });
+  e.stats.forEach((el, k) => { el.textContent = fmtCount(el.dataset.v, eo((tau - (1.1 + k * .3)) / 1.3)); });
+  e.chips.forEach((el, k) => { const p = eo((tau - (1.6 + k * .25)) / .45); el.style.opacity = p; el.style.transform = `scale(${.86 + .14 * p}) translateY(${(1 - p) * .8}vw)`; });
+  let live = '';
+  if (vi === 12) live = refineEl.innerHTML;
+  if (vi === 14 && vNode >= 0) { const n = NODES[vNode]; live = LANG === 'es' ? `${n.nm} nm → ${eGain(n).toFixed(1).replace('.', ',')}× menos energía · ${dGain(n).toFixed(1).replace('.', ',')}× cómputo/mm²<small>estimación de escenario</small>` : `${n.nm} nm → ${eGain(n).toFixed(1)}× less energy · ${dGain(n).toFixed(1)}× compute/mm²<small>scenario estimate</small>`; }
+  if (e.live.innerHTML !== live) e.live.innerHTML = live;
+  e.live.style.opacity = live ? eo((tau - 1.2) / .5) * (1 - out) : 0;
+}
+
+// ---------- per-set animation ----------
+const m4 = new THREE.Matrix4(), q = new THREE.Quaternion(), sc = new THREE.Vector3(), pv = new THREE.Vector3(), col = new THREE.Color();
+function animPkg(ci, u, time) {
+  const verdict = ci === 13;
+  digital.position.copy(verdict ? SETS.ver.clone().add(V(-4.4, 0, 0)) : SETS.pkg); digital.scale.setScalar(verdict ? .5 : 1);
+  const ex = ci === 4 ? smooth(.05, .35, u) * (1 - smooth(.82, .97, u)) : 0;
+  interposer.position.y = ex * 1.3; die.position.y = ex * 3.6;
+  hbm.forEach(h => { h.g.position.y = .1 + ex * 2.4; h.slices.forEach((s, i) => s.position.y = .05 + i * (.1 + ex * .13)); });
+  filaments.scale.y = .2 + ex * 3.4; filMat.opacity = ex * .6;
+  const energy = ci === 7 ? smooth(0, .3, u) : 0;
+  ipMat.emissiveIntensity = .25 + ex * 2 + (ci === 6 ? smooth(0, .3, u) * 1.2 : 0) + energy * .6;
+  board.visible = pillars.visible = sink.visible = ci === 7;
+  pillars.material.opacity = energy * .55;
+  sink.position.y = lerp(7, 1.15, smooth(.15, .55, u));
+  dieHeat.material.opacity = energy * (.28 + .08 * Math.sin(time * 3)) + (verdict ? .25 : 0);
+  edgeMat.emissiveIntensity = .5 + energy;
+  const idle = .6 + (ci === 6 ? 1.4 : 0);
+  for (let a = 0; a < TILE_N; a++) for (let b = 0; b < TILE_N; b++) { const i = a * TILE_N + b, s = tileSeed[i], on = s > .9 && Math.sin(time * (2 + s * 9) + s * 30) > .2;
+    m4.compose(pv.set(-1.47 + a * .267, 0, -1.56 + b * .284), q.identity(), sc.setScalar(on ? 1 : .0001)); tiles.setMatrixAt(i, m4); tiles.setColorAt(i, col.setRGB(.55 * idle, 1.6 * idle, 1.9 * idle)); }
+  tiles.instanceMatrix.needsUpdate = true; tiles.instanceColor.needsUpdate = true;
+  const jamK = ci === 6 ? 1 : ci === 0 ? .14 : ci === 7 ? .45 : verdict ? .5 : 0;
+  const vis = Math.floor(JAM_N * jamK * (1 - ex)); jam.count = vis;
+  for (let i = 0; i < vis; i++) { const d = jamData[i], [hx, hz] = HBM_POS[d.lane], dir = hx < 0 ? 1 : -1;
+    let w = (d.s + time * .045 * d.sp + .02 * Math.sin(time * 2.3 + d.ph)) % 1; w = 1 - Math.pow(1 - w, 2.8);
+    const x = lerp(hx + dir * .72, -dir * 1.9, w), z = hz * lerp(1, .75, w) + d.z * lerp(1, .55, w), y = d.y + Math.sin(time * 3 + d.ph * 3) * .02;
+    m4.compose(pv.set(x, y, z), q.identity(), sc.set(1 + (1 - w) * .6, 1, 1)); jam.setMatrixAt(i, m4); jam.setColorAt(i, col.setRGB(1.7 + w * .9, .6 - w * .42, .12 - w * .08)); }
+  jam.instanceMatrix.needsUpdate = true; if (jam.instanceColor) jam.instanceColor.needsUpdate = true;
+  pulsesE.count = ci === 7 ? 160 : 0;
+  for (let i = 0; i < pulsesE.count; i++) { const [x, z, s] = pulseESeed[i], w = (s + time * .5) % 1; m4.compose(pv.set(x, -3.05 + w * 2.9, z), q.identity(), sc.setScalar(.6 + w * .6)); pulsesE.setMatrixAt(i, m4); pulsesE.setColorAt(i, col.setRGB(1.6, .65, .16)); }
+  pulsesE.instanceMatrix.needsUpdate = true; if (pulsesE.instanceColor) pulsesE.instanceColor.needsUpdate = true;
+}
+function animMat(time) {
+  const y = 2.2 - ((time * .35) % 1) * 4.4;
+  panes.forEach(p => { p.scan.position.y = y; });
+  vec.position.y = Math.sin(time * .5) * .1;
+  for (let i = 0; i < RES_N; i++) { const [s, dy, dz] = resSeed[i], w = (s + time * .25) % 1; m4.compose(pv.set(.2 + w * 6, y + dy, dz + w * 1.4), q.identity(), sc.set(1 + w * 2, 1, 1)); results.setMatrixAt(i, m4); results.setColorAt(i, col.setRGB(2.2 * (1 - w * .5), 1.0 * (1 - w * .5), .3)); }
+  results.instanceMatrix.needsUpdate = true; if (results.instanceColor) results.instanceColor.needsUpdate = true;
+}
+function animCity(time) {
+  for (let i = 0; i < capSeed.length; i++) { const s = capSeed[i], on = Math.sin(time * (1.5 + s * 6) + s * 40) > (s > .6 ? -.2 : .85); const k = on ? (1.4 + s) * .6 : .03; tcCaps.setColorAt(i, col.setRGB(1.8 * k, .8 * k, .22 * k)); }
+  tcCaps.instanceColor.needsUpdate = true;
+  for (let i = 0; i < TRAF_N; i++) { const d = trafSeed[i], w = (d.s + time * .08 * d.sp) % 1;
+    if (d.along) { const r = Math.min(10, d.lane), z = (r - 5) * SMZ + (r >= 6 ? RIVER / 2 : -RIVER / 2) - SMZ / 2; m4.compose(pv.set(-7 + w * 14, .02, z), q.identity(), sc.set(1, 1, 1)); }
+    else { const x = (d.lane - 5.5) * SMX + SMX / 2; m4.compose(pv.set(x, .02, -6 + w * 12), q.identity(), sc.set(.25, 1, 4)); }
+    traffic.setMatrixAt(i, m4); traffic.setColorAt(i, col.setRGB(2.2, .95, .25)); }
+  traffic.instanceMatrix.needsUpdate = true; if (traffic.instanceColor) traffic.instanceColor.needsUpdate = true;
+}
+function animTC(time) {
+  const ph = (time * .8) % 1; let bi = 0;
+  for (let i = 0; i < 4; i++) for (let n = 0; n < 4; n++) { const w = clamp((ph + n * .04) / .5); m4.compose(pv.set(-4 + w * 2.95, -.18, -1.05 + i * .7), q.identity(), sc.set(1, 1, 1)); bits.setMatrixAt(bi, m4); bits.setColorAt(bi++, col.setRGB(2.2 * (w < 1 ? 1 : 0), .95 * (w < 1 ? 1 : 0), .25)); }
+  for (let j = 0; j < 4; j++) for (let n = 0; n < 4; n++) { const w = clamp((ph + n * .04) / .5); m4.compose(pv.set(-1.05 + j * .7, -.18, -3.5 + w * 2.45), q.identity(), sc.set(.43, 1, 2.3)); bits.setMatrixAt(bi, m4); bits.setColorAt(bi++, col.setRGB(2.2 * (w < 1 ? 1 : 0), .7 * (w < 1 ? 1 : 0), .2)); }
+  for (let k = 0; k < 16; k++) { const i = Math.floor(k / 4), j = k % 4, w = clamp((ph - .55) / .4), on = ph > .55 ? 1 : 0;
+    m4.compose(pv.set(-1.05 + j * .7, -.18, -1.05 + i * .7 + w * (2.8 - i * .7)), q.identity(), sc.set(.5, 1, 2)); bits.setMatrixAt(bi, m4); bits.setColorAt(bi++, col.setRGB(2.4 * on, 1.1 * on, .3 * on)); }
+  bits.count = bi; bits.instanceMatrix.needsUpdate = true; if (bits.instanceColor) bits.instanceColor.needsUpdate = true;
+  MACS.forEach(m => { const k = Math.max(0, 1 - Math.abs(ph - .5 - (m.i + m.j) * .01) * 9); m.core.material.color.setRGB(.2 + k * 2.6, .1 + k * 1.2, .03 + k * .3); });
+  accum.material.emissiveIntensity = .2 + smooth(.75, 1, ph) * 1.8;
+}
+function animTunnel(time) {
+  tunMat.uniforms.time.value = time;
+  const camZ = camera.position.z - SETS.tun.z; let spent = 0;
+  CHECK.forEach((c, i) => { const d = camZ - c.z; rings[i].material.color.copy(cyanLine).multiplyScalar(1 + Math.exp(-d * d * .02) * 2.2); if (camZ < c.z + .5) spent += c.pj; });
+  meterV.textContent = num(spent >= 100 ? Math.round(spent) : spent.toFixed(1)) + ' pJ';
+}
+function animAnalog(ci, u, time) {
+  const verdict = ci === 13;
+  analog.position.copy(verdict ? SETS.ver.clone().add(V(3.6, 0, 0)) : SETS.ana);
+  const lidOpen = ci === 9 ? smooth(.2, .7, u) : (ci === 11 || ci === 12) ? 1 : verdict ? .6 : 0;
+  hinge.rotation.x = -lidOpen * 1.15; hinge.position.y = .43 + lidOpen * .35;
+  const flow = ci === 11 ? smooth(.05, .3, u) : (ci === 12 || verdict) ? 1 : ci === 9 ? smooth(.6, .95, u) * .4 : 0;
+  for (let i = 0; i < N * N; i++) { const g = G[i], p = flow * (.5 + .5 * Math.sin(time * 4 - (i % N) * .5 + Math.floor(i / N) * .3)), k = .1 + g * (.3 + p * .7); cells.setColorAt(i, col.setRGB(.25 * k, 1.5 * k, 1.85 * k)); }
+  cells.instanceColor.needsUpdate = true;
+  const Vin = Array.from({ length: N }, (_, i) => .4 + .6 * (.5 + .5 * Math.sin(time * .6 + i * 1.3)));
+  dacs.forEach((d, i) => { const k = Vin[i] * (.3 + flow * .7); d.material.color.setRGB(.3 * k, 1.3 * k, 1.6 * k); });
+  adcs.forEach((a, j) => { let s = 0; for (let i = 0; i < N; i++) s += G[i * N + j] * Vin[i]; s /= N * .55; a.scale.y = 1 + flow * s * 6; a.position.y = .3 + a.scale.y * .025; const k = s * (.3 + flow * 1.1); a.material.color.setRGB(.35 * k, 1.4 * k, 1.7 * k); });
+  let pi = 0;
+  for (let i = 0; i < N; i++) for (let k = 0; k < ROWP; k++) { const w = (time * .9 + k / ROWP + i * .07) % 1; m4.compose(pv.set(-1.6 + w * 3.2, .295, at(i)), q.identity(), sc.set(.16 * flow + .0001, .016, .022)); pulses.setMatrixAt(pi, m4); pulses.setColorAt(pi++, col.setRGB(.35 * Vin[i], 1.5 * Vin[i], 1.8 * Vin[i])); }
+  for (let j = 0; j < N; j++) for (let k = 0; k < COLP; k++) { const w = (time * .75 + k / COLP + j * .05) % 1, gr = .5 + w * 1.6; m4.compose(pv.set(at(j), .335, -1.6 + w * 3.2), q.identity(), sc.set(.022 * gr, .016, .18 * flow * gr + .0001)); pulses.setMatrixAt(pi, m4); pulses.setColorAt(pi++, col.setRGB(.3 * gr, 1.2 * gr, 1.45 * gr)); }
+  pulses.instanceMatrix.needsUpdate = true; pulses.instanceColor.needsUpdate = true;
+  const fb = ci === 12 ? smooth(.05, .25, u) : 0;
+  loopMat.opacity = fb; dashTex.offset.x = -time * .35;
+  amps.forEach((a, i) => a.material.emissiveIntensity = fb * (.6 + .4 * Math.sin(time * 4 + i)));
+  const conv = ci === 12 ? smooth(.2, .85, u) : 0;
+  convRings.forEach((r, k) => { r.scale.setScalar((.25 + k * .28) * (1 - conv) + .06); r.material.opacity = fb * (.25 + .5 * (1 - conv)) * (1 - k * .1); });
+  convDot.scale.setScalar(ci === 12 ? 1 + conv * 2.5 : .0001);
+  if (ci === 12) { const idx = Math.min(REFINE.length - 1, Math.floor(conv * REFINE.length)); refineEl.firstChild.nodeValue = REFINE[idx][0]; refineE.textContent = REFINE[idx][1]; }
+  beam.material.opacity = verdict ? smooth(.2, .5, u) * .9 : 0;
+}
+function animCell(u, time) {
+  const g = smooth(.1, .75, u);
+  const n = filMain.geometry.index.count; filMain.geometry.setDrawRange(0, Math.floor(n * g / 3) * 3);
+  filMain.material.color.setRGB(.4 * (1 + g), 1.8 * (.6 + g * .6), 2.2 * (.6 + g * .6));
+  branches.forEach(b => { const bg = clamp((g - b.t0) / (1 - b.t0)), bn = b.m.geometry.index.count; b.m.geometry.setDrawRange(0, Math.floor(bn * bg / 3) * 3); });
+  for (let i = 0; i < VAC_N; i++) { const [r, a, y] = vacSeed[i], rr = r * (1 - g * .55) + Math.sin(time + i) * .02, aa = a + time * .1; vacPos[i * 3] = Math.cos(aa) * rr; vacPos[i * 3 + 1] = y + Math.sin(time * .7 + i) * .02; vacPos[i * 3 + 2] = Math.sin(aa) * rr; }
+  vacGeo.attributes.position.needsUpdate = true;
+  const flow = smooth(.7, .9, u);
+  for (let i = 0; i < 30; i++) { const w = (i / 30 + time * .4) % 1; const p = w < .5 ? pv.set(0, 1.13, -4.5 + w * 9) : pv.set(-4.5 + (w - .5) * 18, -1.13, 0); m4.compose(p, q.identity(), sc.setScalar(flow + .0001)); curP.setMatrixAt(i, m4); }
+  curP.instanceMatrix.needsUpdate = true;
+}
+function animScale(time) {
+  tileMat.uniforms.time.value = time;
+  if (Math.abs(nodeAnim - nodeAnimTarget) > .01) { nodeAnim += (nodeAnimTarget - nodeAnim) * .12; layoutTiles(nodeAnim); }
+}
+
+// ---------- main loop ----------
+const clock = new THREE.Clock();
+let lastSet = null;
+const camPos = new THREE.Vector3(), camTgt = new THREE.Vector3(), wantPos = new THREE.Vector3(), wantTgt = new THREE.Vector3();
+const DT = VIDEO ? 1 / 30 : 1 / 60;
+const damp = k => 1 - Math.pow(1 - k, DT * 60);
+function frame() {
+  let time = clock.getElapsedTime(), ci, u, center = 0, vinfo = null;
+  if (VIDEO) {
+    time = vTime; vinfo = videoChapter(vTime);
+    ci = Math.min(vinfo.vi, CH.length - 1); u = vinfo.vi >= CH.length ? 1 : clamp(vinfo.tau / vinfo.L);
+    if (ci === 14) { const n = Math.min(5, Math.floor(clamp((u - .08) / .8) * 6)); if (n !== vNode) { vNode = n; setNode(n); } }
+  } else {
+    smoothY += (scrollY - smoothY) * .09;
+    center = smoothY + innerHeight * .5;
+    ci = 0; for (let i = 0; i < sections.length; i++) if (center >= secTop[i]) ci = i;
+    u = clamp((center - secTop[ci]) / secH[ci]);
+  }
+  const ch = CH[ci], set = ch.set, o = SETS[set];
+  let fade = 0;
+  if (ci > 0 && CH[ci - 1].set !== set) fade = Math.max(fade, 1 - smooth(0, .1, u));
+  if (ci < CH.length - 1 && CH[ci + 1].set !== set) fade = Math.max(fade, smooth(.9, 1, u));
+  if (VIDEO && vinfo.vi >= CH.length) fade = Math.max(fade, .55 * smooth(0, 1.2, vinfo.tau));
+  if (VIDEO && vTime < .8) fade = Math.max(fade, 1 - vTime / .8);
+  grade.uniforms.fade.value = fade * .97;
+  for (const k in setGroup) setGroup[k].visible = k === set;
+  digital.visible = set === 'pkg' || set === 'ver';
+  analog.visible = set === 'ana' || set === 'ver';
+  const e = ease(u), A = ch.a, B = ch.b;
+  wantPos.set(lerp(A[0], B[0], e), lerp(A[1], B[1], e), lerp(A[2], B[2], e)).add(o);
+  wantTgt.set(lerp(A[3], B[3], e), lerp(A[4], B[4], e), lerp(A[5], B[5], e)).add(o);
+  const fov = lerp(A[6], B[6], e);
+  const portrait = Math.max(1, Math.pow(1.45 / camera.aspect, MOBILE ? .55 : .8));
+  if (portrait > 1 && set !== 'tun') { wantTgt.x = o.x + (wantTgt.x - o.x) * .35; wantPos.sub(wantTgt).multiplyScalar(portrait).add(wantTgt); }
+  if (set !== lastSet) { camPos.copy(wantPos); camTgt.copy(wantTgt); lastSet = set; rig.position.copy(o); dust.position.copy(o); }
+  else { const k = damp(set === 'tun' ? .25 : .1); camPos.lerp(wantPos, k); camTgt.lerp(wantTgt, k); }
+  camera.position.copy(camPos).add(V(Math.sin(time * .23) * .06, Math.sin(time * .31) * .04, 0));
+  if (set === 'tun') camera.position.add(V(Math.sin(time * .9) * .12, Math.cos(time * .7) * .09, 0));
+  camera.lookAt(camTgt);
+  if (MOBILE) camera.setViewOffset(innerWidth, innerHeight, 0, innerHeight * .2, innerWidth, innerHeight); else if (camera.view) camera.clearViewOffset();
+  if (Math.abs(camera.fov - fov) > .01) { camera.fov = fov; camera.updateProjectionMatrix(); }
+  const cool = ['ana', 'cell', 'scale', 'voidd'].includes(set);
+  scene.environment = cool ? ENV_COOL : ENV_WARM;
+  key.color.set(cool ? 0xdff8ff : 0xffe2c4); rim.color.set(cool ? 0x5fe8ff : 0xff7a1a);
+  key.intensity = set === 'tun' ? 0 : set === 'scale' ? 10 : 40; rim.intensity = set === 'tun' ? 0 : 3;
+  glowLight.color.set(cool ? 0x6ff3ff : 0xff5a10); glowLight.intensity = set === 'pkg' ? 1.2 + (ci === 7 ? 1.2 : 0) : set === 'ana' ? 2 : .6;
+  scene.fog.density = set === 'scale' ? .045 : set === 'tun' ? 0 : set === 'city' ? .035 : .028;
+  bloom.strength = set === 'tun' ? 1.0 : (set === 'ana' || set === 'cell') ? .6 : set === 'ver' ? .9 : .8;
+  grade.uniforms.tilt.value = MOBILE ? 0 : (ch.tilt || 0);
+  grade.uniforms.focusY.value = .52;
+  grade.uniforms.tint.value.set(cool ? .96 : 1.04, 1, cool ? 1.05 : .95);
+  dustMat.uniforms.color.value.set(cool ? 0x9ff6ff : 0xffc28a);
+  document.documentElement.style.setProperty('--accent', cool || set === 'ver' ? '#6ff3ff' : '#ff8a2a');
+  if (ci === 7) { anchors.die.getWorldPosition(tv); tv.project(camera); grade.uniforms.heatPos.value.set((tv.x + 1) / 2, (tv.y + 1) / 2); grade.uniforms.heatAmt.value = smooth(.1, .4, u); } else grade.uniforms.heatAmt.value = 0;
+  if (digital.visible) animPkg(ci, u, time);
+  if (set === 'mat') animMat(time);
+  if (set === 'city') animCity(time);
+  if (set === 'tc') animTC(time);
+  if (set === 'tun') animTunnel(time);
+  if (analog.visible) animAnalog(ci, u, time);
+  if (set === 'cell') animCell(u, time);
+  if (set === 'scale') animScale(time);
+  dust.rotation.y = time * .01;
+  grade.uniforms.time.value = time; grade.uniforms.aspect.value = camera.aspect;
+  composer.render();
+  placeTags(ci, u);
+  revealCards();
+  meter.classList.toggle('on', set === 'tun' && u > .05 && u < .97);
+  actEl.innerHTML = `<b>${UI.act} ${ch.act}</b> · ${ACT_NAME[ch.act]} · ${String(ci + 1).padStart(2, '0')}/${CH.length}`;
+  if (VIDEO) { updateVT(vinfo.vi, vinfo.tau, vinfo.L); return; }
+  rail.style.width = (clamp(center / storyEl.offsetHeight) * 100) + '%';
+  hint.style.opacity = scrollY > 40 || auto ? 0 : 1;
+  if (ci !== currentChapter) { currentChapter = ci; onChapter(ci); }
+  if (scrollY > storyEl.offsetHeight - innerHeight * .4 && playing) stopVoice();
+  requestAnimationFrame(frame);
+}
+if (VIDEO) {
+  // the renderer drives the clock: window.__renderFrame(t) draws exactly one frame at time t (seconds)
+  window.__renderFrame = t => { vTime = t; frame(); return true; };
+  Promise.all([buildTimeline(), document.fonts.ready]).then(([tl]) => { window.__video = tl; window.__renderFrame(0); window.__videoReady = true; });
+} else requestAnimationFrame(frame);
+addEventListener('resize', () => {
+  camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight); composer.setSize(innerWidth, innerHeight);
+  pointMats.forEach(m => m.uniforms.scale.value = innerHeight / 2); measure();
+});
+addEventListener('load', measure);
+window.__jumpTo = (i, u = .5) => { measure(); const y = secTop[i] + secH[i] * u - innerHeight * .5; scrollTo(0, y); smoothY = y; };
+</script>
+</body>
+</html>

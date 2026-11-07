@@ -1,0 +1,270 @@
+{
+  "title": "The State of Independent Landscaping Websites 2026",
+  "edition": "2026-Q4",
+  "period": "Q4 2026",
+  "sample": false,
+  "source": "corpus",
+  "note": "Aggregates computed from automated scans. No individual site is identified.",
+  "url": "https://clikiti.com/research/landscaping/2026-q4",
+  "scannedAt": "2026-10-15T13:25:00.917Z",
+  "publishedAt": "2026-10-15T12:49:32.940Z",
+  "modifiedAt": "2026-10-15T13:25:15.293Z",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "Free to use and cite under CC BY 4.0. Credit Clikiti with a link.",
+  "citation": "Clikiti. (2026, October 15). The state of independent landscaping websites 2026 (Q4 2026) [Report]. https://clikiti.com/research/landscaping/2026-q4",
+  "audience": "Web agencies and freelancers selling to independent landscaping, lawn care, hardscape and pool companies",
+  "sampleSize": 189,
+  "marginOfErrorPts": 7.1,
+  "medianScore": 79,
+  "meanScore": 79,
+  "meanQuestionsAnswered": 4.7,
+  "questionCount": 8,
+  "findings": [
+    "Only 15% of the 189 independent landscaping, lawn care, hardscape and pool websites we scanned show any price: a visit, a package, a square foot or a project.",
+    "A typical site answers five of the eight questions homeowners ask before choosing (mean 4.7).",
+    "The median overall score is 79 out of 100 (mean 79).",
+    "The least-answered questions are \"Roughly what will it cost?\" (15%), \"Are you licensed and insured?\" (29%) and \"Do my neighbours vouch for you?\" (44%).",
+    "The best-answered are \"Do you do what I need?\" (95%) and \"Can I see work you have done?\" (86%).",
+    "By kind of business, the highest median score is 81 (landscape design and build), against 80 for hardscape and outdoor living, 79 for lawn care and maintenance and 79 for pools and irrigation.",
+    "91% fail \"Loads in under 2.5 s on a phone\" (Core Web Vitals · LCP).",
+    "83% fail \"Text contrast passes 4.5:1\" (WCAG 1.4.3).",
+    "46% fail \"Local business structured data\" (Schema.org · LocalBusiness)."
+  ],
+  "questions": [
+    {
+      "id": "price",
+      "question": "Roughly what will it cost?",
+      "label": "A price shown: a visit, a package, a square foot or a project",
+      "standard": "Homeowner question 8",
+      "passPct": 15,
+      "bySegment": {
+        "design": 15,
+        "lawn": 10,
+        "hard": 10,
+        "pool": 27
+      }
+    },
+    {
+      "id": "insured",
+      "question": "Are you licensed and insured?",
+      "label": "Licensed and insured stated, or a licence or certification named",
+      "standard": "Homeowner question 5",
+      "passPct": 29,
+      "bySegment": {
+        "design": 33,
+        "lawn": 33,
+        "hard": 21,
+        "pool": 27
+      }
+    },
+    {
+      "id": "reviews",
+      "question": "Do my neighbours vouch for you?",
+      "label": "Reviews marked up, in a widget or quoted",
+      "standard": "Homeowner question 6",
+      "passPct": 44,
+      "bySegment": {
+        "design": 46,
+        "lawn": 39,
+        "hard": 48,
+        "pool": 43
+      }
+    },
+    {
+      "id": "plans",
+      "question": "Can you look after it every season?",
+      "label": "Seasonal plan or maintenance package offered",
+      "standard": "Homeowner question 7",
+      "passPct": 51,
+      "bySegment": {
+        "design": 42,
+        "lawn": 71,
+        "hard": 29,
+        "pool": 64
+      }
+    },
+    {
+      "id": "area",
+      "question": "Do you work in my neighbourhood?",
+      "label": "Service area named: towns, ZIP codes or an area page",
+      "standard": "Homeowner question 2",
+      "passPct": 74,
+      "bySegment": {
+        "design": 63,
+        "lawn": 76,
+        "hard": 81,
+        "pool": 77
+      }
+    },
+    {
+      "id": "quote",
+      "question": "Can I get a quote without calling?",
+      "label": "Free estimate or quote requested online",
+      "standard": "Homeowner question 4",
+      "passPct": 77,
+      "bySegment": {
+        "design": 67,
+        "lawn": 84,
+        "hard": 81,
+        "pool": 75
+      }
+    },
+    {
+      "id": "gallery",
+      "question": "Can I see work you have done?",
+      "label": "Project gallery or portfolio of own work",
+      "standard": "Homeowner question 3",
+      "passPct": 86,
+      "bySegment": {
+        "design": 96,
+        "lawn": 76,
+        "hard": 94,
+        "pool": 77
+      }
+    },
+    {
+      "id": "services",
+      "question": "Do you do what I need?",
+      "label": "Services named: three or more as text",
+      "standard": "Homeowner question 1",
+      "passPct": 95,
+      "bySegment": {
+        "design": 94,
+        "lawn": 98,
+        "hard": 96,
+        "pool": 91
+      }
+    }
+  ],
+  "technical": [
+    {
+      "id": "lcp",
+      "label": "Loads in under 2.5 s on a phone",
+      "standard": "Core Web Vitals · LCP",
+      "failPct": 91,
+      "bySegment": {
+        "design": 88,
+        "lawn": 86,
+        "hard": 94,
+        "pool": 98
+      }
+    },
+    {
+      "id": "con",
+      "label": "Text contrast passes 4.5:1",
+      "standard": "WCAG 1.4.3",
+      "failPct": 83,
+      "bySegment": {
+        "design": 77,
+        "lawn": 80,
+        "hard": 83,
+        "pool": 91
+      }
+    },
+    {
+      "id": "schema",
+      "label": "Local business structured data",
+      "standard": "Schema.org · LocalBusiness",
+      "failPct": 46,
+      "bySegment": {
+        "design": 48,
+        "lawn": 51,
+        "hard": 40,
+        "pool": 45
+      }
+    },
+    {
+      "id": "alt",
+      "label": "Images have text descriptions",
+      "standard": "WCAG 1.1.1",
+      "failPct": 16,
+      "bySegment": {
+        "design": 19,
+        "lawn": 10,
+        "hard": 23,
+        "pool": 11
+      }
+    }
+  ],
+  "segments": [
+    {
+      "id": "design",
+      "name": "Landscape design and build",
+      "sites": 48,
+      "median": 81,
+      "weakPct": 0
+    },
+    {
+      "id": "lawn",
+      "name": "Lawn care and maintenance",
+      "sites": 49,
+      "median": 79,
+      "weakPct": 0
+    },
+    {
+      "id": "hard",
+      "name": "Hardscape and outdoor living",
+      "sites": 48,
+      "median": 80,
+      "weakPct": 0
+    },
+    {
+      "id": "pool",
+      "name": "Pools and irrigation",
+      "sites": 44,
+      "median": 79,
+      "weakPct": 5
+    }
+  ],
+  "agencyProblems": [
+    {
+      "id": "lcp",
+      "label": "Loads in under 2.5 s on a phone",
+      "standard": "Core Web Vitals · LCP",
+      "failPct": 91,
+      "fix": "Resize and compress the hero image and gallery photos, defer scripts, aim for under 2.5 s on a phone.",
+      "pitch": "Your home page takes several seconds to appear on a homeowner's phone.",
+      "effort": "Build"
+    },
+    {
+      "id": "price",
+      "label": "A price shown: a visit, a package, a square foot or a project",
+      "standard": "Homeowner question 8",
+      "failPct": 85,
+      "question": "Roughly what will it cost?",
+      "fix": "Publish a starting price or a typical range for the common jobs: weekly mowing per visit, a cleanup, a patio per square foot, a pool opening.",
+      "pitch": "\"Roughly what will it cost?\" is the first question a homeowner has, and your site makes them wait for a site visit to hear it.",
+      "effort": "Content"
+    },
+    {
+      "id": "con",
+      "label": "Text contrast passes 4.5:1",
+      "standard": "WCAG 1.4.3",
+      "failPct": 83,
+      "fix": "Raise text contrast to at least 4.5:1 in the theme, especially text laid over garden photos.",
+      "pitch": "Parts of the site are hard to read, and it is a WCAG failure.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "insured",
+      "label": "Licensed and insured stated, or a licence or certification named",
+      "standard": "Homeowner question 5",
+      "failPct": 71,
+      "question": "Are you licensed and insured?",
+      "fix": "State \"licensed and insured\" with the licence or registration number in the footer, and name certifications (ICPI, Landscape Industry Certified, pesticide applicator).",
+      "pitch": "A homeowner letting a crew dig up the yard wants to know you are insured, and your site never says.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "reviews",
+      "label": "Reviews marked up, in a widget or quoted",
+      "standard": "Homeowner question 6",
+      "failPct": 56,
+      "question": "Do my neighbours vouch for you?",
+      "fix": "Show recent reviews on the home page through a review widget or Review structured data, with the source named.",
+      "pitch": "Your neighbours vouch for you on Google, but nobody sees it on your own site.",
+      "effort": "Quick fix"
+    }
+  ]
+}

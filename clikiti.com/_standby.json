@@ -1,0 +1,13 @@
+{
+  "domain": "clikiti.com",
+  "kind": "extra",
+  "ok": true,
+  "source": "live",
+  "pages": 153,
+  "assets": 755,
+  "missingAssets": [
+    "https://clikiti.com/assets/clikiti-horizontal.svg",
+    "https://clikiti.com/assets/clikiti-round.svg"
+  ],
+  "saved": "2026-11-07T23:07:36.672Z"
+}

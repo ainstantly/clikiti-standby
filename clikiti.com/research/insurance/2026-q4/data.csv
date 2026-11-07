@@ -1,0 +1,32 @@
+# The State of Independent Insurance Agency Websites 2026 (Q4 2026). CC BY 4.0, credit Clikiti with a link: https://clikiti.com/research/insurance
+"section","id","label","standard","metric","value"
+"summary","sites","Websites scanned","","count",170
+"summary","median","Median overall score","","score_0_100",77
+"summary","mean","Mean overall score","","score_0_100",77
+"summary","moe","Margin of error (95%)","","percentage_points",7.5
+"summary","weak","Sites scoring under 60","","percent",1
+"question","licensed","Are you licensed where I live?","Client question 7","percent_pass",22
+"question","reviews","Do other clients vouch for you?","Client question 9","percent_pass",36
+"question","claims","What do I do when I need to claim?","Client question 5","percent_pass",39
+"question","carriers","Which companies do you quote?","Client question 3","percent_pass",40
+"question","service","Can I pay or change my policy without calling?","Client question 8","percent_pass",52
+"question","contact","How do I reach you, and when are you open?","Client question 1","percent_pass",53
+"question","agents","Who would my agent be?","Client question 6","percent_pass",56
+"question","quote","Can I start a quote online?","Client question 4","percent_pass",78
+"question","lines","What can you insure?","Client question 2","percent_pass",93
+"technical","lcp","Loads in under 2.5 s on a phone","Core Web Vitals · LCP","percent_fail",94
+"technical","con","Text contrast passes 4.5:1","WCAG 1.4.3","percent_fail",79
+"technical","schema","InsuranceAgency structured data","Schema.org · InsuranceAgency","percent_fail",69
+"technical","alt","Images have text descriptions","WCAG 1.1.1","percent_fail",19
+"segment","pers","Personal lines","","median_score",78
+"segment","pers","Personal lines","","percent_under_60",0
+"segment","pers","Personal lines","","sites",57
+"segment","comm","Commercial and business","","median_score",78
+"segment","comm","Commercial and business","","percent_under_60",2
+"segment","comm","Commercial and business","","sites",43
+"segment","life","Life, health and Medicare","","median_score",75
+"segment","life","Life, health and Medicare","","percent_under_60",0
+"segment","life","Life, health and Medicare","","sites",41
+"segment","spec","Specialty: farm, marine and flood","","median_score",77
+"segment","spec","Specialty: farm, marine and flood","","percent_under_60",0
+"segment","spec","Specialty: farm, marine and flood","","sites",29

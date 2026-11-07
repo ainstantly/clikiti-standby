@@ -1,0 +1,920 @@
+<!doctype html>
+<html lang="en">
+<head><meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Estudio Pacífico Arquitectos · Barranco, Lima</title>
+<link rel="alternate" hreflang="es" href="./">
+<meta name="description" content="Estudio Pacífico Arquitectos: architecture and interiors in Barranco, Lima. Beach houses south of Lima, residential remodels and small-scale hospitality.">
+<meta name="theme-color" content="#F4F3EF">
+<script>
+(function(d){
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) return;
+  d.documentElement.classList.add('js');
+  setTimeout(function(){ if(!window.__epReady){ d.documentElement.classList.remove('js'); } }, 3500);
+})(document);
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600&family=Syne:wght@800&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/casa-playa.webp">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Estudio Pacífico Arquitectos",
+  "description": "Architecture and interior design studio in Barranco, Lima. Beach houses south of Lima, residential remodels and small hospitality projects.",
+  "image": "img/casa-playa.webp",
+  "telephone": "+51 1 247 6630",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Jr. Domeyer 210",
+    "addressLocality": "Barranco",
+    "addressRegion": "Lima",
+    "addressCountry": "PE"
+  },
+  "founder": [
+    { "@type": "Person", "name": "Lucía Ferrand" },
+    { "@type": "Person", "name": "Diego Salas" }
+  ],
+  "award": "Peruvian Architecture Biennial 2024",
+  "knowsAbout": ["Architecture", "Interior design", "Beach houses", "Residential remodels", "Hospitality"]
+}
+</script>
+<style>
+:root{
+  --paper:#F4F3EF;
+  --ink:#0B0B0B;
+  --ink-2:#55534E;      /* secondary text, 6.4:1 on paper */
+  --hair:rgba(11,11,11,.14);
+  --accent:#FF4F00;     /* used exactly 3 times: hero marker, sheet progress, Bienal label */
+  --cols:12;
+  --pad:clamp(16px,2.6vw,40px);
+  --gap:clamp(12px,1.35vw,22px);
+  --display:"Syne",ui-sans-serif,system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --body:"Manrope",ui-sans-serif,system-ui,sans-serif;
+  --ease:cubic-bezier(.65,0,.35,1);
+}
+@media (max-width:760px){
+  :root{ --cols:4; --pad:16px; --gap:12px; }
+}
+*,*::before,*::after{ box-sizing:border-box; }
+html{ -webkit-text-size-adjust:100%; }
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font:400 17px/1.6 var(--body);
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+main{ overflow-x:clip; }
+img{ display:block; max-width:100%; }
+a{ color:inherit; }
+::selection{ background:var(--ink); color:var(--paper); }
+:focus-visible{ outline:2px solid var(--ink); outline-offset:3px; }
+
+.skip{ position:absolute; left:-9999px; top:8px; z-index:100; background:var(--ink); color:var(--paper); padding:10px 14px; font:500 13px var(--mono); }
+.skip:focus{ left:16px; }
+
+/* ---------- grid system ---------- */
+.g{
+  display:grid; grid-template-columns:repeat(var(--cols),minmax(0,1fr));
+  column-gap:var(--gap); padding-inline:var(--pad);
+}
+.probe{ position:absolute; left:0; right:0; top:0; height:0; visibility:hidden; pointer-events:none; }
+.probe > i{ display:block; height:0; }
+
+.label, .mono{
+  font:500 12px/1.5 var(--mono); letter-spacing:.06em; text-transform:uppercase;
+}
+.label{ color:var(--ink-2); }
+.label b{ color:var(--ink); font-weight:500; }
+
+/* overlay drafting grid (vertical, fixed) */
+#gridv{
+  position:fixed; inset:0; width:100%; height:100%; pointer-events:none; z-index:40;
+}
+#gridv line{ stroke:var(--ink); stroke-width:1; vector-effect:non-scaling-stroke; shape-rendering:crispEdges; }
+#gridv .edge{ stroke-opacity:.16; }
+#gridv .col{ stroke-opacity:.065; }
+
+/* ---------- sheet bar (fixed) ---------- */
+.sheetbar{
+  position:fixed; left:0; right:0; top:0; z-index:50; height:46px;
+  background:color-mix(in srgb, var(--paper) 92%, transparent);
+  -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--hair);
+  align-items:center;
+  transform:translateY(-101%); transition:transform .6s var(--ease);
+}
+.sheetbar.on{ transform:none; }
+.sheetbar .sb-name{ grid-column:1 / span 4; }
+.sheetbar .sb-sheet{ grid-column:6 / span 4; display:flex; gap:14px; }
+.sheetbar .sb-sheet span:first-child{ color:var(--ink); }
+.sheetbar .sb-cta{ grid-column:11 / span 2; justify-self:end; text-decoration:none; color:var(--ink); }
+.sheetbar .sb-cta:hover{ text-decoration:underline; text-underline-offset:4px; }
+.sheetbar .sb-progress{ position:absolute; left:0; bottom:-1px; height:2px; width:100%; background:var(--accent); transform-origin:0 50%; transform:scaleX(0); }
+@media (max-width:760px){
+  .sheetbar .sb-name{ grid-column:1 / span 2; }
+  .sheetbar .sb-sheet{ grid-column:3 / span 2; justify-self:end; }
+  .sheetbar .sb-sheet span:last-child, .sheetbar .sb-cta{ display:none; }
+}
+
+/* ---------- hero ---------- */
+.hero{ position:relative; overflow:clip; padding-bottom:clamp(40px,5vw,80px); }
+#gridh{ position:absolute; inset:0; width:100%; height:100%; pointer-events:none; z-index:0; }
+#gridh line{ stroke:var(--ink); stroke-width:1; shape-rendering:crispEdges; }
+#gridh .base{ stroke-opacity:.05; }
+#gridh .major{ stroke-opacity:.12; }
+#gridh text{ font:500 12px var(--mono); fill:var(--ink-2); }
+.hero > *{ position:relative; z-index:1; }
+
+.topbar{ padding-top:20px; padding-bottom:18px; align-items:start; }
+.brand{ grid-column:1 / span 3; text-decoration:none; display:flex; flex-direction:column; gap:2px; }
+.brand strong{ font:800 15px/1.1 var(--display); letter-spacing:.01em; text-transform:uppercase; }
+.nav{ grid-column:5 / span 5; display:flex; gap:clamp(14px,2vw,32px); }
+.nav a{ text-decoration:none; color:var(--ink); }
+.nav a span{ color:var(--ink-2); margin-right:6px; }
+.nav a:hover{ text-decoration:underline; text-underline-offset:4px; }
+.sheetno{ grid-column:11 / span 2; justify-self:end; text-align:right; }
+
+.axes{ margin-top:6px; }
+.axes span{
+  justify-self:center; width:26px; height:26px; border:1px solid var(--ink); border-radius:50%;
+  display:grid; place-items:center; font:500 12px/1 var(--mono); background:var(--paper);
+}
+@media (max-width:760px){ .axes span:nth-child(n+5){ display:none; } }
+
+.coords{ margin-top:clamp(18px,3vw,36px); align-items:center; }
+.coords .c1{ grid-column:1 / span 4; display:flex; align-items:center; gap:10px; }
+.coords .c1 i{ width:10px; height:10px; background:var(--accent); display:inline-block; flex:none; }
+.coords .c2{ grid-column:7 / span 3; }
+.coords .c3{ grid-column:10 / span 3; justify-self:end; text-align:right; }
+
+.mega{
+  margin:clamp(10px,1.4vw,20px) 0 0; font:800 10.5vw/0.86 var(--display); letter-spacing:-.02em; text-transform:uppercase;
+}
+.mega .ln{ display:block; overflow:hidden; padding-top:.16em; margin-top:-.1em; }
+.mega .ln1{ grid-column:1 / -1; }
+.mega .ln2{ grid-column:2 / -1; }
+.mega .ch{ display:inline-block; will-change:transform; }
+.mega .w{ display:inline-block; white-space:nowrap; }
+
+.lower{ margin-top:clamp(36px,4.5vw,64px); align-items:start; }
+.intro{ grid-column:1 / span 4; display:flex; flex-direction:column; gap:22px; padding-top:4px; }
+h1{
+  font:800 clamp(24px,1.95vw,32px)/1.08 var(--display); letter-spacing:-.01em; margin:0;
+}
+h1 .mask{ display:block; overflow:hidden; padding-bottom:.06em; }
+h1 .mask > span{ display:block; }
+.intro p{ margin:0; max-width:34ch; color:var(--ink); }
+.btn{
+  display:inline-flex; align-items:center; gap:14px; align-self:flex-start;
+  background:var(--ink); color:var(--paper); text-decoration:none;
+  font:500 13px/1 var(--mono); letter-spacing:.06em; text-transform:uppercase;
+  padding:16px 20px; border:1px solid var(--ink); transition:background .35s var(--ease), color .35s var(--ease);
+}
+.btn .arr{ transition:transform .45s var(--ease); }
+.btn:hover{ background:var(--paper); color:var(--ink); }
+.btn:hover .arr{ transform:translateX(5px); }
+
+.scalebar{ display:flex; flex-direction:column; gap:6px; margin-top:6px; }
+.scalebar .bars{ display:flex; width:200px; height:8px; border:1px solid var(--ink); }
+.scalebar .bars i{ flex:1; }
+.scalebar .bars i:nth-child(odd){ background:var(--ink); }
+.scalebar .nums{ display:flex; justify-content:space-between; width:212px; margin-left:-6px; }
+.north{ display:flex; align-items:center; gap:12px; }
+.north svg{ width:34px; height:34px; }
+
+.shot{ grid-column:5 / -1; }
+.frame{ position:relative; }
+.photo{ position:relative; overflow:hidden; aspect-ratio:1376/768; background:#DCD9D0; }
+.photo img{ width:100%; height:100%; object-fit:cover; transform-origin:50% 50%; }
+.reg{ position:absolute; width:14px; height:14px; border-color:var(--ink); border-style:solid; border-width:0; }
+.reg.tl{ left:-10px; top:-10px; border-left-width:1px; border-top-width:1px; }
+.reg.tr{ right:-10px; top:-10px; border-right-width:1px; border-top-width:1px; }
+.reg.bl{ left:-10px; bottom:-10px; border-left-width:1px; border-bottom-width:1px; }
+.reg.br{ right:-10px; bottom:-10px; border-right-width:1px; border-bottom-width:1px; }
+.dim{ position:relative; height:44px; margin-top:12px; }
+.dim .ext{ position:absolute; top:0; width:1px; height:30px; background:var(--ink); transform-origin:50% 0; }
+.dim .ext.l{ left:0; } .dim .ext.r{ right:0; }
+.dim .line{ position:absolute; left:0; right:0; top:20px; height:1px; background:var(--ink); transform-origin:50% 50%; }
+.dim .tick{ position:absolute; top:13px; width:1px; height:15px; background:var(--ink); transform:rotate(45deg); }
+.dim .tick.l{ left:0; } .dim .tick.r{ right:0; }
+.dim .txt{ position:absolute; left:50%; top:20px; transform:translate(-50%,-50%); background:var(--paper); padding:0 14px; white-space:nowrap; color:var(--ink); }
+.shot .meta{ display:flex; justify-content:space-between; gap:16px; }
+
+/* ---------- section scaffolding ---------- */
+section{ position:relative; }
+.sec-head{ align-items:baseline; padding-top:clamp(18px,2vw,26px); border-top:1px solid var(--ink); }
+.sec-head .n{ grid-column:1 / span 2; }
+.sec-head h2{ grid-column:3 / span 6; margin:0; font:500 12px/1.5 var(--mono); letter-spacing:.06em; text-transform:uppercase; }
+.sec-head .r{ grid-column:10 / span 3; justify-self:end; text-align:right; }
+@media (max-width:760px){
+  .sec-head{ display:flex; gap:18px; }
+  .sec-head .r{ margin-left:auto; }
+  .sec-head .r:not(.hint){ display:none; }
+}
+
+/* ---------- manifesto ---------- */
+.manifesto{ padding:clamp(40px,6vw,96px) 0 clamp(90px,12vw,180px); }
+.manifesto .rule{ margin-inline:var(--pad); }
+.manifesto p{
+  grid-column:3 / -1; margin:clamp(40px,6vw,90px) 0 0;
+  font:600 clamp(28px,3.55vw,58px)/1.12 var(--body); letter-spacing:-.025em;
+}
+.manifesto .wd{ display:inline; }
+.manifesto .aside{ grid-column:3 / span 4; margin-top:clamp(28px,3vw,48px); display:flex; gap:28px; }
+@media (max-width:760px){ .manifesto p, .manifesto .aside{ grid-column:1 / -1; } }
+
+/* ---------- index ---------- */
+.index{ padding-bottom:clamp(56px,6vw,96px); }
+.rows{ list-style:none; margin:clamp(30px,4vw,60px) 0 0; padding:0; }
+.row{ position:relative; }
+.row a{ text-decoration:none; color:inherit; align-items:center; padding-block:clamp(22px,2.6vw,40px); position:relative; }
+.row .hl{ position:absolute; left:var(--pad); right:var(--pad); bottom:0; height:1px; background:var(--ink); transform-origin:0 50%; }
+.row:first-child::before{ content:""; position:absolute; left:var(--pad); right:var(--pad); top:0; height:1px; background:var(--hair); }
+.row .num{ grid-column:1 / span 1; align-self:start; padding-top:.6em; }
+.row .tt{ grid-column:2 / span 8; font:800 clamp(30px,4.2vw,70px)/.98 var(--display); letter-spacing:-.02em; transition:transform .6s var(--ease); }
+.row .tt span{ display:block; }
+.row .meta{ grid-column:10 / span 3; justify-self:end; text-align:right; display:flex; flex-direction:column; gap:4px; }
+.row .inl{ display:none; }
+.rows.is-dim .row a{ opacity:.28; }
+.rows.is-dim .row a.on{ opacity:1; }
+.row a{ transition:opacity .45s var(--ease); }
+.row a.on .tt, .row a:focus-visible .tt{ transform:translateX(clamp(10px,1.6vw,28px)); }
+.follower{
+  position:fixed; left:0; top:0; z-index:35; width:clamp(260px,26vw,400px); aspect-ratio:4/3;
+  pointer-events:none; visibility:hidden; opacity:0;
+}
+.follower .fi{ position:absolute; inset:0; overflow:hidden; clip-path:inset(100% 0 0 0); }
+.follower .fi img{ width:100%; height:100%; object-fit:cover; }
+.follower .cap{ position:absolute; left:0; bottom:-30px; background:var(--ink); color:var(--paper); padding:6px 10px; }
+/* inline photos: shown without JS, on touch, or narrow screens */
+@media (hover:none), (max-width:760px){
+  .row .inl{ display:block; }
+  .follower{ display:none; }
+}
+html:not(.js) .row .inl{ display:block; }
+html:not(.js) .follower{ display:none; }
+.row .inl{ grid-column:2 / span 6; margin-top:18px; aspect-ratio:16/10; overflow:hidden; }
+.row .inl img{ width:100%; height:100%; object-fit:cover; }
+@media (max-width:760px){
+  .row .num{ grid-column:1 / -1; padding:0 0 10px; }
+  .row .tt{ grid-column:1 / -1; font-size:clamp(24px,6.7vw,40px); }
+  .row .meta{ grid-column:1 / -1; justify-self:start; text-align:left; flex-direction:row; gap:14px; margin-top:12px; }
+  .row .inl{ grid-column:1 / -1; }
+}
+
+/* ---------- gallery ---------- */
+.gallery{ padding-top:64px; overflow:clip; --ph:clamp(300px,58vh,640px); }
+.gallery.pinned{ height:100vh; display:flex; flex-direction:column; }
+.gallery.pinned .track{ margin-block:auto; }
+.gallery .g-top{ padding-bottom:clamp(18px,2.4vw,30px); }
+.track{
+  display:flex; gap:clamp(28px,4vw,72px); padding-inline:var(--pad);
+  overflow-x:auto; scroll-snap-type:x mandatory; scroll-padding-inline:var(--pad); -webkit-overflow-scrolling:touch; align-items:flex-end;
+  padding-bottom:28px; scrollbar-width:thin;
+}
+.gallery.pinned .track{ overflow:visible; scroll-snap-type:none; width:max-content; }
+.panel{ flex:none; scroll-snap-align:start; display:flex; flex-direction:column; }
+.panel.lead{ width:clamp(300px,40vw,640px); align-self:stretch; justify-content:space-between; padding-right:2vw; }
+.panel.lead .big{ font:800 clamp(34px,5.1vw,82px)/.9 var(--display); letter-spacing:-.03em; text-transform:uppercase; margin:0; }
+.panel.alt{ --ph:clamp(260px,44vh,480px); align-self:flex-start; }
+.panel.lead p{ margin:24px 0 0; max-width:30ch; }
+.panel figure{ margin:0; }
+.panel .pic{ height:var(--ph); overflow:hidden; background:#DCD9D0; }
+.panel .pic img{ height:100%; width:auto; max-width:none; aspect-ratio:auto; object-fit:cover; }
+.panel .pic.w img{ width:calc(var(--ph) * 1.7917); }
+.panel .pic.s img{ width:calc(var(--ph) * 1.3393); }
+.panel .pic img{ transform:scale(1.12); }
+.cblock{
+  display:grid; grid-template-columns:auto 1fr auto; border:1px solid var(--ink); border-top:0;
+}
+.cblock > div{ padding:10px 12px; }
+.cblock > div + div{ border-left:1px solid var(--ink); }
+.cblock .t{ font:600 15px/1.35 var(--body); }
+.cblock .t small{ display:block; font:500 12px/1.5 var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--ink-2); }
+.sbar{ display:flex; flex-direction:column; gap:5px; justify-content:center; }
+.sbar .bars{ display:flex; width:96px; height:6px; border:1px solid var(--ink); }
+.sbar .bars i{ flex:1; } .sbar .bars i:nth-child(odd){ background:var(--ink); }
+.gallery .hint{ display:flex; gap:10px; align-items:center; }
+.gallery .hint svg{ width:28px; height:10px; }
+@media (max-width:760px){
+  .panel, .panel.alt{ width:84vw; align-self:flex-start; }
+  .panel.lead{ width:62vw; align-self:flex-start; justify-content:flex-start; gap:28px; }
+  .track{ gap:16px; }
+  .panel .pic{ height:auto; aspect-ratio:4/3; }
+  .panel .pic img, .panel .pic.w img, .panel .pic.s img{ width:100%; height:100%; transform:none; }
+  .cblock{ grid-template-columns:auto 1fr; }
+  .cblock .sbar{ grid-column:1 / -1; border-left:0 !important; border-top:1px solid var(--ink); flex-direction:row; align-items:center; gap:12px; }
+}
+
+/* ---------- studio ---------- */
+.studio{ padding-top:clamp(64px,8vw,130px); }
+.studio .names{ grid-column:1 / span 7; margin:clamp(36px,5vw,80px) 0 0; font:800 clamp(44px,6.6vw,112px)/.9 var(--display); letter-spacing:-.03em; }
+.studio .names .mask{ display:block; overflow:hidden; padding-top:.08em; }
+.studio .names .mask > span{ display:block; }
+.studio .names .fl{ font:500 12px/1.5 var(--mono); letter-spacing:.06em; padding-bottom:18px; }
+.studio .names .amp{ font-family:var(--mono); font-weight:400; font-size:.32em; letter-spacing:0; vertical-align:middle; color:var(--ink-2); display:block; padding:.4em 0 .3em; }
+.studio .txt{ grid-column:9 / span 4; margin-top:clamp(36px,5vw,80px); display:flex; flex-direction:column; gap:24px; align-self:end; }
+.studio .txt p{ margin:0; }
+.award{
+  display:inline-grid; grid-template-columns:auto 1fr; align-self:flex-start;
+  background:var(--accent); color:#000; border:1px solid #000;
+}
+.award > span{ padding:10px 12px; font:500 12px/1.4 var(--mono); letter-spacing:.06em; text-transform:uppercase; }
+.award > span + span{ border-left:1px solid #000; }
+.award strong{ display:block; font-weight:500; font-size:13px; }
+.split{ margin-top:clamp(56px,7vw,120px); align-items:start; padding-bottom:clamp(90px,12vw,180px); }
+.split .a{ grid-column:1 / span 7; }
+.split .b{ grid-column:9 / span 4; margin-top:clamp(80px,14vw,240px); }
+.split figure{ margin:0; }
+.split .im{ overflow:hidden; aspect-ratio:1200/896; background:#DCD9D0; }
+.split .im img{ width:100%; height:100%; object-fit:cover; }
+.split figcaption{ display:flex; justify-content:space-between; gap:12px; padding-top:10px; border-top:1px solid var(--ink); margin-top:10px; }
+@media (max-width:760px){
+  .studio .names, .studio .txt, .split .a, .split .b{ grid-column:1 / -1; }
+  .split .b{ margin-top:40px; width:78%; justify-self:end; }
+}
+
+/* ---------- contact ---------- */
+.contact{ padding-bottom:28px; }
+.contact h2.huge{
+  grid-column:1 / -1; margin:clamp(40px,6vw,90px) 0 0;
+  font:800 8.3vw/.88 var(--display); letter-spacing:-.035em; text-transform:uppercase;
+}
+.contact h2.huge .mask{ display:block; overflow:hidden; padding-top:.1em; }
+.contact h2.huge .mask > span{ display:block; }
+.contact h2.huge .i2 > span{ display:flex; align-items:center; gap:.25em; }
+.contact h2.huge .hrule{ flex:1; position:relative; height:1px; background:var(--ink); margin-top:.04em; transform-origin:0 50%; }
+.contact h2.huge .hrule::before, .contact h2.huge .hrule::after{ content:""; position:absolute; top:-9px; width:1px; height:19px; background:var(--ink); }
+.contact h2.huge .hrule::before{ left:0; transform:rotate(45deg); } .contact h2.huge .hrule::after{ right:0; transform:rotate(45deg); }
+.contact h2.huge .hrule em{ position:absolute; left:50%; top:0; transform:translate(-50%,-50%); background:var(--paper); padding:0 12px; font-style:normal; white-space:nowrap; letter-spacing:.06em; }
+.contact h2.huge .i3{ text-align:right; }
+.cgrid{ margin-top:clamp(48px,6vw,96px); align-items:stretch; }
+.tblock{ grid-column:1 / span 7; border:1px solid var(--ink); display:grid; grid-template-columns:minmax(120px,30%) 1fr; }
+.tblock > div{ padding:14px 16px; border-top:1px solid var(--ink); }
+.tblock > div:nth-child(-n+2){ border-top:0; }
+.tblock > div:nth-child(odd){ border-right:1px solid var(--ink); color:var(--ink-2); }
+.tblock .v{ font:500 15px/1.5 var(--mono); letter-spacing:.01em; }
+.tblock .label{ line-height:22.5px; }
+.tblock .v a{ text-underline-offset:4px; }
+.ctabox{ grid-column:9 / span 4; display:flex; flex-direction:column; justify-content:space-between; gap:24px; }
+.cta{
+  display:flex; justify-content:space-between; align-items:flex-end; min-height:180px;
+  background:var(--ink); color:var(--paper); text-decoration:none; padding:20px;
+  font:800 clamp(26px,2.4vw,38px)/1 var(--display); letter-spacing:-.01em;
+  position:relative; overflow:hidden;
+}
+.cta small{ position:absolute; top:18px; left:20px; font:500 12px/1.4 var(--mono); letter-spacing:.06em; text-transform:uppercase; color:#C9C7C0; }
+.cta .arr{ font-family:var(--mono); font-weight:400; transition:transform .5s var(--ease); }
+.cta:hover .arr{ transform:translate(6px,-6px); }
+.cta:hover{ background:#000; }
+.foot{ margin-top:clamp(70px,9vw,140px); padding-top:14px; border-top:1px solid var(--ink); row-gap:8px; }
+.foot .f1{ grid-column:1 / span 5; } .foot .f2{ grid-column:6 / span 4; } .foot .f3{ grid-column:10 / span 3; justify-self:end; }
+@media (max-width:760px){
+  .contact h2.huge{ font-size:8.1vw; }
+  .contact h2.huge .hrule em{ display:none; }
+  .tblock, .ctabox{ grid-column:1 / -1; }
+  .ctabox{ margin-top:16px; }
+  .foot .f1, .foot .f2, .foot .f3{ grid-column:1 / -1; justify-self:start; }
+}
+
+/* ---------- mobile hero ---------- */
+@media (max-width:760px){
+  .brand{ grid-column:1 / span 3; }
+  .nav{ display:none; }
+  .sheetno{ grid-column:4 / span 1; }
+  .coords .c1{ grid-column:1 / span 3; }
+  .coords .c2{ display:none; }
+  .coords .c3{ grid-column:4 / span 1; }
+  .mega{ font-size:11.1vw; }
+  .coords .c3{ display:none; }
+  .coords .c1{ grid-column:1 / -1; }
+  .mega .ln2{ grid-column:1 / -1; text-align:right; }
+  .intro{ grid-column:1 / -1; order:2; margin-top:44px; }
+  .shot{ grid-column:1 / -1; order:1; }
+  .lower{ margin-top:28px; }
+  .shot .meta .label:last-child{ display:none; }
+}
+@media (min-width:761px) and (max-width:1100px){
+  .intro{ grid-column:1 / span 5; }
+  .shot{ grid-column:6 / -1; }
+  .nav{ grid-column:4 / span 6; }
+}
+
+/* ---------- JS-gated initial states (content visible without JS) ---------- */
+.js .mega .ch{ transform:translateY(108%); }
+.js h1 .mask > span{ transform:translateY(110%); }
+.js .photo{ clip-path:inset(0 100% 0 0); }
+.js .dim .line{ transform:scaleX(0); }
+.js .dim .ext, .js .dim .tick{ transform:scaleY(0); }
+.js .dim .tick{ transform:rotate(45deg) scaleY(0); }
+.js .dim .txt, .js .reg{ opacity:0; }
+.js [data-fade]{ opacity:0; }
+.js [data-rise]{ opacity:0; transform:translateY(26px); }
+.js .row .hl{ transform:scaleX(0); }
+.js .studio .names .mask > span, .js .contact h2.huge .mask > span{ transform:translateY(105%); }
+.js .split .im{ clip-path:inset(100% 0 0 0); }
+.js .award{ clip-path:inset(0 100% 0 0); }
+.js .manifesto .wd{ color:#BDBAB1; }
+
+@media (prefers-reduced-motion: reduce){
+  *{ transition-duration:.01ms !important; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#manifiesto">Skip to content</a>
+
+<svg id="gridv" aria-hidden="true" focusable="false"></svg>
+
+<div class="sheetbar g mono" id="sheetbar" aria-hidden="true">
+  <span class="sb-name">Estudio Pacífico</span>
+  <span class="sb-sheet label"><span id="sbNo">A-01</span><span id="sbName">Cover</span></span>
+  <a class="sb-cta" href="#contacto" tabindex="-1">Start a project →</a>
+  <i class="sb-progress" id="sbProgress"></i>
+</div>
+
+<div class="follower" id="follower" aria-hidden="true">
+  <div class="fi" data-i="0"><img src="img/casa-playa.webp" alt=""></div>
+  <div class="fi" data-i="1"><img src="img/interior-jardin.webp" alt=""></div>
+  <div class="fi" data-i="2"><img src="img/dormitorio.webp" alt=""></div>
+  <span class="cap mono" id="fcap">01 / 03</span>
+</div>
+
+<main>
+  <!-- A-01 COVER -->
+  <header class="hero" id="portada" data-sheet="A-01" data-name="Cover">
+    <svg id="gridh" aria-hidden="true" focusable="false"></svg>
+    <div class="g probe" id="probe" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+
+    <div class="g topbar" data-fade>
+      <a class="brand" href="#portada" aria-label="Estudio Pacífico Arquitectos, home">
+        <strong>Estudio Pacífico</strong>
+        <span class="label">Arquitectos · Barranco</span>
+      </a>
+      <nav class="nav mono" aria-label="Main">
+        <a href="#proyectos"><span>03</span>Projects</a>
+        <a href="#estudio"><span>05</span>Studio</a>
+        <a href="#contacto"><span>06</span>Contact</a>
+      </nav>
+      <div class="sheetno label"><b>Sheet A-01</b><br>Scale 1:100</div>
+    </div>
+
+    <div class="g axes" aria-hidden="true" data-fade>
+      <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span>
+    </div>
+
+    <div class="g coords label" data-fade>
+      <span class="c1"><i aria-hidden="true"></i><b>12°08′S 77°01′W</b></span>
+      <span class="c2">Barranco · Lima · Peru</span>
+      <span class="c3">General plan<br>Cover</span>
+    </div>
+
+    <p class="mega g" aria-label="Estudio Pacífico">
+      <span class="ln ln1" aria-hidden="true"><span class="w" data-split>ESTUDIO</span></span>
+      <span class="ln ln2" aria-hidden="true"><span class="w" data-split>PACÍFICO</span></span>
+    </p>
+
+    <div class="g lower">
+      <div class="intro">
+        <h1><span class="mask"><span>Architecture</span></span><span class="mask"><span>and interiors</span></span><span class="mask"><span>in Barranco, Lima</span></span></h1>
+        <p data-rise>Beach houses south of Lima, residential remodels and small hospitality projects. A studio founded by Lucía Ferrand and Diego Salas.</p>
+        <a class="btn" href="#contacto" data-rise>Start a project <span class="arr" aria-hidden="true">→</span></a>
+        <div class="north label" data-rise aria-hidden="true">
+          <svg viewBox="0 0 34 34"><circle cx="17" cy="17" r="15.5" fill="none" stroke="#0B0B0B"/><path d="M17 4 L22 24 L17 20 L12 24 Z" fill="#0B0B0B"/></svg>
+          <span>N · Orientation</span>
+        </div>
+        <div class="scalebar label" data-rise aria-hidden="true">
+          <div class="bars"><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="nums"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5 m</span></div>
+        </div>
+      </div>
+      <div class="shot">
+        <div class="frame">
+          <span class="reg tl" aria-hidden="true"></span><span class="reg tr" aria-hidden="true"></span>
+          <span class="reg bl" aria-hidden="true"></span><span class="reg br" aria-hidden="true"></span>
+          <div class="photo" id="heroPhoto">
+            <img src="img/casa-playa.webp" width="1376" height="768" alt="Concrete and timber beach house facing the sea; a couple walks in across the wooden terrace.">
+          </div>
+        </div>
+        <div class="dim" aria-hidden="true">
+          <i class="ext l"></i><i class="ext r"></i><i class="line"></i><i class="tick l"></i><i class="tick r"></i>
+          <span class="txt mono">beach house · south of Lima</span>
+        </div>
+        <div class="meta" data-fade>
+          <span class="label">Fig. A-01.1</span>
+          <span class="label">Concrete · timber · Pacific light</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- A-02 MANIFESTO -->
+  <section class="manifesto" id="manifiesto" data-sheet="A-02" data-name="Manifesto" aria-labelledby="h-man">
+    <div class="g sec-head label">
+      <span class="n"><b>02</b> / 06</span>
+      <h2 id="h-man">Manifesto</h2>
+      <span class="r">Sheet A-02</span>
+    </div>
+    <div class="g">
+      <p id="manifestoText">We draw from the coast. Pacific light, wind and sand decide where a wall opens, how far a shadow reaches and which materials deserve to grow old beside the sea. Concrete, timber and lime, measured with the same calm you bring to a drawing, so every space feels as if it had always been there.</p>
+      <div class="aside label" data-rise>
+        <span><b>Light</b></span><span><b>Coast</b></span><span><b>Matter</b></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- A-03 INDEX -->
+  <section class="index" id="proyectos" data-sheet="A-03" data-name="Project index" aria-labelledby="h-idx">
+    <div class="g sec-head label">
+      <span class="n"><b>03</b> / 06</span>
+      <h2 id="h-idx">Project index</h2>
+      <span class="r">Sheet A-03</span>
+    </div>
+    <ol class="rows" id="rows">
+      <li class="row">
+        <a class="g" href="#laminas" data-i="0">
+          <span class="num label"><b>01</b></span>
+          <span class="tt"><span>Beach houses</span><span>south of Lima</span></span>
+          <span class="meta label"><b>Architecture</b><span>South coast · Lima</span></span>
+          <span class="inl"><img src="img/casa-playa.webp" alt="Concrete and timber beach house on the coast south of Lima." loading="lazy"></span>
+        </a>
+        <i class="hl" aria-hidden="true"></i>
+      </li>
+      <li class="row">
+        <a class="g" href="#laminas" data-i="1">
+          <span class="num label"><b>02</b></span>
+          <span class="tt"><span>Residential</span><span>remodels</span></span>
+          <span class="meta label"><b>Architecture · Interiors</b><span>Lima</span></span>
+          <span class="inl"><img src="img/interior-jardin.webp" alt="Living room with concrete walls and timber, opening onto a garden courtyard." loading="lazy"></span>
+        </a>
+        <i class="hl" aria-hidden="true"></i>
+      </li>
+      <li class="row">
+        <a class="g" href="#laminas" data-i="2">
+          <span class="num label"><b>03</b></span>
+          <span class="tt"><span>Small-scale</span><span>hospitality</span></span>
+          <span class="meta label"><b>Interiors</b><span>Intimate scale</span></span>
+          <span class="inl"><img src="img/dormitorio.webp" alt="Calm bedroom with limewashed walls, timber beams and linen bedding." loading="lazy"></span>
+        </a>
+        <i class="hl" aria-hidden="true"></i>
+      </li>
+    </ol>
+  </section>
+
+  <!-- A-04 PLATES (pinned horizontal) -->
+  <section class="gallery" id="laminas" data-sheet="A-04" data-name="Plates" aria-labelledby="h-lam">
+    <div class="g sec-head label g-top">
+      <span class="n"><b>04</b> / 06</span>
+      <h2 id="h-lam">Plates</h2>
+      <span class="r hint"><svg viewBox="0 0 28 10" aria-hidden="true"><path d="M0 5 H26 M21 1 L26 5 L21 9" fill="none" stroke="#0B0B0B"/></svg>Scroll</span>
+    </div>
+    <div class="track" id="track">
+      <div class="panel lead">
+        <p class="big" aria-hidden="true">Four<br>plates</p>
+        <div>
+          <p>From the seafront exterior to the detail of a bedroom: the same rule of light, shadow and matter, at different scales.</p>
+          <p class="label" style="margin-top:18px">Pl. 04.1 — 04.4</p>
+        </div>
+      </div>
+      <figure class="panel">
+        <div class="pic w"><img src="img/casa-playa.webp" alt="Concrete and timber beach house with a terrace facing the ocean." loading="lazy"></div>
+        <figcaption class="cblock">
+          <div class="label"><b>04.1</b></div>
+          <div class="t"><small>Exterior</small>Beach house, south of Lima</div>
+          <div class="sbar label"><span class="bars"><i></i><i></i><i></i><i></i></span><span>Scale 1:200</span></div>
+        </figcaption>
+      </figure>
+      <figure class="panel alt">
+        <div class="pic s"><img src="img/interior-jardin.webp" alt="Living room with a timber bench and a concrete wall opening onto a garden courtyard." loading="lazy"></div>
+        <figcaption class="cblock">
+          <div class="label"><b>04.2</b></div>
+          <div class="t"><small>Interior</small>Living room open to the garden</div>
+          <div class="sbar label"><span class="bars"><i></i><i></i><i></i><i></i></span><span>Scale 1:50</span></div>
+        </figcaption>
+      </figure>
+      <figure class="panel">
+        <div class="pic s"><img src="img/dormitorio.webp" alt="Bedroom with limewashed walls, timber beams, a ceramic lamp and linen." loading="lazy"></div>
+        <figcaption class="cblock">
+          <div class="label"><b>04.3</b></div>
+          <div class="t"><small>Interior</small>Bedroom, lime and linen</div>
+          <div class="sbar label"><span class="bars"><i></i><i></i><i></i><i></i></span><span>Scale 1:25</span></div>
+        </figcaption>
+      </figure>
+      <figure class="panel alt">
+        <div class="pic s"><img src="img/planos.webp" alt="Architect drawing plans at a table, with a physical model and a digital model behind her." loading="lazy"></div>
+        <figcaption class="cblock">
+          <div class="label"><b>04.4</b></div>
+          <div class="t"><small>Process</small>From drawing to building</div>
+          <div class="sbar label"><span class="bars"><i></i><i></i><i></i><i></i></span><span>Scale 1:1</span></div>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- A-05 STUDIO -->
+  <section class="studio" id="estudio" data-sheet="A-05" data-name="The studio" aria-labelledby="h-est">
+    <div class="g sec-head label">
+      <span class="n"><b>05</b> / 06</span>
+      <h2 id="h-est">The studio</h2>
+      <span class="r">Sheet A-05</span>
+    </div>
+    <div class="g">
+      <p class="names"><span class="mask"><span class="label fl">Founders</span></span>
+        <span class="mask"><span>Lucía Ferrand</span></span>
+        <span class="mask"><span class="amp">&amp;</span></span>
+        <span class="mask"><span>Diego Salas</span></span>
+      </p>
+      <div class="txt">
+        <p data-rise>Estudio Pacífico Arquitectos is an architecture and interiors workshop in Barranco, Lima. We design beach houses south of Lima, residential remodels and small hospitality projects.</p>
+        <div class="award" role="note" aria-label="Award, Peruvian Architecture Biennial 2024">
+          <span>Award</span>
+          <span><strong>Peruvian Architecture Biennial</strong>2024</span>
+        </div>
+      </div>
+    </div>
+    <div class="g split">
+      <figure class="a">
+        <div class="im"><img src="img/taller.webp" alt="The studio team gathered around a table covered in plans in the workshop." loading="lazy"></div>
+        <figcaption class="label"><b>Fig. A-05.1</b><span>The workshop, Barranco</span></figcaption>
+      </figure>
+      <figure class="b">
+        <div class="im"><img src="img/planos.webp" alt="Architect sketching by hand next to a model on her desk." loading="lazy"></div>
+        <figcaption class="label"><b>Fig. A-05.2</b><span>Drawing table</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- A-06 CONTACT -->
+  <section class="contact" id="contacto" data-sheet="A-06" data-name="Contact" aria-labelledby="h-con">
+    <div class="g sec-head label">
+      <span class="n"><b>06</b> / 06</span>
+      <span style="grid-column:3 / span 6">Contact</span>
+      <span class="r">Sheet A-06</span>
+    </div>
+    <div class="g">
+      <h2 class="huge" id="h-con"><span class="mask"><span>Let&rsquo;s start</span></span><span class="mask i2"><span><span class="tu">your</span><i class="hrule" aria-hidden="true"><em class="mono">06 · Contact</em></i></span></span><span class="mask i3"><span>project</span></span></h2>
+    </div>
+    <div class="g cgrid">
+      <address class="tblock" style="font-style:normal" data-rise>
+        <div class="label">Studio</div><div class="v">Estudio Pacífico Arquitectos</div>
+        <div class="label">Address</div><div class="v"><a href="https://www.google.com/maps/search/?api=1&query=Jr.+Domeyer+210+Barranco+Lima" rel="noopener">Jr. Domeyer 210, Barranco<br>Lima, Peru</a></div>
+        <div class="label">Phone</div><div class="v"><a href="tel:+5112476630">+51 1 247 6630</a></div>
+        <div class="label">Coordinates</div><div class="v">12°08′S 77°01′W</div>
+      </address>
+      <div class="ctabox" data-rise>
+        <p style="margin:0">Tell us about your site, your home or your hospitality project. We&rsquo;ll draw it together.</p>
+        <a class="cta" href="tel:+5112476630"><small>Call · +51 1 247 6630</small><span>Start a<br>project</span><span class="arr" aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <footer class="g foot label">
+      <span class="f1"><b>Estudio Pacífico Arquitectos</b> · Barranco, Lima</span>
+      <span class="f2">Architecture and interiors</span>
+      <span class="f3">Sheet A-06 of A-06</span>
+    </footer>
+  </section>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer onerror="document.documentElement.classList.remove('js')"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer onerror="document.documentElement.classList.remove('js')"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  var root = document.documentElement;
+  var NS = 'http://www.w3.org/2000/svg';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hasGsap = !!(window.gsap && window.ScrollTrigger);
+  var animate = hasGsap && !reduce && root.classList.contains('js');
+  if (!animate) root.classList.remove('js');
+  window.__epReady = true;
+
+  /* ---------- drafting grid (always drawn; animated only when allowed) ---------- */
+  var gridv = document.getElementById('gridv');
+  var gridh = document.getElementById('gridh');
+  var hero = document.getElementById('portada');
+  var probe = document.getElementById('probe');
+
+  function cols(){
+    var n = getComputedStyle(root).getPropertyValue('--cols').trim() === '4' ? 4 : 12;
+    var kids = probe.children, out = [];
+    for (var i = 0; i < n; i++){ var r = kids[i].getBoundingClientRect(); out.push([r.left, r.right]); }
+    return out;
+  }
+  function line(svg, x1, y1, x2, y2, cls){
+    var l = document.createElementNS(NS, 'line');
+    l.setAttribute('x1', x1); l.setAttribute('y1', y1); l.setAttribute('x2', x2); l.setAttribute('y2', y2);
+    l.setAttribute('class', cls); l.setAttribute('pathLength', '1');
+    svg.appendChild(l); return l;
+  }
+  function buildGrid(){
+    gridv.innerHTML = ''; gridh.innerHTML = '';
+    var c = cols(), H = window.innerHeight, W = root.clientWidth;
+    var vs = [];
+    c.forEach(function(p, i){
+      var x1 = Math.round(p[0]) + .5, x2 = Math.round(p[1]) - .5;
+      vs.push(line(gridv, x1, 0, x1, H, i === 0 ? 'edge' : 'col'));
+      vs.push(line(gridv, x2, 0, x2, H, i === c.length - 1 ? 'edge' : 'col'));
+    });
+    var hh = hero.offsetHeight, step = 24, hs = [], k = 0;
+    var mobile = c.length === 4;
+    for (var y = 96; y < hh - 10; y += step){
+      var major = (k % 8 === 0);
+      hs.push(line(gridh, 0, y + .5, W, y + .5, major ? 'major' : 'base'));
+      if (major && !mobile){
+        var t = document.createElementNS(NS, 'text');
+        t.setAttribute('x', Math.max(6, c[0][0] / 2 - 4)); t.setAttribute('y', y - 6);
+        t.textContent = String.fromCharCode(65 + k / 8);
+        gridh.appendChild(t); hs.push(t);
+      }
+      k++;
+    }
+    return { v: vs, h: hs };
+  }
+  var grid = buildGrid();
+  var lastW = window.innerWidth;
+  window.addEventListener('resize', function(){
+    clearTimeout(window.__gr);
+    window.__gr = setTimeout(function(){ buildGrid(); if (hasGsap) ScrollTrigger.refresh(); lastW = window.innerWidth; }, 180);
+  });
+
+  /* ---------- split mega letters ---------- */
+  document.querySelectorAll('[data-split]').forEach(function(el){
+    var txt = el.textContent; el.textContent = '';
+    for (var i = 0; i < txt.length; i++){
+      var s = document.createElement('span'); s.className = 'ch'; s.textContent = txt[i]; el.appendChild(s);
+    }
+  });
+
+  /* ---------- manifesto words ---------- */
+  var man = document.getElementById('manifestoText');
+  var words = man.textContent.trim().split(/\s+/);
+  man.innerHTML = words.map(function(w){ return '<span class="wd">' + w + '</span>'; }).join(' ');
+
+  if (!animate){ setupFollower(false); return; }
+
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.defaults({ ease: 'expo.out' });
+
+  /* ---------- intro ---------- */
+  grid.v.concat(grid.h).forEach(function(l){ if (l.tagName === 'line'){ l.style.strokeDasharray = '1'; l.style.strokeDashoffset = '1'; } else { l.style.opacity = 0; } });
+
+  // normalise CSS-gated initial states into GSAP's own transform cache
+  gsap.set('.mega .ch', { yPercent: 108, y: 0 });
+  gsap.set('h1 .mask > span', { yPercent: 110, y: 0 });
+  gsap.set('.studio .names .mask > span, .contact h2.huge .mask > span', { yPercent: 105, y: 0 });
+  gsap.set('.dim .line', { scaleX: 0 });
+  gsap.set('.dim .ext', { scaleY: 0 });
+  gsap.set('.dim .tick', { rotate: 45, scaleY: 0 });
+  gsap.set('.intro [data-rise], [data-rise]', { y: 26 });
+
+  var intro = gsap.timeline({ delay: .15 });
+  intro
+    .to(grid.v, { strokeDashoffset: 0, duration: 1.5, ease: 'power3.inOut', stagger: { each: .025, from: 'start' } }, 0)
+    .to(grid.h.filter(function(l){ return l.tagName === 'line'; }), { strokeDashoffset: 0, duration: 1.3, ease: 'power3.inOut', stagger: .018 }, .2)
+    .to(grid.h.filter(function(l){ return l.tagName === 'text'; }).concat(document.createElement('i')), { opacity: 1, duration: .6, ease: 'power1.out', stagger: .08 }, .8)
+    .to('.topbar, .axes, .coords', { opacity: 1, duration: .9, ease: 'power2.out', stagger: .12 }, .45)
+    .to('.mega .ln1 .ch', { yPercent: 0, duration: 1.25, stagger: .045 }, .7)
+    .to('.mega .ln2 .ch', { yPercent: 0, duration: 1.25, stagger: .045 }, .85)
+    .to('h1 .mask > span', { yPercent: 0, duration: 1.1, stagger: .08 }, 1.3)
+    .to('#heroPhoto', { clipPath: 'inset(0 0% 0 0)', duration: 1.5, ease: 'expo.inOut' }, 1.15)
+    .from('#heroPhoto img', { scale: 1.22, duration: 2.2, ease: 'expo.out' }, 1.4)
+    .to('.reg', { opacity: 1, duration: .5, stagger: .06, ease: 'power1.out' }, 2.2)
+    .to('.dim .ext', { scaleY: 1, duration: .5, ease: 'power2.out' }, 2.1)
+    .to('.dim .line', { scaleX: 1, duration: 1, ease: 'expo.inOut' }, 2.25)
+    .to('.dim .tick', { scaleY: 1, duration: .4, ease: 'power2.out' }, 2.9)
+    .to('.dim .txt', { opacity: 1, duration: .6, ease: 'power1.out' }, 2.9)
+    .to('.shot .meta', { opacity: 1, duration: .6, ease: 'power1.out' }, 3.0)
+    .to('.intro [data-rise]', { opacity: 1, y: 0, duration: 1, stagger: .08 }, 1.7);
+
+  /* ---------- hero scroll ---------- */
+  gsap.to('.mega .ln1 .w', { xPercent: 4, ease: 'none', scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true } });
+  gsap.to('.mega .ln2 .w', { xPercent: -4, ease: 'none', scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true } });
+  gsap.to('#heroPhoto img', { yPercent: 8, ease: 'none', scrollTrigger: { trigger: '#heroPhoto', start: 'top 60%', end: 'bottom top', scrub: true } });
+
+  /* ---------- generic reveals ---------- */
+  ScrollTrigger.batch('[data-rise]:not(.intro [data-rise])', {
+    start: 'top 88%', once: true,
+    onEnter: function(b){ gsap.to(b, { opacity: 1, y: 0, duration: 1.1, stagger: .1 }); }
+  });
+  gsap.utils.toArray('.sec-head').forEach(function(h){
+    gsap.from(h, { opacity: 0, y: 14, duration: 1, scrollTrigger: { trigger: h, start: 'top 90%', once: true } });
+  });
+
+  /* ---------- manifesto scrub ---------- */
+  gsap.to('#manifestoText .wd', {
+    color: '#0B0B0B', ease: 'none', stagger: .1,
+    scrollTrigger: { trigger: '#manifestoText', start: 'top 78%', end: 'bottom 42%', scrub: .6 }
+  });
+
+  /* ---------- index ---------- */
+  gsap.utils.toArray('.row').forEach(function(r, i){
+    var st = { trigger: r, start: 'top 85%', once: true };
+    gsap.to(r.querySelector('.hl'), { scaleX: 1, duration: 1.4, ease: 'expo.inOut', scrollTrigger: st });
+    gsap.from(r.querySelectorAll('.tt span'), { yPercent: 40, opacity: 0, duration: 1.1, stagger: .08, scrollTrigger: st });
+    gsap.from(r.querySelectorAll('.num, .meta'), { opacity: 0, duration: .9, delay: .3, ease: 'power2.out', scrollTrigger: st });
+  });
+  setupFollower(true);
+
+  /* ---------- gallery ---------- */
+  var mm = gsap.matchMedia();
+  mm.add('(min-width: 761px)', function(){
+    var sec = document.getElementById('laminas');
+    var track = document.getElementById('track');
+    sec.classList.add('pinned');
+    var dist = function(){ return Math.max(0, track.scrollWidth - root.clientWidth); };
+    var tween = gsap.to(track, {
+      x: function(){ return -dist(); }, ease: 'none',
+      scrollTrigger: {
+        trigger: sec, start: 'top top', end: function(){ return '+=' + dist(); },
+        pin: true, scrub: .8, invalidateOnRefresh: true, anticipatePin: 1
+      }
+    });
+    gsap.utils.toArray('.panel .pic img').forEach(function(img){
+      gsap.fromTo(img, { xPercent: -5 }, { xPercent: 5, ease: 'none',
+        scrollTrigger: { trigger: img.parentNode, containerAnimation: tween, start: 'left right', end: 'right left', scrub: true } });
+    });
+    gsap.utils.toArray('.panel .cblock').forEach(function(c){
+      gsap.from(c, { clipPath: 'inset(0 100% 0 0)', duration: 1.1, ease: 'expo.inOut',
+        scrollTrigger: { trigger: c, containerAnimation: tween, start: 'left 85%', once: true } });
+    });
+    return function(){ sec.classList.remove('pinned'); gsap.set(track, { clearProps: 'x' }); };
+  });
+
+  /* ---------- studio ---------- */
+  gsap.to('.studio .names .mask > span', { yPercent: 0, duration: 1.2, stagger: .1,
+    scrollTrigger: { trigger: '.studio .names', start: 'top 82%', once: true } });
+  gsap.to('.award', { clipPath: 'inset(0 0% 0 0)', duration: 1.2, ease: 'expo.inOut',
+    scrollTrigger: { trigger: '.award', start: 'top 88%', once: true } });
+  gsap.utils.toArray('.split .im').forEach(function(im){
+    gsap.to(im, { clipPath: 'inset(0% 0 0 0)', duration: 1.5, ease: 'expo.inOut', scrollTrigger: { trigger: im, start: 'top 85%', once: true } });
+    gsap.fromTo(im.querySelector('img'), { yPercent: -6, scale: 1.12 }, { yPercent: 6, scale: 1.12, ease: 'none', scrollTrigger: { trigger: im, start: 'top bottom', end: 'bottom top', scrub: true } });
+  });
+  gsap.fromTo('.split .b', { y: 80 }, { y: -40, ease: 'none', scrollTrigger: { trigger: '.split', start: 'top bottom', end: 'bottom top', scrub: true } });
+
+  /* ---------- contact ---------- */
+  gsap.set('.contact h2.huge .hrule', { scaleX: 0 });
+  var ctl = gsap.timeline({ scrollTrigger: { trigger: '.contact h2.huge', start: 'top 82%', once: true } });
+  ctl.to('.contact h2.huge .mask > span', { yPercent: 0, duration: 1.3, stagger: .12 })
+     .to('.contact h2.huge .hrule', { scaleX: 1, duration: 1.2, ease: 'expo.inOut' }, .5);
+
+  /* ---------- sheet bar ---------- */
+  var bar = document.getElementById('sheetbar'), sbNo = document.getElementById('sbNo'), sbName = document.getElementById('sbName');
+  ScrollTrigger.create({ start: 0, end: 'max', onUpdate: function(s){ bar.classList.toggle('on', s.scroll() > 120); } });
+  gsap.to('#sbProgress', { scaleX: 1, ease: 'none', scrollTrigger: { start: 0, end: 'max', scrub: .3 } });
+  gsap.utils.toArray('[data-sheet]').forEach(function(s){
+    ScrollTrigger.create({ trigger: s, start: 'top 50%', end: 'bottom 50%',
+      onToggle: function(self){ if (self.isActive){ sbNo.textContent = s.dataset.sheet; sbName.textContent = s.dataset.name; } } });
+  });
+
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ ScrollTrigger.refresh(); });
+  window.addEventListener('load', function(){ ScrollTrigger.refresh(); });
+
+  /* ---------- index cursor follower ---------- */
+  function setupFollower(smooth){
+    var f = document.getElementById('follower');
+    var fine = window.matchMedia('(hover: hover) and (pointer: fine) and (min-width: 761px)');
+    if (!fine.matches || !window.gsap || !root.classList.contains('js')) return;
+    var list = document.getElementById('rows');
+    var imgs = f.querySelectorAll('.fi'), cap = document.getElementById('fcap');
+    var labels = ['01 — Beach houses', '02 — Remodels', '03 — Small-scale hospitality'];
+    gsap.set(f, { xPercent: -50, yPercent: -55 });
+    var qx = gsap.quickTo(f, 'x', { duration: smooth ? .7 : 0, ease: 'power3.out' });
+    var qy = gsap.quickTo(f, 'y', { duration: smooth ? .7 : 0, ease: 'power3.out' });
+    var cur = -1, first = true;
+    list.addEventListener('mousemove', function(e){
+      if (first){ gsap.set(f, { x: e.clientX, y: e.clientY }); first = false; }
+      qx(e.clientX); qy(e.clientY);
+    });
+    function show(i){
+      if (i === cur) return;
+      var prev = cur; cur = i;
+      list.classList.add('is-dim');
+      list.querySelectorAll('a').forEach(function(a){ a.classList.toggle('on', +a.dataset.i === i); });
+      cap.textContent = labels[i];
+      gsap.to(f, { autoAlpha: 1, duration: .4, ease: 'power2.out' });
+      imgs.forEach(function(im, k){
+        if (k === i){ gsap.set(im, { zIndex: 2 }); gsap.fromTo(im, { clipPath: 'inset(100% 0 0 0)' }, { clipPath: 'inset(0% 0 0 0)', duration: .8, ease: 'expo.out' });
+          gsap.fromTo(im.firstElementChild, { scale: 1.2 }, { scale: 1, duration: 1.1, ease: 'expo.out' }); }
+        else gsap.set(im, { zIndex: k === prev ? 1 : 0 });
+      });
+    }
+    function hide(){
+      cur = -1; first = true; list.classList.remove('is-dim');
+      list.querySelectorAll('a').forEach(function(a){ a.classList.remove('on'); });
+      gsap.to(f, { autoAlpha: 0, duration: .35, ease: 'power2.out' });
+    }
+    list.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('mouseenter', function(){ show(+a.dataset.i); });
+      a.addEventListener('focus', function(){
+        var r = a.getBoundingClientRect(); gsap.set(f, { x: r.left + r.width * .72, y: r.top + r.height / 2 }); first = false; show(+a.dataset.i);
+      });
+      a.addEventListener('blur', hide);
+    });
+    list.addEventListener('mouseleave', hide);
+  }
+});
+</script>
+</body>
+</html>

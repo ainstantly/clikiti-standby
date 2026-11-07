@@ -1,0 +1,32 @@
+# The State of Independent Wedding Venue Websites 2026 (Q4 2026). CC BY 4.0, credit Clikiti with a link: https://clikiti.com/research/weddings
+"section","id","label","standard","metric","value"
+"summary","sites","Websites scanned","","count",191
+"summary","median","Median overall score","","score_0_100",77
+"summary","mean","Mean overall score","","score_0_100",76
+"summary","moe","Margin of error (95%)","","percentage_points",7.1
+"summary","weak","Sites scoring under 60","","percent",1
+"question","dates","Is our date still free?","Couple question 3","percent_pass",9
+"question","rain","What if it rains?","Couple question 6","percent_pass",36
+"question","reviews","Do other couples vouch for you?","Couple question 9","percent_pass",41
+"question","tour","Can we book a tour online?","Couple question 7","percent_pass",46
+"question","price","What will it cost us?","Couple question 1","percent_pass",49
+"question","included","What's included in the fee?","Couple question 4","percent_pass",59
+"question","vendors","Can we bring our own caterer?","Couple question 5","percent_pass",70
+"question","capacity","How many guests can you hold?","Couple question 2","percent_pass",76
+"question","gallery","Can we see real weddings here?","Couple question 8","percent_pass",95
+"technical","con","Text contrast passes 4.5:1","WCAG 1.4.3","percent_fail",76
+"technical","lcp","Loads in under 2.5 s on a phone","Core Web Vitals · LCP","percent_fail",72
+"technical","schema","Event venue or local business structured data","Schema.org · EventVenue","percent_fail",43
+"technical","alt","Images have text descriptions","WCAG 1.1.1","percent_fail",16
+"segment","barn","Barns and farms","","median_score",77
+"segment","barn","Barns and farms","","percent_under_60",0
+"segment","barn","Barns and farms","","sites",62
+"segment","estate","Estates and historic houses","","median_score",76
+"segment","estate","Estates and historic houses","","percent_under_60",2
+"segment","estate","Estates and historic houses","","sites",45
+"segment","vine","Vineyards and wineries","","median_score",77
+"segment","vine","Vineyards and wineries","","percent_under_60",0
+"segment","vine","Vineyards and wineries","","sites",45
+"segment","urban","Lofts and restaurants with event space","","median_score",78
+"segment","urban","Lofts and restaurants with event space","","percent_under_60",0
+"segment","urban","Lofts and restaurants with event space","","sites",39

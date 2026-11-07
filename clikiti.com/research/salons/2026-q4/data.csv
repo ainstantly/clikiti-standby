@@ -1,0 +1,32 @@
+# The State of Independent Salon and Barbershop Websites 2026 (Q4 2026). CC BY 4.0, credit Clikiti with a link: https://clikiti.com/research/salons
+"section","id","label","standard","metric","value"
+"summary","sites","Websites scanned","","count",193
+"summary","median","Median overall score","","score_0_100",78
+"summary","mean","Mean overall score","","score_0_100",78
+"summary","moe","Margin of error (95%)","","percentage_points",7.1
+"summary","weak","Sites scoring under 60","","percent",0
+"question","access","Can I get in with a wheelchair?","Client question 8","percent_pass",3
+"question","reviews","Do other clients vouch for you?","Client question 9","percent_pass",18
+"question","walkin","Can I just walk in?","Client question 5","percent_pass",20
+"question","work","Whose work would I be getting?","Client question 3","percent_pass",26
+"question","policy","What if I need to cancel?","Client question 4","percent_pass",42
+"question","price","What does a cut or colour cost?","Client question 1","percent_pass",49
+"question","brands","What do you put on my hair?","Client question 7","percent_pass",54
+"question","hours","When are you open?","Client question 6","percent_pass",62
+"question","book","Can I book my stylist online?","Client question 2","percent_pass",72
+"technical","lcp","Loads in under 2.5 s on a phone","Core Web Vitals · LCP","percent_fail",84
+"technical","schema","HairSalon, BarberShop or BeautySalon structured data","Schema.org · HairSalon","percent_fail",84
+"technical","con","Text contrast passes 4.5:1","WCAG 1.4.3","percent_fail",69
+"technical","alt","Images have text descriptions","WCAG 1.1.1","percent_fail",19
+"segment","hair","Hair salons","","median_score",79
+"segment","hair","Hair salons","","percent_under_60",0
+"segment","hair","Hair salons","","sites",53
+"segment","barber","Barbershops","","median_score",79
+"segment","barber","Barbershops","","percent_under_60",0
+"segment","barber","Barbershops","","sites",51
+"segment","spec","Colour and specialty salons","","median_score",77
+"segment","spec","Colour and specialty salons","","percent_under_60",0
+"segment","spec","Colour and specialty salons","","sites",47
+"segment","spa","Salons with spa services","","median_score",76
+"segment","spa","Salons with spa services","","percent_under_60",0
+"segment","spa","Salons with spa services","","sites",42

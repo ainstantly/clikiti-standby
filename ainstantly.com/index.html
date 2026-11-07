@@ -1,0 +1,480 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"><head><meta name="robots" content="noindex,nofollow">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700;800&amp;display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Manrope', 'sans-serif'],
+                    },
+                    colors: {
+                        paper: '#F7F5F1',
+                        ink: '#111111',
+                        accent: '#1a73e8',
+                    },
+                    fontSize: {
+                        'hero': ['clamp(2rem, 9vw, 11.5rem)', { lineHeight: '0.85', letterSpacing: '-0.05em', fontWeight: '800' }],
+                        'utility': ['11px', { letterSpacing: '0.2em', fontWeight: '700' }],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .drafting-grid {
+            background-size: 60px 60px;
+            background-image: linear-gradient(to right, rgba(17, 17, 17, 0.04) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(17, 17, 17, 0.04) 1px, transparent 1px);
+        }
+        .text-outline {
+            -webkit-text-stroke: 1px #111111;
+            color: transparent;
+        }
+        .text-outline-white {
+            -webkit-text-stroke: 1px #ffffff;
+            color: transparent;
+        }
+        
+        .flap-char {
+            display: inline-block;
+            min-width: 0.6em;
+            text-align: center;
+        }
+
+        .flap-word {
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 400px) {
+            #hero-metro-text,
+            #cta-metro-text {
+                font-size: clamp(1.6rem, 7.5vw, 2.2rem) !important;
+                line-height: 0.9 !important;
+                letter-spacing: -0.04em !important;
+                overflow: visible !important;
+            }
+            .flap-char {
+                min-width: 0.52em;
+            }
+        }
+
+        @keyframes flat-shimmer {
+            0% { transform: translateX(-100%) skewX(-15deg); }
+            100% { transform: translateX(250%) skewX(-15deg); }
+        }
+        .shimmer-cta {
+            position: relative;
+            overflow: hidden;
+        }
+        .shimmer-cta::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 40%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            transform: translateX(-100%);
+            animation: flat-shimmer 3s infinite ease-in-out;
+        }
+
+        @keyframes reveal-up {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .reveal-up {
+            opacity: 0;
+            animation: reveal-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes retro-rotate-slow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes retro-rotate-reverse {
+            0% { transform: rotate(360deg); }
+            100% { transform: rotate(0deg); }
+        }
+        .retro-ray-container {
+            mix-blend-mode: screen;
+            filter: blur(2px);
+        }
+
+        @keyframes scanline {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+        .scanline-animate {
+            animation: scanline 8s linear infinite;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal-up.shimmer-cta::after.retro-ray-container svg.scanline-animate {
+                animation: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+    </style>
+<style data-clk-ph="">/*ph:clk-ph-1*/.clk-ph-1{background-position:50% 50%;background-size:cover;}/*ph:clk-ph-1:end*/</style><style data-clikiti-motion="">@media (scripting:enabled) and (prefers-reduced-motion:no-preference){[data-reveal]:not(.cm-in),[data-seq]:not(.cm-in),[data-split]:not(.cm-in),[data-reveal-children]>*:not(.cm-in){opacity:0;animation:cm-failsafe 0.01s linear 3.2s forwards}}@keyframes cm-failsafe{to{opacity:1}}.cm-w,.cm-c{display:inline-block}.cm-l{display:block;overflow:hidden}[data-marquee]{overflow:hidden}.cm-track{display:flex;flex-wrap:nowrap;width:max-content;will-change:transform}.cm-track>*{flex:none}[data-hover="lift"]{transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.35s ease}[data-hover="lift"]:hover{transform:translateY(-4px);box-shadow:0 18px 40px -18px rgba(0,0,0,0.45)}[data-hover="zoom"]{overflow:hidden}[data-hover="zoom"] img,[data-hover="zoom"] video{transition:transform 0.9s cubic-bezier(0.16,1,0.3,1)}[data-hover="zoom"]:hover img,[data-hover="zoom"]:hover video{transform:scale(1.05)}[data-hover="glow"]{transition:box-shadow 0.35s ease}[data-hover="glow"]:hover{box-shadow:0 0 0 1px currentColor,0 0 32px -4px currentColor}[data-shine]{position:relative;overflow:hidden}[data-shine]::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,0.35) 50%,transparent 65%);transform:translateX(-120%);transition:transform 0.7s cubic-bezier(0.16,1,0.3,1)}[data-shine]:hover::after{transform:translateX(120%)}[data-scroll-progress]{position:fixed;left:0;top:0;z-index:60;width:100%;height:3px;background:currentColor;transform-origin:0 50%;transform:scaleX(0);pointer-events:none}@media (prefers-reduced-motion:reduce){[data-hover],[data-hover] img,[data-hover] video,[data-shine]::after{transition:none !important}[data-scroll-progress]{display:none}}.cm-chapters{height:calc(var(--cm-n,3) * 85svh + 100svh);position:relative}.cm-chapters>.cm-stage,.cm-chapters .cm-stage{position:sticky;top:0;height:100svh;overflow:hidden}.cm-chapters [data-chapter-media]{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s ease}.cm-chapters [data-chapter-media].cm-on{opacity:1}.cm-chapters [data-chapter-step]{opacity:.28;transition:opacity .5s ease,transform .5s ease}.cm-chapters [data-chapter-step].cm-on{opacity:1;transform:translateX(12px)}.cm-chapters [data-chapter-progress]{transform-origin:0 50%;transform:scaleX(var(--p,0))}</style><style data-clk-responsive="">
+*,*::before,*::after{box-sizing:border-box}
+img,svg,video,canvas,iframe,object,embed{max-width:100%;height:auto}
+html,body{max-width:100%;overflow-x:hidden}
+h1,h2,h3,h4,h5,h6,p,li,a,span,blockquote,figcaption,label,td,th{overflow-wrap:break-word;word-break:break-word}
+table{max-width:100%}
+pre{max-width:100%;overflow:auto}
+@media (max-width:768px){.flap-word,.flap-char{white-space:normal!important}h1,h2,h3{overflow-wrap:anywhere}}
+</style>
+
+  <!-- SEO (Clikiti Launch) -->
+  <title>Ainstanly.ai</title>
+  <meta property="og:title" content="Ainstanly.ai">
+  <meta name="twitter:title" content="Ainstanly.ai">
+  <meta name="twitter:card" content="summary">
+  <meta property="og:type" content="website">
+<link rel="canonical" href="./">
+</head>
+<body class="bg-paper text-ink font-sans selection:bg-ink selection:text-paper antialiased drafting-grid overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 border-b border-ink bg-paper/90 backdrop-blur-md">
+        <div class="max-w-[1800px] mx-auto px-6 md:px-8 h-20 md:h-24 flex items-center justify-between gap-4">
+            <div class="text-utility uppercase tracking-widest font-bold whitespace-nowrap">Ainstantly.com</div>
+            <div class="hidden lg:flex gap-16">
+                <a href="#approach" class="text-utility uppercase hover:opacity-60 transition-opacity">Approach</a>
+                <a href="#services" class="text-utility uppercase hover:opacity-60 transition-opacity">Services</a>
+                <a href="#about" class="text-utility uppercase hover:opacity-60 transition-opacity">About</a>
+            </div>
+            <div>
+                <a href="#contact" class="bg-accent text-white px-5 py-3 md:px-8 md:py-4 text-[10px] md:text-utility uppercase hover:bg-ink transition-colors duration-300 inline-block tracking-widest whitespace-nowrap">
+                    Consultation
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex flex-col justify-end pt-32 pb-16 md:pb-24 bg-ink text-white border-b border-ink overflow-hidden">
+        <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-30 retro-ray-container">
+            <svg class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250%] h-[250%] md:w-[200%] md:h-[200%] origin-center" style="animation: retro-rotate-slow 80s linear infinite;" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <g stroke-width="0.1">
+                    <path d="M50 50 L0 48 L0 52 Z" fill="#A59E8C" opacity="0.6"></path>
+                    <path d="M50 50 L100 48 L100 52 Z" fill="#A59E8C" opacity="0.6"></path>
+                    <path d="M50 50 L48 0 L52 0 Z" fill="#7E8B91" opacity="0.5"></path>
+                    <path d="M50 50 L48 100 L52 100 Z" fill="#7E8B91" opacity="0.5"></path>
+                    <path d="M50 50 L0 0 L5 5 Z" fill="#947E80" opacity="0.4"></path>
+                    <path d="M50 50 L100 100 L95 95 Z" fill="#947E80" opacity="0.4"></path>
+                    <path d="M50 50 L100 0 L95 5 Z" fill="#8B917E" opacity="0.4"></path>
+                    <path d="M50 50 L0 100 L5 95 Z" fill="#8B917E" opacity="0.4"></path>
+                </g>
+            </svg>
+            <div class="absolute inset-0 bg-gradient-to-b from-ink/20 via-transparent to-ink/40"></div>
+        </div>
+
+        <img class="hidden" src="_assets/clikiti.com/api/public-files/redesign-images/1789341537443-dbxlwdqx.png" alt="AI conceptual landscape" loading="eager">
+        
+        <div class="w-full max-w-[1800px] mx-auto px-6 md:px-8 relative z-10">
+            <div class="border-l border-white/10 pl-6 mb-8 md:mb-12 reveal-up" style="animation-delay: 0.2s;">
+                <span class="text-utility uppercase text-white/40 block">AI Product Design Consultancy</span>
+            </div>
+            
+            <h1 id="hero-metro-text" class="text-hero uppercase tracking-tighter mb-12 md:mb-16 select-none max-w-full overflow-hidden">
+                Your Idea<br>with our<br>approach<br>to AI is<br>unstoppable.
+            </h1>
+            
+            <div class="grid grid-cols-12 gap-8 pt-10 md:pt-12 border-t border-white/10 items-start">
+                <div class="col-span-12 md:col-span-7 lg:col-span-5 reveal-up" style="animation-delay: 0.4s;">
+                    <p class="text-lg md:text-xl text-white/70 leading-relaxed font-light">
+                        We architect intelligent products for founders who prioritize rigor over hype. Our methodology transforms raw concepts into market-ready AI solutions.
+                    </p>
+                </div>
+                <div class="col-span-12 md:col-span-5 lg:col-span-4 lg:col-start-9 flex md:justify-end reveal-up" style="animation-delay: 0.6s;">
+                    <a href="#contact" class="bg-accent text-white w-full md:w-auto text-center px-10 py-5 md:px-12 md:py-6 text-base md:text-lg font-bold uppercase hover:bg-white hover:text-ink transition-colors tracking-wide shimmer-cta">
+                        Discovery call
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Approach Section -->
+    <section id="approach" class="py-20 md:py-32 border-b border-ink">
+        <div class="max-w-[1800px] mx-auto px-6 md:px-8">
+            <div class="grid grid-cols-12 gap-8">
+                <div class="col-span-12 lg:col-span-5 lg:border-r border-ink/10 lg:pr-8 reveal-up">
+                    <span class="text-utility text-ink/40 block mb-6">POSITIONING STATEMENT</span>
+                    <h2 class="text-4xl md:text-6xl font-extrabold uppercase leading-[0.9] tracking-tighter">unstoppable&nbsp; means we bring inertia and velocity to your products.</h2>
+                </div>
+                <div class="col-span-12 lg:col-span-7 lg:pl-12 flex flex-col justify-between reveal-up" style="animation-delay: 0.2s;">
+                    <p class="text-2xl md:text-3xl leading-tight font-light mb-12 text-ink">
+                        AI implementation fails when it lacks design intent. We help teams move past the experimental stage into production-grade architecture with lean product design.</p>
+
+                    <!-- Technical Visual Container -->
+                    <div class="relative mb-12 overflow-hidden border border-ink bg-ink group shadow-2xl">
+                        <div class="absolute inset-0 z-20 pointer-events-none opacity-40 group-hover:opacity-70 transition-opacity duration-700">
+                            <svg class="w-full h-full" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <pattern id="small-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                                        <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#1a73e8" stroke-width="0.5" opacity="0.2"></path>
+                                    </pattern>
+                                </defs>
+                                <rect width="100%" height="100%" fill="url(#small-grid)"></rect>
+                                <circle cx="400" cy="200" r="160" stroke="#1a73e8" stroke-width="0.5" stroke-dasharray="12 8" class="animate-[spin_40s_linear_infinite]"></circle>
+                                <path d="M20 20 L60 20 M20 20 L20 60" stroke="#1a73e8" stroke-width="1"></path>
+                            </svg>
+                        </div>
+                        
+                        <img data-clk-placed="1" style="width:100%;aspect-ratio:648 / 451;max-width:100%;display:block;object-fit:cover;background-color:#f1f5f9;background-repeat:no-repeat;background-image:url('_assets/clikiti.com/api/public-files/redesign-images/1789381916594-7cpjnqkk.webp');" class="w-full h-[300px] md:h-[450px] object-cover filter contrast-110 saturate-[0.85] brightness-90 group-hover:scale-105 transition-transform duration-[3000ms] clk-ph-1 object-top" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Professional UX design team creating better AI interfaces and system architectures in a modern collaborative studio">
+                        
+                        <div class="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6 z-30 bg-white/10 backdrop-blur-xl border border-white/20 p-3 md:p-4 flex justify-between items-center text-white">
+                            <div class="flex items-center gap-3">
+                                <span class="w-2 h-2 bg-accent rounded-full animate-pulse"></span>
+                                <span class="text-utility uppercase tracking-widest text-[9px] md:text-[10px]">We stand with your teams from day 1&nbsp;</span>
+                            </div>
+                            <span class="text-utility uppercase tracking-widest text-[9px] md:text-[10px] opacity-60">lean discovery session</span>
+                        </div>
+                        <div class="absolute inset-0 z-40 pointer-events-none opacity-[0.05] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] [background-size:100%_4px,3px_100%] scanline-animate"></div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 pt-8 md:pt-12 border-t border-ink/15">
+                        <div class="border-t border-ink pt-6">
+                            <span class="text-utility block mb-4 text-ink/40">01. THE PROBLEM</span>
+                            <p class="text-sm md:text-base leading-relaxed text-ink/80">Generic AI tools often lack the specific utility required for high-stakes business environments, leading to abandonment.</p>
+                        </div>
+                        <div class="border-t border-ink pt-6">
+                            <span class="text-utility block mb-4 text-ink/40">02. OUR RIGOR</span>
+                            <p class="text-sm md:text-base leading-relaxed text-ink/80">We apply architectural product design to Large Language Models, ensuring every interaction serves a clear business goal.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Capabilities Section -->
+    <section id="services" class="border-b border-ink bg-paper">
+        <div class="max-w-[1800px] mx-auto">
+            <div class="grid grid-cols-12 border-b border-ink">
+                <div class="col-span-12 lg:col-span-7 p-6 md:p-8 flex items-center justify-between">
+                    <span class="text-utility uppercase text-ink/40">Capabilities / 2024</span>
+                </div>
+                <div class="col-span-12 lg:col-span-5 p-6 md:p-8 lg:border-l border-ink flex items-center justify-between bg-ink text-white">
+                    <span class="text-utility uppercase text-white/60">Selected Services</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-12">
+                <div class="col-span-12 lg:col-span-7 p-8 md:p-12 border-b lg:border-b-0 border-ink flex flex-col justify-between min-h-[400px] md:min-h-[600px] bg-paper">
+                    <div class="w-12 h-12 md:w-16 md:h-16 border border-ink flex items-center justify-center text-ink mb-12 reveal-up">
+                        <svg class="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>
+                    </div>
+                    <div class="reveal-up" style="animation-delay: 0.2s;">
+                        <span class="text-utility text-ink/30 block mb-2">01 / DISCOVERY</span>
+                        <h3 class="text-4xl md:text-5xl font-extrabold uppercase tracking-tight mb-6">Core AI Strategy</h3>
+                        <p class="text-base md:text-lg text-ink/70 max-w-xl mb-12">We define the technical landscape and user journey for your AI integration, ensuring scalability from day one.</p>
+                        
+                        <div class="border-t border-ink/20 pt-6 mt-6">
+                            <ul class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-utility uppercase text-ink/60">
+                                <li>Model Selection</li>
+                                <li>Prompt Architecture</li>
+                                <li>Data Compliance</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-span-12 lg:col-span-5 lg:border-l border-ink flex flex-col">
+                    <div class="border-b border-ink p-8 md:p-12 flex-1 flex flex-col justify-between min-h-[300px] md:min-h-[350px] relative overflow-hidden group bg-paper reveal-up">
+                        <img class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none mix-blend-luminosity" src="_assets/clikiti.com/api/public-files/redesign-images/1789341521262-w1jlp46l.png" alt="Interface design detail">
+                        <div class="z-10 text-utility uppercase text-ink/30">02 / Interface</div>
+                        <div class="z-10 mt-12">
+                            <h3 class="text-2xl md:text-3xl font-bold uppercase mb-4 tracking-tight">Product Experience</h3>
+                            <p class="text-sm md:text-base text-ink/60 max-w-md">Crafting intuitive human-to-AI interfaces that reduce friction and increase user trust across enterprise applications.</p>
+                        </div>
+                    </div>
+
+                    <div class="p-8 md:p-12 flex-1 flex flex-col justify-between min-h-[300px] md:min-h-[350px] relative overflow-hidden group bg-paper reveal-up" style="animation-delay: 0.2s;">
+                        <img class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none mix-blend-luminosity" src="_assets/clikiti.com/api/public-files/redesign-images/1789341596886-pt80a1qg.png" alt="Prototyping tools">
+                        <div class="z-10 text-utility uppercase text-ink/30">03 / Prototype</div>
+                        <div class="z-10 mt-12">
+                            <h3 class="text-2xl md:text-3xl font-bold uppercase mb-4 tracking-tight">Rapid Iteration</h3>
+                            <p class="text-sm md:text-base text-ink/60 max-w-md">Moving from concept to clickable high-fidelity prototypes in weeks. Test the logic before committing to engineering.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="bg-ink text-white py-20 md:py-32 border-b border-ink">
+        <div class="max-w-[1800px] mx-auto px-6 md:px-8">
+            <div class="grid grid-cols-12 gap-8 md:gap-12 items-center">
+                <div class="col-span-12 lg:col-span-6 order-2 lg:order-1 reveal-up">
+                    <div class="relative p-1 border border-white/20 bg-white/5">
+                        <img class="w-full h-full object-cover filter grayscale contrast-125" src="https://media.licdn.com/dms/image/v2/D4E03AQGl1pjCGFeiFQ/profile-displayphoto-crop_800_800/B4EZm6AgVcHcAI-/0/1759762321406?e=1790812800&amp;v=beta&amp;t=vsqA5Q4sqMQtfSc5o1gFAw1SXrJh6hJWD4QABBClEo4" alt="Javier Alcivar giving a standing consultancy to a diverse board" loading="lazy">
+                        <div class="absolute bottom-4 right-4 bg-ink border border-white/30 text-white px-4 py-3 md:px-6 md:py-4 text-center">
+                            <span class="text-utility leading-tight block">JAVIER ALCIVAR / AINSTANTLY CEO</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-12 lg:col-span-5 lg:col-start-8 order-1 lg:order-2 reveal-up" style="animation-delay: 0.2s;">
+                    <span class="text-utility text-white/40 block mb-6">OUR PHILOSOPHY</span>
+                    <h2 class="text-4xl md:text-5xl font-bold uppercase mb-8 md:mb-10 tracking-tight leading-none">Standing consultancy for diverse boards.</h2>
+                    <p class="text-lg md:text-xl text-white/70 mb-8 leading-relaxed font-light">
+                        Ainstantly provides high level strategic guidance to diverse boards of directors, ensuring that AI implementation is governed by ethical rigor and architectural precision.
+                    </p>
+                    <p class="text-sm md:text-base text-white/50 mb-12 leading-relaxed">
+                        Our consultancy acts as a bridge between technical innovation and corporate governance, helping leadership teams navigate the complex landscape of AI product design while maintaining long term vision.
+                    </p>
+                    <a href="#contact" class="inline-flex items-center gap-4 text-utility uppercase text-white hover:text-white/60 group border-b border-white pb-2 transition-colors">
+                        Learn our methodology 
+                        <span class="group-hover:translate-x-2 transition-transform duration-300">→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 md:py-32 border-b border-ink bg-paper">
+        <div class="max-w-[1800px] mx-auto px-6 md:px-8">
+            <div class="grid grid-cols-12 border-b border-ink/20 pb-12 md:pb-16 mb-16 md:mb-20 items-end">
+                <div class="col-span-12 lg:col-span-6 reveal-up">
+                    <span class="text-utility uppercase text-ink/40 mb-4 block">Market Validation</span>
+                    <h2 class="text-4xl md:text-6xl font-extrabold uppercase tracking-tighter">Trusted by Founders</h2>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
+                <div class="border-l-2 border-ink pl-6 md:pl-8 py-2 flex flex-col justify-between reveal-up">
+                    <blockquote class="text-xl md:text-2xl font-light italic text-ink/80 mb-8 leading-relaxed">
+                        "Their approach to AI architecture changed how we think about our roadmap. They focus on the 'why' before the 'how'."
+                    </blockquote>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 md:w-12 md:h-12 border border-ink flex items-center justify-center text-ink text-sm font-bold bg-white">JD</div>
+                        <span class="text-utility text-ink/60">J. DAVIDSON, CTO</span>
+                    </div>
+                </div>
+                <div class="border-l-2 border-ink pl-6 md:pl-8 py-2 flex flex-col justify-between reveal-up" style="animation-delay: 0.2s;">
+                    <blockquote class="text-xl md:text-2xl font-light italic text-ink/80 mb-8 leading-relaxed">
+                        "Ainstantly brings a level of data driven design rigor that is rare in the AI space. The final product was both powerful and effortless."
+                    </blockquote>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 md:w-12 md:h-12 border border-ink flex items-center justify-center text-ink text-sm font-bold bg-white">SL</div>
+                        <span class="text-utility text-ink/60">S. LIANG, FOUNDER</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section id="contact" class="py-24 md:py-40 bg-paper relative overflow-hidden">
+        <div class="max-w-[1800px] mx-auto px-6 md:px-8 text-center relative z-10">
+            <h2 id="cta-metro-text" class="text-hero uppercase mb-8 select-none max-w-full overflow-hidden">Let's build<br>UNSTOPPABLE</h2>
+            <p class="text-xl md:text-2xl max-w-2xl mx-auto mb-12 md:mb-16 text-ink/70 font-light leading-relaxed reveal-up">
+                Let's discuss your project. Schedule a 30-minute discovery call to see if our approach aligns with your vision.
+            </p>
+            <a href="mailto:hello@ainstanly.ai" class="bg-accent text-white px-10 py-6 md:px-16 md:py-8 text-lg md:text-2xl font-bold uppercase inline-block hover:bg-ink transition-colors tracking-wide shadow-xl shimmer-cta reveal-up" style="animation-delay: 0.2s;">
+                Schedule consultation
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-ink text-white border-t border-white/10 py-16 md:py-24">
+        <div class="max-w-[1800px] mx-auto px-6 md:px-8">
+            <div class="grid grid-cols-12 gap-12 items-start">
+                <div class="col-span-12 md:col-span-6 lg:col-span-6">
+                    <div class="text-2xl md:text-3xl font-black uppercase mb-8 tracking-tight">AinstanTLY</div>
+                    <div class="grid grid-cols-2 gap-8 md:gap-12 text-utility uppercase text-white/40">
+                        <div>
+                            <span class="block text-white mb-3">Social</span>
+                            <a href="#" class="block hover:text-white transition-colors mb-2">LinkedIn</a>
+                            <a href="#" class="block hover:text-white transition-colors">Twitter</a>
+                        </div>
+                        <div>
+                            <span class="block text-white mb-3">Contact</span>
+                            <a href="mailto:hello@ainstanly.ai" class="block hover:text-white transition-colors">Get in touch</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-12 md:col-span-6 lg:col-span-6 md:text-right flex flex-col md:items-end justify-between h-full">
+                    <div>
+                        <div class="text-utility text-white/40 uppercase mb-2">Global Operations</div>
+                        <div class="text-lg md:text-xl font-light text-white/80">AI Product Design Consultancy</div>
+                    </div>
+                    <div class="mt-12 md:mt-16 text-[9px] md:text-[10px] uppercase tracking-widest text-white/30 font-mono">
+                        © 2024 Ainstanly LLC. All rights reserved.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+
+
+<script data-clikiti-behavior="">(function(){
+var d=document;
+d.documentElement.classList.add('clikiti-js');
+d.addEventListener('click',function(e){
+var b=e.target&&e.target.closest?e.target.closest('[data-menu-toggle],button[aria-controls]'):null;
+if(!b)return;
+var id=b.getAttribute('data-menu-toggle')||b.getAttribute('aria-controls');
+var t=id?d.getElementById(id):null;
+if(!t)return;
+var open=!t.classList.toggle('hidden');
+b.setAttribute('aria-expanded',open?'true':'false');
+});
+})();</script><script data-clikiti-motion="">!function(t){"use strict";function e(t,e,a){return t<e?e:t>a?a:t}function a(t,a,n,r,i){var l=t.getAttribute(a);if(null===l||""===l)return n;var o=parseFloat(l);return isFinite(o)?e(o,r,i):n}function n(t,e,a,n){var r=(t.getAttribute(e)||"").trim().toLowerCase();return a.indexOf(r)>=0?r:n}function r(t,a,n,r,i,l){var o=t.getAttribute(a);if(!o)return[n,r];var c=o.split(","),s=parseFloat(c[0]),d=parseFloat(c[1]);return[isFinite(s)?e(s,i,l):n,isFinite(d)?e(d,i,l):r]}function i(t,e,a){var n,r,i,l=Math.sqrt(t),o=e/(2*Math.sqrt(t)),c=[],s=o<1?l*Math.sqrt(1-o*o):0;for(n=0;n<=a;n++)r=n/a*1.6,i=o<1?1-Math.exp(-o*l*r)*(Math.cos(s*r)+o*l/s*Math.sin(s*r)):1-(1+l*r)*Math.exp(-l*r),c.push(Math.round(1e3*i)/1e3);return c[c.length-1]=1,"linear("+c.join(",")+")"}var l=!1;try{l=!!(t.CSS&&CSS.supports&&CSS.supports("animation-timing-function","linear(0,1)"))}catch(t){}var o={smooth:"cubic-bezier(0.44,0,0.56,1)",out:"cubic-bezier(0.16,1,0.3,1)",in:"cubic-bezier(0.7,0,0.84,0)",inout:"cubic-bezier(0.65,0,0.35,1)",snappy:"cubic-bezier(0.2,0.9,0.1,1)",linear:"linear",spring:l?i(170,19,40):"cubic-bezier(0.34,1.4,0.64,1)",bounce:l?i(200,9,48):"cubic-bezier(0.34,1.56,0.64,1)"},c=Object.keys(o);function s(t,e,a){var n=e+"px";switch(t){case"fade":return[{opacity:0},{opacity:1}];case"down":return[{opacity:0,transform:"translate3d(0,-"+n+",0)"},{opacity:1,transform:"none"}];case"left":return[{opacity:0,transform:"translate3d("+n+",0,0)"},{opacity:1,transform:"none"}];case"right":return[{opacity:0,transform:"translate3d(-"+n+",0,0)"},{opacity:1,transform:"none"}];case"scale":return[{opacity:0,transform:"scale("+a+")"},{opacity:1,transform:"none"}];case"blur":return[{opacity:0,filter:"blur(10px)",transform:"translate3d(0,8px,0)"},{opacity:1,filter:"blur(0)",transform:"none"}];case"wipe-up":return[{clipPath:"inset(100% 0 0 0)"},{clipPath:"inset(0 0 0 0)"}];case"wipe-down":return[{clipPath:"inset(0 0 100% 0)"},{clipPath:"inset(0 0 0 0)"}];case"wipe-left":return[{clipPath:"inset(0 0 0 100%)"},{clipPath:"inset(0 0 0 0)"}];case"wipe-right":return[{clipPath:"inset(0 100% 0 0)"},{clipPath:"inset(0 0 0 0)"}];default:return[{opacity:0,transform:"translate3d(0,"+n+",0)"},{opacity:1,transform:"none"}]}}var d=["up","down","left","right","fade","scale","blur","wipe-up","wipe-down","wipe-left","wipe-right"];function u(t){var i=t.document,l=i.documentElement,u=!(!t.matchMedia||!t.matchMedia("(prefers-reduced-motion: reduce)").matches),f=!(!t.matchMedia||!t.matchMedia("(hover: hover) and (pointer: fine)").matches),p=void 0!==t.Element&&"function"==typeof t.Element.prototype.animate,h=[],m=[],v=0,g=t.innerHeight||800;function y(t,e){try{t(e)}catch(t){}}function b(t,e){return{kind:n(t,"data-reveal",d,"up"),dur:a(t,"data-duration",.8,.1,3),delay:a(t,"data-delay",0,0,5)+(e||0),dist:a(t,"data-distance",24,0,200),scale:a(t,"data-from-scale",.92,.5,1.5),ease:n(t,"data-ease",c,"smooth")}}function E(e,a,n,r){if("IntersectionObserver"in t){var i=new t.IntersectionObserver(function(t){t.forEach(function(t){t.isIntersecting&&(a(),n&&i.disconnect())})},{threshold:r||.15,rootMargin:"0px 0px -6% 0px"});i.observe(e)}else a()}function x(){var t=[].slice.call(i.querySelectorAll("[data-reveal],[data-seq],[data-split],[data-reveal-children]")),e=0,r=[].slice.call(i.querySelectorAll("[data-stagger]")),l="function"==typeof Map?new Map:null;r.forEach(function(e){if(!e.hasAttribute("data-split")){var n=a(e,"data-stagger",.08,0,1),r=e.hasAttribute("data-reveal-children")?[].slice.call(e.children):[].slice.call(e.querySelectorAll("[data-reveal]"));r.forEach(function(t,e){l&&l.set(t,e*n)}),e.hasAttribute("data-reveal-children")&&(r.forEach(function(t){t.hasAttribute("data-reveal")||t.setAttribute("data-reveal",e.getAttribute("data-reveal-children"))}),t=t.concat(r))}});var c=[];t.forEach(function(t){c.indexOf(t)>=0||t.closest("[data-m-off]")||(c.push(t),++e>400?t.classList.add("cm-in"):y(function(){if(t.hasAttribute("data-split")){var e=function(){!function(t){var e=u?[]:function(t){var e=n(t,"data-split",["words","chars","lines"],"words"),a=(t.textContent||"").replace(/\s+/g," ").trim();if(!a||a.length>600)return[];t.setAttribute("aria-label",a),t.textContent="";var r=[],l=a.split(" "),o=i.createDocumentFragment();if(l.forEach(function(t,a){var n=i.createElement("span");n.className="cm-w",n.setAttribute("aria-hidden","true"),"chars"===e?t.split("").forEach(function(t){var e=i.createElement("span");e.className="cm-c",e.textContent=t,n.appendChild(e),r.push(e)}):(n.textContent=t,r.push(n)),o.appendChild(n),a<l.length-1&&o.appendChild(i.createTextNode(" "))}),t.appendChild(o),"lines"===e){for(var c=[],s=null,d=null,u=t.querySelectorAll(".cm-w"),f=0;f<u.length;f++){var p=u[f].offsetTop;(null===s||Math.abs(p-s)>2)&&(d=[],c.push(d),s=p),d.push(u[f])}c.length,r=c.map(function(t){var e=i.createElement("span");return e.className="cm-l",t[0].parentNode.insertBefore(e,t[0]),t.forEach(function(a,n){e.appendChild(a),n<t.length-1&&e.appendChild(i.createTextNode(" "))}),e})}return r}(t);if(t.classList.add("cm-in"),e.length&&p){var r=n(t,"data-reveal",d,"blur"),l=b(t,0);l.kind=r;var c=a(t,"data-stagger",.04,0,.5);e.forEach(function(t,e){"cm-w"!==t.className&&"cm-c"!==t.className||(t.style.display="inline-block");var a={kind:r,dur:l.dur,delay:l.delay+e*c,dist:l.dist,scale:l.scale,ease:l.ease};try{t.animate(s(a.kind,a.dist,a.scale),{duration:1e3*a.dur,delay:1e3*a.delay,easing:o[a.ease],fill:"backwards"})}catch(t){}})}}(t)};"load"===t.getAttribute("data-trigger")||t.hasAttribute("data-seq")?(i.fonts&&i.fonts.ready?i.fonts.ready:Promise.resolve()).then(e,e):E(t,e,!0,.2)}else{var r=t.hasAttribute("data-seq")?a(t,"data-seq",0,0,20):null,c=l&&l.get(t)||0,f=b(t,c+(null!==r?.12*r:0)),h=function(){!function(t,e){var a=s(e.kind,e.dist,e.scale);if(t.classList.add("cm-in"),p&&!u)try{t.animate(a,{duration:1e3*e.dur,delay:1e3*e.delay,easing:o[e.ease]||o.smooth,fill:"backwards"})}catch(t){}}(t,f)};null!==r||"load"===t.getAttribute("data-trigger")?(i.fonts&&i.fonts.ready?i.fonts.ready:Promise.resolve()).then(h,h):E(t,h,"false"!==t.getAttribute("data-once"),.15)}},t))})}function A(t,e,a){if(!p||u)return null;var n=t.animate(e,a);return h.push({el:t,a:n}),n}function q(){[].slice.call(i.querySelectorAll("[data-marquee]")).forEach(function(t){y(function(){if(!u&&p){var e=n(t,"data-marquee",["left","right"],"left"),r=a(t,"data-speed",60,10,400),l=[].slice.call(t.children);if(l.length){var o=i.createElement("div");o.className="cm-track",l.forEach(function(t){o.appendChild(t)}),t.appendChild(o);for(var c=o.scrollWidth,s=1.2*t.clientWidth,d=c>0?Math.min(6,Math.max(1,Math.ceil(s/c))):1,f=[].slice.call(o.children),h=1;h<d;h++)f.forEach(function(t){var e=t.cloneNode(!0);e.setAttribute("aria-hidden","true"),o.appendChild(e)});[].slice.call(o.children).forEach(function(t){var e=t.cloneNode(!0);e.setAttribute("aria-hidden","true"),o.appendChild(e)});var m=o.scrollWidth/2;if(m){var v=A(o,[{transform:"translate3d("+("left"===e?0:-m)+"px,0,0)"},{transform:"translate3d("+("left"===e?-m:0)+"px,0,0)"}],{duration:m/r*1e3,iterations:1/0,easing:"linear"});v&&t.hasAttribute("data-pause")&&(t.addEventListener("mouseenter",function(){v.pause()}),t.addEventListener("mouseleave",function(){v.play()}))}}}},t)})}function w(){[].slice.call(i.querySelectorAll("[data-float]")).forEach(function(t){y(function(){var e=a(t,"data-float",8,1,60),n=a(t,"data-duration",4,1,20);A(t,[{transform:"translate3d(0,0,0)"},{transform:"translate3d(0,-"+e+"px,0)"}],{duration:1e3*n,iterations:1/0,direction:"alternate",easing:o.inout,delay:-Math.random()*n*1e3})},t)}),[].slice.call(i.querySelectorAll("[data-pulse]")).forEach(function(t){y(function(){var e=a(t,"data-pulse",.04,.01,.3),n=a(t,"data-duration",2.4,.6,12);A(t,[{transform:"scale(1)",opacity:1},{transform:"scale("+(1+e)+")",opacity:.85}],{duration:1e3*n,iterations:1/0,direction:"alternate",easing:o.inout})},t)})}function M(){if(h.length&&"IntersectionObserver"in t){var e=new t.IntersectionObserver(function(t){t.forEach(function(t){h.forEach(function(e){e.el===t.target&&(t.isIntersecting?e.a.play():e.a.pause())})})},{rootMargin:"120px"});h.forEach(function(t){e.observe(t.el)})}}function S(){[].slice.call(i.querySelectorAll("[data-count]")).forEach(function(n){y(function(){var r=a(n,"data-count",NaN,-1e12,1e12);if(isFinite(r)){var i=a(n,"data-count-from",0,-1e12,1e12),l=a(n,"data-decimals",0,0,4),o=1e3*a(n,"data-duration",1.6,.3,6),c=(n.getAttribute("data-prefix")||"").slice(0,8),s=(n.getAttribute("data-suffix")||"").slice(0,8),d=function(t){return c+t.toLocaleString(void 0,{minimumFractionDigits:l,maximumFractionDigits:l})+s};n.setAttribute("aria-label",d(r)),u?n.textContent=d(r):(n.textContent=d(i),E(n,function(){var a=0,l=function(c){a||(a=c);var s=e((c-a)/o,0,1),u=1-Math.pow(1-s,4);n.textContent=d(i+(r-i)*u),s<1&&t.requestAnimationFrame(l)};t.requestAnimationFrame(l)},!0,.4))}},n)})}var F="function"==typeof Set?new Set:null;function C(){v=0,g=t.innerHeight||g;for(var a=0;a<m.length;a++){var n=m[a];if(!F||F.has(n.el)){var r=n.el.getBoundingClientRect(),l=e((g-r.top)/(g+r.height),0,1),o="";if((n.par||n.parX)&&(o+="translate3d("+(n.parX*(.5-l)*g*.5).toFixed(1)+"px,"+(n.par*(.5-l)*g*.5).toFixed(1)+"px,0) "),n.sc&&(o+="scale("+(n.sc[0]+(n.sc[1]-n.sc[0])*l).toFixed(4)+") "),n.rot&&(o+="rotate("+(n.rot*(l-.5)).toFixed(2)+"deg) "),o&&(n.el.style.transform=o),n.fade){var c="in"===n.fade?e(l/.3,0,1):"out"===n.fade?e((1-l)/.3,0,1):Math.min(e(l/.25,0,1),e((1-l)/.25,0,1));n.el.style.opacity=c.toFixed(3)}}}var s=i.querySelectorAll("[data-scroll-progress]");if(s.length)for(var d=i.documentElement.scrollHeight-g||1,u=e((t.pageYOffset||0)/d,0,1),f=0;f<s.length;f++)s[f].style.transform="scaleX("+u.toFixed(4)+")"}function L(){v||(v=t.requestAnimationFrame(C))}function N(){if(!u){[].slice.call(i.querySelectorAll("[data-parallax],[data-scroll-scale],[data-scroll-rotate],[data-scroll-fade]")).forEach(function(t){t.closest("[data-m-off]")||m.push({el:t,par:t.hasAttribute("data-parallax")?a(t,"data-parallax",.2,-1,1):0,parX:a(t,"data-parallax-x",0,-1,1),sc:t.hasAttribute("data-scroll-scale")?r(t,"data-scroll-scale",1,1,.3,2.5):null,rot:t.hasAttribute("data-scroll-rotate")?a(t,"data-scroll-rotate",0,-90,90):0,fade:t.hasAttribute("data-scroll-fade")?n(t,"data-scroll-fade",["in","out","inout"],"inout"):null})});var e=i.querySelectorAll("[data-scroll-progress]").length>0;if(m.length||e){if(F&&"IntersectionObserver"in t){var l=new t.IntersectionObserver(function(t){t.forEach(function(t){t.isIntersecting?F.add(t.target):F.delete(t.target)}),L()},{rootMargin:"10% 0px"});m.forEach(function(t){l.observe(t.el)})}else F=null;t.addEventListener("scroll",L,{passive:!0}),t.addEventListener("resize",L,{passive:!0}),L()}}}function O(){!u&&f&&([].slice.call(i.querySelectorAll("[data-tilt]")).forEach(function(t){y(function(){var e=a(t,"data-tilt",8,1,25);t.style.transformStyle="preserve-3d",t.addEventListener("pointermove",function(a){var n=t.getBoundingClientRect(),r=(a.clientX-n.left)/n.width-.5,i=(a.clientY-n.top)/n.height-.5;t.style.transition="transform .08s linear",t.style.transform="perspective(900px) rotateX("+(-i*e).toFixed(2)+"deg) rotateY("+(r*e).toFixed(2)+"deg)"}),t.addEventListener("pointerleave",function(){t.style.transition="transform .5s cubic-bezier(0.16,1,0.3,1)",t.style.transform=""})},t)}),[].slice.call(i.querySelectorAll("[data-magnetic]")).forEach(function(t){y(function(){var e=a(t,"data-magnetic",.3,.05,.8),n=t.parentElement||t;n.addEventListener("pointermove",function(a){var n=t.getBoundingClientRect(),r=a.clientX-(n.left+n.width/2),i=a.clientY-(n.top+n.height/2);Math.sqrt(r*r+i*i)<1.1*Math.max(n.width,n.height)&&(t.style.transition="transform .12s linear",t.style.transform="translate3d("+(r*e).toFixed(1)+"px,"+(i*e).toFixed(1)+"px,0)")}),n.addEventListener("pointerleave",function(){t.style.transition="transform .5s cubic-bezier(0.16,1,0.3,1)",t.style.transform=""})},t)}),[].slice.call(i.querySelectorAll("[data-depth-scene]")).forEach(function(e){y(function(){var n=[].slice.call(e.querySelectorAll("[data-depth]")).map(function(t){return{el:t,d:a(t,"data-depth",.2,-1,1)}});if(n.length){var r=0,i=0,l=0,o=0,c=!1,s=a(e,"data-depth-scene",24,4,80),d=function(){l+=.08*(r-l),o+=.08*(i-o),n.forEach(function(t){t.el.style.transform="translate3d("+(l*t.d*s).toFixed(2)+"px,"+(o*t.d*s).toFixed(2)+"px,0)"}),Math.abs(r-l)>.001||Math.abs(i-o)>.001?t.requestAnimationFrame(d):c=!1};e.addEventListener("pointermove",function(a){var n=e.getBoundingClientRect();r=(a.clientX-n.left)/n.width-.5,i=(a.clientY-n.top)/n.height-.5,c||(c=!0,t.requestAnimationFrame(d))}),e.addEventListener("pointerleave",function(){r=0,i=0,c||(c=!0,t.requestAnimationFrame(d))})}},e)}))}function P(){u||[].slice.call(i.querySelectorAll("[data-chapters]")).slice(0,4).forEach(function(a){y(function(){var n=[].slice.call(a.querySelectorAll("[data-chapter-step]")).slice(0,8),r=[].slice.call(a.querySelectorAll("[data-chapter-media]")),i=n.length;if(!(i<2)){var l=a.querySelector("[data-chapter-stage]")||a.firstElementChild;if(l){a.style.setProperty("--cm-n",String(i)),l.classList.add("cm-stage"),a.classList.add("cm-chapters");var o=-1,c=0;t.addEventListener("scroll",d,{passive:!0}),t.addEventListener("resize",d,{passive:!0}),s()}}function s(){c=0;var l=a.getBoundingClientRect(),s=t.innerHeight||800,d=l.height-s,u=d>0?e(-l.top/d,0,1):0;a.style.setProperty("--p",u.toFixed(4));var f=Math.min(i-1,Math.floor(u*i));f!==o&&(o=f,n.forEach(function(t,e){t.classList.toggle("cm-on",e===f)}),r.forEach(function(t,e){t.classList.toggle("cm-on",e===Math.min(f,r.length-1))}))}function d(){c||(c=t.requestAnimationFrame(s))}},a)})}return{init:function(){l.classList.add("cm-js"),u&&[].slice.call(i.querySelectorAll("[data-reveal],[data-seq],[data-split],[data-reveal-children]")).forEach(function(t){t.classList.add("cm-in")}),y(x),y(q),y(w),y(S),y(N),y(P),y(O),y(M),l.classList.add("cm-ready")},reduce:u}}var f={create:u,_test:{clamp:e,num:a,pick:n,pair:r,frames:s,springEasing:i,EASE:o,REVEAL:d}};if("undefined"!=typeof module&&module.exports&&(module.exports=f),void 0!==t.document&&t.document.documentElement&&!t.__CM_NO_AUTO){var p=function(){var e=u(t);t.__cm=e,e.init()};"loading"===t.document.readyState?t.document.addEventListener("DOMContentLoaded",p):p()}}("undefined"!=typeof window?window:this);</script>
+<!-- Clikiti Launch: Contact Form Handler -->
+<script>
+(function(){
+  var forms = document.querySelectorAll('form');
+  forms.forEach(function(f){
+    // Inject honeypot field (hidden from humans, bots fill it)
+    var hp = document.createElement('div');
+    hp.style.cssText='position:absolute;left:-9999px;top:-9999px;height:0;width:0;overflow:hidden;';
+    hp.setAttribute('aria-hidden','true');
+    hp.innerHTML='<input type="text" name="website_url" tabindex="-1" autocomplete="off" value="">';
+    f.appendChild(hp);
+    f.addEventListener('submit', function(e){
+      e.preventDefault();
+      var fd = new FormData(f);
+      var data = {};
+      fd.forEach(function(v,k){ if(typeof v==='string') data[k]=v; });
+      var btn = f.querySelector('button[type="submit"],input[type="submit"],button:not([type])');
+      if(btn){ btn.disabled=true; btn.dataset.originalText=btn.textContent; btn.textContent='Sending...'; }
+      fetch('/api/s/ainstantly/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
+        .then(function(r){ return r.json(); })
+        .then(function(d){
+          if(d.ok){
+            f.reset();
+            var msg = document.createElement('div');
+            msg.style.cssText='padding:16px;margin:12px 0;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;color:#166534;font-size:14px;text-align:center';
+            msg.textContent='Thank you! We will be in touch soon.';
+            f.parentNode.insertBefore(msg, f.nextSibling);
+            setTimeout(function(){ msg.remove(); }, 8000);
+          } else {
+            alert(d.error||'Something went wrong. Please try again.');
+          }
+        })
+        .catch(function(){ alert('Connection error. Please try again.'); })
+        .finally(function(){ if(btn){ btn.disabled=false; btn.textContent=btn.dataset.originalText||'Submit'; } });
+    });
+  });
+})();
+</script>
+</body></html>

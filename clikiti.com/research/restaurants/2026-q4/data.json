@@ -1,0 +1,271 @@
+{
+  "title": "The State of Independent Restaurant Websites 2026",
+  "edition": "2026-Q4",
+  "period": "Q4 2026",
+  "sample": false,
+  "source": "corpus",
+  "note": "Aggregates computed from automated scans. No individual site is identified.",
+  "url": "https://clikiti.com/research/restaurants/2026-q4",
+  "scannedAt": "2026-10-15T12:32:42.692Z",
+  "publishedAt": "2026-10-15T12:28:50.721Z",
+  "modifiedAt": "2026-10-15T12:32:56.333Z",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "Free to use and cite under CC BY 4.0. Credit Clikiti with a link.",
+  "citation": "Clikiti. (2026, October 15). The state of independent restaurant websites 2026 (Q4 2026) [Report]. https://clikiti.com/research/restaurants/2026-q4",
+  "audience": "Web agencies and freelancers selling to independent restaurants, cafés and bars",
+  "sampleSize": 180,
+  "marginOfErrorPts": 7.3,
+  "medianScore": 78,
+  "meanScore": 78,
+  "meanQuestionsAnswered": 4,
+  "questionCount": 8,
+  "findings": [
+    "Only 29% of the 180 independent restaurant, café and bar websites we scanned mark allergens or vegetarian, vegan and gluten-free dishes.",
+    "A typical site answers four of the eight questions diners ask before choosing (mean 4).",
+    "The median overall score is 78 out of 100 (mean 78).",
+    "The least-answered questions are \"Can I eat here with my allergy or diet?\" (29%), \"What will it cost?\" (34%) and \"Can I get a table without calling?\" (37%).",
+    "The best-answered are \"Are you open tonight?\" (77%) and \"Where are you, and where do I park?\" (71%).",
+    "Cafés and bakeries have the highest median score (81), against 79 for bars and brewpubs, 78 for casual and family restaurants and 77 for chef-driven and fine dining.",
+    "84% fail \"Restaurant, café or bar structured data\" (Schema.org · FoodEstablishment).",
+    "64% fail \"Text contrast passes 4.5:1\" (WCAG 1.4.3).",
+    "26% fail \"Loads in under 2.5 s on a phone\" (Core Web Vitals · LCP).",
+    "Chef-driven places book online more often than cafés."
+  ],
+  "questions": [
+    {
+      "id": "diet",
+      "question": "Can I eat here with my allergy or diet?",
+      "label": "Allergens or vegetarian, vegan and gluten-free dishes marked",
+      "standard": "Diner question 6",
+      "passPct": 29,
+      "bySegment": {
+        "casual": 43,
+        "fine": 23,
+        "cafe": 29,
+        "bar": 22
+      }
+    },
+    {
+      "id": "prices",
+      "question": "What will it cost?",
+      "label": "Prices shown on the menu",
+      "standard": "Diner question 3",
+      "passPct": 34,
+      "bySegment": {
+        "casual": 45,
+        "fine": 42,
+        "cafe": 22,
+        "bar": 27
+      }
+    },
+    {
+      "id": "reserve",
+      "question": "Can I get a table without calling?",
+      "label": "Book a table online, or a clear walk-ins-only note",
+      "standard": "Diner question 4",
+      "passPct": 37,
+      "bySegment": {
+        "casual": 33,
+        "fine": 81,
+        "cafe": 9,
+        "bar": 20
+      }
+    },
+    {
+      "id": "order",
+      "question": "Can I order from you directly?",
+      "label": "Order pickup or delivery directly, not only through an app",
+      "standard": "Diner question 5",
+      "passPct": 43,
+      "bySegment": {
+        "casual": 62,
+        "fine": 38,
+        "cafe": 47,
+        "bar": 29
+      }
+    },
+    {
+      "id": "menu",
+      "question": "Can I read the menu on my phone?",
+      "label": "The menu is real text, not a PDF or a photo",
+      "standard": "Diner question 2 · WCAG 1.4.5",
+      "passPct": 49,
+      "bySegment": {
+        "casual": 62,
+        "fine": 58,
+        "cafe": 36,
+        "bar": 40
+      }
+    },
+    {
+      "id": "events",
+      "question": "Can we book you for a party?",
+      "label": "Private events, buyouts or catering described",
+      "standard": "Diner question 8",
+      "passPct": 59,
+      "bySegment": {
+        "casual": 60,
+        "fine": 77,
+        "cafe": 36,
+        "bar": 62
+      }
+    },
+    {
+      "id": "visit",
+      "question": "Where are you, and where do I park?",
+      "label": "Street address with a map link, directions or parking",
+      "standard": "Diner question 7",
+      "passPct": 71,
+      "bySegment": {
+        "casual": 76,
+        "fine": 75,
+        "cafe": 67,
+        "bar": 64
+      }
+    },
+    {
+      "id": "hours",
+      "question": "Are you open tonight?",
+      "label": "Opening hours shown on the site",
+      "standard": "Diner question 1",
+      "passPct": 77,
+      "bySegment": {
+        "casual": 71,
+        "fine": 90,
+        "cafe": 82,
+        "bar": 64
+      }
+    }
+  ],
+  "technical": [
+    {
+      "id": "schema",
+      "label": "Restaurant, café or bar structured data",
+      "standard": "Schema.org · FoodEstablishment",
+      "failPct": 84,
+      "bySegment": {
+        "casual": 83,
+        "fine": 81,
+        "cafe": 84,
+        "bar": 89
+      }
+    },
+    {
+      "id": "con",
+      "label": "Text contrast passes 4.5:1",
+      "standard": "WCAG 1.4.3",
+      "failPct": 64,
+      "bySegment": {
+        "casual": 69,
+        "fine": 56,
+        "cafe": 71,
+        "bar": 60
+      }
+    },
+    {
+      "id": "lcp",
+      "label": "Loads in under 2.5 s on a phone",
+      "standard": "Core Web Vitals · LCP",
+      "failPct": 26,
+      "bySegment": {
+        "casual": 31,
+        "fine": 13,
+        "cafe": 31,
+        "bar": 31
+      }
+    },
+    {
+      "id": "alt",
+      "label": "Images have text descriptions",
+      "standard": "WCAG 1.1.1",
+      "failPct": 19,
+      "bySegment": {
+        "casual": 17,
+        "fine": 27,
+        "cafe": 16,
+        "bar": 16
+      }
+    }
+  ],
+  "segments": [
+    {
+      "id": "casual",
+      "name": "Casual and family restaurants",
+      "sites": 42,
+      "median": 78,
+      "weakPct": 0
+    },
+    {
+      "id": "fine",
+      "name": "Chef-driven and fine dining",
+      "sites": 48,
+      "median": 77,
+      "weakPct": 0
+    },
+    {
+      "id": "cafe",
+      "name": "Cafés and bakeries",
+      "sites": 45,
+      "median": 81,
+      "weakPct": 0
+    },
+    {
+      "id": "bar",
+      "name": "Bars and brewpubs",
+      "sites": 45,
+      "median": 79,
+      "weakPct": 0
+    }
+  ],
+  "agencyProblems": [
+    {
+      "id": "schema",
+      "label": "Restaurant, café or bar structured data",
+      "standard": "Schema.org · FoodEstablishment",
+      "failPct": 84,
+      "fix": "Add Restaurant (or CafeOrCoffeeShop, BarOrPub) structured data with address, hours, menu link and booking link.",
+      "pitch": "Search engines and assistants have to guess your hours and where your menu is.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "diet",
+      "label": "Allergens or vegetarian, vegan and gluten-free dishes marked",
+      "standard": "Diner question 6",
+      "failPct": 71,
+      "question": "Can I eat here with my allergy or diet?",
+      "fix": "Mark vegetarian, vegan and gluten-free dishes on the menu, with a short allergen note on how the kitchen handles requests.",
+      "pitch": "A guest with an allergy picks the place that says so before they arrive; the server answers the same question every night.",
+      "effort": "Content"
+    },
+    {
+      "id": "prices",
+      "label": "Prices shown on the menu",
+      "standard": "Diner question 3",
+      "failPct": 66,
+      "question": "What will it cost?",
+      "fix": "Show the price beside every dish on the menu page.",
+      "pitch": "Diners choose where to eat on what it will cost, and the menu makes them guess.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "con",
+      "label": "Text contrast passes 4.5:1",
+      "standard": "WCAG 1.4.3",
+      "failPct": 64,
+      "fix": "Raise text contrast to at least 4.5:1 in the theme, especially text over food photos.",
+      "pitch": "Parts of the site are hard to read, and it is a WCAG failure.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "reserve",
+      "label": "Book a table online, or a clear walk-ins-only note",
+      "standard": "Diner question 4",
+      "failPct": 63,
+      "question": "Can I get a table without calling?",
+      "fix": "A \"Book a table\" button on every page, linked to the booking system, or a plain line saying the place is walk-ins only.",
+      "pitch": "A table for Friday means a phone call during service, so people book somewhere else.",
+      "effort": "Build"
+    }
+  ]
+}

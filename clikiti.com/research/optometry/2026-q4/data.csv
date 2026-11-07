@@ -1,0 +1,33 @@
+# The State of Independent Optometry Websites 2026 (Q4 2026). CC BY 4.0, credit Clikiti with a link: https://clikiti.com/research/optometry
+"section","id","label","standard","metric","value"
+"summary","sites","Websites scanned","","count",123
+"summary","median","Median overall score","","score_0_100",77
+"summary","mean","Mean overall score","","score_0_100",76
+"summary","moe","Margin of error (95%)","","percentage_points",8.8
+"summary","weak","Sites scoring under 60","","percent",2
+"question","price","What will an eye exam cost me?","Patient question 3","percent_pass",7
+"question","reviews","Do other patients vouch for you?","Patient question 10","percent_pass",33
+"question","frames","Which frames do you carry?","Patient question 7","percent_pass",50
+"question","insurance","Do you take my vision plan?","Patient question 2","percent_pass",51
+"question","urgent","Can you see me today for a red or injured eye?","Patient question 6","percent_pass",56
+"question","doctor","Who will examine me?","Patient question 8","percent_pass",73
+"question","contact","How do I reach you, and when are you open?","Patient question 9","percent_pass",75
+"question","kids","Do you see children?","Patient question 4","percent_pass",78
+"question","lenses","Can I get contact lenses fitted?","Patient question 5","percent_pass",85
+"question","book","Can I book an eye exam online?","Patient question 1","percent_pass",86
+"technical","lcp","Loads in under 2.5 s on a phone","Core Web Vitals · LCP","percent_fail",88
+"technical","con","Text contrast passes 4.5:1","WCAG 1.4.3","percent_fail",71
+"technical","schema","Optician, Optometric or MedicalClinic structured data","Schema.org · Optician","percent_fail",39
+"technical","alt","Images have text descriptions","WCAG 1.1.1","percent_fail",33
+"segment","fam","Family optometry practices","","median_score",77
+"segment","fam","Family optometry practices","","percent_under_60",7
+"segment","fam","Family optometry practices","","sites",43
+"segment","peds","Pediatric and vision therapy","","median_score",78
+"segment","peds","Pediatric and vision therapy","","percent_under_60",0
+"segment","peds","Pediatric and vision therapy","","sites",27
+"segment","spec","Specialty contact lens and dry eye","","median_score",74
+"segment","spec","Specialty contact lens and dry eye","","percent_under_60",0
+"segment","spec","Specialty contact lens and dry eye","","sites",25
+"segment","bout","Optical boutiques with an optometrist","","median_score",77
+"segment","bout","Optical boutiques with an optometrist","","percent_under_60",0
+"segment","bout","Optical boutiques with an optometrist","","sites",28

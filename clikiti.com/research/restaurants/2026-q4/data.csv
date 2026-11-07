@@ -1,0 +1,31 @@
+# The State of Independent Restaurant Websites 2026 (Q4 2026). CC BY 4.0, credit Clikiti with a link: https://clikiti.com/research/restaurants
+"section","id","label","standard","metric","value"
+"summary","sites","Websites scanned","","count",180
+"summary","median","Median overall score","","score_0_100",78
+"summary","mean","Mean overall score","","score_0_100",78
+"summary","moe","Margin of error (95%)","","percentage_points",7.3
+"summary","weak","Sites scoring under 60","","percent",0
+"question","diet","Can I eat here with my allergy or diet?","Diner question 6","percent_pass",29
+"question","prices","What will it cost?","Diner question 3","percent_pass",34
+"question","reserve","Can I get a table without calling?","Diner question 4","percent_pass",37
+"question","order","Can I order from you directly?","Diner question 5","percent_pass",43
+"question","menu","Can I read the menu on my phone?","Diner question 2 · WCAG 1.4.5","percent_pass",49
+"question","events","Can we book you for a party?","Diner question 8","percent_pass",59
+"question","visit","Where are you, and where do I park?","Diner question 7","percent_pass",71
+"question","hours","Are you open tonight?","Diner question 1","percent_pass",77
+"technical","schema","Restaurant, café or bar structured data","Schema.org · FoodEstablishment","percent_fail",84
+"technical","con","Text contrast passes 4.5:1","WCAG 1.4.3","percent_fail",64
+"technical","lcp","Loads in under 2.5 s on a phone","Core Web Vitals · LCP","percent_fail",26
+"technical","alt","Images have text descriptions","WCAG 1.1.1","percent_fail",19
+"segment","casual","Casual and family restaurants","","median_score",78
+"segment","casual","Casual and family restaurants","","percent_under_60",0
+"segment","casual","Casual and family restaurants","","sites",42
+"segment","fine","Chef-driven and fine dining","","median_score",77
+"segment","fine","Chef-driven and fine dining","","percent_under_60",0
+"segment","fine","Chef-driven and fine dining","","sites",48
+"segment","cafe","Cafés and bakeries","","median_score",81
+"segment","cafe","Cafés and bakeries","","percent_under_60",0
+"segment","cafe","Cafés and bakeries","","sites",45
+"segment","bar","Bars and brewpubs","","median_score",79
+"segment","bar","Bars and brewpubs","","percent_under_60",0
+"segment","bar","Bars and brewpubs","","sites",45

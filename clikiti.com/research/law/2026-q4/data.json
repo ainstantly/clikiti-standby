@@ -1,0 +1,200 @@
+{
+  "title": "The State of Law Firm Websites 2026",
+  "edition": "2026-Q4",
+  "period": "Q4 2026",
+  "sample": false,
+  "source": "corpus",
+  "note": "Aggregates computed from automated scans. No individual site is identified.",
+  "url": "https://clikiti.com/research/law/2026-q4",
+  "scannedAt": "2026-10-13T04:30:22.585Z",
+  "publishedAt": "2026-10-12T22:51:59.877Z",
+  "modifiedAt": "2026-10-13T04:30:45.813Z",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "Free to use and cite under CC BY 4.0. Credit Clikiti with a link.",
+  "citation": "Clikiti. (2026, October 12). The state of law firm websites 2026 (Q4 2026) [Report]. https://clikiti.com/research/law/2026-q4",
+  "audience": "Web agencies and freelancers selling to small law firms and solo practitioners",
+  "sampleSize": 125,
+  "marginOfErrorPts": 8.8,
+  "medianScore": 76,
+  "meanScore": 77,
+  "meanQuestionsAnswered": 4.3,
+  "questionCount": 8,
+  "findings": [
+    "Only 39% of the 125 small law firm websites we scanned pair a tappable phone number with office hours, 24/7 availability or a response time.",
+    "A typical site answers four of the eight questions clients ask before choosing (mean 4.3).",
+    "The median overall score is 76 out of 100 (mean 77).",
+    "The least-answered questions are \"Can I reach someone now?\" (39%), \"Are they licensed here?\" (43%) and \"Do clients vouch for them?\" (45%).",
+    "The best-answered are \"Do they handle my kind of case?\" (91%) and \"Who will handle my case?\" (63%).",
+    "Small business and employment have the highest median score (79), against 77 for personal injury, 77 for criminal defence and immigration and 75 for family and estate.",
+    "86% fail \"Text contrast passes 4.5:1\" (WCAG 1.4.3).",
+    "68% fail \"Loads in under 2.5 s on a phone\" (Core Web Vitals · LCP).",
+    "42% fail \"LegalService or Attorney structured data\" (Schema.org · LegalService).",
+    "Personal injury firms state a consultation cost more often than business firms.",
+    "Practice groups differ in median score by at least 3 points."
+  ],
+  "questions": [
+    {
+      "id": "contact",
+      "question": "Can I reach someone now?",
+      "label": "Tappable phone plus hours or response time",
+      "standard": "Client question 5",
+      "passPct": 39
+    },
+    {
+      "id": "admit",
+      "question": "Are they licensed here?",
+      "label": "Bar admission or licence stated",
+      "standard": "Client question 2",
+      "passPct": 43
+    },
+    {
+      "id": "reviews",
+      "question": "Do clients vouch for them?",
+      "label": "Reviews marked up or shown in a widget",
+      "standard": "Client question 8",
+      "passPct": 45
+    },
+    {
+      "id": "results",
+      "question": "Have they won cases like mine?",
+      "label": "Case results or client testimonials shown",
+      "standard": "Client question 7",
+      "passPct": 46
+    },
+    {
+      "id": "intake",
+      "question": "Can I ask without calling?",
+      "label": "Message form with five fields or fewer",
+      "standard": "Client question 6",
+      "passPct": 50
+    },
+    {
+      "id": "consult",
+      "question": "What does it cost to talk?",
+      "label": "Consultation cost stated",
+      "standard": "Client question 4",
+      "passPct": 54
+    },
+    {
+      "id": "attorney",
+      "question": "Who will handle my case?",
+      "label": "Lawyers named, each with a profile",
+      "standard": "Client question 1",
+      "passPct": 63
+    },
+    {
+      "id": "areas",
+      "question": "Do they handle my kind of case?",
+      "label": "Each practice area on its own page",
+      "standard": "Client question 3",
+      "passPct": 91
+    }
+  ],
+  "technical": [
+    {
+      "id": "con",
+      "label": "Text contrast passes 4.5:1",
+      "standard": "WCAG 1.4.3",
+      "failPct": 86
+    },
+    {
+      "id": "lcp",
+      "label": "Loads in under 2.5 s on a phone",
+      "standard": "Core Web Vitals · LCP",
+      "failPct": 68
+    },
+    {
+      "id": "schema",
+      "label": "LegalService or Attorney structured data",
+      "standard": "Schema.org · LegalService",
+      "failPct": 42
+    },
+    {
+      "id": "alt",
+      "label": "Images have text descriptions",
+      "standard": "WCAG 1.1.1",
+      "failPct": 12
+    }
+  ],
+  "segments": [
+    {
+      "id": "pi",
+      "name": "Personal injury",
+      "sites": 34,
+      "median": 77,
+      "weakPct": 0
+    },
+    {
+      "id": "family",
+      "name": "Family and estate",
+      "sites": 35,
+      "median": 75,
+      "weakPct": 0
+    },
+    {
+      "id": "crim",
+      "name": "Criminal defence and immigration",
+      "sites": 30,
+      "median": 77,
+      "weakPct": 0
+    },
+    {
+      "id": "biz",
+      "name": "Small business and employment",
+      "sites": 26,
+      "median": 79,
+      "weakPct": 0
+    }
+  ],
+  "agencyProblems": [
+    {
+      "id": "con",
+      "label": "Text contrast passes 4.5:1",
+      "standard": "WCAG 1.4.3",
+      "failPct": 86,
+      "fix": "Raise text contrast to at least 4.5:1 in the theme.",
+      "pitch": "Parts of the site are hard to read, and it is a WCAG failure.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "lcp",
+      "label": "Loads in under 2.5 s on a phone",
+      "standard": "Core Web Vitals · LCP",
+      "failPct": 68,
+      "fix": "Resize and compress the hero image, defer scripts, aim for under 2.5 s on a phone.",
+      "pitch": "Your home page takes several seconds to appear on the phone of someone who needs help now.",
+      "effort": "Build"
+    },
+    {
+      "id": "contact",
+      "label": "Tappable phone plus hours or response time",
+      "standard": "Client question 5",
+      "failPct": 61,
+      "question": "Can I reach someone now?",
+      "fix": "A tappable phone number in the header, with office hours or a stated response time beside it.",
+      "pitch": "Someone who needs a lawyer tonight cannot tell from your site whether anyone will answer.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "admit",
+      "label": "Bar admission or licence stated",
+      "standard": "Client question 2",
+      "failPct": 57,
+      "question": "Are they licensed here?",
+      "fix": "State on each lawyer's page where they are admitted or licensed to practise, and since when.",
+      "pitch": "The first thing a careful client checks is whether you can practise in their state, and the site never says.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "reviews",
+      "label": "Reviews marked up or shown in a widget",
+      "standard": "Client question 8",
+      "failPct": 55,
+      "question": "Do clients vouch for them?",
+      "fix": "Show the firm's client reviews on the site, with Review or AggregateRating markup.",
+      "pitch": "Your clients already praise you elsewhere. Your own site does not show it.",
+      "effort": "Quick fix"
+    }
+  ]
+}

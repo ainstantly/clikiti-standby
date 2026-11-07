@@ -1,0 +1,32 @@
+# The State of Independent Gym Websites 2026 (Q4 2026). CC BY 4.0, credit Clikiti with a link: https://clikiti.com/research/gyms
+"section","id","label","standard","metric","value"
+"summary","sites","Websites scanned","","count",165
+"summary","median","Median overall score","","score_0_100",80
+"summary","mean","Mean overall score","","score_0_100",79
+"summary","moe","Margin of error (95%)","","percentage_points",7.6
+"summary","weak","Sites scoring under 60","","percent",0
+"question","amenity","Where do I park, and can I bring my kids?","Member question 8","percent_pass",20
+"question","coaches","Who will coach me, and are they qualified?","Member question 4","percent_pass",29
+"question","reviews","Do other members vouch for it?","Member question 9","percent_pass",31
+"question","cancel","Am I locked in? How do I cancel?","Member question 6","percent_pass",33
+"question","hours","When can I come in?","Member question 7","percent_pass",35
+"question","schedule","When are the classes?","Member question 3","percent_pass",48
+"question","beginner","I have never done this. Where do I start?","Member question 5","percent_pass",50
+"question","price","What does it cost to join?","Member question 1","percent_pass",64
+"question","trial","Can I try it first?","Member question 2","percent_pass",67
+"technical","lcp","Loads in under 2.5 s on a phone","Core Web Vitals · LCP","percent_fail",94
+"technical","schema","ExerciseGym, HealthClub or SportsActivityLocation structured data","Schema.org · ExerciseGym","percent_fail",79
+"technical","con","Text contrast passes 4.5:1","WCAG 1.4.3","percent_fail",76
+"technical","alt","Images have text descriptions","WCAG 1.1.1","percent_fail",16
+"segment","gym","Independent gyms","","median_score",80
+"segment","gym","Independent gyms","","percent_under_60",0
+"segment","gym","Independent gyms","","sites",39
+"segment","cf","CrossFit and functional fitness","","median_score",79
+"segment","cf","CrossFit and functional fitness","","percent_under_60",0
+"segment","cf","CrossFit and functional fitness","","sites",36
+"segment","combat","Boxing and martial arts","","median_score",78
+"segment","combat","Boxing and martial arts","","percent_under_60",0
+"segment","combat","Boxing and martial arts","","sites",47
+"segment","studio","Boutique studios","","median_score",80
+"segment","studio","Boutique studios","","percent_under_60",0
+"segment","studio","Boutique studios","","sites",43

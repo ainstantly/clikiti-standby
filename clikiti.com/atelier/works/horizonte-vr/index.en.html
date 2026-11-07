@@ -1,0 +1,1241 @@
+<!doctype html>
+<html lang="en">
+<head><meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Horizonte VR · Virtual reality park in Guayaquil</title>
+<meta name="description" content="Horizonte VR is Guayaquil's virtual reality theme park: dive into Abismo, fly like a condor in Andes 3000, team up in Ciudad Neón and blast off in Órbita. Tickets, birthday parties and school trips.">
+<meta name="theme-color" content="#05040b">
+<meta property="og:title" content="Horizonte VR · Enter the portal">
+<meta property="og:description" content="Four virtual reality worlds in Guayaquil. Family tickets, birthdays, schools and companies.">
+<meta property="og:image" content="img/building-night.webp">
+<link rel="alternate" hreflang="es" href="./">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;500;600&family=Figtree:wght@400;500;600;700&family=Monoton&family=Tilt+Warp:XROT,YROT@-45..45,-45..45&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/hero-portal.webp">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AmusementPark",
+  "name": "Horizonte VR",
+  "description": "Virtual reality theme park in Guayaquil with four worlds: Abismo, Andes 3000, Ciudad Neón and Órbita.",
+  "image": "img/building-night.webp",
+  "priceRange": "$10 – $39",
+  "currenciesAccepted": "USD",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Av. Francisco de Orellana, Kennedy Norte",
+    "addressLocality": "Guayaquil",
+    "addressRegion": "Guayas",
+    "addressCountry": "EC"
+  },
+  "openingHoursSpecification": [
+    {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday"], "opens": "14:00", "closes": "21:00"},
+    {"@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "14:00", "closes": "23:00"},
+    {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "10:00", "closes": "23:00"}
+  ],
+  "amenityFeature": [
+    {"@type": "LocationFeatureSpecification", "name": "Birthday parties", "value": true},
+    {"@type": "LocationFeatureSpecification", "name": "School trips", "value": true},
+    {"@type": "LocationFeatureSpecification", "name": "Corporate events", "value": true}
+  ]
+}
+</script>
+<style>
+:root{
+  --space:#05040b;
+  --space-2:#0b0918;
+  --ink:#f4f2ff;
+  --muted:#c4bfe0;
+  --dim:#8f89b3;
+  --violet:#8b5cff;
+  --cyan:#3ef0ff;
+  --teal:#2ee6c8;
+  --amber:#ffb347;
+  --magenta:#ff3fb8;
+  --uv:#ad86ff;
+  --display:"Tilt Warp", "Arial Black", system-ui, sans-serif;
+  --text:"Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"Azeret Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --gutter:clamp(16px, 4vw, 56px);
+  --nav-h:68px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:auto}
+body{margin:0;background:var(--space);color:var(--ink);font-family:var(--text);font-size:clamp(16px, 1.05rem + .1vw, 18px);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3,p,dl,dd,figure,ul,ol{margin:0;padding:0}
+ul,ol{list-style:none}
+::selection{background:var(--cyan);color:#000}
+.sr-only{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:fixed;left:16px;top:-60px;z-index:100;background:var(--cyan);color:#000;padding:10px 16px;border-radius:999px;font-weight:700;text-decoration:none}
+.skip:focus{top:12px}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.mono{font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase;font-size:.75rem}
+
+/* ---------- buttons ---------- */
+.btn{--b:var(--cyan);display:inline-flex;align-items:center;gap:.7em;padding:.95em 1.5em;border-radius:999px;font-weight:700;font-size:1rem;text-decoration:none;letter-spacing:.01em;position:relative;isolation:isolate;transition:transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s}
+.btn-primary{background:linear-gradient(100deg,var(--cyan),#b7a4ff 55%,var(--violet));color:#07051a;box-shadow:0 0 0 1px rgba(255,255,255,.25) inset,0 10px 40px -10px rgba(62,240,255,.65)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 0 1px rgba(255,255,255,.4) inset,0 18px 50px -10px rgba(139,92,255,.8)}
+.btn-ghost{color:var(--ink);border:1px solid rgba(244,242,255,.35);background:rgba(5,4,11,.35);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.btn-ghost:hover{border-color:var(--cyan);color:#fff}
+.btn .ring-ico{width:18px;height:18px;border-radius:50%;border:2px solid currentColor;flex:none}
+
+/* ---------- nav ---------- */
+.nav{position:fixed;inset:0 0 auto 0;height:var(--nav-h);z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 var(--gutter);background:linear-gradient(to bottom,rgba(5,4,11,.8),rgba(5,4,11,0));}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:var(--display);font-size:1.25rem;letter-spacing:.01em}
+.logo svg{width:34px;height:34px;flex:none}
+.logo .prog{transition:stroke-dashoffset .1s linear}
+.nav ul{display:flex;gap:clamp(14px,2.2vw,34px);align-items:center}
+.nav ul a{text-decoration:none;font-weight:500;font-size:.95rem;color:var(--muted);transition:color .2s}
+.nav ul a:hover{color:#fff}
+.nav .btn{padding:.6em 1.15em;font-size:.92rem}
+.nav ul a.btn{color:#07051a}
+.nav{transition:background .35s, backdrop-filter .35s}
+.nav.solid{background:rgba(5,4,11,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 rgba(255,255,255,.06)}
+
+/* ---------- hero ---------- */
+#warp{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block;pointer-events:none}
+main{position:relative;z-index:1}
+.hero{position:relative;height:100vh;height:100svh;min-height:560px}
+html.webgl .hero{height:340vh}
+.hero-sticky{position:sticky;top:0;height:100vh;height:100svh;min-height:560px;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding:calc(var(--nav-h) + 12px) var(--gutter) 28px}
+.hero-fallback{position:absolute;inset:0;z-index:-1;overflow:hidden;background:var(--space)}
+.hero-fallback img{width:100%;height:100%;object-fit:cover;opacity:.62}
+.hero-fallback::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 55%,transparent 0 25%,rgba(5,4,11,.75) 70%),linear-gradient(to bottom,rgba(5,4,11,.5),transparent 30%,transparent 60%,var(--space))}
+.css-ring{position:absolute;left:50%;top:52%;width:min(62vw,560px);aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;box-shadow:0 0 0 2px rgba(160,240,255,.9),0 0 30px 6px rgba(62,240,255,.55),0 0 90px 20px rgba(139,92,255,.45),inset 0 0 60px 10px rgba(139,92,255,.5);z-index:1;animation:ringPulse 5s ease-in-out infinite}
+@keyframes ringPulse{50%{box-shadow:0 0 0 2px rgba(200,250,255,1),0 0 40px 10px rgba(62,240,255,.7),0 0 120px 30px rgba(139,92,255,.55),inset 0 0 80px 14px rgba(139,92,255,.6)}}
+html.webgl .hero-fallback{display:none}
+
+.hero-top{position:absolute;left:var(--gutter);right:var(--gutter);top:calc(var(--nav-h) + 10px);display:flex;justify-content:space-between;color:var(--muted);gap:16px}
+.hero-copy{position:relative;max-width:1180px;margin:0 auto;text-align:center;will-change:transform,opacity}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:#d9f9ff;padding:.55em 1em;border:1px solid rgba(62,240,255,.4);border-radius:999px;background:rgba(5,4,11,.45);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);margin-bottom:clamp(14px,2.5vh,28px)}
+.kicker::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px var(--cyan)}
+.big{display:block;font-family:var(--display);font-weight:400;font-size:clamp(3.4rem,11.5vw,11.5rem);line-height:.86;letter-spacing:-.01em;position:relative;color:#fff;text-wrap:balance}
+.big .ca{position:relative;display:block}
+.big .l1{font-size:.46em;line-height:1;margin-bottom:.02em}
+.big .ca::before,.big .ca::after{content:attr(data-text);position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen}
+.big .ca::before{color:#ff2a55;transform:translate(calc(var(--ca,1.5px) * -1),0);animation:caL 1.6s cubic-bezier(.2,.9,.1,1) both}
+.big .ca::after{color:#00e5ff;transform:translate(var(--ca,1.5px),0);animation:caR 1.6s cubic-bezier(.2,.9,.1,1) both}
+.big .ca span{position:relative;z-index:1;mix-blend-mode:normal}
+@keyframes caL{0%{transform:translate(-26px,3px);opacity:0}10%{opacity:1}22%{transform:translate(-14px,-2px)}30%{transform:translate(-20px,0)}100%{transform:translate(calc(var(--ca,1.5px) * -1),0)}}
+@keyframes caR{0%{transform:translate(26px,-3px);opacity:0}10%{opacity:1}22%{transform:translate(12px,2px)}30%{transform:translate(18px,0)}100%{transform:translate(var(--ca,1.5px),0)}}
+.hero-sub{max-width:40ch;margin:clamp(18px,3vh,30px) auto 0;color:#e2def7;font-size:clamp(1.05rem,1rem + .35vw,1.3rem);line-height:1.5;text-shadow:0 2px 20px rgba(5,4,11,.9)}
+.hero-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:clamp(20px,3.4vh,34px)}
+.hero-hud{position:absolute;left:var(--gutter);right:var(--gutter);bottom:24px;display:flex;justify-content:space-between;align-items:flex-end;gap:18px;color:var(--muted);font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
+.hero-hud b{display:block;color:#fff;font-weight:500;font-size:1.05rem;letter-spacing:.04em;font-variant-numeric:tabular-nums}
+.scroll-cue{display:flex;flex-direction:column;align-items:center;gap:8px}
+.scroll-cue i{width:1px;height:46px;background:linear-gradient(var(--cyan),transparent);animation:cue 2.2s ease-in-out infinite;transform-origin:top}
+@keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+.beats{display:flex;flex-wrap:wrap;justify-content:center;gap:.4em 1em;margin-top:22px;color:var(--muted);font-family:var(--display);font-size:1.2rem}
+html.webgl .beats{position:absolute;inset:0;margin:0;display:block;pointer-events:none}
+html.webgl .beat{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);opacity:0;font-size:clamp(2rem,6.2vw,6rem);line-height:.95;color:#fff;text-align:center;width:min(92vw,1100px);text-shadow:0 0 40px rgba(139,92,255,.6)}
+html.webgl .beat small{display:block;font-family:var(--mono);font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:18px;text-shadow:none}
+html:not(.webgl) .beat small{display:none}
+
+/* ---------- worlds ---------- */
+.worlds{position:relative}
+.worlds-stage{position:relative}
+.world{--c:#fff;position:relative;min-height:100vh;min-height:100svh;overflow:hidden;color:var(--ink);isolation:isolate}
+.world-bg{position:absolute;inset:-6%;z-index:-2;will-change:transform}
+.world-shade{position:absolute;inset:0;background:#000;opacity:0;z-index:5;pointer-events:none}
+.world-inner{position:relative;height:100%;min-height:100vh;min-height:100svh;display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:auto 1fr auto;column-gap:clamp(12px,2vw,28px);padding:calc(var(--nav-h) + 18px) var(--gutter) clamp(22px,4vh,44px)}
+.world-idx{grid-column:1/-1;grid-row:4;margin-top:14px;display:flex;gap:18px;align-items:center;color:var(--c);font-family:var(--mono);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase}
+.world-idx::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--c),transparent);opacity:.6}
+.world-name{grid-column:1/-1;grid-row:3;align-self:end;font-family:var(--display);font-weight:400;font-size:clamp(4.6rem,15vw,16rem);line-height:.8;letter-spacing:-.02em;color:var(--c);margin-left:-.04em;white-space:nowrap;text-shadow:0 0 60px color-mix(in srgb,var(--c) 45%,transparent);position:relative;z-index:2;font-variation-settings:"XROT" 0,"YROT" 0}
+.world-name .n-sm{font-size:.42em;vertical-align:.95em;margin-left:.08em;color:#fff}
+.world-body{grid-column:1/7;grid-row:2;align-self:center;display:flex;flex-direction:column;gap:clamp(18px,3vh,30px);position:relative;z-index:3}
+.world-promise{font-size:clamp(1.25rem,1rem + 1vw,2rem);line-height:1.25;font-weight:600;max-width:22ch;text-wrap:balance;text-shadow:0 2px 24px rgba(0,0,0,.6)}
+.world-text{color:#ebe8fb;max-width:40ch;text-shadow:0 1px 14px rgba(0,0,0,.7)}
+.hud{display:grid;grid-template-columns:1.45fr .8fr .8fr 1.35fr;gap:1px;max-width:640px;background:color-mix(in srgb,var(--c) 40%,transparent);border:1px solid color-mix(in srgb,var(--c) 40%,transparent);position:relative}
+.hud::before,.hud::after{content:"";position:absolute;width:14px;height:14px;border:2px solid var(--c)}
+.hud::before{left:-6px;top:-6px;border-right:0;border-bottom:0}
+.hud::after{right:-6px;bottom:-6px;border-left:0;border-top:0}
+.hud div{background:rgba(3,3,10,.72);padding:12px 14px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.hud dt{font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.hud dd{font-family:var(--mono);font-size:1.15rem;white-space:nowrap;font-weight:500;color:#fff;font-variant-numeric:tabular-nums;margin-top:2px;letter-spacing:.02em}
+.hud dd small{font-size:.7em;color:var(--muted);margin-left:.2em}
+.bars{display:flex;gap:5px;margin-top:8px}
+.bars i{flex:1;height:10px;background:rgba(255,255,255,.14);transform:skewX(-20deg)}
+.bars i.on{background:var(--c);box-shadow:0 0 12px var(--c)}
+.world-visor{grid-column:7/13;grid-row:1/4;align-self:center;justify-self:end;width:min(40vw,560px);margin-right:clamp(0px,2.5vw,40px)!important;aspect-ratio:1;position:relative;z-index:1;margin-top:calc(var(--nav-h) * -.4)}
+.world-visor .lens{position:absolute;inset:7%;border-radius:50%;overflow:hidden;box-shadow:0 0 0 2px var(--c),0 0 60px -6px var(--c),inset 0 0 0 1px rgba(255,255,255,.2)}
+.world-visor img{width:100%;height:100%;object-fit:cover;transform:scale(1.12)}
+.world-visor .lens::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.18),transparent 40%),linear-gradient(to top,color-mix(in srgb,var(--c) 40%,transparent),transparent 55%);mix-blend-mode:screen}
+.world-visor svg.ticks{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.world-visor .tag{position:absolute;font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--c);background:rgba(3,3,10,.75);padding:5px 9px;border:1px solid color-mix(in srgb,var(--c) 50%,transparent)}
+.world-visor .tag.t1{left:-2%;top:16%}
+.world-visor .tag.t2{right:2%;bottom:14%}
+.world-link{display:inline-flex;align-items:center;gap:10px;color:var(--c);font-weight:700;text-decoration:none;font-size:1rem;width:max-content;border-bottom:1px solid currentColor;padding-bottom:3px}
+.world-link:hover{color:#fff}
+.world.flip .world-body{grid-column:7/13;padding-left:clamp(0px,3vw,48px)}
+.world.flip .world-visor{grid-column:1/7;justify-self:start;margin-right:0!important;margin-left:-1vw!important}
+.world.flip .world-name{text-align:right;margin-right:-.03em}
+
+/* world backgrounds */
+.w-abismo{--c:var(--teal);background:#021318}
+.w-abismo .world-bg{background:radial-gradient(ellipse 80% 60% at 60% -10%,rgba(46,230,200,.35),transparent 60%),linear-gradient(#063a44 0%,#03222a 40%,#010b0f 100%)}
+.whale{position:absolute;left:0;top:18%;width:min(80vw,1100px);opacity:.55;animation:swim 46s linear infinite;filter:drop-shadow(0 0 30px rgba(46,230,200,.25))}
+@keyframes swim{from{transform:translateX(-90%) translateY(0)}50%{transform:translateX(40%) translateY(4vh)}to{transform:translateX(150%) translateY(-2vh)}}
+.snow{position:absolute;inset:0;background-image:radial-gradient(1.5px 1.5px at 10% 20%,rgba(200,255,245,.7),transparent),radial-gradient(1px 1px at 40% 70%,rgba(200,255,245,.6),transparent),radial-gradient(2px 2px at 70% 30%,rgba(200,255,245,.5),transparent),radial-gradient(1px 1px at 85% 80%,rgba(200,255,245,.7),transparent),radial-gradient(1.5px 1.5px at 25% 55%,rgba(200,255,245,.5),transparent);background-size:340px 300px;animation:snow 30s linear infinite;opacity:.8}
+@keyframes snow{to{background-position:0 -600px}}
+.rays{position:absolute;inset:0;background:radial-gradient(ellipse 60% 45% at 50% -5%,rgba(150,255,240,.35),transparent 70%),repeating-linear-gradient(100deg,transparent 0 6%,rgba(120,255,235,.13) 7% 9%,transparent 10% 15%);mask:linear-gradient(#000,transparent 70%);-webkit-mask:linear-gradient(#000,transparent 70%);animation:sway 9s ease-in-out infinite alternate;transform-origin:50% 0}
+@keyframes sway{from{transform:skewX(-6deg)}to{transform:skewX(6deg)}}
+.sonar{position:absolute;left:30%;top:58%;width:10px;height:10px}
+.sonar i{position:absolute;left:50%;top:50%;width:90vmax;height:90vmax;margin:-45vmax 0 0 -45vmax;border-radius:50%;border:1px solid rgba(46,230,200,.35);transform:scale(0);animation:sonar 6s linear infinite}
+.sonar i:nth-child(2){animation-delay:2s}.sonar i:nth-child(3){animation-delay:4s}
+@keyframes sonar{to{transform:scale(1);opacity:0}}
+.bubbles i{position:absolute;bottom:-40px;width:var(--s,10px);height:var(--s,10px);border-radius:50%;background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.7),rgba(120,255,235,.15) 45%,transparent 70%);box-shadow:inset 0 0 0 1px rgba(160,255,240,.35);animation:rise var(--d,12s) linear infinite;animation-delay:var(--dl,0s)}
+@keyframes rise{to{transform:translate(var(--x,20px),-120vh)}}
+.w-andes{--c:var(--amber);background:#1a0a14}
+.w-andes .world-bg{background:linear-gradient(#120720 0%,#3b1530 30%,#a3401a 58%,#ff9a3c 70%,#ffd08a 74%,#2a1010 74.2%)}
+.sun{position:absolute;left:62%;top:52%;width:22vmax;height:22vmax;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,#fff3c4 0 22%,#ffc061 36%,rgba(255,140,40,.35) 55%,transparent 70%)}
+.mtn{position:absolute;left:0;width:100%;bottom:0;height:62%}
+.condor{position:absolute;left:0;top:28%;width:clamp(70px,9vw,140px);animation:glide 22s linear infinite}
+@keyframes glide{0%{transform:translate(-20vw,4vh) rotate(-4deg)}50%{transform:translate(55vw,-3vh) rotate(3deg)}100%{transform:translate(120vw,5vh) rotate(-3deg)}}
+.w-neon{--c:var(--magenta);background:#12021a}
+.w-neon .world-bg{background:radial-gradient(ellipse 70% 40% at 50% 56%,rgba(255,63,184,.45),transparent 70%),linear-gradient(#0a0114 0%,#1d0326 55%,#0a0010 100%)}
+.skyline{position:absolute;left:0;right:0;bottom:44%;width:100%;height:46%}
+.grid-floor{position:absolute;left:-50%;right:-50%;bottom:-10%;height:56%;background-image:linear-gradient(rgba(255,63,184,.7) 1px,transparent 1px),linear-gradient(90deg,rgba(255,63,184,.7) 1px,transparent 1px);background-size:70px 70px;transform:perspective(420px) rotateX(68deg);transform-origin:50% 0;animation:gridmove 2.4s linear infinite;mask:linear-gradient(transparent,#000 40%);-webkit-mask:linear-gradient(transparent,#000 40%)}
+@keyframes gridmove{to{background-position:0 70px}}
+.scan{position:absolute;inset:0;background:repeating-linear-gradient(transparent 0 3px,rgba(0,0,0,.22) 3px 4px);pointer-events:none}
+.w-orbita{--c:var(--uv);background:#07031a}
+.w-orbita .world-bg{background:radial-gradient(1px 1px at 12% 22%,#fff,transparent),radial-gradient(1px 1px at 32% 8%,#fff,transparent),radial-gradient(1.5px 1.5px at 72% 18%,#fff,transparent),radial-gradient(1px 1px at 86% 40%,#fff,transparent),radial-gradient(1px 1px at 52% 32%,#cbb8ff,transparent),radial-gradient(1px 1px at 22% 48%,#fff,transparent),radial-gradient(1.5px 1.5px at 92% 8%,#fff,transparent),radial-gradient(1px 1px at 6% 66%,#fff,transparent),radial-gradient(ellipse 60% 50% at 75% 30%,rgba(123,77,255,.35),transparent 70%),linear-gradient(#05021a,#0e0630 60%,#1a0b45)}
+.w-orbita .world-bg::before{content:"";position:absolute;inset:0;background-image:radial-gradient(1px 1px at 20px 30px,rgba(255,255,255,.8),transparent),radial-gradient(1px 1px at 120px 80px,rgba(255,255,255,.6),transparent),radial-gradient(1px 1px at 60px 150px,rgba(200,180,255,.7),transparent);background-size:180px 180px;opacity:.7}
+.planet{position:absolute;left:50%;top:78%;width:180vmax;height:180vmax;margin-left:-90vmax;border-radius:50%;background:radial-gradient(circle at 50% 0%,#5b3bd6 0%,#2a1570 12%,#0a0428 30%);box-shadow:0 -6px 40px 6px rgba(173,134,255,.75),0 -30px 140px 30px rgba(123,77,255,.45),inset 0 10px 30px rgba(220,200,255,.6)}
+.orbit-line{position:absolute;left:50%;top:50%;width:150vmax;height:40vmax;margin:-20vmax 0 0 -75vmax;border-radius:50%;border:1px solid rgba(173,134,255,.3);transform:rotate(-12deg)}
+
+.worlds-rail{display:none}
+.portal-ring{display:none}
+
+/* pinned mode */
+html.pin .worlds-stage{height:100vh;height:100svh;overflow:hidden}
+html.pin .world{position:absolute;inset:0;min-height:0}
+html.pin .world-inner{min-height:0}
+html.pin .portal-ring{display:block;position:absolute;left:50%;top:50%;width:0;height:0;border-radius:50%;transform:translate(-50%,-50%);z-index:20;pointer-events:none;opacity:0;box-shadow:0 0 0 2px var(--rc),0 0 24px 4px var(--rc),0 0 80px 16px color-mix(in srgb,var(--rc) 50%,transparent),inset 0 0 40px 6px color-mix(in srgb,var(--rc) 60%,transparent)}
+html.pin .worlds-rail{display:flex;position:absolute;right:16px;top:50%;transform:translateY(-50%);flex-direction:column;gap:14px;z-index:30;font-family:var(--mono);font-size:.7rem;letter-spacing:.14em}
+.worlds-rail li{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.5);justify-content:flex-end;transition:color .3s}
+.worlds-rail li::after{content:"";width:10px;height:10px;border-radius:50%;border:1px solid currentColor;transition:all .3s}
+.worlds-rail li.on{color:#fff}
+.worlds-rail li.on::after{background:currentColor;box-shadow:0 0 14px currentColor}
+.worlds-rail li span{font-size:.62rem}
+
+/* ---------- feel ---------- */
+.feel{position:relative;background:var(--space);padding:clamp(90px,14vh,170px) var(--gutter) clamp(30px,5vh,60px);overflow:hidden}
+.feel::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 50% 40% at 15% 20%,rgba(139,92,255,.18),transparent 70%),radial-gradient(ellipse 45% 30% at 90% 60%,rgba(62,240,255,.10),transparent 70%);pointer-events:none}
+.feel-grid{position:relative;max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(12,1fr);column-gap:clamp(12px,2vw,28px);row-gap:clamp(30px,6vh,70px)}
+.eyebrow{font-family:var(--mono);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.eyebrow::before{content:"";width:28px;height:1px;background:currentColor}
+.feel-head{grid-column:1/-1}
+.feel-head h2{font-family:var(--display);font-weight:400;font-size:clamp(2.6rem,7.4vw,7.6rem);line-height:.92;letter-spacing:-.01em;max-width:14ch}
+.feel-head h2 em{font-style:normal;color:transparent;-webkit-text-stroke:1.5px var(--cyan)}
+.glitch{position:relative;overflow:hidden;background:#000;isolation:isolate;border-radius:4px}
+.glitch img{width:100%;height:100%;object-fit:cover;position:relative;z-index:1}
+.glitch .g{position:absolute;inset:0;background-size:cover;background-position:center;background-blend-mode:multiply;opacity:0;z-index:2;pointer-events:none}
+.glitch .g-r{background-color:#f00}
+.glitch .g-c{background-color:#0ff;mix-blend-mode:screen;z-index:3}
+.glitch figcaption{position:absolute;left:14px;bottom:14px;z-index:4;font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;background:rgba(5,4,11,.75);padding:6px 10px;color:#fff}
+.glitch::after{content:"";position:absolute;inset:0;z-index:4;background:repeating-linear-gradient(transparent 0 2px,rgba(0,0,0,.12) 2px 3px);pointer-events:none}
+.g1{grid-column:1/8;aspect-ratio:4/3.1}
+.feel-copy{grid-column:8/13;align-self:end;display:flex;flex-direction:column;gap:20px;padding-bottom:10px}
+.feel-copy .lead{font-size:clamp(1.3rem,1rem + 1.1vw,2.1rem);line-height:1.25;font-weight:600;text-wrap:balance}
+.feel-copy p{color:var(--muted)}
+.g2{grid-column:6/13;aspect-ratio:16/10;margin-top:-4vh}
+.feel-facts{grid-column:1/6;align-self:center;display:flex;flex-direction:column;gap:0;border-top:1px solid rgba(255,255,255,.14)}
+.feel-facts li{display:grid;grid-template-columns:56px 1fr;gap:14px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.14);align-items:baseline}
+.feel-facts b{font-family:var(--mono);color:var(--cyan);font-weight:500;font-size:.8rem;letter-spacing:.1em}
+.feel-facts span{color:#e6e2f7}
+.shouts{grid-column:1/-1;margin:0 calc(var(--gutter) * -1);overflow:hidden;white-space:nowrap;font-family:var(--display);font-size:clamp(3rem,9vw,9rem);line-height:1;padding:.1em 0}
+.shouts-track{display:inline-flex;align-items:center;gap:.35em;will-change:transform}
+.shouts-track .o{color:transparent;-webkit-text-stroke:1.5px var(--violet)}
+.shouts-track i{width:.32em;height:.32em;border-radius:50%;border:.06em solid var(--cyan);box-shadow:0 0 18px var(--cyan);flex:none}
+.feel-quote{grid-column:1/-1;text-align:center;font-family:var(--display);font-size:clamp(1.9rem,4.6vw,4.6rem);line-height:1;padding-top:clamp(20px,6vh,60px)}
+.feel-quote span{color:var(--amber)}
+
+/* ---------- tickets ---------- */
+.tickets{position:relative;background:linear-gradient(var(--space),#0a0720 30%,#0a0720 70%,var(--space));padding:clamp(80px,12vh,150px) var(--gutter);overflow:hidden}
+.tickets-head{max-width:1100px;margin:0 auto clamp(40px,7vh,80px);display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap}
+.tickets-head h2{font-family:var(--display);font-weight:400;font-size:clamp(2.6rem,7vw,7rem);line-height:.9;max-width:12ch}
+.tickets-head p{max-width:36ch;color:var(--muted)}
+.passes{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(22px,3.4vh,34px);perspective:1400px}
+.pass{--c:var(--cyan);--stub:250px;--notch:16px;position:relative;display:grid;grid-template-columns:1fr var(--stub);min-height:220px;color:#fff;
+  background:radial-gradient(ellipse 60% 120% at 0% 0%,color-mix(in srgb,var(--c) 30%,transparent),transparent 60%),linear-gradient(110deg,#17132e,#100c22);
+  -webkit-mask:radial-gradient(circle var(--notch) at calc(100% - var(--stub)) 0,#0000 98%,#000) top/100% 51% no-repeat,radial-gradient(circle var(--notch) at calc(100% - var(--stub)) 100%,#0000 98%,#000) bottom/100% 51% no-repeat;
+  mask:radial-gradient(circle var(--notch) at calc(100% - var(--stub)) 0,#0000 98%,#000) top/100% 51% no-repeat,radial-gradient(circle var(--notch) at calc(100% - var(--stub)) 100%,#0000 98%,#000) bottom/100% 51% no-repeat;
+  border-radius:14px;will-change:transform}
+.pass:nth-child(odd){transform:rotate(-.6deg)}
+.pass:nth-child(even){transform:rotate(.5deg)}
+.pass::before{content:"";position:absolute;inset:0;border-radius:14px;border:1px solid color-mix(in srgb,var(--c) 55%,transparent);pointer-events:none}
+.pass-main{padding:clamp(18px,2.4vw,30px);display:grid;grid-template-columns:1fr auto;grid-template-rows:auto 1fr auto;gap:14px 24px;position:relative}
+.pass-top{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;gap:10px;font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.pass-top .brand{display:flex;align-items:center;gap:8px;color:#fff}
+.pass-top .brand i{width:14px;height:14px;border-radius:50%;border:2px solid var(--c);box-shadow:0 0 8px var(--c)}
+.route{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:clamp(10px,2vw,24px)}
+.route .from,.route .to{display:flex;flex-direction:column}
+.route .code{font-family:var(--display);font-size:clamp(2.4rem,5.4vw,4.6rem);line-height:.9;color:#fff}
+.route .to .code{color:var(--c)}
+.route .city{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+.route .to{text-align:right;align-items:flex-end}
+@media (max-width:680px){.route .path{min-width:24px}}
+.route .path{position:relative;height:2px;background:repeating-linear-gradient(90deg,color-mix(in srgb,var(--c) 70%,transparent) 0 6px,transparent 6px 12px)}
+.route .path::after{content:"";position:absolute;left:50%;top:50%;width:22px;height:22px;margin:-11px 0 0 -11px;border-radius:50%;border:2px solid var(--c);background:#100c22;box-shadow:0 0 14px var(--c)}
+.pass-fields{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,auto);justify-content:space-between;gap:12px 20px}
+.pass-fields dt{font-family:var(--mono);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.pass-fields dd{font-family:var(--mono);font-size:1rem;font-weight:500;color:#fff;margin-top:2px}
+.pass-stub{position:relative;border-left:2px dashed rgba(255,255,255,.28);padding:clamp(18px,2vw,26px);display:flex;flex-direction:column;justify-content:space-between;gap:14px;background:linear-gradient(160deg,color-mix(in srgb,var(--c) 18%,transparent),transparent 70%)}
+.gate{display:flex;justify-content:space-between;align-items:baseline}
+.gate span{font-family:var(--mono);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.gate b{font-family:var(--display);font-weight:400;font-size:2.6rem;line-height:1;color:var(--c)}
+.price{font-family:var(--display);font-size:2.2rem;line-height:1}
+.price small{font-family:var(--text);font-size:.85rem;color:var(--muted);margin-left:4px}
+.barcode{width:100%;height:46px;display:block}
+.barcode rect{fill:#fff}
+.pass-buy{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--c);color:#07051a;font-weight:700;text-decoration:none;padding:.7em 1em;border-radius:999px;font-size:.95rem}
+.pass-buy:hover{filter:brightness(1.12)}
+.pass.p-abismo{--c:var(--teal)}.pass.p-andes{--c:var(--amber)}.pass.p-neon{--c:var(--magenta)}.pass.p-orbita{--c:var(--uv)}
+.pass.p-total{--c:#fff;background:linear-gradient(110deg,rgba(46,230,200,.22),rgba(255,179,71,.2) 30%,rgba(255,63,184,.22) 60%,rgba(173,134,255,.28)),linear-gradient(110deg,#17132e,#100c22)}
+.pass.p-total .route .to .code{background:linear-gradient(90deg,var(--teal),var(--amber),var(--magenta),var(--uv));-webkit-background-clip:text;background-clip:text;color:transparent}
+.pass.p-total .pass-buy{background:linear-gradient(90deg,var(--teal),var(--amber) 35%,var(--magenta) 70%,var(--uv))}
+.pass.p-total::before{border:1.5px solid rgba(255,255,255,.5)}
+
+/* departures board */
+.board{max-width:1100px;margin:clamp(70px,12vh,140px) auto 0}
+.board h3{font-family:var(--display);font-weight:400;font-size:clamp(2rem,4.6vw,4.2rem);line-height:.95;margin-bottom:10px}
+.board > p{color:var(--muted);max-width:52ch;margin-bottom:30px}
+.board-table{border-top:1px solid rgba(255,255,255,.2)}
+.board-row{display:grid;grid-template-columns:110px 1.1fr 2fr 150px 190px;gap:20px;align-items:center;padding:20px 4px;border-bottom:1px solid rgba(255,255,255,.2);text-decoration:none;position:relative;transition:background .3s}
+.board-row.head{padding:12px 4px;font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+a.board-row:hover{background:rgba(62,240,255,.06)}
+.board-row .fl{font-family:var(--mono);color:var(--amber);font-weight:500;letter-spacing:.06em}
+.board-row .dest{font-family:var(--display);font-size:clamp(1.3rem,2vw,1.8rem);line-height:1.05}
+.board-row .inc{color:var(--muted);font-size:.98rem;line-height:1.45}
+.board-row .from{font-family:var(--mono);font-size:.95rem;white-space:nowrap}
+.board-row .st,.board-row.head span:last-child{justify-self:end}
+.board-row .st{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#07051a;background:var(--cyan);padding:7px 12px;border-radius:999px;white-space:nowrap;font-weight:600}
+.flap{display:inline-block;font-variant-numeric:tabular-nums}
+
+/* ---------- closing ---------- */
+.closing{position:relative;min-height:100vh;min-height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;isolation:isolate;padding:calc(var(--nav-h) + 40px) var(--gutter) 0}
+.closing-bg{position:absolute;inset:0;z-index:-2}
+.closing-bg{overflow:hidden}
+.closing-bg img{width:100%;height:100%;object-fit:cover;object-position:60% 55%;transform-origin:66% 48%}
+.closing::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(5,4,11,.7),rgba(5,4,11,.15) 55%,transparent),linear-gradient(var(--space) 0%,rgba(5,4,11,.25) 28%,rgba(5,4,11,.35) 50%,rgba(5,4,11,.92) 78%,var(--space) 100%)}
+.closing-ring{position:absolute;left:50%;top:42%;width:min(70vw,640px);aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;z-index:-1;box-shadow:0 0 0 1.5px rgba(200,250,255,.8),0 0 40px 8px rgba(62,240,255,.45),0 0 140px 30px rgba(139,92,255,.35);opacity:.85;pointer-events:none}
+.closing-inner{max-width:1400px;width:100%;margin:0 auto}
+.closing h2{font-family:var(--display);font-weight:400;font-size:clamp(3rem,9vw,9.5rem);line-height:.86;letter-spacing:-.01em}
+.closing h2 .salto{display:block;font-family:"Monoton",var(--display);font-size:1.18em;line-height:1;letter-spacing:.02em;color:#fff;text-shadow:0 0 6px #fff,0 0 22px var(--cyan),0 0 60px var(--violet)}
+.closing-lead{max-width:44ch;font-size:clamp(1.1rem,1rem + .4vw,1.35rem);color:#ebe8fb;margin:26px 0 30px}
+.closing-cta{display:flex;flex-wrap:wrap;gap:12px}
+.info{display:grid;grid-template-columns:1.2fr 1.4fr 1fr;gap:clamp(20px,4vw,60px);margin-top:clamp(50px,9vh,100px);padding:34px 0 40px;border-top:1px solid rgba(255,255,255,.18)}
+.info h3{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);font-weight:500;margin-bottom:12px}
+.info p,.info li{color:#e6e2f7}
+.info .hours li{display:flex;justify-content:space-between;gap:16px;border-bottom:1px dashed rgba(255,255,255,.14);padding:5px 0}
+.info .hours li span:last-child{font-family:var(--mono);font-size:.92rem}
+.foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:22px 0 30px;border-top:1px solid rgba(255,255,255,.1);color:var(--dim);font-size:.85rem}
+
+/* ---------- responsive ---------- */
+@media (max-width: 900px){
+  .nav ul li:not(:last-child){display:none}
+  .world-inner{grid-template-columns:1fr;grid-template-rows:auto auto auto 1fr;padding-top:calc(var(--nav-h) + 4px);row-gap:12px}
+  .world-idx{grid-row:1}
+  .world-visor,.world.flip .world-visor{grid-column:1;grid-row:2;width:min(64vw,330px);justify-self:end;margin:0}
+  .world.flip .world-visor{justify-self:start}
+  .world-name,.world.flip .world-name{grid-row:3;grid-column:1;text-align:left;font-size:clamp(3.6rem,19vw,9rem);margin-top:-14vw;white-space:normal}
+  .world-body,.world.flip .world-body{grid-column:1;grid-row:4;align-self:start;gap:14px}
+  .world-promise{font-size:1.2rem;max-width:30ch}
+  .world-text{display:none}
+  .hud{grid-template-columns:repeat(2,minmax(0,1fr));max-width:none}
+  .hud div{padding:9px 10px}
+  .hud dd{font-size:1.02rem}
+  .hud dt{font-size:.6rem;letter-spacing:.1em}
+  .world-visor .tag{font-size:.6rem}
+  html.pin .worlds-rail{right:12px;top:auto;bottom:auto;top:calc(var(--nav-h) + 40px);transform:none;gap:8px}
+  .worlds-rail li::after{width:12px;height:12px}
+  .worlds-rail li span{display:none}
+  .feel-grid{grid-template-columns:1fr}
+  .g1,.g2,.feel-copy,.feel-facts,.feel-head,.feel-quote{grid-column:1}
+  .g2{margin-top:0}
+  .board-row{grid-template-columns:1fr auto;gap:6px 14px}
+  .board-row.head{display:none}
+  .board-row .fl{grid-column:1;grid-row:1;font-size:.8rem}
+  .board-row .st{grid-column:2;grid-row:1/3;align-self:center}
+  .board-row .dest{grid-column:1;grid-row:2}
+  .board-row .inc{grid-column:1/-1;grid-row:3}
+  .board-row .from{grid-column:1/-1;grid-row:4;color:var(--amber)}
+  .info{grid-template-columns:1fr}
+}
+@media (max-width: 680px){
+  :root{--nav-h:60px}
+  .logo{font-size:1.05rem}
+  .logo svg{width:28px;height:28px}
+  .hero-top .coord{display:none}
+  .big{font-size:clamp(3.4rem,23vw,7rem)}
+  .hero-hud .hide-sm{display:none}
+  .pass{--stub:0px;grid-template-columns:1fr;--notch:14px;
+    -webkit-mask:radial-gradient(circle var(--notch) at 0 calc(100% - 132px),#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle var(--notch) at 100% calc(100% - 132px),#0000 98%,#000) right/51% 100% no-repeat;
+    mask:radial-gradient(circle var(--notch) at 0 calc(100% - 132px),#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle var(--notch) at 100% calc(100% - 132px),#0000 98%,#000) right/51% 100% no-repeat}
+  .pass-stub{border-left:0;border-top:2px dashed rgba(255,255,255,.28);height:132px;display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;gap:10px 16px;align-content:center}
+  .pass-stub .gate{grid-column:1;flex-direction:column}
+  .pass-stub .gate b{font-size:2rem}
+  .pass-stub .price{grid-column:2;text-align:right;align-self:center}
+  .pass-stub .barcode{display:none}
+  .pass-stub .pass-buy{grid-column:1/-1}
+  .pass-fields{grid-template-columns:repeat(2,auto)}
+  .route .code{font-size:2.2rem}
+  .route{grid-template-columns:auto 1fr auto}
+  .pass-top .when{display:none}
+  .tickets-head h2,.feel-head h2{font-size:clamp(2.5rem,12vw,4rem)}
+}
+@media (max-width: 380px){
+  .route .code{font-size:1.9rem}
+}
+
+/* reduced motion */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}
+  .big .ca::before,.big .ca::after{animation:none}
+  .bubbles,.sonar,.condor{display:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#mundos">Skip to content</a>
+<canvas id="warp" aria-hidden="true"></canvas>
+
+<header class="nav" role="banner">
+  <a class="logo" href="#top" aria-label="Horizonte VR, home">
+    <svg viewBox="0 0 40 40" aria-hidden="true">
+      <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3ef0ff"/><stop offset="1" stop-color="#8b5cff"/></linearGradient></defs>
+      <circle cx="20" cy="20" r="16" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="2.5"/>
+      <circle class="prog" cx="20" cy="20" r="16" fill="none" stroke="url(#lg)" stroke-width="2.5" stroke-linecap="round" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100" transform="rotate(-90 20 20)"/>
+      <circle cx="20" cy="20" r="5" fill="#3ef0ff"/>
+    </svg>
+    <span>Horizonte VR</span>
+  </a>
+  <nav aria-label="Main">
+    <ul>
+      <li><a href="#mundos">Worlds</a></li>
+      <li><a href="#sentir">How it feels</a></li>
+      <li><a href="#boletos">Tickets</a></li>
+      <li><a href="#grupos">Birthdays &amp; groups</a></li>
+      <li><a class="btn btn-primary" href="#boletos">Buy tickets</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+  <!-- ================= HERO ================= -->
+  <section class="hero" aria-labelledby="h1">
+    <div class="hero-sticky">
+      <div class="hero-fallback">
+        <img src="img/hero-portal.webp" alt="A family wearing VR headsets in a dark arena crossed by beams of violet and cyan light" width="1376" height="768" fetchpriority="high">
+        <div class="css-ring" aria-hidden="true"></div>
+      </div>
+      <div class="hero-top mono" aria-hidden="true">
+        <span>Kennedy Norte · Guayaquil</span>
+        <span class="coord">2°10′ S · 79°54′ W</span>
+      </div>
+      <div class="hero-copy" id="heroCopy">
+        <h1 id="h1">
+          <span class="kicker">Horizonte VR · Virtual reality theme park in Guayaquil</span>
+          <span class="big"><span class="ca l1" data-text="Enter the"><span>Enter the</span></span><span class="ca l2" data-text="portal"><span>portal</span></span></span>
+        </h1>
+        <p class="hero-sub">Four worlds your body will swear are real: the floor of the Pacific, a condor's flight, a city in ruins and a launch into orbit.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#boletos"><span class="ring-ico" aria-hidden="true"></span>Buy tickets</a>
+          <a class="btn btn-ghost" href="#mundos">See the four worlds</a>
+        </div>
+      </div>
+      <div class="beats" id="beats">
+        <p class="beat"><small>T − 3</small>Put on the headset.</p>
+        <p class="beat"><small>T − 2</small>The floor falls away.</p>
+        <p class="beat"><small>T − 1</small>Your brain says:<br>this is real.</p>
+      </div>
+      <div class="hero-hud" aria-hidden="true">
+        <div>Velocity<b id="hudVel">0.00 c</b></div>
+        <div class="scroll-cue"><i></i><span>Scroll to launch</span></div>
+        <div style="text-align:right">Distance to portal<b id="hudDist">2,000 m</b></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WORLDS ================= -->
+  <section class="worlds" id="mundos" aria-labelledby="mundos-title">
+    <h2 id="mundos-title" class="sr-only">The four worlds of Horizonte VR</h2>
+    <div class="worlds-stage" id="stage">
+      <ol class="worlds-rail" aria-hidden="true">
+        <li><span>01</span></li><li><span>02</span></li><li><span>03</span></li><li><span>04</span></li>
+      </ol>
+
+      <!-- Abismo -->
+      <article class="world w-abismo" aria-labelledby="w1">
+        <div class="world-bg" aria-hidden="true">
+          <div class="rays"></div>
+          <div class="snow"></div>
+          <svg class="whale" viewBox="0 0 600 160"><path d="M0 70 C70 25 230 12 390 38 C440 46 478 54 506 44 L566 12 L550 54 L590 92 L510 70 C474 82 432 92 382 95 C250 108 90 112 0 70Z M150 92 C172 126 204 142 236 146 C220 120 204 104 188 96Z" fill="#011418" stroke="rgba(46,230,200,.35)" stroke-width="1.2"/><circle cx="60" cy="66" r="2.4" fill="rgba(46,230,200,.6)"/></svg>
+          <div class="sonar"><i></i><i></i><i></i></div>
+          <div class="bubbles">
+            <i style="left:8%;--s:8px;--d:11s;--dl:-2s"></i><i style="left:18%;--s:14px;--d:14s;--dl:-7s;--x:-30px"></i><i style="left:27%;--s:6px;--d:9s;--dl:-4s"></i><i style="left:41%;--s:10px;--d:13s;--dl:-1s;--x:40px"></i><i style="left:55%;--s:5px;--d:8s;--dl:-6s"></i><i style="left:63%;--s:16px;--d:16s;--dl:-10s;--x:-20px"></i><i style="left:74%;--s:7px;--d:10s;--dl:-3s"></i><i style="left:86%;--s:12px;--d:12s;--dl:-8s;--x:30px"></i><i style="left:94%;--s:6px;--d:9s;--dl:-5s"></i>
+          </div>
+        </div>
+        <div class="world-inner">
+          <p class="world-idx">World 01 / 04 · Dive</p>
+          <figure class="world-visor">
+            <div class="lens"><img src="img/hero-portal.webp" alt="A family in VR headsets, bathed in light, fully immersed" loading="lazy" width="1376" height="768"></div>
+            <svg class="ticks" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="49" fill="none" stroke="currentColor" stroke-width=".6" pathLength="360" stroke-dasharray="1 5" style="color:var(--c)"/><circle cx="50" cy="50" r="46" fill="none" stroke="var(--c)" stroke-width=".3" opacity=".5"/><path d="M50 0v5M50 95v5M0 50h5M95 50h5" stroke="var(--c)" stroke-width=".8"/></svg>
+            <span class="tag t1">Sonar · active</span><span class="tag t2">Water temp 4 °C</span>
+          </figure>
+          <div class="world-body">
+            <p class="world-promise">Sink 3,200 meters beneath the Pacific and look a blue whale in the eye.</p>
+            <p class="world-text">A dive capsule, currents of cold air and whale song rumbling right through your chest. For the whole family.</p>
+            <dl class="hud">
+              <div class="wide"><dt>Intensity</dt><dd>2 / 5<span class="bars" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></dd></div>
+              <div><dt>Min. age</dt><dd>6+<small>yrs</small></dd></div>
+              <div><dt>Duration</dt><dd>12<small>min</small></dd></div>
+              <div class="wide"><dt>Depth</dt><dd><span data-count="3200" data-prefix="−">−3,200</span><small>m</small></dd></div>
+            </dl>
+            <a class="world-link" href="#boletos">See the Abismo ticket <span aria-hidden="true">→</span></a>
+          </div>
+          <h3 class="world-name" id="w1">Abismo</h3>
+        </div>
+        <div class="world-shade"></div>
+      </article>
+
+      <!-- Andes 3000 -->
+      <article class="world w-andes flip" aria-labelledby="w2">
+        <div class="world-bg" aria-hidden="true">
+          <div class="sun"></div>
+          <svg class="mtn" viewBox="0 0 1440 560" preserveAspectRatio="none">
+            <path d="M0 330 L180 250 L300 290 L470 150 L520 170 L560 140 L700 250 L860 200 L1000 120 L1050 140 L1090 115 L1250 230 L1440 180 V560 H0Z" fill="#5a1f1a" opacity=".85"/>
+            <path d="M1000 120 L1050 140 L1090 115 L1120 140 L1060 160 L1030 150Z" fill="#ffe3c2" opacity=".9"/>
+            <path d="M0 400 L140 340 L260 380 L420 260 L470 240 L520 262 L640 360 L820 300 L960 360 L1140 280 L1300 340 L1440 300 V560 H0Z" fill="#33101a"/>
+            <path d="M420 260 L470 240 L520 262 L495 275 L470 262 L445 276Z" fill="#ffd9b0" opacity=".85"/>
+            <path d="M0 470 L200 420 L380 460 L600 410 L780 470 L1000 430 L1200 480 L1440 440 V560 H0Z" fill="#1a0810"/>
+          </svg>
+          <svg class="condor" viewBox="0 0 120 40" fill="#1a0810"><path d="M60 22 C50 14 34 8 2 12 C22 14 36 18 46 26 C40 26 34 30 30 34 C42 30 52 28 58 28 L60 34 L62 28 C68 28 78 30 90 34 C86 30 80 26 74 26 C84 18 98 14 118 12 C86 8 70 14 60 22Z"/></svg>
+        </div>
+        <div class="world-inner">
+          <p class="world-idx">World 02 / 04 · Flight</p>
+          <figure class="world-visor">
+            <div class="lens"><img src="img/kid-wonder.webp" alt="A boy in a VR headset, mouth open, as if he were flying" loading="lazy" width="1200" height="896"></div>
+            <svg class="ticks" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="49" fill="none" stroke="var(--c)" stroke-width=".6" pathLength="360" stroke-dasharray="1 5"/><circle cx="50" cy="50" r="46" fill="none" stroke="var(--c)" stroke-width=".3" opacity=".5"/><path d="M50 0v5M50 95v5M0 50h5M95 50h5" stroke="var(--c)" stroke-width=".8"/></svg>
+            <span class="tag t1">Wind · 38 km/h</span><span class="tag t2">Sunrise 06:12</span>
+          </figure>
+          <div class="world-body">
+            <p class="world-promise">Spread a condor's wings and glide between volcanoes at sunrise.</p>
+            <p class="world-text">You lie flat on a flight rig, wind in your face, while Cotopaxi and Chimborazo slide by below. Lean, and you bank.</p>
+            <dl class="hud">
+              <div class="wide"><dt>Intensity</dt><dd>3 / 5<span class="bars" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></dd></div>
+              <div><dt>Min. age</dt><dd>7+<small>yrs</small></dd></div>
+              <div><dt>Duration</dt><dd>10<small>min</small></dd></div>
+              <div class="wide"><dt>Altitude</dt><dd><span data-count="5897">5,897</span><small>m a.s.l.</small></dd></div>
+            </dl>
+            <a class="world-link" href="#boletos">See the Andes 3000 ticket <span aria-hidden="true">→</span></a>
+          </div>
+          <h3 class="world-name" id="w2">Andes<span class="n-sm">3000</span></h3>
+        </div>
+        <div class="world-shade"></div>
+      </article>
+
+      <!-- Ciudad Neón -->
+      <article class="world w-neon" aria-labelledby="w3">
+        <div class="world-bg" aria-hidden="true">
+          <svg class="skyline" viewBox="0 0 1440 400" preserveAspectRatio="none">
+            <g fill="#2a0634">
+              <rect x="20" y="180" width="90" height="220"/><rect x="120" y="90" width="70" height="310"/><rect x="200" y="210" width="110" height="190"/><rect x="330" y="40" width="80" height="360"/><rect x="420" y="150" width="120" height="250"/><rect x="560" y="100" width="60" height="300"/><rect x="640" y="0" width="90" height="400"/><rect x="745" y="170" width="100" height="230"/><rect x="860" y="70" width="80" height="330"/><rect x="960" y="200" width="130" height="200"/><rect x="1110" y="60" width="70" height="340"/><rect x="1195" y="160" width="110" height="240"/><rect x="1320" y="110" width="110" height="290"/>
+            </g>
+            <g fill="#ff3fb8" opacity=".85">
+              <rect x="345" y="60" width="8" height="4"/><rect x="365" y="80" width="8" height="4"/><rect x="385" y="60" width="8" height="4"/><rect x="655" y="30" width="10" height="4"/><rect x="680" y="60" width="10" height="4"/><rect x="705" y="30" width="10" height="4"/><rect x="655" y="100" width="10" height="4"/><rect x="875" y="90" width="8" height="4"/><rect x="900" y="120" width="8" height="4"/><rect x="1125" y="90" width="8" height="4"/><rect x="1150" y="130" width="8" height="4"/><rect x="135" y="120" width="8" height="4"/><rect x="160" y="150" width="8" height="4"/><rect x="1340" y="140" width="10" height="4"/><rect x="1380" y="170" width="10" height="4"/>
+            </g>
+            <rect x="640" y="0" width="90" height="3" fill="#3ef0ff"/><rect x="330" y="40" width="80" height="3" fill="#ff3fb8"/><rect x="1110" y="60" width="70" height="3" fill="#3ef0ff"/>
+          </svg>
+          <div class="grid-floor"></div>
+          <div class="scan"></div>
+        </div>
+        <div class="world-inner">
+          <p class="world-idx">World 03 / 04 · Team mission</p>
+          <figure class="world-visor">
+            <div class="lens"><img src="img/arena.webp" alt="A free-roam VR arena where several players in headsets move through the space" loading="lazy" width="1376" height="768"></div>
+            <svg class="ticks" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="49" fill="none" stroke="var(--c)" stroke-width=".6" pathLength="360" stroke-dasharray="1 5"/><circle cx="50" cy="50" r="46" fill="none" stroke="var(--c)" stroke-width=".3" opacity=".5"/><path d="M50 0v5M50 95v5M0 50h5M95 50h5" stroke="var(--c)" stroke-width=".8"/></svg>
+            <span class="tag t1">System · 12% online</span><span class="tag t2">Squad · 4 / 6</span>
+          </figure>
+          <div class="world-body">
+            <p class="world-promise">A city gone dark, your team, and 20 minutes to switch it back on.</p>
+            <p class="world-text">Free roam across 400 m², no cables: you walk, run, crouch and talk over the radio. The team that listens wins.</p>
+            <dl class="hud">
+              <div class="wide"><dt>Intensity</dt><dd>4 / 5<span class="bars" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></dd></div>
+              <div><dt>Min. age</dt><dd>10+<small>yrs</small></dd></div>
+              <div><dt>Duration</dt><dd>20<small>min</small></dd></div>
+              <div class="wide"><dt>Players</dt><dd>2 – 6<small>per squad</small></dd></div>
+            </dl>
+            <a class="world-link" href="#boletos">See the Ciudad Neón ticket <span aria-hidden="true">→</span></a>
+          </div>
+          <h3 class="world-name" id="w3">Ciudad Neón</h3>
+        </div>
+        <div class="world-shade"></div>
+      </article>
+
+      <!-- Órbita -->
+      <article class="world w-orbita flip" aria-labelledby="w4">
+        <div class="world-bg" aria-hidden="true">
+          <div class="orbit-line"></div>
+          <div class="planet"></div>
+        </div>
+        <div class="world-inner">
+          <p class="world-idx">World 04 / 04 · Launch</p>
+          <figure class="world-visor">
+            <div class="lens"><img src="img/simulator.webp" alt="Teenagers strapped into a motion simulator during a virtual space launch" loading="lazy" width="1200" height="896"></div>
+            <svg class="ticks" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="49" fill="none" stroke="var(--c)" stroke-width=".6" pathLength="360" stroke-dasharray="1 5"/><circle cx="50" cy="50" r="46" fill="none" stroke="var(--c)" stroke-width=".3" opacity=".5"/><path d="M50 0v5M50 95v5M0 50h5M95 50h5" stroke="var(--c)" stroke-width=".8"/></svg>
+            <span class="tag t1">Ignition · T − 0</span><span class="tag t2">Low orbit · 408 km</span>
+          </figure>
+          <div class="world-body">
+            <p class="world-promise">A countdown, G-force on your chest and the whole Earth out the window.</p>
+            <p class="world-text">A six-axis motion simulator cabin that shakes, tilts and pins you to your seat. Eight minutes you'll be talking about all week.</p>
+            <dl class="hud">
+              <div class="wide"><dt>Intensity</dt><dd>5 / 5<span class="bars" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></dd></div>
+              <div><dt>Min. age</dt><dd>12+<small>· 1.30 m</small></dd></div>
+              <div><dt>Duration</dt><dd>8<small>min</small></dd></div>
+              <div class="wide"><dt>Orbital speed</dt><dd><span data-count="27600">27,600</span><small>km/h</small></dd></div>
+            </dl>
+            <a class="world-link" href="#boletos">See the Órbita ticket <span aria-hidden="true">→</span></a>
+          </div>
+          <h3 class="world-name" id="w4">Órbita</h3>
+        </div>
+        <div class="world-shade"></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= FEEL ================= -->
+  <section class="feel" id="sentir" aria-labelledby="feel-title">
+    <div class="feel-grid">
+      <div class="feel-head">
+        <p class="eyebrow">How it feels</p>
+        <h2 id="feel-title" class="split-lines">The best part starts when the headset <em>comes off</em>.</h2>
+      </div>
+      <figure class="glitch g1">
+        <img src="img/kid-wonder.webp" alt="A boy in a VR headset, mouth wide open in wonder" loading="lazy" width="1200" height="896">
+        <span class="g g-r" style="background-image:url('img/kid-wonder.webp')"></span>
+        <span class="g g-c" style="background-image:url('img/kid-wonder.webp')"></span>
+        <figcaption>Abismo · minute 7</figcaption>
+      </figure>
+      <div class="feel-copy reveal">
+        <p class="lead">Kids walk out talking about whales. Parents walk out speechless.</p>
+        <p>Every world pairs 4K headsets with wind, vibration, temperature and surround sound. Your body forgets it's in Guayaquil — which is exactly the point.</p>
+      </div>
+      <ul class="feel-facts reveal">
+        <li><b>01</b><span>A guide in every room, always within sight.</span></li>
+        <li><b>02</b><span>Headsets sanitized with UV light after every jump.</span></li>
+        <li><b>03</b><span>A viewing deck with screens: parents watch live what their kids are seeing.</span></li>
+        <li><b>04</b><span>No experience runs past 20 minutes. All thrill, no motion sickness.</span></li>
+      </ul>
+      <figure class="glitch g2">
+        <img src="img/friends-laugh.webp" alt="A group of friends pulling off their VR headsets, laughing hard" loading="lazy" width="1200" height="896">
+        <span class="g g-r" style="background-image:url('img/friends-laugh.webp')"></span>
+        <span class="g g-c" style="background-image:url('img/friends-laugh.webp')"></span>
+        <figcaption>Ciudad Neón · after the mission</figcaption>
+      </figure>
+      <p class="shouts"><span class="sr-only">What we hear most in the rooms: </span><span class="shouts-track"><span>Again!</span><i aria-hidden="true"></i><span class="o">Mom, look!</span><i aria-hidden="true"></i><span>I'm flying!</span><i aria-hidden="true"></i><span class="o">Don't let go!</span><i aria-hidden="true"></i><span>One more!</span><i aria-hidden="true"></i><span class="o">We won!</span></span></p>
+      <p class="feel-quote reveal">You come in a visitor.<br>You leave with <span>a story</span>.</p>
+    </div>
+  </section>
+
+  <!-- ================= TICKETS ================= -->
+  <section class="tickets" id="boletos" aria-labelledby="tk-title">
+    <div class="tickets-head">
+      <div>
+        <p class="eyebrow">Tickets</p>
+        <h2 id="tk-title">Choose your boarding gate</h2>
+      </div>
+      <p>Prices are per person, in US dollars. Buy online and go straight to your gate, no box-office line. Kids under 12 must come with an adult.</p>
+    </div>
+
+    <div class="passes">
+      <article class="pass p-abismo" aria-label="Abismo ticket, $12">
+        <div class="pass-main">
+          <div class="pass-top"><span class="brand"><i></i>Horizonte VR · Boarding pass</span><span class="when">Tue – Sun</span></div>
+          <div class="route">
+            <div class="from"><span class="code">GYE</span><span class="city">Guayaquil · 4 m</span></div>
+            <div class="path" aria-hidden="true"></div>
+            <div class="to"><span class="code">ABISMO</span><span class="city">Pacific · −3,200 m</span></div>
+          </div>
+          <dl class="pass-fields">
+            <div><dt>Passenger</dt><dd>The whole family</dd></div>
+            <div><dt>Duration</dt><dd>12 min</dd></div>
+            <div><dt>Age</dt><dd>6+</dd></div>
+            <div><dt>Intensity</dt><dd>●●○○○</dd></div>
+          </dl>
+        </div>
+        <div class="pass-stub">
+          <div class="gate"><span>Gate</span><b>A1</b></div>
+          <p class="price">$12<small>/ person</small></p>
+          <svg class="barcode" data-code="HZ-A1-ABISMO" viewBox="0 0 200 46" preserveAspectRatio="none" aria-hidden="true"></svg>
+          <a class="pass-buy" href="#">Buy Abismo</a>
+        </div>
+      </article>
+
+      <article class="pass p-andes" aria-label="Andes 3000 ticket, $12">
+        <div class="pass-main">
+          <div class="pass-top"><span class="brand"><i></i>Horizonte VR · Boarding pass</span><span class="when">Tue – Sun</span></div>
+          <div class="route">
+            <div class="from"><span class="code">GYE</span><span class="city">Guayaquil · 4 m</span></div>
+            <div class="path" aria-hidden="true"></div>
+            <div class="to"><span class="code">ANDES</span><span class="city">Cordillera · 5,897 m</span></div>
+          </div>
+          <dl class="pass-fields">
+            <div><dt>Passenger</dt><dd>Condor in training</dd></div>
+            <div><dt>Duration</dt><dd>10 min</dd></div>
+            <div><dt>Age</dt><dd>7+</dd></div>
+            <div><dt>Intensity</dt><dd>●●●○○</dd></div>
+          </dl>
+        </div>
+        <div class="pass-stub">
+          <div class="gate"><span>Gate</span><b>B2</b></div>
+          <p class="price">$12<small>/ person</small></p>
+          <svg class="barcode" data-code="HZ-B2-ANDES3000" viewBox="0 0 200 46" preserveAspectRatio="none" aria-hidden="true"></svg>
+          <a class="pass-buy" href="#">Buy Andes 3000</a>
+        </div>
+      </article>
+
+      <article class="pass p-neon" aria-label="Ciudad Neón ticket, $18">
+        <div class="pass-main">
+          <div class="pass-top"><span class="brand"><i></i>Horizonte VR · Boarding pass</span><span class="when">Tue – Sun</span></div>
+          <div class="route">
+            <div class="from"><span class="code">GYE</span><span class="city">Guayaquil · 4 m</span></div>
+            <div class="path" aria-hidden="true"></div>
+            <div class="to"><span class="code">NEÓN</span><span class="city">Sector 7 · no power</span></div>
+          </div>
+          <dl class="pass-fields">
+            <div><dt>Passenger</dt><dd>Squad of 2 to 6</dd></div>
+            <div><dt>Duration</dt><dd>20 min</dd></div>
+            <div><dt>Age</dt><dd>10+</dd></div>
+            <div><dt>Intensity</dt><dd>●●●●○</dd></div>
+          </dl>
+        </div>
+        <div class="pass-stub">
+          <div class="gate"><span>Gate</span><b>C3</b></div>
+          <p class="price">$18<small>/ person</small></p>
+          <svg class="barcode" data-code="HZ-C3-CIUDADNEON" viewBox="0 0 200 46" preserveAspectRatio="none" aria-hidden="true"></svg>
+          <a class="pass-buy" href="#">Buy Ciudad Neón</a>
+        </div>
+      </article>
+
+      <article class="pass p-orbita" aria-label="Órbita ticket, $10">
+        <div class="pass-main">
+          <div class="pass-top"><span class="brand"><i></i>Horizonte VR · Boarding pass</span><span class="when">Tue – Sun</span></div>
+          <div class="route">
+            <div class="from"><span class="code">GYE</span><span class="city">Guayaquil · 4 m</span></div>
+            <div class="path" aria-hidden="true"></div>
+            <div class="to"><span class="code">ÓRBITA</span><span class="city">Low orbit · 408 km</span></div>
+          </div>
+          <dl class="pass-fields">
+            <div><dt>Passenger</dt><dd>Space cadet</dd></div>
+            <div><dt>Duration</dt><dd>8 min</dd></div>
+            <div><dt>Age</dt><dd>12+ · 1.30 m</dd></div>
+            <div><dt>Intensity</dt><dd>●●●●●</dd></div>
+          </dl>
+        </div>
+        <div class="pass-stub">
+          <div class="gate"><span>Gate</span><b>D4</b></div>
+          <p class="price">$10<small>/ person</small></p>
+          <svg class="barcode" data-code="HZ-D4-ORBITA" viewBox="0 0 200 46" preserveAspectRatio="none" aria-hidden="true"></svg>
+          <a class="pass-buy" href="#">Buy Órbita</a>
+        </div>
+      </article>
+
+      <article class="pass p-total" aria-label="Horizonte Pass, all four worlds, $39">
+        <div class="pass-main">
+          <div class="pass-top"><span class="brand"><i></i>Horizonte Pass · all 4 worlds</span><span class="when">Family of 4: $139</span></div>
+          <div class="route">
+            <div class="from"><span class="code">GYE</span><span class="city">Guayaquil · 4 m</span></div>
+            <div class="path" aria-hidden="true"></div>
+            <div class="to"><span class="code">ALL</span><span class="city">Abismo · Andes · Neón · Órbita</span></div>
+          </div>
+          <dl class="pass-fields">
+            <div><dt>Passenger</dt><dd>You and your crew</dd></div>
+            <div><dt>Duration</dt><dd>≈ 3 hours</dd></div>
+            <div><dt>You save</dt><dd>$13 per person</dd></div>
+            <div><dt>Includes</dt><dd>Portal photo</dd></div>
+          </dl>
+        </div>
+        <div class="pass-stub">
+          <div class="gate"><span>Gate</span><b>H0</b></div>
+          <p class="price">$39<small>/ person</small></p>
+          <svg class="barcode" data-code="HZ-H0-PASEHORIZONTE" viewBox="0 0 200 46" preserveAspectRatio="none" aria-hidden="true"></svg>
+          <a class="pass-buy" href="#">Buy Horizonte Pass</a>
+        </div>
+      </article>
+    </div>
+
+    <div class="board" id="grupos">
+      <p class="eyebrow">Special departures</p>
+      <h3>Birthdays, schools and companies</h3>
+      <p>Groups get a private room, a reserved time slot and a mission guide who runs the whole show. You just bring the guests.</p>
+      <div class="board-table" role="list">
+        <div class="board-row head" aria-hidden="true"><span>Flight</span><span>Destination</span><span>Includes</span><span>From</span><span>Status</span></div>
+        <a class="board-row" href="#" role="listitem">
+          <span class="fl flap">HZ-101</span>
+          <span class="dest flap">Birthdays</span>
+          <span class="inc">Private “Hangar” room, two worlds per guest, cake and a group photo at the portal. From 10 guests.</span>
+          <span class="from">$22 / child</span>
+          <span class="st">Book a party</span>
+        </a>
+        <a class="board-row" href="#" role="listitem">
+          <span class="fl flap">HZ-202</span>
+          <span class="dest flap">School trips</span>
+          <span class="inc">A curriculum-aligned lesson guide to oceans, volcanoes and space. Groups of 20 to 120 students.</span>
+          <span class="from">$9 / student</span>
+          <span class="st">Plan a visit</span>
+        </a>
+        <a class="board-row" href="#" role="listitem">
+          <span class="fl flap">HZ-303</span>
+          <span class="dest flap">Corporate events</span>
+          <span class="inc">Ciudad Neón in team-building mode, plus a meeting room and catering. Up to 200 people.</span>
+          <span class="from">Custom</span>
+          <span class="st">Get a proposal</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CLOSING ================= -->
+  <section class="closing" id="salto" aria-labelledby="close-title">
+    <div class="closing-bg">
+      <img src="img/building-night.webp" alt="The Horizonte VR building at night, its circular entrance lit up like a portal" loading="lazy" width="1376" height="768">
+    </div>
+    <div class="closing-inner">
+      <h2 id="close-title">Your first <span class="salto">leap</span></h2>
+      <p class="closing-lead">The portal is open Tuesday through Sunday. Buy your tickets online, arrive fifteen minutes early and let the rest take care of itself.</p>
+      <div class="closing-cta">
+        <a class="btn btn-primary" href="#"><span class="ring-ico" aria-hidden="true"></span>Buy tickets</a>
+        <a class="btn btn-ghost" href="#">Book a birthday</a>
+      </div>
+      <div class="info">
+        <div>
+          <h3>Where</h3>
+          <p>Av. Francisco de Orellana, Kennedy Norte<br>Guayaquil, Ecuador</p>
+          <p style="margin-top:10px;color:var(--muted)">Free parking · Wheelchair-accessible viewing deck</p>
+        </div>
+        <div>
+          <h3>Hours</h3>
+          <ul class="hours">
+            <li><span>Monday</span><span>Closed · recalibrating</span></li>
+            <li><span>Tuesday to Thursday</span><span>2 pm – 9 pm</span></li>
+            <li><span>Friday</span><span>2 pm – 11 pm</span></li>
+            <li><span>Saturday, Sunday &amp; holidays</span><span>10 am – 11 pm</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Before you come</h3>
+          <p>Wear comfortable clothes and closed-toe shoes. Glasses fit under the headset.</p>
+        </div>
+      </div>
+      <footer class="foot">
+        <span>© 2026 Horizonte VR · Guayaquil</span>
+        <span>Concept project</span>
+      </footer>
+    </div>
+  </section>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  'use strict';
+  var root = document.documentElement;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var small = window.matchMedia('(max-width: 760px)').matches;
+  var hasGSAP = !!(window.gsap && window.ScrollTrigger);
+  var clamp = function(v,a,b){return Math.max(a,Math.min(b,v));};
+  var fmt = function(n){return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g,',');};
+
+  /* ---------- barcodes ---------- */
+  document.querySelectorAll('.barcode').forEach(function(svg){
+    var s = svg.getAttribute('data-code') || 'HZ', h = 2166136261, x = 2, out = '';
+    function rnd(){ h ^= h << 13; h ^= h >>> 17; h ^= h << 5; return (h >>> 0) / 4294967296; }
+    for (var i=0;i<s.length;i++){ h = Math.imul(h ^ s.charCodeAt(i), 16777619); }
+    while (x < 198){
+      var w = 1 + Math.floor(rnd()*3.2), gap = 1 + Math.floor(rnd()*2.6);
+      if (x + w > 198) break;
+      out += '<rect x="'+x+'" y="0" width="'+w+'" height="46"/>';
+      x += w + gap;
+    }
+    svg.innerHTML = out;
+  });
+
+  /* ---------- nav progress ring ---------- */
+  var prog = document.querySelector('.logo .prog');
+  function navProg(){
+    var max = document.documentElement.scrollHeight - innerHeight;
+    prog.style.strokeDashoffset = (100 - clamp(scrollY / Math.max(1,max),0,1)*100).toFixed(2);
+  }
+  var navEl = document.querySelector('.nav'), feelEl = document.getElementById('sentir');
+  function navSolid(){ navEl.classList.toggle('solid', feelEl.getBoundingClientRect().top < 80); }
+  addEventListener('scroll', function(){ navProg(); navSolid(); }, {passive:true}); navProg(); navSolid();
+
+  /* ---------- WebGL warp tunnel ---------- */
+  var hero = document.querySelector('.hero');
+  var heroCopy = document.getElementById('heroCopy');
+  var beats = Array.prototype.slice.call(document.querySelectorAll('.beat'));
+  var hudEl = document.querySelector('.hero-hud'), hudVel = document.getElementById('hudVel'), hudDist = document.getElementById('hudDist');
+  var canvas = document.getElementById('warp');
+  var gl = null;
+
+  function initWarp(){
+    if (reduce || !window.THREE) return false;
+    var renderer;
+    try {
+      renderer = new THREE.WebGLRenderer({canvas: canvas, antialias: false, alpha: false, powerPreference: 'high-performance'});
+    } catch(e){ return false; }
+    if (!renderer || !renderer.getContext()) return false;
+    root.classList.add('webgl');
+
+    var DPR = Math.min(window.devicePixelRatio || 1, small ? 1.75 : 2);
+    renderer.setPixelRatio(DPR);
+    renderer.setClearColor(0x05040b, 1);
+    var scene = new THREE.Scene();
+    var cam = new THREE.PerspectiveCamera(small ? 74 : 60, innerWidth/innerHeight, 1, 5000);
+    cam.position.set(0,0,140);
+
+    var PORTAL_Z = -2000;
+    var N = small ? 2400 : 7000;
+    var pos = new Float32Array(N*3), col = new Float32Array(N*3), siz = new Float32Array(N), dee = new Float32Array(N);
+    var palette = [[0.55,0.36,1.0],[0.24,0.94,1.0],[0.95,0.95,1.0],[0.95,0.95,1.0],[1.0,0.31,0.75],[0.55,0.36,1.0],[0.24,0.94,1.0]];
+    for (var i=0;i<N;i++){
+      var deep = Math.random() < 0.16; dee[i] = deep ? 1 : 0;
+      var th = Math.random()*Math.PI*2;
+      var r = deep ? 30 + Math.random()*420 : 16 + Math.pow(Math.random(),0.75)*170;
+      pos[i*3] = Math.cos(th)*r;
+      pos[i*3+1] = Math.sin(th)*r;
+      pos[i*3+2] = deep ? PORTAL_Z - 60 - Math.random()*1600 : 160 - Math.random()*2120;
+      var c = palette[(Math.random()*palette.length)|0];
+      col[i*3]=c[0]; col[i*3+1]=c[1]; col[i*3+2]=c[2];
+      siz[i] = (Math.random() < 0.06 ? 3.2 : 0.8 + Math.random()*1.6) * (small ? 1.25 : 1);
+    }
+    var starGeo = new THREE.BufferGeometry();
+    starGeo.setAttribute('position', new THREE.BufferAttribute(pos,3));
+    starGeo.setAttribute('aColor', new THREE.BufferAttribute(col,3));
+    starGeo.setAttribute('aSize', new THREE.BufferAttribute(siz,1));
+    starGeo.setAttribute('aDeep', new THREE.BufferAttribute(dee,1));
+    var uniforms = { uTime:{value:0}, uPR:{value:DPR}, uStretch:{value:4}, uScale:{value: innerHeight/2}, uCamZ:{value:140}, uDrift:{value:0} };
+    scene.fog = new THREE.Fog(0x05040b, 250, 1700);
+    var starMat = new THREE.ShaderMaterial({
+      uniforms: uniforms, transparent:true, depthWrite:false, blending:THREE.AdditiveBlending,
+      vertexShader: [
+        'attribute vec3 aColor; attribute float aSize; attribute float aDeep;',
+        'uniform float uPR; uniform float uScale; uniform float uTime; uniform float uCamZ; uniform float uDrift;',
+        'varying vec3 vC; varying float vA;',
+        'void main(){',
+        '  vec3 p = position;',
+        '  if (aDeep < 0.5) { float rel = mod(p.z - uCamZ + uDrift + 2300.0, 2420.0) - 2300.0; p.z = uCamZ + rel; }',
+        '  vec4 mv = modelViewMatrix*vec4(p,1.0);',
+        '  float d = -mv.z;',
+        '  gl_Position = projectionMatrix*mv;',
+        '  gl_PointSize = clamp(aSize*uPR*uScale*1.6/max(d,1.0), 0.0, 40.0*uPR);',
+        '  float tw = 0.75 + 0.25*sin(uTime*2.0 + position.x*0.37 + position.y*0.11);',
+        '  vA = smoothstep(2.0, 40.0, d) * (0.18 + 0.82*smoothstep(2600.0, 300.0, d)) * tw;',
+        '  vC = aColor;',
+        '}'].join('\n'),
+      fragmentShader: [
+        'varying vec3 vC; varying float vA;',
+        'void main(){',
+        '  vec2 p = gl_PointCoord - 0.5; float d = length(p);',
+        '  float a = smoothstep(0.5, 0.0, d); a = a*a;',
+        '  gl_FragColor = vec4(vC*(0.6+1.2*smoothstep(0.18,0.0,d)), a*vA);',
+        '}'].join('\n')
+    });
+    var tunnel = new THREE.Group();
+    tunnel.add(new THREE.Points(starGeo, starMat));
+
+    // warp streaks (subset)
+    var M = small ? 700 : 2200;
+    var lp = new Float32Array(M*6), lc = new Float32Array(M*6), lt = new Float32Array(M*2);
+    for (var k=0;k<M;k++){
+      var s = (Math.random()*N)|0; while (dee[s]) s = (Math.random()*N)|0;
+      for (var e=0;e<2;e++){
+        lp[k*6+e*3]=pos[s*3]; lp[k*6+e*3+1]=pos[s*3+1]; lp[k*6+e*3+2]=pos[s*3+2];
+        lc[k*6+e*3]=col[s*3]; lc[k*6+e*3+1]=col[s*3+1]; lc[k*6+e*3+2]=col[s*3+2];
+        lt[k*2+e]=e;
+      }
+    }
+    var lineGeo = new THREE.BufferGeometry();
+    lineGeo.setAttribute('position', new THREE.BufferAttribute(lp,3));
+    lineGeo.setAttribute('aColor', new THREE.BufferAttribute(lc,3));
+    lineGeo.setAttribute('aTail', new THREE.BufferAttribute(lt,1));
+    var lineMat = new THREE.ShaderMaterial({
+      uniforms: uniforms, transparent:true, depthWrite:false, blending:THREE.AdditiveBlending,
+      vertexShader: [
+        'attribute vec3 aColor; attribute float aTail; uniform float uStretch; uniform float uCamZ; uniform float uDrift;',
+        'varying vec3 vC; varying float vA;',
+        'void main(){',
+        '  vec3 p = position; float rel = mod(p.z - uCamZ + uDrift + 2300.0, 2420.0) - 2300.0; p.z = uCamZ + rel - aTail*uStretch;',
+        '  vec4 mv = modelViewMatrix*vec4(p,1.0);',
+        '  gl_Position = projectionMatrix*mv;',
+        '  float d = -mv.z;',
+        '  vA = (1.0-aTail*0.95) * smoothstep(4.0,60.0,d) * smoothstep(1800.0,200.0,d) * clamp((uStretch-6.0)/60.0,0.0,1.0);',
+        '  vC = aColor;',
+        '}'].join('\n'),
+      fragmentShader: 'varying vec3 vC; varying float vA; void main(){ gl_FragColor = vec4(vC, vA*0.9); }'
+    });
+    tunnel.add(new THREE.LineSegments(lineGeo, lineMat));
+    scene.add(tunnel);
+
+    // nebula behind the portal
+    var neb = new THREE.Mesh(new THREE.PlaneGeometry(9000, 6000), new THREE.ShaderMaterial({
+      uniforms: pu, transparent:true, depthWrite:false, blending:THREE.AdditiveBlending,
+      vertexShader: 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix*modelViewMatrix*vec4(position,1.0); }',
+      fragmentShader: [
+        'varying vec2 vUv; uniform float uTime;',
+        'float h(vec2 p){ return fract(sin(dot(p, vec2(127.1,311.7)))*43758.5453); }',
+        'float n(vec2 p){ vec2 i=floor(p), f=fract(p); f=f*f*(3.0-2.0*f); return mix(mix(h(i),h(i+vec2(1,0)),f.x), mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x), f.y); }',
+        'float fbm(vec2 p){ float v=0.0, a=0.5; for(int i=0;i<5;i++){ v+=a*n(p); p*=2.03; a*=0.5; } return v; }',
+        'void main(){',
+        '  vec2 p = (vUv-0.5)*vec2(1.5,1.0);',
+        '  float d = length(p);',
+        '  float f = fbm(p*3.0 + vec2(uTime*0.01, -uTime*0.008));',
+        '  float g = fbm(p*5.0 - f + vec2(-uTime*0.012, 0.0));',
+        '  vec3 c = mix(vec3(0.33,0.18,0.75), vec3(0.08,0.55,0.75), g) * smoothstep(0.35, 0.95, f+g*0.4) * smoothstep(0.75, 0.05, d);',
+        '  gl_FragColor = vec4(c*0.55, 1.0);',
+        '}'].join('\n')
+    }));
+    neb.position.z = -4300; scene.add(neb);
+    // gates along the tunnel: arcs you fly through
+    var gates = [];
+    for (var g=1; g<=7; g++){
+      var gm = new THREE.Mesh(new THREE.TorusGeometry(128 + (g%2)*22, 0.35, 6, 200, Math.PI*(1.1 + (g%3)*0.3)),
+        new THREE.MeshBasicMaterial({color: g%2 ? 0x8b5cff : 0x3ef0ff, transparent:true, opacity:.55, blending:THREE.AdditiveBlending, depthWrite:false}));
+      gm.position.z = 140 - g*262; gm.rotation.z = g*1.7; gates.push(gm); scene.add(gm);
+    }
+    // the portal
+    var portal = new THREE.Group(); portal.position.z = PORTAL_Z; scene.add(portal);
+    var pu = { uTime:{value:0}, uOpen:{value:0} };
+    var halo = new THREE.Mesh(new THREE.PlaneGeometry(600,600), new THREE.ShaderMaterial({
+      uniforms: pu, transparent:true, depthWrite:false, blending:THREE.AdditiveBlending,
+      vertexShader: 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix*modelViewMatrix*vec4(position,1.0); }',
+      fragmentShader: [
+        'varying vec2 vUv; uniform float uTime; uniform float uOpen;',
+        'void main(){',
+        '  vec2 p = (vUv-0.5)*600.0; float d = length(p); float a = atan(p.y,p.x);',
+        '  vec3 cA = vec3(0.55,0.36,1.0), cB = vec3(0.24,0.94,1.0), cM = vec3(1.0,0.3,0.75);',
+        '  float R = 80.0;',
+        '  float ring = exp(-pow((d-R)/2.6,2.0))*1.6 + exp(-abs(d-R)/14.0)*0.55 + exp(-abs(d-R)/60.0)*0.18;',
+        '  vec3 rc = mix(cA, cB, 0.5+0.5*sin(a*2.0 + uTime*0.9));',
+        '  rc = mix(rc, cM, 0.25*(0.5+0.5*sin(a*3.0 - uTime*1.3)));',
+        '  float inside = smoothstep(R+2.0, R-14.0, d);',
+        '  float l = log(d+1.0);',
+        '  float sw = 0.5+0.5*sin(a*5.0 + l*9.0 - uTime*2.2);',
+        '  float sw2 = 0.5+0.5*sin(a*3.0 - l*6.0 + uTime*1.4);',
+        '  float v = inside*(0.10 + 0.55*pow(sw*sw2,1.4) + 0.2*uOpen) ;',
+        '  float core = inside*exp(-d/22.0)*(0.9+0.6*uOpen);',
+        '  vec3 c = rc*ring + mix(cA,cB,sw)*v*0.75 + vec3(0.85,0.95,1.0)*core;',
+        '  float edge = smoothstep(300.0, 220.0, d);',
+        '  gl_FragColor = vec4(c*edge, 1.0);',
+        '}'].join('\n')
+    }));
+    portal.add(halo);
+    var ringA = new THREE.Mesh(new THREE.TorusGeometry(80, 0.55, 8, 240), new THREE.MeshBasicMaterial({color:0xbff6ff, transparent:true, opacity:.9, blending:THREE.AdditiveBlending, depthWrite:false, fog:false}));
+    var ringB = new THREE.Mesh(new THREE.TorusGeometry(92, 0.3, 6, 240, Math.PI*1.4), new THREE.MeshBasicMaterial({color:0x8b5cff, transparent:true, opacity:.8, blending:THREE.AdditiveBlending, depthWrite:false, fog:false}));
+    var ringC = new THREE.Mesh(new THREE.TorusGeometry(104, 0.22, 6, 240, Math.PI*0.7), new THREE.MeshBasicMaterial({color:0x3ef0ff, transparent:true, opacity:.6, blending:THREE.AdditiveBlending, depthWrite:false, fog:false}));
+    portal.add(ringA, ringB, ringC);
+
+    function size(){
+      var w = innerWidth, h = innerHeight;
+      renderer.setSize(w, h, false);
+      cam.aspect = w/h; cam.updateProjectionMatrix();
+      uniforms.uScale.value = h/2 / Math.tan(cam.fov*Math.PI/360) / 2;
+    }
+    size();
+    addEventListener('resize', function(){ size(); kick(); });
+
+    var mx=0,my=0,tx=0,ty=0;
+    addEventListener('pointermove', function(e){ tx = e.clientX/innerWidth*2-1; ty = e.clientY/innerHeight*2-1; }, {passive:true});
+
+    var camZ = 140, lastZ = 140, vel = 0, t0 = performance.now(), last = t0, running = false;
+    function heroP(){ var H = hero.offsetHeight; return { p: clamp(scrollY / H, 0, 1), extra: clamp((scrollY - H)/innerHeight, 0, 1.2) }; }
+    function isActive(){ return !document.hidden && scrollY < hero.offsetHeight + innerHeight*1.4; }
+    function ease(x){ return x<.5 ? 2*x*x : 1-Math.pow(-2*x+2,2)/2; }
+
+    function frame(now){
+      if (!isActive()){ running = false; canvas.style.visibility = 'hidden'; return; }
+      canvas.style.visibility = 'visible';
+      var t = (now - t0)/1000, dt = Math.min(0.05, (now - last)/1000); last = now;
+      uniforms.uDrift.value += dt * 70;
+      var hp = heroP();
+      var target = 140 + (PORTAL_Z + 115 - 140) * ease(hp.p) - hp.extra*60;
+      camZ += (target - camZ) * 0.085;
+      var dz = Math.abs(camZ - lastZ); lastZ = camZ;
+      vel += (dz - vel) * 0.12;
+      mx += (tx - mx)*0.05; my += (ty - my)*0.05;
+      var damp = 1 - clamp(hp.p*1.15,0,1)*0.85;
+      cam.position.set(mx*14*damp, -my*9*damp, camZ + Math.sin(t*0.5)*4);
+      cam.lookAt(mx*3*damp, -my*2*damp, camZ - 600);
+      cam.rotateZ(-mx*0.04 + Math.sin(t*0.2)*0.01);
+      tunnel.rotation.z = t*0.015 + hp.p*1.6;
+      uniforms.uTime.value = t; pu.uTime.value = t;
+      uniforms.uStretch.value = 18 + Math.min(vel*16, 420);
+      uniforms.uCamZ.value = camZ;
+      for (var gi=0; gi<gates.length; gi++) gates[gi].rotation.z += dt*(gi%2 ? .12 : -.09);
+      pu.uOpen.value = clamp((hp.p-0.75)*4, 0, 1) + hp.extra*0.6;
+      ringB.rotation.z = t*0.35; ringC.rotation.z = -t*0.22;
+      ringA.scale.setScalar(1 + Math.sin(t*1.6)*0.006);
+      renderer.render(scene, cam);
+
+      // DOM narrative bound to the same progress
+      var p = hp.p;
+      var o = clamp(1 - p/0.16, 0, 1);
+      heroCopy.style.opacity = o.toFixed(3);
+      heroCopy.style.transform = 'translate3d(0,' + (-p*80).toFixed(1) + 'px,0) scale(' + (1 + p*1.4).toFixed(3) + ')';
+      heroCopy.style.visibility = o <= 0 ? 'hidden' : 'visible';
+      heroCopy.style.setProperty('--ca', (1.5 + Math.min(vel*0.5, 14)).toFixed(2) + 'px');
+      var ranges = [[0.17,0.33],[0.35,0.51],[0.53,0.69]];
+      for (var b=0;b<beats.length;b++){
+        var r0 = ranges[b][0], r1 = ranges[b][1], q = clamp((p - r0)/(r1 - r0), 0, 1);
+        var op = q<=0||q>=1 ? 0 : Math.min(1, Math.sin(q*Math.PI)*1.8);
+        beats[b].style.opacity = op.toFixed(3);
+        beats[b].style.transform = 'translate(-50%,-50%) scale(' + (0.86 + q*0.4).toFixed(3) + ')';
+        beats[b].style.filter = 'blur(' + (Math.abs(q-0.5)*10).toFixed(1) + 'px)';
+      }
+      hudEl.style.opacity = clamp(1 - (p-0.62)/0.08, 0, 1).toFixed(2);
+      hudVel.textContent = (Math.min(0.07 + vel/9, 0.99)).toFixed(2) + ' c';
+      hudDist.textContent = fmt(Math.max(0, camZ - PORTAL_Z)) + ' m';
+      requestAnimationFrame(frame);
+    }
+    function kick(){ if (!running && isActive()){ running = true; requestAnimationFrame(frame); } }
+    addEventListener('scroll', kick, {passive:true});
+    document.addEventListener('visibilitychange', kick);
+    kick();
+    return true;
+  }
+  try { gl = initWarp(); } catch(err){ root.classList.remove('webgl'); console.warn('warp off', err); }
+
+  /* ---------- GSAP choreography ---------- */
+  if (!hasGSAP || reduce) return;
+  gsap.registerPlugin(ScrollTrigger);
+  root.classList.add('pin');
+
+  var stage = document.getElementById('stage');
+  var worlds = gsap.utils.toArray('.world');
+  var railItems = gsap.utils.toArray('.worlds-rail li');
+  var colors = ['#2ee6c8','#ffb347','#ff3fb8','#ad86ff'];
+  var rings = worlds.map(function(w,i){
+    var r = document.createElement('div'); r.className = 'portal-ring'; r.setAttribute('aria-hidden','true');
+    r.style.setProperty('--rc', colors[i]); stage.appendChild(r); return r;
+  });
+  var maxR = function(){ return Math.hypot(innerWidth, innerHeight)/2 + 40; };
+  worlds.forEach(function(w){ w.style.clipPath = 'circle(0px at 50% 50%)'; });
+  var setRail = function(i){ railItems.forEach(function(li,j){ li.classList.toggle('on', j===i); }); };
+
+  var tl = gsap.timeline({
+    defaults:{ease:'none'},
+    scrollTrigger:{ trigger:'#mundos', start:'top top', end:function(){ return '+=' + Math.round(innerHeight * (small ? 6 : 6.6)); }, pin: stage, scrub: 0.7, invalidateOnRefresh:true, anticipatePin:1,
+      onUpdate:function(self){ var i = Math.min(3, Math.floor(self.progress * 4.0001 - 0.15)); setRail(Math.max(0,i)); } }
+  });
+
+  worlds.forEach(function(w,i){
+    var o = {r:0}, ring = rings[i];
+    var name = w.querySelector('.world-name'), visor = w.querySelector('.world-visor'), body = w.querySelector('.world-body'), bg = w.querySelector('.world-bg');
+    var at = i * 1.65;
+    tl.to(o, {r: maxR, duration:1, ease:'power2.in', onUpdate:function(){
+        w.style.clipPath = 'circle(' + o.r.toFixed(1) + 'px at 50% 50%)';
+        var R = o.r*2; ring.style.width = R + 'px'; ring.style.height = R + 'px';
+        var f = o.r / maxR(); ring.style.opacity = (f <= 0.001 || f >= 0.995) ? 0 : Math.min(1, (1-f)*3).toFixed(3);
+      }}, at)
+      .fromTo(name, {scale:1.5, yPercent:20}, {scale:1, yPercent:0, duration:1, ease:'power2.out'}, at)
+      .fromTo(visor, {scale:.35, rotate:-30, opacity:0}, {scale:1, rotate:0, opacity:1, duration:.9, ease:'power2.out'}, at + .15)
+      .fromTo(body, {y:80, opacity:0}, {y:0, opacity:1, duration:.7, ease:'power2.out'}, at + .35)
+      .fromTo(bg, {scale:1.25}, {scale:1, duration:1.6, ease:'power1.out'}, at);
+    if (i > 0){
+      var prev = worlds[i-1];
+      tl.to(prev.querySelector('.world-inner'), {scale:.86, duration:1, ease:'power2.in'}, at)
+        .to(prev.querySelector('.world-shade'), {opacity:.75, duration:1}, at);
+    }
+    // dwell: drift name, tilt type, run instrument counters
+    tl.to(name, {xPercent: (w.classList.contains('flip') ? -2.5 : 2.5), duration:.65}, at + 1)
+      .to(visor.querySelector('img'), {scale:1.0, duration:.65}, at + 1);
+    w.querySelectorAll('[data-count]').forEach(function(el){
+      var end = +el.getAttribute('data-count'), pre = el.getAttribute('data-prefix') || '', c = {v:0};
+      tl.to(c, {v:end, duration:1.1, ease:'power2.out', onUpdate:function(){ el.textContent = pre + fmt(c.v); }}, at + .3);
+    });
+  });
+  tl.to({}, {duration:.4});
+
+  // Tilt Warp variable axes: world names lean with the pointer
+  var names = gsap.utils.toArray('.world-name');
+  addEventListener('pointermove', function(e){
+    var x = (e.clientX/innerWidth - .5) * 50, y = (e.clientY/innerHeight - .5) * -40;
+    names.forEach(function(n){ gsap.to(n, {'--xr': y, '--yr': x, duration:.8, overwrite:'auto'}); });
+  }, {passive:true});
+  names.forEach(function(n){ n.style.fontVariationSettings = '"XROT" var(--xr,0), "YROT" var(--yr,0)'; });
+
+  /* feel: headline lines + glitch photographs */
+  gsap.from('.feel-head h2', {yPercent:30, opacity:0, duration:1.1, ease:'expo.out', scrollTrigger:{trigger:'.feel-head', start:'top 82%'}});
+  gsap.utils.toArray('.reveal').forEach(function(el){
+    gsap.from(el, {y:50, opacity:0, duration:1, ease:'expo.out', scrollTrigger:{trigger:el, start:'top 86%'}});
+  });
+  gsap.utils.toArray('.glitch').forEach(function(fig){
+    var img = fig.querySelector('img'), r = fig.querySelector('.g-r'), c = fig.querySelector('.g-c');
+    gsap.set(fig, {clipPath:'inset(0% 0% 100% 0%)'});
+    ScrollTrigger.create({ trigger: fig, start:'top 78%', once:true, onEnter:function(){
+      var g = gsap.timeline();
+      g.set(img, {opacity:0}).set([r,c], {opacity:1});
+      for (var s=0;s<9;s++){
+        var a = Math.random()*70, b = Math.random()*(100-a-8);
+        g.set(fig, {clipPath:'inset(' + a.toFixed(0) + '% 0% ' + b.toFixed(0) + '% 0%)'}, s*0.055)
+         .set(r, {x: gsap.utils.random(-46,46), y: gsap.utils.random(-6,6)}, s*0.055)
+         .set(c, {x: gsap.utils.random(-46,46), y: gsap.utils.random(-6,6)}, s*0.055);
+      }
+      g.set(fig, {clipPath:'inset(0% 0% 0% 0%)'}, .5)
+       .set(r, {x:-24}, .5).set(c, {x:24}, .5)
+       .to(r, {x:0, y:0, duration:1.1, ease:'elastic.out(1,0.35)'}, .55)
+       .to(c, {x:0, y:0, duration:1.1, ease:'elastic.out(1,0.35)'}, .55)
+       .set(img, {opacity:1}, 1.7).set([r,c], {opacity:0}, 1.7)
+       .add(function(){ fig.style.clipPath = 'none'; }, 1.7);
+    }});
+    gsap.fromTo(img, {yPercent:-4, scale:1.1}, {yPercent:4, scale:1.1, ease:'none', scrollTrigger:{trigger:fig, start:'top bottom', end:'bottom top', scrub:true}});
+  });
+  gsap.fromTo('.shouts-track', {xPercent:0}, {xPercent:-38, ease:'none', scrollTrigger:{trigger:'.shouts', start:'top bottom', end:'bottom top', scrub:true}});
+  gsap.from('.feel-facts li', {x:-30, opacity:0, stagger:.1, duration:.8, ease:'power3.out', scrollTrigger:{trigger:'.feel-facts', start:'top 82%'}});
+
+  /* tickets: passes slide in like they're being dealt onto a counter */
+  gsap.from('.tickets-head > *', {y:40, opacity:0, stagger:.12, duration:1, ease:'expo.out', scrollTrigger:{trigger:'.tickets-head', start:'top 82%'}});
+  gsap.utils.toArray('.pass').forEach(function(p,i){
+    var dir = i % 2 ? 1 : -1;
+    gsap.fromTo(p, {xPercent: dir*70, rotate: dir*7, rotateY: dir*-18, opacity:0},
+      {xPercent:0, rotate: dir*-0.55, rotateY:0, opacity:1, duration:1.15, ease:'expo.out', scrollTrigger:{trigger:p, start:'top 90%'}});
+  });
+
+  /* departures board: split-flap scramble */
+  var glyphs = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-';
+  gsap.utils.toArray('.flap').forEach(function(el){
+    var final = el.textContent; el.setAttribute('aria-label', final);
+    ScrollTrigger.create({trigger:el, start:'top 90%', once:true, onEnter:function(){
+      var o = {p:0};
+      gsap.to(o, {p:1, duration:1.1, ease:'power1.inOut', onUpdate:function(){
+        var n = Math.floor(o.p * final.length), s = final.slice(0,n);
+        for (var k=n;k<final.length;k++) s += final[k] === ' ' ? ' ' : glyphs[(Math.random()*glyphs.length)|0];
+        el.textContent = s;
+      }, onComplete:function(){ el.textContent = final; }});
+    }});
+  });
+  gsap.from('.board-row:not(.head)', {opacity:0, y:20, stagger:.12, duration:.7, scrollTrigger:{trigger:'.board-table', start:'top 85%'}});
+
+  /* closing */
+  gsap.fromTo('.closing-bg img', {scale:1.35}, {scale:1, ease:'none', scrollTrigger:{trigger:'.closing', start:'top bottom', end:'bottom bottom', scrub:true}});
+  var salto = document.querySelector('.salto');
+  ScrollTrigger.create({trigger:'.closing h2', start:'top 85%', once:true, onEnter:function(){
+    gsap.timeline()
+      .fromTo(salto, {opacity:0}, {opacity:1, duration:.05})
+      .to(salto, {opacity:.15, duration:.05}, .12).to(salto, {opacity:1, duration:.05}, .2)
+      .to(salto, {opacity:.3, duration:.04}, .38).to(salto, {opacity:1, duration:.05}, .46);
+  }});
+  gsap.from('.closing-lead, .closing-cta, .info > div', {y:40, opacity:0, stagger:.1, duration:1, ease:'expo.out', scrollTrigger:{trigger:'.closing-lead', start:'top 92%'}});
+
+  addEventListener('load', function(){ ScrollTrigger.refresh(); });
+})();
+</script>
+</body>
+</html>

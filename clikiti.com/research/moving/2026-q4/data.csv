@@ -1,0 +1,32 @@
+# The State of Independent Moving Company Websites 2026 (Q4 2026). CC BY 4.0, credit Clikiti with a link: https://clikiti.com/research/moving
+"section","id","label","standard","metric","value"
+"summary","sites","Websites scanned","","count",185
+"summary","median","Median overall score","","score_0_100",76
+"summary","mean","Mean overall score","","score_0_100",77
+"summary","moe","Margin of error (95%)","","percentage_points",7.2
+"summary","weak","Sites scoring under 60","","percent",1
+"question","estimate","Is the price fixed?","Customer question 2","percent_pass",19
+"question","deposit","What's the deposit, and can I cancel?","Customer question 8","percent_pass",24
+"question","valuation","What if something breaks?","Customer question 5","percent_pass",31
+"question","calendar","Are you free on my date?","Customer question 7","percent_pass",31
+"question","price","What does an hour cost, and how many movers?","Customer question 3","percent_pass",32
+"question","dot","Are you licensed to move me?","Customer question 4","percent_pass",43
+"question","reviews","Do other customers vouch for you?","Customer question 9","percent_pass",63
+"question","quote","Can I get a quote without calling?","Customer question 1","percent_pass",84
+"question","packing","Will you pack for me?","Customer question 6","percent_pass",85
+"technical","lcp","Loads in under 2.5 s on a phone","Core Web Vitals · LCP","percent_fail",87
+"technical","con","Text contrast passes 4.5:1","WCAG 1.4.3","percent_fail",84
+"technical","schema","MovingCompany or local business structured data","Schema.org · MovingCompany","percent_fail",36
+"technical","alt","Images have text descriptions","WCAG 1.1.1","percent_fail",24
+"segment","local","Local residential movers","","median_score",79
+"segment","local","Local residential movers","","percent_under_60",0
+"segment","local","Local residential movers","","sites",74
+"segment","long","Long-distance and interstate movers","","median_score",75
+"segment","long","Long-distance and interstate movers","","percent_under_60",0
+"segment","long","Long-distance and interstate movers","","sites",36
+"segment","store","Moving and storage companies","","median_score",76
+"segment","store","Moving and storage companies","","percent_under_60",2
+"segment","store","Moving and storage companies","","sites",41
+"segment","spec","Specialty movers: piano, senior and office","","median_score",78
+"segment","spec","Specialty movers: piano, senior and office","","percent_under_60",0
+"segment","spec","Specialty movers: piano, senior and office","","sites",34

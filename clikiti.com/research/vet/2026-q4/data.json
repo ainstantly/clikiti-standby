@@ -1,0 +1,297 @@
+{
+  "title": "The State of Independent Vet Clinic Websites 2026",
+  "edition": "2026-Q4",
+  "period": "Q4 2026",
+  "sample": false,
+  "source": "corpus",
+  "note": "Aggregates computed from automated scans. No individual site is identified.",
+  "url": "https://clikiti.com/research/vet/2026-q4",
+  "scannedAt": "2026-10-15T12:50:24.611Z",
+  "publishedAt": "2026-10-15T12:12:53.432Z",
+  "modifiedAt": "2026-10-15T12:50:42.588Z",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "Free to use and cite under CC BY 4.0. Credit Clikiti with a link.",
+  "citation": "Clikiti. (2026, October 15). The state of independent vet clinic websites 2026 (Q4 2026) [Report]. https://clikiti.com/research/vet/2026-q4",
+  "audience": "Web agencies and freelancers selling to independent veterinary clinics",
+  "sampleSize": 138,
+  "marginOfErrorPts": 8.3,
+  "medianScore": 77,
+  "meanScore": 77,
+  "meanQuestionsAnswered": 3.7,
+  "questionCount": 10,
+  "findings": [
+    "Only 17% of the 138 independent veterinary clinic websites we scanned say whether they are taking new patients.",
+    "A typical site answers four of the ten questions pet owners ask before choosing (mean 3.7).",
+    "The median overall score is 77 out of 100 (mean 77).",
+    "The least-answered questions are \"Are you taking new patients?\" (17%), \"Will my anxious pet be handled gently?\" (17%) and \"What does a visit cost?\" (17%).",
+    "The best-answered are \"How do I reach you, and when are you open?\" (75%) and \"What do I do if it happens tonight?\" (57%).",
+    "By kind of business, the highest median score is 78 (mobile and house-call vets), against 77 for general and family practice, 76 for emergency and urgent care and 75 for specialty and referral.",
+    "78% fail \"Text contrast passes 4.5:1\" (WCAG 1.4.3).",
+    "76% fail \"VeterinaryCare structured data\" (Schema.org · VeterinaryCare).",
+    "72% fail \"Loads in under 2.5 s on a phone\" (Core Web Vitals · LCP)."
+  ],
+  "questions": [
+    {
+      "id": "newpts",
+      "question": "Are you taking new patients?",
+      "label": "Says whether it takes new patients",
+      "standard": "Pet-owner question 5",
+      "passPct": 17,
+      "bySegment": {
+        "gen": 31,
+        "er": 3,
+        "spec": 4,
+        "mobile": 16
+      }
+    },
+    {
+      "id": "gentle",
+      "question": "Will my anxious pet be handled gently?",
+      "label": "Fear Free or low-stress handling described",
+      "standard": "Pet-owner question 8",
+      "passPct": 17,
+      "bySegment": {
+        "gen": 22,
+        "er": 7,
+        "spec": 4,
+        "mobile": 31
+      }
+    },
+    {
+      "id": "price",
+      "question": "What does a visit cost?",
+      "label": "A price shown: an exam, a vaccine or a fee",
+      "standard": "Pet-owner question 9",
+      "passPct": 17,
+      "bySegment": {
+        "gen": 12,
+        "er": 7,
+        "spec": 8,
+        "mobile": 44
+      }
+    },
+    {
+      "id": "species",
+      "question": "Do you see my kind of animal?",
+      "label": "Species named, or exotics said yes or no",
+      "standard": "Pet-owner question 2",
+      "passPct": 22,
+      "bySegment": {
+        "gen": 31,
+        "er": 13,
+        "spec": 28,
+        "mobile": 13
+      }
+    },
+    {
+      "id": "reviews",
+      "question": "Do other owners vouch for you?",
+      "label": "Reviews marked up, in a widget or quoted",
+      "standard": "Pet-owner question 10",
+      "passPct": 23,
+      "bySegment": {
+        "gen": 27,
+        "er": 17,
+        "spec": 24,
+        "mobile": 22
+      }
+    },
+    {
+      "id": "payment",
+      "question": "How can I pay for a big bill?",
+      "label": "Payment plans, financing or pet insurance explained",
+      "standard": "Pet-owner question 7",
+      "passPct": 41,
+      "bySegment": {
+        "gen": 45,
+        "er": 70,
+        "spec": 36,
+        "mobile": 13
+      }
+    },
+    {
+      "id": "book",
+      "question": "Can I book without calling?",
+      "label": "Book or request an appointment online",
+      "standard": "Pet-owner question 4",
+      "passPct": 46,
+      "bySegment": {
+        "gen": 71,
+        "er": 23,
+        "spec": 36,
+        "mobile": 38
+      }
+    },
+    {
+      "id": "vets",
+      "question": "Who will treat my pet?",
+      "label": "Veterinarians named with their degree",
+      "standard": "Pet-owner question 6",
+      "passPct": 54,
+      "bySegment": {
+        "gen": 41,
+        "er": 37,
+        "spec": 72,
+        "mobile": 75
+      }
+    },
+    {
+      "id": "afterhours",
+      "question": "What do I do if it happens tonight?",
+      "label": "What to do after hours or in an emergency",
+      "standard": "Pet-owner question 3",
+      "passPct": 57,
+      "bySegment": {
+        "gen": 57,
+        "er": 83,
+        "spec": 40,
+        "mobile": 44
+      }
+    },
+    {
+      "id": "contact",
+      "question": "How do I reach you, and when are you open?",
+      "label": "Tappable phone plus opening hours",
+      "standard": "Pet-owner question 1",
+      "passPct": 75,
+      "bySegment": {
+        "gen": 86,
+        "er": 87,
+        "spec": 72,
+        "mobile": 47
+      }
+    }
+  ],
+  "technical": [
+    {
+      "id": "con",
+      "label": "Text contrast passes 4.5:1",
+      "standard": "WCAG 1.4.3",
+      "failPct": 78,
+      "bySegment": {
+        "gen": 76,
+        "er": 73,
+        "spec": 84,
+        "mobile": 81
+      }
+    },
+    {
+      "id": "schema",
+      "label": "VeterinaryCare structured data",
+      "standard": "Schema.org · VeterinaryCare",
+      "failPct": 76,
+      "bySegment": {
+        "gen": 78,
+        "er": 63,
+        "spec": 68,
+        "mobile": 91
+      }
+    },
+    {
+      "id": "lcp",
+      "label": "Loads in under 2.5 s on a phone",
+      "standard": "Core Web Vitals · LCP",
+      "failPct": 72,
+      "bySegment": {
+        "gen": 84,
+        "er": 47,
+        "spec": 72,
+        "mobile": 78
+      }
+    },
+    {
+      "id": "alt",
+      "label": "Images have text descriptions",
+      "standard": "WCAG 1.1.1",
+      "failPct": 20,
+      "bySegment": {
+        "gen": 24,
+        "er": 10,
+        "spec": 28,
+        "mobile": 16
+      }
+    }
+  ],
+  "segments": [
+    {
+      "id": "gen",
+      "name": "General and family practice",
+      "sites": 51,
+      "median": 77,
+      "weakPct": 0
+    },
+    {
+      "id": "er",
+      "name": "Emergency and urgent care",
+      "sites": 30,
+      "median": 76,
+      "weakPct": 0
+    },
+    {
+      "id": "spec",
+      "name": "Specialty and referral",
+      "sites": 25,
+      "median": 75,
+      "weakPct": 0
+    },
+    {
+      "id": "mobile",
+      "name": "Mobile and house-call vets",
+      "sites": 32,
+      "median": 78,
+      "weakPct": 0
+    }
+  ],
+  "agencyProblems": [
+    {
+      "id": "newpts",
+      "label": "Says whether it takes new patients",
+      "standard": "Pet-owner question 5",
+      "failPct": 83,
+      "question": "Are you taking new patients?",
+      "fix": "Say on the home page whether the clinic is taking new patients, with one line on what the first visit involves and what records to bring.",
+      "pitch": "A family new to town cannot tell from your site whether you would even see their pet.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "gentle",
+      "label": "Fear Free or low-stress handling described",
+      "standard": "Pet-owner question 8",
+      "failPct": 83,
+      "question": "Will my anxious pet be handled gently?",
+      "fix": "A short page on how the clinic handles anxious pets: Fear Free or Cat Friendly certification, quiet rooms, pre-visit calming, linked from the home page.",
+      "pitch": "Owners of nervous animals put off visits, and your site never tells them how you make it easier.",
+      "effort": "Content"
+    },
+    {
+      "id": "price",
+      "label": "A price shown: an exam, a vaccine or a fee",
+      "standard": "Pet-owner question 9",
+      "failPct": 83,
+      "question": "What does a visit cost?",
+      "fix": "Publish the price of an exam and the common vaccines, or a starting price and the travel fee for house calls.",
+      "pitch": "\"What will a visit cost?\" is the question owners are most nervous to ask, and your site gives them no number at all.",
+      "effort": "Content"
+    },
+    {
+      "id": "species",
+      "label": "Species named, or exotics said yes or no",
+      "standard": "Pet-owner question 2",
+      "failPct": 78,
+      "question": "Do you see my kind of animal?",
+      "fix": "Name the animals the clinic sees (dogs, cats, rabbits, birds, reptiles) and say plainly whether it sees exotics, on the home and services pages.",
+      "pitch": "Owners of a rabbit or a bearded dragon cannot tell whether you will see them, so they call someone who says so.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "con",
+      "label": "Text contrast passes 4.5:1",
+      "standard": "WCAG 1.4.3",
+      "failPct": 78,
+      "fix": "Raise text contrast to at least 4.5:1 in the theme.",
+      "pitch": "Parts of the site are hard to read, and it is a WCAG failure.",
+      "effort": "Quick fix"
+    }
+  ]
+}

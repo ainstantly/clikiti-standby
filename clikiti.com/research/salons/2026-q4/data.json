@@ -1,0 +1,283 @@
+{
+  "title": "The State of Independent Salon and Barbershop Websites 2026",
+  "edition": "2026-Q4",
+  "period": "Q4 2026",
+  "sample": false,
+  "source": "corpus",
+  "note": "Aggregates computed from automated scans. No individual site is identified.",
+  "url": "https://clikiti.com/research/salons/2026-q4",
+  "scannedAt": "2026-10-15T23:04:46.522Z",
+  "publishedAt": "2026-10-15T23:05:02.343Z",
+  "modifiedAt": "2026-10-15T23:05:02.343Z",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "Free to use and cite under CC BY 4.0. Credit Clikiti with a link.",
+  "citation": "Clikiti. (2026, October 15). The state of independent salon and barbershop websites 2026 (Q4 2026) [Report]. https://clikiti.com/research/salons/2026-q4",
+  "audience": "Web agencies and freelancers selling to independent hair salons, barbershops, colour and specialty salons and salons with spa services",
+  "sampleSize": 193,
+  "marginOfErrorPts": 7.1,
+  "medianScore": 78,
+  "meanScore": 78,
+  "meanQuestionsAnswered": 3.5,
+  "questionCount": 9,
+  "findings": [
+    "Only 3% of the 193 independent hair salon and barbershop websites we scanned say whether a client in a wheelchair can get in.",
+    "A typical site answers four of the nine questions clients ask before choosing (mean 3.5).",
+    "The median overall score is 78 out of 100 (mean 78).",
+    "The least-answered questions are \"Can I get in with a wheelchair?\" (3%), \"Do other clients vouch for you?\" (18%) and \"Can I just walk in?\" (20%).",
+    "The best-answered are \"Can I book my stylist online?\" (72%) and \"When are you open?\" (62%).",
+    "By kind of business, the highest median score is 79 (hair salons), against 79 for barbershops, 77 for colour and specialty salons and 76 for salons with spa services.",
+    "84% fail \"Loads in under 2.5 s on a phone\" (Core Web Vitals · LCP).",
+    "84% fail \"HairSalon, BarberShop or BeautySalon structured data\" (Schema.org · HairSalon).",
+    "69% fail \"Text contrast passes 4.5:1\" (WCAG 1.4.3)."
+  ],
+  "questions": [
+    {
+      "id": "access",
+      "question": "Can I get in with a wheelchair?",
+      "label": "Physical accessibility stated",
+      "standard": "Client question 8",
+      "passPct": 3,
+      "bySegment": {
+        "hair": 0,
+        "barber": 2,
+        "spec": 4,
+        "spa": 5
+      }
+    },
+    {
+      "id": "reviews",
+      "question": "Do other clients vouch for you?",
+      "label": "Reviews marked up, in a widget or quoted",
+      "standard": "Client question 9",
+      "passPct": 18,
+      "bySegment": {
+        "hair": 11,
+        "barber": 10,
+        "spec": 17,
+        "spa": 36
+      }
+    },
+    {
+      "id": "walkin",
+      "question": "Can I just walk in?",
+      "label": "Walk-ins or appointment only stated",
+      "standard": "Client question 5",
+      "passPct": 20,
+      "bySegment": {
+        "hair": 13,
+        "barber": 24,
+        "spec": 26,
+        "spa": 17
+      }
+    },
+    {
+      "id": "work",
+      "question": "Whose work would I be getting?",
+      "label": "Photographs of the salon’s own work",
+      "standard": "Client question 3",
+      "passPct": 26,
+      "bySegment": {
+        "hair": 34,
+        "barber": 10,
+        "spec": 36,
+        "spa": 26
+      }
+    },
+    {
+      "id": "policy",
+      "question": "What if I need to cancel?",
+      "label": "Cancellation or no-show policy stated",
+      "standard": "Client question 4",
+      "passPct": 42,
+      "bySegment": {
+        "hair": 55,
+        "barber": 12,
+        "spec": 55,
+        "spa": 48
+      }
+    },
+    {
+      "id": "price",
+      "question": "What does a cut or colour cost?",
+      "label": "Service menu with prices",
+      "standard": "Client question 1",
+      "passPct": 49,
+      "bySegment": {
+        "hair": 49,
+        "barber": 37,
+        "spec": 45,
+        "spa": 69
+      }
+    },
+    {
+      "id": "brands",
+      "question": "What do you put on my hair?",
+      "label": "Product brands named",
+      "standard": "Client question 7",
+      "passPct": 54,
+      "bySegment": {
+        "hair": 77,
+        "barber": 10,
+        "spec": 60,
+        "spa": 74
+      }
+    },
+    {
+      "id": "hours",
+      "question": "When are you open?",
+      "label": "Opening hours stated, day by day",
+      "standard": "Client question 6",
+      "passPct": 62,
+      "bySegment": {
+        "hair": 60,
+        "barber": 53,
+        "spec": 57,
+        "spa": 81
+      }
+    },
+    {
+      "id": "book",
+      "question": "Can I book my stylist online?",
+      "label": "Online booking with a chosen stylist",
+      "standard": "Client question 2",
+      "passPct": 72,
+      "bySegment": {
+        "hair": 74,
+        "barber": 75,
+        "spec": 68,
+        "spa": 69
+      }
+    }
+  ],
+  "technical": [
+    {
+      "id": "lcp",
+      "label": "Loads in under 2.5 s on a phone",
+      "standard": "Core Web Vitals · LCP",
+      "failPct": 84,
+      "bySegment": {
+        "hair": 87,
+        "barber": 90,
+        "spec": 83,
+        "spa": 74
+      }
+    },
+    {
+      "id": "schema",
+      "label": "HairSalon, BarberShop or BeautySalon structured data",
+      "standard": "Schema.org · HairSalon",
+      "failPct": 84,
+      "bySegment": {
+        "hair": 94,
+        "barber": 94,
+        "spec": 77,
+        "spa": 69
+      }
+    },
+    {
+      "id": "con",
+      "label": "Text contrast passes 4.5:1",
+      "standard": "WCAG 1.4.3",
+      "failPct": 69,
+      "bySegment": {
+        "hair": 68,
+        "barber": 53,
+        "spec": 68,
+        "spa": 90
+      }
+    },
+    {
+      "id": "alt",
+      "label": "Images have text descriptions",
+      "standard": "WCAG 1.1.1",
+      "failPct": 19,
+      "bySegment": {
+        "hair": 13,
+        "barber": 16,
+        "spec": 21,
+        "spa": 29
+      }
+    }
+  ],
+  "segments": [
+    {
+      "id": "hair",
+      "name": "Hair salons",
+      "sites": 53,
+      "median": 79,
+      "weakPct": 0
+    },
+    {
+      "id": "barber",
+      "name": "Barbershops",
+      "sites": 51,
+      "median": 79,
+      "weakPct": 0
+    },
+    {
+      "id": "spec",
+      "name": "Colour and specialty salons",
+      "sites": 47,
+      "median": 77,
+      "weakPct": 0
+    },
+    {
+      "id": "spa",
+      "name": "Salons with spa services",
+      "sites": 42,
+      "median": 76,
+      "weakPct": 0
+    }
+  ],
+  "agencyProblems": [
+    {
+      "id": "access",
+      "label": "Physical accessibility stated",
+      "standard": "Client question 8",
+      "failPct": 97,
+      "question": "Can I get in with a wheelchair?",
+      "fix": "One plain line on the contact page: step-free entrance or not, the floor, an elevator, accessible parking, a shampoo station that suits a wheelchair.",
+      "pitch": "A client who uses a wheelchair cannot tell from your site whether they can get through the door.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "lcp",
+      "label": "Loads in under 2.5 s on a phone",
+      "standard": "Core Web Vitals · LCP",
+      "failPct": 84,
+      "fix": "Resize and compress the hero image and gallery photos, defer the booking and Instagram scripts, aim for under 2.5 s on a phone.",
+      "pitch": "Your home page takes several seconds to appear on a client’s phone.",
+      "effort": "Build"
+    },
+    {
+      "id": "schema",
+      "label": "HairSalon, BarberShop or BeautySalon structured data",
+      "standard": "Schema.org · HairSalon",
+      "failPct": 84,
+      "fix": "Add HairSalon or BarberShop structured data with the name, address, phone, opening hours and booking link.",
+      "pitch": "Search engines and assistants have to guess when you are open and how to book.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "reviews",
+      "label": "Reviews marked up, in a widget or quoted",
+      "standard": "Client question 9",
+      "failPct": 82,
+      "question": "Do other clients vouch for you?",
+      "fix": "Show recent client reviews on the home page through a review widget or Review structured data, with the source named.",
+      "pitch": "Your clients praise you on Google every week, and none of it is on your own site.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "walkin",
+      "label": "Walk-ins or appointment only stated",
+      "standard": "Client question 5",
+      "failPct": 80,
+      "question": "Can I just walk in?",
+      "fix": "One line beside the hours: walk-ins welcome, walk-ins when a chair is free, or by appointment only.",
+      "pitch": "A client standing outside wants to know whether to walk in or book, and your site does not say.",
+      "effort": "Quick fix"
+    }
+  ]
+}

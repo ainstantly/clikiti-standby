@@ -1,0 +1,33 @@
+# The State of Independent Funeral Home Websites 2026 (Q4 2026). CC BY 4.0, credit Clikiti with a link: https://clikiti.com/research/funeral
+"section","id","label","standard","metric","value"
+"summary","sites","Websites scanned","","count",175
+"summary","median","Median overall score","","score_0_100",78
+"summary","mean","Mean overall score","","score_0_100",77
+"summary","moe","Margin of error (95%)","","percentage_points",7.4
+"summary","weak","Sites scoring under 60","","percent",1
+"question","faith","Can you honour our faith or culture?","Family question 7","percent_pass",13
+"question","stream","Can family far away watch?","Family question 5","percent_pass",22
+"question","reviews","Do other families vouch for you?","Family question 10","percent_pass",30
+"question","price","What will cremation or a burial cost?","Family question 2","percent_pass",37
+"question","gpl","Can I see your price list?","Family question 1 · FTC Funeral Rule","percent_pass",39
+"question","directions","How do we get there?","Family question 9","percent_pass",57
+"question","death","Who do I call, right now?","Family question 3","percent_pass",58
+"question","grief","Is there help afterward?","Family question 8","percent_pass",89
+"question","obits","When and where is the service?","Family question 4","percent_pass",93
+"question","plan","Can I plan my own arrangements?","Family question 6","percent_pass",97
+"technical","con","Text contrast passes 4.5:1","WCAG 1.4.3","percent_fail",86
+"technical","schema","Local business structured data","Schema.org · LocalBusiness","percent_fail",53
+"technical","lcp","Loads in under 2.5 s on a phone","Core Web Vitals · LCP","percent_fail",26
+"technical","alt","Images have text descriptions","WCAG 1.1.1","percent_fail",24
+"segment","fam","Family funeral homes, one location","","median_score",79
+"segment","fam","Family funeral homes, one location","","percent_under_60",0
+"segment","fam","Family funeral homes, one location","","sites",64
+"segment","multi","Family firms with two or three locations","","median_score",78
+"segment","multi","Family firms with two or three locations","","percent_under_60",0
+"segment","multi","Family firms with two or three locations","","sites",54
+"segment","crem","Cremation-focused providers","","median_score",78
+"segment","crem","Cremation-focused providers","","percent_under_60",3
+"segment","crem","Cremation-focused providers","","sites",37
+"segment","faith","Faith and cultural community homes","","median_score",77
+"segment","faith","Faith and cultural community homes","","percent_under_60",0
+"segment","faith","Faith and cultural community homes","","sites",20

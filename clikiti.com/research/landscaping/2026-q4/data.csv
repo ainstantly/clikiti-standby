@@ -1,0 +1,31 @@
+# The State of Independent Landscaping Websites 2026 (Q4 2026). CC BY 4.0, credit Clikiti with a link: https://clikiti.com/research/landscaping
+"section","id","label","standard","metric","value"
+"summary","sites","Websites scanned","","count",189
+"summary","median","Median overall score","","score_0_100",79
+"summary","mean","Mean overall score","","score_0_100",79
+"summary","moe","Margin of error (95%)","","percentage_points",7.1
+"summary","weak","Sites scoring under 60","","percent",1
+"question","price","Roughly what will it cost?","Homeowner question 8","percent_pass",15
+"question","insured","Are you licensed and insured?","Homeowner question 5","percent_pass",29
+"question","reviews","Do my neighbours vouch for you?","Homeowner question 6","percent_pass",44
+"question","plans","Can you look after it every season?","Homeowner question 7","percent_pass",51
+"question","area","Do you work in my neighbourhood?","Homeowner question 2","percent_pass",74
+"question","quote","Can I get a quote without calling?","Homeowner question 4","percent_pass",77
+"question","gallery","Can I see work you have done?","Homeowner question 3","percent_pass",86
+"question","services","Do you do what I need?","Homeowner question 1","percent_pass",95
+"technical","lcp","Loads in under 2.5 s on a phone","Core Web Vitals · LCP","percent_fail",91
+"technical","con","Text contrast passes 4.5:1","WCAG 1.4.3","percent_fail",83
+"technical","schema","Local business structured data","Schema.org · LocalBusiness","percent_fail",46
+"technical","alt","Images have text descriptions","WCAG 1.1.1","percent_fail",16
+"segment","design","Landscape design and build","","median_score",81
+"segment","design","Landscape design and build","","percent_under_60",0
+"segment","design","Landscape design and build","","sites",48
+"segment","lawn","Lawn care and maintenance","","median_score",79
+"segment","lawn","Lawn care and maintenance","","percent_under_60",0
+"segment","lawn","Lawn care and maintenance","","sites",49
+"segment","hard","Hardscape and outdoor living","","median_score",80
+"segment","hard","Hardscape and outdoor living","","percent_under_60",0
+"segment","hard","Hardscape and outdoor living","","sites",48
+"segment","pool","Pools and irrigation","","median_score",79
+"segment","pool","Pools and irrigation","","percent_under_60",5
+"segment","pool","Pools and irrigation","","sites",44

@@ -1,0 +1,1442 @@
+<!doctype html>
+<html lang="en">
+<head><meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Torque Lab · Tuning and dyno in Quito</title>
+<meta name="description" content="Torque Lab, a tuning shop in Quito: dyno-tuned ECU remaps, turbo and intake, exhausts, brakes, suspension and track days. Book your dyno day.">
+<meta name="theme-color" content="#0B0B0C">
+<meta property="og:title" content="Torque Lab · Tuning and dyno in Quito">
+<meta property="og:description" content="ECU remaps measured on the rollers, calibrated for Quito’s 2,850 m.">
+<meta property="og:image" content="img/hero-dyno.webp">
+<meta property="og:locale" content="en_US">
+<link rel="alternate" hreflang="es" href="./">
+<script>
+  document.documentElement.classList.add('js');
+  setTimeout(function () { if (!window.__torque) document.documentElement.classList.remove('js'); }, 4000);
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Chakra+Petch:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/hero-dyno.webp">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AutoRepair",
+  "name": "Torque Lab",
+  "description": "Performance and tuning shop in Quito: ECU remapping on the dyno, turbo and intake, exhausts, brakes, suspension and track days.",
+  "image": "img/hero-dyno.webp",
+  "telephone": "+593990000000",
+  "priceRange": "$$",
+  "currenciesAccepted": "USD",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Av. Eloy Alfaro N39",
+    "addressLocality": "Quito",
+    "addressRegion": "Pichincha",
+    "addressCountry": "EC"
+  },
+  "areaServed": { "@type": "City", "name": "Quito" },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:30", "closes": "18:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "14:00" }
+  ],
+  "makesOffer": [
+    { "@type": "Offer", "name": "Baseline dyno run", "price": "90", "priceCurrency": "USD" },
+    { "@type": "Offer", "name": "Stage 1 · ECU remap", "price": "480", "priceCurrency": "USD" },
+    { "@type": "Offer", "name": "Stage 2 · ECU, intercooler, downpipe and intake", "price": "1900", "priceCurrency": "USD" }
+  ]
+}
+</script>
+<style>
+:root{
+  --ink:#0B0B0C; --ink-2:#111215; --ink-3:#18191D; --steel:#2A2D33; --steel-2:#4B5058; --steel-3:#9EA5AD; --steel-4:#C9CDD2;
+  --white:#F3F4F5; --orange:#FF5A00;
+  --f-display:'Big Shoulders Display', 'Arial Narrow', Impact, sans-serif;
+  --f-hud:'Chakra Petch', ui-monospace, 'Segoe UI', sans-serif;
+  --pad:clamp(16px, 4.4vw, 64px);
+  --rgut:0px;
+  --stretch:0;
+}
+@media (min-width:1100px){ :root{ --rgut:318px; } }
+*,*::before,*::after{ box-sizing:border-box; }
+html{ background:var(--ink); -webkit-text-size-adjust:100%; }
+main{ display:block; overflow-x:clip; }
+body{ margin:0; background:var(--ink); color:var(--white); font-family:var(--f-hud); font-size:17px; line-height:1.6; overflow-x:clip; -webkit-font-smoothing:antialiased; }
+img{ display:block; max-width:100%; }
+a{ color:inherit; }
+p{ margin:0 0 1em; }
+::selection{ background:var(--orange); color:var(--ink); }
+:focus-visible{ outline:2px solid var(--orange); outline-offset:3px; }
+.skip{ position:fixed; left:12px; top:-60px; z-index:100; background:var(--orange); color:var(--ink); padding:10px 14px; font-weight:700; text-decoration:none; }
+.skip:focus{ top:12px; }
+.sr{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+
+.display{ font-family:var(--f-display); font-weight:900; text-transform:uppercase; line-height:.86; letter-spacing:.002em; margin:0; }
+.slant{ transform:skewX(-9deg); transform-origin:0 100%; }
+.wrap{ padding-left:var(--pad); padding-right:calc(var(--pad) + var(--rgut)); position:relative; }
+.mono{ font-family:var(--f-hud); font-weight:600; font-size:13px; letter-spacing:.2em; text-transform:uppercase; color:var(--steel-3); }
+.lede{ font-size:clamp(17px, 1.35vw, 19px); color:#D9DCDF; max-width:34em; }
+.o{ color:var(--orange); }
+
+/* ---------- buttons ---------- */
+.btn{ display:inline-flex; align-items:center; gap:12px; font-family:var(--f-hud); font-weight:700; font-size:15px; letter-spacing:.1em; text-transform:uppercase; text-decoration:none; padding:16px 26px 16px 22px; border:1px solid var(--steel-2); color:var(--white); transition:background .25s, color .25s, border-color .25s, transform .25s; }
+.btn:hover{ border-color:var(--white); }
+.btn-primary{ background:var(--orange); border-color:var(--orange); color:var(--ink); clip-path:polygon(0 0,100% 0,calc(100% - 14px) 100%,0 100%); padding-right:34px; }
+.btn-primary:hover{ background:var(--white); border-color:var(--white); }
+.btn svg{ width:18px; height:18px; flex:none; }
+
+/* ---------- header ---------- */
+.topbar{ position:fixed; inset:0 0 auto 0; z-index:50; height:68px; display:flex; align-items:center; gap:28px; padding:0 var(--pad); background:linear-gradient(180deg, rgba(11,11,12,.92) 0%, rgba(11,11,12,.55) 60%, rgba(11,11,12,0) 100%); pointer-events:none; }
+.topbar > *{ pointer-events:auto; }
+.topbar::before{ content:""; position:absolute; inset:0; z-index:-1; background:rgba(11,11,12,.88); -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px); border-bottom:1px solid #1E2024; opacity:0; transition:opacity .3s; }
+.topbar.is-solid::before{ opacity:1; }
+.brand{ display:flex; flex-direction:column; text-decoration:none; line-height:1; }
+.brand-word{ font-family:var(--f-display); font-weight:900; font-size:28px; letter-spacing:.02em; display:inline-block; transform:skewX(-9deg); }
+.brand-word i{ font-style:normal; color:var(--orange); margin:0 1px; }
+.brand-sub{ font-family:var(--f-hud); font-size:11px; letter-spacing:.24em; color:var(--steel-3); margin-top:4px; text-transform:uppercase; }
+.gearnav{ display:none; margin-left:auto; gap:4px; }
+.gearnav a{ display:grid; place-items:center; min-width:44px; height:40px; padding:0 10px; font-family:var(--f-hud); font-weight:600; font-size:14px; color:var(--steel-3); text-decoration:none; border:1px solid transparent; position:relative; }
+.gearnav a span{ position:absolute; top:44px; left:50%; transform:translateX(-50%); white-space:nowrap; font-size:12px; letter-spacing:.12em; text-transform:uppercase; background:var(--ink); padding:4px 8px; opacity:0; transition:opacity .2s; pointer-events:none; }
+.gearnav a:hover span, .gearnav a:focus-visible span{ opacity:1; }
+.gearnav a.is-on{ color:var(--ink); background:var(--orange); }
+.top-cta{ display:none; padding:12px 26px 12px 18px; font-size:13px; }
+@media (min-width:1100px){
+  .gearnav{ display:flex; }
+  .top-cta{ display:inline-flex; }
+}
+
+/* ---------- cluster / tachometer ---------- */
+.cluster{ position:fixed; z-index:55; pointer-events:none; }
+.cluster-inner{ position:relative; }
+.tach{ width:100%; height:auto; display:block; overflow:visible; }
+.t-face{ fill:url(#faceGrad); stroke:#30343A; stroke-width:3; }
+.t-ring{ fill:none; stroke:#22252A; stroke-width:1; }
+.t-tick{ stroke:#6E757D; stroke-width:1.6; }
+.t-tick.maj{ stroke:var(--white); stroke-width:3; }
+.t-tick.red{ stroke:var(--orange); }
+.t-num{ font-family:var(--f-hud); font-weight:600; font-size:19px; fill:var(--white); text-anchor:middle; dominant-baseline:central; }
+.t-num.red{ fill:var(--orange); }
+.t-unit{ font-family:var(--f-hud); font-size:10px; letter-spacing:.18em; fill:var(--steel-3); text-anchor:middle; }
+.t-rpm{ font-family:var(--f-hud); font-weight:600; font-size:21px; fill:var(--white); text-anchor:middle; letter-spacing:.06em; }
+.t-gear{ font-family:var(--f-display); font-weight:900; font-size:62px; fill:var(--white); text-anchor:middle; }
+.t-gearlbl{ font-family:var(--f-hud); font-size:9px; letter-spacing:.3em; fill:var(--steel-3); text-anchor:middle; }
+.t-red{ fill:none; stroke:var(--orange); stroke-width:9; opacity:.55; transition:opacity .25s, filter .25s; }
+.t-sweep{ fill:none; stroke:var(--orange); stroke-width:3; opacity:.8; }
+.t-needle{ fill:var(--orange); }
+.t-hub{ fill:#15171A; stroke:#3A3F46; stroke-width:2; }
+.t-hubdot{ fill:var(--white); }
+.cluster.is-redline .t-red{ opacity:1; filter:drop-shadow(0 0 6px #FF5A00) drop-shadow(0 0 16px rgba(255,90,0,.8)); animation:redpulse .18s steps(2) infinite; }
+.cluster.is-redline .t-gear{ fill:var(--orange); }
+@keyframes redpulse{ 50%{ opacity:.65; } }
+.lights{ display:flex; justify-content:center; gap:7px; margin:0 0 10px; }
+.lights i{ width:12px; height:12px; border-radius:50%; background:#24272C; box-shadow:inset 0 1px 2px rgba(0,0,0,.6); transition:background .08s, box-shadow .08s; }
+.lights i.on{ background:var(--orange); box-shadow:0 0 10px rgba(255,90,0,.9); }
+.lights i.on.hi{ background:#fff; box-shadow:0 0 12px rgba(255,255,255,.9); }
+.cluster.is-redline .lights i{ animation:blink .14s steps(2) infinite; }
+@keyframes blink{ 50%{ background:#24272C; box-shadow:none; } }
+.c-data{ display:grid; grid-template-columns:repeat(3,1fr); margin-top:12px; border:1px solid #2A2D33; background:rgba(11,11,12,.82); }
+.c-data div{ padding:8px 10px 7px; border-left:1px solid #2A2D33; }
+.c-data div:first-child{ border-left:0; }
+.c-data span{ display:block; font-size:10px; letter-spacing:.2em; color:var(--steel-3); }
+.c-data b{ display:block; font-weight:600; font-size:17px; font-variant-numeric:tabular-nums; }
+.c-label{ margin:10px 0 0; text-align:center; font-size:13px; letter-spacing:.18em; text-transform:uppercase; color:var(--steel-3); }
+.c-label b{ color:var(--orange); }
+@media (min-width:1100px){
+  .cluster{ right:clamp(24px, 2.6vw, 44px); top:50%; width:248px; margin-top:-200px; }
+}
+@media (max-width:1099px){
+  .cluster{ right:10px; top:6px; width:62px; }
+  .lights, .c-data, .c-label, .t-num, .t-unit, .t-rpm, .t-gearlbl, .t-tick:not(.maj){ display:none; }
+  .t-gear{ font-size:84px; }
+  .t-face{ stroke-width:6; }
+  .t-tick.maj{ stroke-width:6; }
+  .t-needle{ transform:scale(1.25); transform-origin:150px 150px; }
+}
+.no-cluster .cluster{ display:none; }
+html:not(.js) .cluster{ display:none; }
+
+/* ---------- speed lines ---------- */
+#streaks{ position:fixed; inset:0; width:100%; height:100%; z-index:40; pointer-events:none; mix-blend-mode:screen; }
+
+/* ---------- gear tags ---------- */
+.gear-tag{ display:flex; align-items:center; gap:14px; margin:0 0 30px; font-weight:600; font-size:14px; letter-spacing:.22em; text-transform:uppercase; color:var(--steel-3); }
+.gear-tag b{ display:inline-grid; place-items:center; min-width:46px; height:34px; padding:0 8px; border:1px solid var(--orange); color:var(--orange); font-size:16px; letter-spacing:.04em; overflow:hidden; }
+.gear-tag::after{ content:""; flex:0 1 120px; height:1px; background:var(--steel-2); }
+
+.sec{ position:relative; padding:clamp(100px, 15vh, 180px) 0; }
+.h2{ font-size:clamp(52px, 7.2vw, 124px); max-width:11ch; }
+.split .w{ display:inline-block; overflow:hidden; vertical-align:top; padding:.16em .06em .04em 0; margin:-.16em -.06em 0 0; }
+.split .wi{ display:inline-block; }
+
+/* ---------- HERO ---------- */
+.hero{ position:relative; height:100vh; height:100svh; min-height:680px; overflow:hidden; background:var(--ink); }
+.hero-photo{ position:absolute; inset:0; overflow:hidden; }
+.hero-photo img{ width:100%; height:100%; object-fit:cover; object-position:68% 55%; transform-origin:70% 60%; }
+.hero-panel{ position:absolute; inset:0; background:
+   repeating-linear-gradient(90deg, rgba(255,255,255,.028) 0 1px, transparent 1px 96px),
+   linear-gradient(180deg, #0B0B0C, #0E0F11);
+  clip-path:polygon(0 0, 56% 0, 40% 100%, 0 100%); }
+.hero-edge{ position:absolute; inset:0; background:var(--orange); clip-path:polygon(56% 0, 56.6% 0, 40.6% 100%, 40% 100%); }
+.hero-copy{ position:absolute; z-index:3; left:var(--pad); bottom:clamp(40px, 8vh, 100px); width:min(46vw, 700px); }
+.kicker{ display:flex; align-items:center; gap:10px; font-size:13px; letter-spacing:.22em; text-transform:uppercase; color:var(--steel-3); margin-bottom:22px; }
+.kicker .dot{ width:8px; height:8px; border-radius:50%; background:var(--orange); box-shadow:0 0 10px var(--orange); animation:live 1.4s infinite; }
+@keyframes live{ 50%{ opacity:.25; } }
+.h1{ font-size:clamp(84px, 11.4vw, 210px); line-height:.8; }
+.h1 .l{ display:block; overflow:hidden; padding:.14em .08em .02em 0; margin-top:-.14em; }
+.h1 .li{ display:block; }
+.h1 .l2 .li{ color:transparent; -webkit-text-stroke:2px var(--white); }
+.h1 .sub{ display:block; margin-top:22px; font-family:var(--f-hud); font-weight:600; font-size:clamp(14px, 1.2vw, 17px); letter-spacing:.2em; color:var(--orange); text-transform:uppercase; line-height:1.4; }
+.hero .lede{ margin:20px 0 30px; max-width:30em; }
+.cta-row{ display:flex; flex-wrap:wrap; gap:14px; }
+.hud{ position:absolute; z-index:3; left:calc(56% + 30px); top:clamp(92px, 12vh, 116px); display:grid; grid-template-columns:repeat(4, auto); column-gap:28px; background:rgba(11,11,12,.78); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,.14); padding:14px 16px 12px; font-variant-numeric:tabular-nums; }
+.hud::before, .hud::after{ content:""; position:absolute; width:14px; height:14px; border:2px solid var(--orange); }
+.hud::before{ left:-2px; top:-2px; border-right:0; border-bottom:0; }
+.hud::after{ right:-2px; bottom:-2px; border-left:0; border-top:0; }
+.hud-top{ grid-column:1/-1; display:flex; justify-content:space-between; font-size:11px; letter-spacing:.2em; color:var(--steel-3); text-transform:uppercase; margin-bottom:8px; }
+.hud-top b{ color:var(--orange); font-weight:600; }
+.hud-row{ display:flex; flex-direction:column; border-top:1px solid rgba(255,255,255,.1); padding:6px 0 0; }
+.hud-row span{ font-size:11px; letter-spacing:.18em; color:var(--steel-3); }
+.hud-row b{ font-weight:600; font-size:22px; letter-spacing:.03em; }
+.hud-row b small{ font-size:12px; color:var(--steel-3); margin-left:4px; font-weight:500; }
+.hud-bar{ grid-column:1/-1; height:3px; background:#24272C; margin-top:8px; position:relative; overflow:hidden; }
+.hud-bar i{ position:absolute; inset:0 auto 0 0; width:12%; background:var(--orange); }
+.cue{ position:absolute; z-index:3; left:50%; bottom:22px; transform:translateX(-50%); display:none; }
+@media (min-width:1100px){
+  .cue{ display:flex; left:40%; flex-direction:column; align-items:center; gap:8px; font-size:11px; letter-spacing:.3em; color:var(--steel-3); text-transform:uppercase; }
+  .cue i{ width:1px; height:42px; background:linear-gradient(var(--orange), transparent); animation:cue 1.6s infinite; transform-origin:top; }
+}
+@keyframes cue{ 0%{ transform:scaleY(0); } 60%{ transform:scaleY(1); } 100%{ transform:scaleY(1); opacity:0; } }
+@media (max-width:1099px){
+  .hero{ min-height:720px; }
+  .hero-photo{ bottom:auto; height:60%; }
+  .hero-panel{ clip-path:polygon(0 47%, 100% 37%, 100% 100%, 0 100%); }
+  .hero-edge{ clip-path:polygon(0 47%, 100% 37%, 100% 37.6%, 0 47.6%); }
+  .hero-copy{ width:auto; right:var(--pad); bottom:96px; }
+  .h1{ font-size:clamp(76px, 20.5vw, 170px); }
+  .hero .lede{ font-size:16.5px; margin:14px 0 0; }
+  .hero .cta-row{ display:none; }
+  .kicker{ margin-bottom:14px; font-size:11.5px; letter-spacing:.16em; }
+  .kicker .k-x{ display:none; }
+  .h1 .sub{ margin-top:14px; font-size:13px; }
+  .hud{ top:84px; bottom:auto; left:var(--pad); right:auto; width:auto; display:flex; gap:16px; padding:8px 12px; }
+  .hud-top, .hud-bar, .hud-row.opt{ display:none; }
+  .hud-row{ border:0; padding:0; flex-direction:column; align-items:flex-start; }
+  .hud-row b{ font-size:17px; }
+  .hud-row span{ font-size:10px; }
+}
+
+/* ---------- 1 DIAGNOSTICO ---------- */
+.alt{ position:relative; margin-bottom:clamp(90px, 14vh, 160px); }
+.alt-big{ position:relative; font-size:clamp(118px, 21vw, 330px); line-height:.8; display:inline-block; margin:0; transform:skewX(-9deg); }
+.alt-big .ghost{ color:transparent; -webkit-text-stroke:1.5px var(--steel-2); display:block; }
+.alt-big .fill{ position:absolute; inset:0; color:var(--white); display:block; }
+.alt-big small{ font-size:.34em; color:var(--orange); margin-left:.06em; }
+.alt-ruler{ position:relative; height:34px; margin:64px 0 0; max-width:900px; background:
+  repeating-linear-gradient(90deg, var(--steel-2) 0 1px, transparent 1px 10%) bottom/100% 14px no-repeat,
+  repeating-linear-gradient(90deg, #33373D 0 1px, transparent 1px 2%) bottom/100% 7px no-repeat; border-bottom:1px solid var(--steel-2); }
+.alt-ruler .mk{ position:absolute; bottom:-1px; left:100%; width:2px; height:34px; background:var(--orange); box-shadow:0 0 12px var(--orange); }
+.alt-ruler .mk span, .alt-ruler .mk{ font-style:normal; }
+.alt-ruler .mk{ font-size:0; }
+.alt-ruler .mk span{ position:absolute; top:-26px; left:8px; font-size:13px; font-weight:600; letter-spacing:.12em; color:var(--orange); white-space:nowrap; font-variant-numeric:tabular-nums; }
+.alt-ruler .mk span::after{ content:" m · Quito"; }
+.alt-ruler .s, .alt-ruler .e{ position:absolute; top:-50px; font-size:11px; letter-spacing:.18em; color:var(--steel-3); }
+.alt-ruler .s{ left:0; } .alt-ruler .e{ right:0; }
+.alt-copy{ font-size:clamp(20px, 2vw, 30px); line-height:1.3; max-width:24em; margin:34px 0 0; color:#E2E4E6; }
+.alt-copy strong{ color:var(--orange); font-weight:600; }
+.diag-grid{ display:grid; grid-template-columns:1fr; gap:48px; align-items:start; }
+@media (min-width:900px){ .diag-grid{ grid-template-columns:.86fr 1.14fr; gap:clamp(40px, 5vw, 80px); } .diag-text .h2{ font-size:clamp(52px, 5.6vw, 96px); } }
+.diag-photo{ margin:0; position:relative; aspect-ratio:4/5; overflow:hidden; background:var(--ink-3); }
+.diag-photo img, .map-photo img, .track-photo img, .pit img{ width:100%; height:100%; object-fit:cover; scale:1 calc(1 + var(--stretch)); }
+.tag-abs{ position:absolute; left:14px; bottom:14px; z-index:2; background:rgba(11,11,12,.86); padding:8px 12px; font-size:12px; letter-spacing:.18em; text-transform:uppercase; }
+.tag-abs b{ color:var(--orange); font-weight:600; margin-right:8px; }
+.diag-text .h2{ margin-bottom:30px; }
+.log{ list-style:none; margin:36px 0 0; padding:0; font-size:15.5px; }
+.log li{ display:grid; grid-template-columns:62px 1fr auto; gap:12px; align-items:baseline; padding:13px 0; border-top:1px solid var(--steel); }
+.log li:last-child{ border-bottom:1px solid var(--steel); }
+.log time{ color:var(--steel-3); font-variant-numeric:tabular-nums; }
+.log .ok{ font-size:12px; font-weight:700; letter-spacing:.16em; color:var(--orange); border:1px solid rgba(255,90,0,.6); padding:1px 7px; }
+.log li.done{ color:var(--orange); font-weight:600; }
+
+/* ---------- 2 MAPEO ---------- */
+.map{ background:linear-gradient(180deg, var(--ink) 0%, var(--ink-2) 40%, var(--ink) 100%); }
+.map-head{ display:grid; gap:24px; align-items:end; }
+@media (min-width:900px){ .map-head{ grid-template-columns:1.2fr 1fr; } }
+.map-stage{ position:relative; margin-top:clamp(48px, 7vh, 90px); perspective:1400px; }
+.map-photo{ margin:0; width:72%; aspect-ratio:16/10; overflow:hidden; background:var(--ink-3); position:relative; }
+.map-screen{ position:absolute; right:0; bottom:-80px; width:min(64%, 720px); background:#0E0F12; border:1px solid #33373E; box-shadow:0 40px 80px rgba(0,0,0,.7); transform-style:preserve-3d; overflow:hidden; }
+.screen-bar{ display:flex; justify-content:space-between; gap:12px; padding:9px 12px; background:#17191D; border-bottom:1px solid #2B2E34; font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--steel-3); }
+.screen-bar .status{ color:var(--orange); font-weight:600; white-space:nowrap; }
+.ign-wrap{ position:relative; padding:10px; }
+.ign{ width:100%; border-collapse:collapse; font-variant-numeric:tabular-nums; table-layout:fixed; }
+.ign th{ font-size:10px; font-weight:500; color:var(--steel-3); padding:3px 0; letter-spacing:.02em; }
+.ign th[scope=row]{ text-align:right; padding-right:6px; width:40px; }
+.ign tr:first-child th:first-child{ font-size:8.5px; }
+.ign td{ font-size:11px; text-align:center; padding:5px 0; border:1px solid #0E0F12; color:#fff; background:#1d2024; transition:background .35s, color .35s, box-shadow .35s; }
+.ign td.t{ box-shadow:inset 0 0 0 1px rgba(255,255,255,.55); }
+.scan{ position:absolute; left:10px; right:10px; top:10px; height:2px; background:var(--orange); box-shadow:0 0 14px 2px rgba(255,90,0,.8); opacity:0; }
+.screen-foot{ display:flex; justify-content:space-between; padding:8px 12px; border-top:1px solid #2B2E34; font-size:11px; letter-spacing:.14em; color:var(--steel-3); text-transform:uppercase; }
+.params{ display:grid; grid-template-columns:1fr; margin:calc(80px + clamp(60px, 9vh, 110px)) 0 0; padding:0; border-top:1px solid var(--steel); }
+@media (min-width:760px){ .params{ grid-template-columns:1fr 1fr; column-gap:clamp(32px, 4vw, 72px); } }
+.params div{ position:relative; padding:26px 0 24px 64px; border-bottom:1px solid var(--steel); }
+.params dt{ font-family:var(--f-display); font-weight:900; font-size:34px; text-transform:uppercase; line-height:1; }
+.params dt::before{ content:attr(data-n); position:absolute; left:0; top:32px; font-family:var(--f-hud); font-size:14px; font-weight:600; color:var(--orange); letter-spacing:.1em; }
+.params dd{ margin:8px 0 0; color:#D3D6DA; font-size:16.5px; }
+.note{ margin-top:34px; display:flex; gap:14px; align-items:flex-start; font-size:16px; color:var(--steel-4); max-width:46em; }
+.note svg{ flex:none; width:22px; height:22px; color:var(--orange); margin-top:2px; }
+@media (max-width:899px){
+  .map-photo{ width:100%; }
+  .map-screen{ position:relative; width:auto; right:auto; bottom:auto; margin:-48px 0 0 14px; }
+  .params{ margin-top:70px; }
+  .ign td{ font-size:9px; padding:4px 0; }
+  .ign th{ font-size:8px; }
+  .ign th[scope=row]{ width:24px; padding-right:3px; }
+}
+
+/* ---------- 3 POTENCIA ---------- */
+.power{ padding:0; }
+.power-pin{ min-height:100vh; min-height:100svh; display:flex; align-items:center; padding:96px 0 56px; }
+.power-inner{ width:100%; display:grid; grid-template-columns:1fr; gap:36px; align-items:center; }
+@media (min-width:1100px){ .power-inner{ grid-template-columns:minmax(320px, 4.4fr) 7.6fr; gap:clamp(32px, 3.4vw, 56px); } }
+.power-head .h2{ font-size:clamp(52px, 6vw, 104px); margin-bottom:22px; }
+.power-head p{ color:#D3D6DA; max-width:28em; }
+.gains{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(16px, 2.4vw, 36px); margin-top:30px; }
+.gain{ display:flex; flex-direction:column; }
+.g-num{ font-family:var(--f-display); font-weight:900; font-size:clamp(72px, 6vw, 110px); line-height:.82; transform:skewX(-9deg); font-variant-numeric:tabular-nums; }
+.g-num em{ font-style:normal; color:var(--orange); }
+.g-lbl{ margin-top:10px; font-weight:600; font-size:14px; letter-spacing:.2em; text-transform:uppercase; }
+.g-det{ font-size:15px; color:var(--steel-3); font-variant-numeric:tabular-nums; }
+.sheet{ position:relative; background:linear-gradient(180deg, #121317, #0E0F12); border:1px solid #2C3036; padding:16px 18px 14px; }
+.sheet::before, .sheet::after{ content:""; position:absolute; width:18px; height:18px; border:2px solid var(--steel-2); }
+.sheet::before{ left:-8px; top:-8px; border-right:0; border-bottom:0; }
+.sheet::after{ right:-8px; bottom:-8px; border-left:0; border-top:0; }
+.sheet-top{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:6px 16px; padding-bottom:10px; border-bottom:1px dashed #33373E; font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--steel-3); }
+.sheet-top b{ color:var(--orange); font-weight:600; }
+.chart{ width:100%; height:auto; display:block; margin-top:8px; overflow:visible; }
+.chart .grid line{ stroke:#24272C; stroke-width:1; }
+.chart .ax{ font-family:var(--f-hud); font-size:17px; fill:var(--steel-3); }
+.chart .ax-t{ font-family:var(--f-hud); font-size:15px; letter-spacing:.16em; fill:var(--steel-3); }
+.c-stock{ fill:none; stroke:#8D949C; stroke-width:2.4; }
+.c-stock.tq{ stroke-dasharray:7 6; stroke-width:2; }
+.c-tuned{ fill:none; stroke:var(--orange); stroke-width:3.4; stroke-linejoin:round; }
+.c-tuned.tq{ stroke:var(--white); stroke-width:2.2; }
+.c-gain{ fill:url(#gainGrad); }
+.c-cursor line{ stroke:rgba(255,255,255,.5); stroke-width:1; stroke-dasharray:3 4; }
+.c-cursor circle{ stroke:var(--ink); stroke-width:2; }
+.peak{ font-family:var(--f-hud); font-size:18px; font-weight:600; fill:var(--white); }
+.peak.o{ fill:var(--orange); }
+.legend{ display:flex; flex-wrap:wrap; gap:8px 22px; margin-top:6px; font-size:13px; letter-spacing:.06em; color:#C3C7CC; }
+.legend span{ display:inline-flex; align-items:center; gap:8px; }
+.legend i{ width:26px; height:0; border-top:3px solid; }
+.sheet-read{ display:grid; grid-template-columns:repeat(4, 1fr); margin-top:12px; border-top:1px solid #2C3036; font-variant-numeric:tabular-nums; }
+.sheet-read div{ padding:8px 0 0; }
+.sheet-read span{ display:block; font-size:10.5px; letter-spacing:.18em; color:var(--steel-3); text-transform:uppercase; }
+.sheet-read b{ font-weight:600; font-size:19px; }
+.sheet-read b.o{ color:var(--orange); }
+.fine{ margin:14px 0 0; font-size:14px; color:var(--steel-3); }
+.fine b{ color:var(--white); font-weight:600; }
+@media (max-width:640px){
+  .sheet-read{ grid-template-columns:1fr 1fr; }
+  .track-photo img{ object-position:70% 50%; }
+  .sheet{ padding:12px 10px 12px; }
+  .gains{ margin-top:22px; }
+  .sheet-read b{ font-size:16px; }
+  .chart .ax{ font-size:26px; }
+  .chart .ax-t{ font-size:22px; }
+  .peak{ font-size:26px; }
+}
+
+/* ---------- STAGES ---------- */
+.stages{ padding:0; background:
+  radial-gradient(circle at 1px 1px, rgba(255,255,255,.07) 1px, transparent 1.4px) 0 0/28px 28px,
+  linear-gradient(180deg, var(--ink), #101114 30%, #101114 70%, var(--ink)); }
+.stages-pin{ position:relative; min-height:100vh; min-height:100svh; display:flex; flex-direction:column; justify-content:center; padding:110px 0 70px; overflow:hidden; }
+.stages-head{ display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:18px 40px; margin-bottom:34px; }
+.stages-head .h2{ font-size:clamp(52px, 6vw, 104px); max-width:none; }
+.stages-head p{ max-width:28em; color:#D3D6DA; margin:0; }
+.stages-vp{ position:relative; width:calc(100% - var(--rgut)); }
+.stages-track{ display:flex; flex-direction:column; gap:40px; padding:0 var(--pad); }
+.jig{ position:relative; padding:16px; border:1px dashed #3A3F46; }
+.jig-lbl{ position:absolute; top:-10px; left:16px; background:#101114; padding:0 8px; font-size:11px; letter-spacing:.22em; color:var(--steel-3); text-transform:uppercase; }
+.clamp{ position:absolute; width:26px; height:26px; border:3px solid var(--orange); }
+.clamp.a{ left:-3px; top:-3px; border-right:0; border-bottom:0; }
+.clamp.b{ right:-3px; top:-3px; border-left:0; border-bottom:0; }
+.clamp.c{ left:-3px; bottom:-3px; border-right:0; border-top:0; }
+.clamp.d{ right:-3px; bottom:-3px; border-left:0; border-top:0; }
+.plate{ position:relative; color:#17191C; border-radius:5px; padding:34px 32px 24px;
+  background:
+    repeating-linear-gradient(90deg, rgba(255,255,255,.07) 0 1px, rgba(0,0,0,.035) 1px 2px, transparent 2px 4px),
+    linear-gradient(162deg, #DCDFE2 0%, #B6BBC1 38%, #CDD1D5 58%, #A9AFB6 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.75), inset 0 -2px 0 rgba(0,0,0,.25), inset 0 0 0 1px rgba(0,0,0,.18), 0 30px 60px rgba(0,0,0,.55), 0 4px 10px rgba(0,0,0,.4); }
+.plate, .plate *{ text-shadow:0 1px 0 rgba(255,255,255,.55); }
+.rivet{ position:absolute; width:14px; height:14px; border-radius:50%; background:radial-gradient(circle at 36% 30%, #fff 0, #D5D8DC 22%, #8A9097 62%, #50555C 100%); box-shadow:0 1px 1px rgba(0,0,0,.55), inset 0 -1px 1px rgba(0,0,0,.35); }
+.rivet.a{ left:11px; top:11px; } .rivet.b{ right:11px; top:11px; } .rivet.c{ left:11px; bottom:11px; } .rivet.d{ right:11px; bottom:11px; }
+.plate-head{ display:flex; justify-content:space-between; gap:10px; font-size:11.5px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:#2E3237; padding:0 4px 12px; border-bottom:2px solid rgba(0,0,0,.22); box-shadow:0 1px 0 rgba(255,255,255,.5); }
+.plate-title{ display:flex; align-items:stretch; gap:16px; margin:18px 0 16px; }
+.enamel{ display:grid; place-items:center; min-width:84px; background:var(--orange); color:var(--ink); font-family:var(--f-display); font-weight:900; font-size:86px; line-height:1; padding:4px 10px 0; box-shadow:inset 0 2px 4px rgba(0,0,0,.35), 0 1px 0 rgba(255,255,255,.6); text-shadow:none; border-radius:2px; }
+.enamel *{ text-shadow:none; }
+.pt{ display:flex; flex-direction:column; justify-content:center; }
+.pt small{ font-size:12px; font-weight:600; letter-spacing:.24em; text-transform:uppercase; color:#33373D; }
+.pt span{ font-family:var(--f-display); font-weight:900; font-size:44px; line-height:.9; text-transform:uppercase; color:#141619; text-shadow:0 1px 0 rgba(255,255,255,.65), 0 -1px 0 rgba(0,0,0,.28); }
+.spec{ margin:0; }
+.spec div{ display:grid; grid-template-columns:118px 1fr; gap:12px; padding:10px 4px; border-top:1px solid rgba(0,0,0,.2); box-shadow:inset 0 1px 0 rgba(255,255,255,.42); }
+.spec dt{ font-size:11.5px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:#33373D; padding-top:3px; }
+.spec dd{ margin:0; font-size:16px; font-weight:500; line-height:1.4; color:#111214; }
+.spec dd strong{ font-weight:700; }
+.plate-foot{ display:flex; justify-content:space-between; align-items:center; margin-top:14px; padding:10px 4px 0; border-top:2px solid rgba(0,0,0,.22); font-size:11px; font-weight:600; letter-spacing:.18em; color:#33373D; text-transform:uppercase; }
+.barcode{ width:96px; height:20px; background:repeating-linear-gradient(90deg, #1b1d20 0 2px, transparent 2px 3px, #1b1d20 3px 4px, transparent 4px 7px, #1b1d20 7px 10px, transparent 10px 11px); opacity:.75; }
+.endcap{ display:flex; flex-direction:column; justify-content:center; gap:18px; padding:30px 0; }
+.endcap .display{ font-size:clamp(44px, 4.4vw, 72px); }
+.endcap p{ color:#D3D6DA; max-width:22em; margin:0; }
+.rail{ display:none; }
+@media (min-width:1100px){
+  .stages-track{ flex-direction:row; align-items:center; gap:72px; width:max-content; padding:24px var(--pad) 24px; }
+  .jig{ flex:none; width:440px; }
+  .endcap{ width:360px; flex:none; }
+  .js .stages-vp{ overflow:hidden; }
+  html:not(.js) .stages-track{ flex-wrap:wrap; width:auto; }
+  .rail{ display:block; position:absolute; right:0; top:0; bottom:0; width:1px; background:linear-gradient(transparent, var(--steel-2) 20%, var(--steel-2) 80%, transparent); }
+  .rail span{ position:absolute; top:50%; right:10px; transform:translateY(-50%) rotate(-90deg); transform-origin:right center; white-space:nowrap; font-size:11px; letter-spacing:.3em; color:var(--steel-3); text-transform:uppercase; }
+}
+@media (max-width:520px){
+  .plate{ padding:30px 18px 20px; }
+  .spec div{ grid-template-columns:1fr; gap:2px; }
+  .enamel{ min-width:70px; font-size:72px; }
+  .pt span{ font-size:38px; }
+  .jig{ padding:10px; }
+}
+
+/* ---------- 4 FRENOS / PIT WALL ---------- */
+.brakes{ padding-bottom:0; }
+.brakes-head{ display:grid; gap:28px; align-items:end; }
+@media (min-width:900px){ .brakes-head{ grid-template-columns:1.15fr 1fr; } }
+.brakes-head p{ color:#D3D6DA; margin:0; }
+.parts{ display:flex; flex-wrap:wrap; gap:6px 0; margin:30px 0 0; padding:0; list-style:none; font-size:15px; letter-spacing:.06em; text-transform:uppercase; color:#E4E6E8; }
+.parts li::after{ content:"/"; color:var(--orange); margin:0 12px; }
+.parts li:last-child::after{ content:none; }
+.pitwall{ position:relative; margin-top:clamp(70px, 11vh, 130px); padding-bottom:clamp(100px, 14vh, 170px); overflow:hidden; }
+.pit-label{ display:flex; justify-content:space-between; align-items:baseline; gap:20px; margin-bottom:22px; }
+.pit-label h3{ margin:0; font-family:var(--f-display); font-weight:900; font-size:clamp(34px, 3.6vw, 56px); text-transform:uppercase; line-height:.95; }
+.pit-grid{ position:relative; display:grid; grid-template-columns:repeat(12, 1fr); gap:14px; }
+.pit-grid::before{ content:""; position:absolute; inset:-40px -20px; z-index:-1; background:
+  linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px) 0 0/calc(100% / 12) 80px,
+  linear-gradient(0deg, rgba(255,255,255,.045) 1px, transparent 1px) 0 0/80px 80px; }
+.pit{ position:relative; margin:0; overflow:hidden; background:var(--ink-3); }
+.pit .ln{ position:absolute; inset:0; z-index:2; pointer-events:none; background:
+  linear-gradient(var(--orange), var(--orange)) 10px 10px/18px 2px no-repeat,
+  linear-gradient(var(--orange), var(--orange)) 10px 10px/2px 18px no-repeat,
+  linear-gradient(var(--orange), var(--orange)) right 10px top 10px/18px 2px no-repeat,
+  linear-gradient(var(--orange), var(--orange)) right 10px top 10px/2px 18px no-repeat; }
+.pit figcaption{ position:absolute; z-index:2; left:12px; bottom:12px; right:12px; display:flex; gap:10px; align-items:baseline; font-size:14px; letter-spacing:.06em; }
+.pit figcaption span{ background:rgba(11,11,12,.88); padding:7px 11px; }
+.pit figcaption b{ color:var(--orange); font-weight:600; }
+.p1{ grid-column:1/8; grid-row:1/3; min-height:640px; }
+.p2{ grid-column:8/13; grid-row:1; min-height:313px; }
+.p3{ grid-column:8/13; grid-row:2; min-height:313px; }
+.p4{ grid-column:1/5; grid-row:3; min-height:300px; }
+.pit-note{ grid-column:5/13; grid-row:3; position:relative; background:#121316; border:1px solid #2B2E34; padding:26px 28px; display:grid; grid-template-columns:1fr 1fr; gap:24px; align-content:center; }
+.pit-note h4{ margin:0 0 10px; font-family:var(--f-display); font-weight:900; font-size:30px; text-transform:uppercase; line-height:1; }
+.pit-note ul{ margin:0; padding:0; list-style:none; font-size:15.5px; color:#D3D6DA; }
+.pit-note li{ padding:7px 0; border-top:1px solid #2B2E34; display:flex; justify-content:space-between; gap:10px; }
+.pit-note li b{ color:var(--white); font-weight:600; white-space:nowrap; }
+@media (max-width:899px){
+  .pit-grid{ grid-template-columns:1fr 1fr; gap:10px; }
+  .p1{ grid-column:1/-1; grid-row:auto; min-height:0; aspect-ratio:4/5; }
+  .p2, .p3{ grid-column:auto; grid-row:auto; min-height:0; aspect-ratio:3/4; }
+  .p4{ grid-column:1/-1; grid-row:auto; min-height:0; aspect-ratio:21/9; }
+  .pit-note{ grid-column:1/-1; grid-row:auto; grid-template-columns:1fr; padding:22px 18px; }
+  .pit figcaption{ font-size:12.5px; left:8px; bottom:8px; right:8px; }
+  .pit-label{ flex-direction:column; gap:8px; }
+}
+
+/* ---------- carbon band ---------- */
+.carbon{ position:relative; height:clamp(130px, 17vw, 240px); overflow:hidden; display:flex; align-items:center; background:#151618 url(img/carbon-detail.webp) center/cover; border-top:2px solid var(--orange); border-bottom:1px solid #2B2E34; }
+.carbon::after{ content:""; position:absolute; inset:0; background:linear-gradient(90deg, rgba(11,11,12,.55), rgba(11,11,12,.15) 30%, rgba(11,11,12,.15) 70%, rgba(11,11,12,.55)); }
+.marquee{ position:relative; z-index:1; display:flex; width:max-content; white-space:nowrap; font-family:var(--f-display); font-weight:900; font-size:clamp(64px, 9vw, 150px); text-transform:uppercase; line-height:1; text-shadow:0 4px 24px rgba(0,0,0,.6); }
+.marquee span{ display:inline-block; padding-right:.4em; transform:skewX(-9deg); }
+.marquee em{ font-style:normal; color:var(--orange); margin:0 .25em; }
+
+/* ---------- 5 PISTA ---------- */
+.track{ padding:0; background:var(--ink); }
+.track-sticky{ position:sticky; top:0; height:100vh; height:100svh; overflow:hidden; }
+.track-photo{ position:absolute; inset:0; overflow:hidden; }
+.track-photo img{ object-position:50% 50%; }
+.track-meta{ position:absolute; z-index:2; left:var(--pad); top:96px; display:flex; flex-wrap:wrap; gap:8px; font-size:12px; letter-spacing:.18em; text-transform:uppercase; }
+.track-meta span{ background:rgba(11,11,12,.82); padding:6px 10px; }
+.track-meta span:first-child{ color:var(--orange); }
+.track-copy{ position:relative; z-index:3; margin-top:-38vh; margin-top:-38svh; padding:0 var(--pad) clamp(100px, 14vh, 170px); }
+.track-panel{ position:relative; max-width:780px; background:var(--ink); padding:clamp(70px, 8vw, 104px) clamp(22px, 4vw, 56px) clamp(40px, 5vw, 56px); clip-path:polygon(0 56px, 100% 0, 100% 100%, 0 100%); }
+.track-panel::before{ content:""; position:absolute; left:0; right:0; top:0; height:58px; background:var(--orange); clip-path:polygon(0 54px, 100% 0, 100% 3px, 0 58px); }
+.track-panel .h2{ margin-bottom:24px; }
+.track-panel > p{ color:#D3D6DA; }
+.facts{ margin:30px 0 0; display:grid; grid-template-columns:1fr; border-top:1px solid var(--steel); }
+@media (min-width:640px){ .facts{ grid-template-columns:1fr 1fr; column-gap:36px; } }
+.facts div{ padding:16px 0; border-bottom:1px solid var(--steel); }
+.facts dt{ font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:var(--steel-3); }
+.facts dd{ margin:4px 0 0; font-size:17px; font-weight:500; }
+.facts dd b{ color:var(--orange); font-weight:600; }
+
+/* ---------- 6 RESERVA ---------- */
+.book{ overflow:hidden; padding-bottom:0; }
+.book-arc{ position:absolute; z-index:0; right:calc(var(--rgut) + 10px); top:90px; width:min(620px, 80vw); opacity:.9; pointer-events:none; }
+.book-arc path{ fill:none; }
+.book .wrap{ position:relative; z-index:1; }
+.book .h2{ font-size:clamp(56px, 9.6vw, 176px); max-width:9.2ch; }
+.book-grid{ display:grid; gap:44px; margin-top:clamp(44px, 6vh, 70px); }
+@media (min-width:900px){ .book-grid{ grid-template-columns:1fr 1fr; gap:clamp(40px, 5vw, 80px); } }
+.btn-xl{ flex-direction:column; align-items:flex-start; gap:4px; padding:22px 52px 20px 26px; font-size:18px; margin-top:12px; }
+.btn-xl small{ font-size:14px; font-weight:600; letter-spacing:.12em; opacity:.85; }
+.btn-xl .row{ display:flex; align-items:center; gap:12px; }
+.book-info{ margin:0; border-top:1px solid var(--steel); }
+.book-info div{ display:grid; grid-template-columns:130px 1fr; gap:16px; padding:16px 0; border-bottom:1px solid var(--steel); }
+.book-info dt{ font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:var(--steel-3); padding-top:4px; }
+.book-info dd{ margin:0; font-size:17px; }
+.book-info a{ text-decoration-color:var(--orange); text-underline-offset:4px; }
+@media (max-width:520px){ .book-info div{ grid-template-columns:1fr; gap:2px; } }
+.foot{ margin-top:clamp(90px, 12vh, 150px); padding:28px var(--pad) 30px; padding-right:calc(var(--pad) + var(--rgut)); border-top:1px solid var(--steel); display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px 30px; font-size:14px; color:var(--steel-3); }
+.foot .brand-word{ font-size:22px; color:var(--white); }
+@media (max-width:1099px){ .foot{ padding-bottom:110px; } }
+
+/* ---------- sticky mobile CTA ---------- */
+.sticky-cta{ position:fixed; z-index:60; left:12px; right:12px; bottom:calc(12px + env(safe-area-inset-bottom)); display:none; align-items:center; justify-content:center; gap:10px; height:56px; background:var(--orange); color:var(--ink); font-weight:700; font-size:15.5px; letter-spacing:.1em; text-transform:uppercase; text-decoration:none; clip-path:polygon(0 0,100% 0,calc(100% - 14px) 100%,0 100%); transition:transform .35s cubic-bezier(.2,.8,.2,1); }
+.sticky-cta svg{ width:20px; height:20px; }
+.sticky-cta.is-hidden{ transform:translateY(160%); }
+@media (max-width:1099px){ .sticky-cta{ display:flex; } }
+.hdr-gear{ display:none; }
+@media (max-width:1099px){
+  .hdr-gear{ display:block; position:absolute; left:var(--pad); top:44px; margin:0; font-size:11.5px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--steel-3); white-space:nowrap; }
+  .brand-sub{ visibility:hidden; }
+  .hdr-gear b{ color:var(--orange); }
+}
+
+/* ---------- JS-gated initial states ---------- */
+.js .hero .h1 .li{ transform:translateY(108%); }
+.js .hero [data-in]{ opacity:0; }
+.js .hero-panel{ clip-path:polygon(0 0, 0 0, 0 100%, 0 100%); }
+.js .hero-edge{ opacity:0; }
+@media (max-width:1099px){ .js .hero-panel{ clip-path:polygon(0 100%, 100% 100%, 100% 100%, 0 100%); } }
+
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after{ animation:none !important; transition:none !important; }
+  .js .hero .h1 .li{ transform:none; }
+  .js .hero [data-in]{ opacity:1; }
+  .js .hero-panel{ clip-path:polygon(0 0, 56% 0, 40% 100%, 0 100%); }
+  .js .hero-edge{ opacity:1; }
+  #streaks{ display:none; }
+}
+@media (prefers-reduced-motion: reduce) and (max-width:1099px){
+  .js .hero-panel{ clip-path:polygon(0 47%, 100% 37%, 100% 100%, 0 100%); }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="#top" aria-label="Torque Lab, home">
+    <span class="brand-word">Torque<i>/</i>Lab</span>
+    <span class="brand-sub">Quito · 2,850 m</span>
+  </a>
+  <p class="hdr-gear" aria-hidden="true"><b class="h-g">N</b> · <span class="h-s">Neutral</span></p>
+  <nav class="gearnav" aria-label="Sections">
+    <a href="#diagnostico" data-g="1">1<span>Diagnostics</span></a>
+    <a href="#mapeo" data-g="2">2<span>Mapping</span></a>
+    <a href="#potencia" data-g="3">3<span>Power</span></a>
+    <a href="#frenos" data-g="4">4<span>Brakes &amp; suspension</span></a>
+    <a href="#pista" data-g="5">5<span>Track</span></a>
+    <a href="#reserva" data-g="6">6<span>Your turn</span></a>
+  </nav>
+  <a class="btn btn-primary top-cta" href="https://wa.me/593990000000?text=Hi%20Torque%20Lab%2C%20I%27d%20like%20to%20book%20a%20dyno%20day">Book the dyno</a>
+</header>
+
+<aside class="cluster" aria-hidden="true">
+  <div class="cluster-inner">
+    <div class="lights"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <svg class="tach" viewBox="0 0 300 300">
+      <defs>
+        <radialGradient id="faceGrad" cx="50%" cy="42%" r="62%">
+          <stop offset="0" stop-color="#1C1E22"/>
+          <stop offset=".75" stop-color="#0F1012"/>
+          <stop offset="1" stop-color="#08080A"/>
+        </radialGradient>
+      </defs>
+      <circle class="t-face" cx="150" cy="150" r="146"/>
+      <circle class="t-ring" cx="150" cy="150" r="104"/>
+      <path class="t-sweep" id="tSweep"/>
+      <path class="t-red" id="tRed"/>
+      <g id="tTicks"></g>
+      <text class="t-unit" x="150" y="114">×1000 r/min</text>
+      <text class="t-rpm" x="150" y="200" id="tRpm">0</text>
+      <text class="t-gear" x="150" y="276" id="tGear">N</text>
+      <g id="tNeedle">
+        <path class="t-needle" d="M150 176 L146.6 150 L149 30 L151 30 L153.4 150 Z"/>
+      </g>
+      <circle class="t-hub" cx="150" cy="150" r="13"/>
+      <circle class="t-hubdot" cx="150" cy="150" r="3.5"/>
+    </svg>
+    <div class="c-data">
+      <div><span>BOOST</span><b id="cBoost">−0.62</b></div>
+      <div><span>AFR</span><b id="cAfr">14.7</b></div>
+      <div><span>IAT</span><b id="cIat">24°</b></div>
+    </div>
+    <p class="c-label"><b id="cGearTxt">N</b> · <span id="cSec">Neutral</span></p>
+  </div>
+</aside>
+
+<canvas id="streaks" aria-hidden="true"></canvas>
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top" data-gear="0" data-label="N" data-name="Neutral">
+  <div class="hero-photo">
+    <img src="img/hero-dyno.webp" alt="A lowered coupe on Torque Lab’s roller dyno, wrapped in smoke and orange light in the dark shop" fetchpriority="high">
+  </div>
+  <div class="hero-panel"></div>
+  <div class="hero-edge"></div>
+
+  <div class="hero-copy">
+    <p class="kicker" data-in><span class="dot"></span>Performance shop · Quito<span class="k-x"> · Ecuador</span></p>
+    <h1 class="display h1">
+      <span class="l l1 slant"><span class="li">Tuning</span></span>
+      <span class="l l2 slant"><span class="li">in Quito</span></span>
+      <span class="sub" data-in>ECU · turbo · dyno · calibrated for 2,850 m</span>
+    </h1>
+    <p class="lede" data-in>We remap your engine on the rollers, breathing the city’s real air. No off-the-shelf files: every map is written and measured on your car.</p>
+    <div class="cta-row" data-in>
+      <a class="btn btn-primary" href="#reserva">Book your dyno day</a>
+      <a class="btn" href="#potencia">See the curve</a>
+    </div>
+  </div>
+
+  <div class="hud" data-in aria-label="Dyno readout, simulated">
+    <div class="hud-top"><span><b>●</b> Live · cell 2</span><span>#0417</span></div>
+    <div class="hud-row"><span>RPM</span><b id="hRpm">0950</b></div>
+    <div class="hud-row"><span>BOOST</span><b id="hBoost">−0.62<small>bar</small></b></div>
+    <div class="hud-row"><span>AFR</span><b id="hAfr">14.7<small>:1</small></b></div>
+    <div class="hud-row opt"><span>ALTITUDE</span><b>2,850<small>m</small></b></div>
+    <div class="hud-bar"><i id="hBar"></i></div>
+  </div>
+</section>
+
+<!-- ================= 1 DIAGNOSTICO ================= -->
+<section class="sec diag" id="diagnostico" data-gear="1" data-label="1st" data-name="Diagnostics">
+  <div class="wrap">
+    <p class="gear-tag"><b>1st</b>Diagnostics</p>
+    <div class="alt">
+      <p class="display alt-big" aria-label="2,850 meters"><span class="ghost" aria-hidden="true">2,850<small>m</small></span><span class="fill" aria-hidden="true">2,850<small>m</small></span></p>
+      <div class="alt-ruler" aria-hidden="true"><span class="s">0 m · sea level</span><span class="e">3,000 m</span><i class="mk"><span class="altnum">2,850</span> m</i></div>
+      <p class="alt-copy">Up here your engine breathes about <strong>27% less air</strong> than at sea level. The factory map doesn’t know that. We measure it.</p>
+    </div>
+
+    <div class="diag-grid">
+      <figure class="diag-photo">
+        <img src="img/engine-bay.webp" alt="A built engine bay with turbo, intake piping and carbon-fiber parts" loading="lazy">
+        <figcaption class="tag-abs"><b>01</b>Engine bay · pre-check</figcaption>
+      </figure>
+      <div class="diag-text">
+        <h2 class="display h2 slant split">First, we listen to the engine</h2>
+        <p class="lede">Before we touch a single map, we make sure the engine is healthy. A car with leaks or worn plugs doesn’t gain power; it gains problems. That’s why every job starts with an hour of diagnostics and a baseline run on the dyno.</p>
+        <ol class="log" aria-label="Sample diagnostic log">
+          <li><time>00:00</time><span>OBD scan, fault codes read</span><span class="ok">OK</span></li>
+          <li><time>00:12</time><span>Intake smoke test</span><span class="ok">OK</span></li>
+          <li><time>00:31</time><span>Compression, cylinder by cylinder</span><span class="ok">OK</span></li>
+          <li><time>00:48</time><span>Plugs, coils and fuel</span><span class="ok">OK</span></li>
+          <li><time>01:05</time><span>Baseline run · 3 pulls on the rollers</span><span class="ok">OK</span></li>
+          <li class="done"><time>01:20</time><span>Ready to map</span><span aria-hidden="true">→</span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 2 MAPEO ================= -->
+<section class="sec map" id="mapeo" data-gear="2" data-label="2nd" data-name="Mapping">
+  <div class="wrap">
+    <p class="gear-tag"><b>2nd</b>Mapping</p>
+    <div class="map-head">
+      <h2 class="display h2 slant split">We map it cell by cell</h2>
+      <p class="lede">Ignition, fueling and boost are tuned live, with the car running on the dyno and a wideband sensor in the exhaust. Write, measure, correct. Repeat.</p>
+    </div>
+    <div class="map-stage">
+      <figure class="map-photo">
+        <img src="img/tuner-laptop.webp" alt="A Torque Lab engineer adjusting an engine map on a laptop beside the car" loading="lazy">
+      </figure>
+      <div class="map-screen" aria-hidden="true">
+        <div class="screen-bar"><span>IGN_MAIN · ignition advance (°)</span><span class="status" id="mapStatus">STOCK</span></div>
+        <div class="ign-wrap">
+          <table class="ign" id="ign"><tr><th scope="col">kPa\rpm</th><th scope="col">1000</th><th scope="col">1500</th><th scope="col">2000</th><th scope="col">2500</th><th scope="col">3000</th><th scope="col">3500</th><th scope="col">4000</th><th scope="col">4500</th><th scope="col">5000</th><th scope="col">5500</th><th scope="col">6000</th><th scope="col">6500</th><th scope="col">7000</th></tr><tr><th scope="row">20</th><td data-s="34.0" data-t="34.8">34.0</td><td data-s="34.9" data-t="35.7">34.9</td><td data-s="35.8" data-t="36.6">35.8</td><td data-s="36.7" data-t="37.5">36.7</td><td data-s="37.6" data-t="38.4">37.6</td><td data-s="38.5" data-t="39.3">38.5</td><td data-s="39.4" data-t="40.2">39.4</td><td data-s="40.3" data-t="41.1">40.3</td><td data-s="41.2" data-t="42.0">41.2</td><td data-s="41.5" data-t="42.3">41.5</td><td data-s="41.8" data-t="42.6">41.8</td><td data-s="42.1" data-t="42.9">42.1</td><td data-s="42.4" data-t="43.2">42.4</td></tr><tr><th scope="row">30</th><td data-s="30.9" data-t="31.7">30.9</td><td data-s="31.8" data-t="32.6">31.8</td><td data-s="32.7" data-t="33.5">32.7</td><td data-s="33.6" data-t="34.4">33.6</td><td data-s="34.5" data-t="35.3">34.5</td><td data-s="35.4" data-t="36.2">35.4</td><td data-s="36.3" data-t="37.1">36.3</td><td data-s="37.2" data-t="38.0">37.2</td><td data-s="38.1" data-t="38.9">38.1</td><td data-s="38.4" data-t="39.2">38.4</td><td data-s="38.7" data-t="39.5">38.7</td><td data-s="39.0" data-t="39.8">39.0</td><td data-s="39.3" data-t="40.1">39.3</td></tr><tr><th scope="row">40</th><td data-s="27.8" data-t="28.6">27.8</td><td data-s="28.7" data-t="29.5">28.7</td><td data-s="29.6" data-t="30.4">29.6</td><td data-s="30.5" data-t="31.3">30.5</td><td data-s="31.4" data-t="32.2">31.4</td><td data-s="32.3" data-t="33.1">32.3</td><td data-s="33.2" data-t="34.0">33.2</td><td data-s="34.1" data-t="34.9">34.1</td><td data-s="35.0" data-t="35.8">35.0</td><td data-s="35.3" data-t="36.1">35.3</td><td data-s="35.6" data-t="36.4">35.6</td><td data-s="35.9" data-t="36.7">35.9</td><td data-s="36.2" data-t="37.0">36.2</td></tr><tr><th scope="row">50</th><td data-s="24.7" data-t="25.5">24.7</td><td data-s="25.6" data-t="26.4">25.6</td><td data-s="26.5" data-t="27.3">26.5</td><td data-s="27.4" data-t="28.2">27.4</td><td data-s="28.3" data-t="29.1">28.3</td><td data-s="29.2" data-t="30.0">29.2</td><td data-s="30.1" data-t="30.9">30.1</td><td data-s="31.0" data-t="31.8">31.0</td><td data-s="31.9" data-t="32.7">31.9</td><td data-s="32.2" data-t="33.0">32.2</td><td data-s="32.5" data-t="33.3">32.5</td><td data-s="32.8" data-t="33.6">32.8</td><td data-s="33.1" data-t="33.9">33.1</td></tr><tr><th scope="row">60</th><td data-s="21.6" data-t="24.1">21.6</td><td data-s="22.5" data-t="25.0">22.5</td><td data-s="23.4" data-t="25.9">23.4</td><td data-s="24.3" data-t="26.8">24.3</td><td data-s="25.2" data-t="29.2">25.2</td><td data-s="26.1" data-t="30.1">26.1</td><td data-s="27.0" data-t="31.0">27.0</td><td data-s="27.9" data-t="31.9">27.9</td><td data-s="28.8" data-t="32.8">28.8</td><td data-s="29.1" data-t="33.1">29.1</td><td data-s="29.4" data-t="33.4">29.4</td><td data-s="29.7" data-t="33.7">29.7</td><td data-s="30.0" data-t="34.0">30.0</td></tr><tr><th scope="row">70</th><td data-s="18.5" data-t="21.0">18.5</td><td data-s="19.4" data-t="21.9">19.4</td><td data-s="20.3" data-t="22.8">20.3</td><td data-s="21.2" data-t="23.7">21.2</td><td data-s="22.1" data-t="26.1">22.1</td><td data-s="23.0" data-t="27.0">23.0</td><td data-s="23.9" data-t="27.9">23.9</td><td data-s="24.8" data-t="28.8">24.8</td><td data-s="25.7" data-t="29.7">25.7</td><td data-s="26.0" data-t="30.0">26.0</td><td data-s="26.3" data-t="30.3">26.3</td><td data-s="26.6" data-t="30.6">26.6</td><td data-s="26.9" data-t="30.9">26.9</td></tr><tr><th scope="row">85</th><td data-s="15.4" data-t="16.7">15.4</td><td data-s="16.3" data-t="17.6">16.3</td><td data-s="17.2" data-t="18.5">17.2</td><td data-s="18.1" data-t="19.4">18.1</td><td data-s="19.0" data-t="23.0">19.0</td><td data-s="19.9" data-t="23.9">19.9</td><td data-s="20.8" data-t="24.8">20.8</td><td data-s="21.7" data-t="25.7">21.7</td><td data-s="22.6" data-t="26.6">22.6</td><td data-s="22.9" data-t="26.9">22.9</td><td data-s="23.2" data-t="27.2">23.2</td><td data-s="23.5" data-t="27.5">23.5</td><td data-s="23.8" data-t="27.8">23.8</td></tr><tr><th scope="row">100</th><td data-s="12.3" data-t="13.6">12.3</td><td data-s="13.2" data-t="14.5">13.2</td><td data-s="14.1" data-t="15.4">14.1</td><td data-s="15.0" data-t="16.3">15.0</td><td data-s="15.9" data-t="19.9">15.9</td><td data-s="16.8" data-t="20.8">16.8</td><td data-s="17.7" data-t="21.7">17.7</td><td data-s="18.6" data-t="22.6">18.6</td><td data-s="19.5" data-t="23.5">19.5</td><td data-s="19.8" data-t="23.8">19.8</td><td data-s="20.1" data-t="24.1">20.1</td><td data-s="20.4" data-t="24.4">20.4</td><td data-s="20.7" data-t="24.7">20.7</td></tr></table>
+          <i class="scan" id="scan"></i>
+        </div>
+        <div class="screen-foot"><span>Load (kPa) × engine speed (rpm)</span><span id="mapCells">0 / 104 cells</span></div>
+      </div>
+    </div>
+    <dl class="params">
+      <div><dt data-n="01">Ignition</dt><dd>Timing optimized cell by cell, with knock detection on every run.</dd></div>
+      <div><dt data-n="02">Fueling</dt><dd>Target mixture by load, corrected for Quito’s thin air.</dd></div>
+      <div><dt data-n="03">Turbo</dt><dd>Target boost and wastegate control, always inside the turbo’s limits.</dd></div>
+      <div><dt data-n="04">Safeguards</dt><dd>Temperature, rpm and torque limits that protect the gearbox and clutch.</dd></div>
+    </dl>
+    <p class="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6l8-3z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg><span>We keep your original file. If you ever want to go back to stock, we flash it back in twenty minutes.</span></p>
+  </div>
+</section>
+
+<!-- ================= 3 POTENCIA ================= -->
+<section class="sec power" id="potencia" data-gear="3" data-label="3rd" data-name="Power">
+  <div class="power-pin">
+    <div class="wrap power-inner">
+      <div class="power-head">
+        <p class="gear-tag"><b>3rd</b>Power</p>
+        <h2 class="display h2 slant split">The curve doesn’t lie</h2>
+        <p>Every car leaves with its own dyno sheet: the stock curve, measured here, and the curve after the map. The orange gap is what you’ll feel on the climb.</p>
+        <div class="gains">
+          <div class="gain"><span class="g-num">+<b id="gHp">28</b><em>%</em></span><span class="g-lbl">power</span><span class="g-det">170 → 217 hp</span></div>
+          <div class="gain"><span class="g-num">+<b id="gTq">35</b><em>%</em></span><span class="g-lbl">torque</span><span class="g-det">250 → 338 Nm</span></div>
+        </div>
+      </div>
+
+      <figure class="sheet" style="margin:0">
+        <div class="sheet-top"><span><b>Customer example</b> · 2.0 turbo hatchback</span><span>Stage 2 · Súper fuel · Quito</span></div>
+        <svg class="chart" id="chart" viewBox="0 0 900 500" role="img" aria-labelledby="chartTitle chartDesc">
+          <title id="chartTitle">Power and torque curves, stock vs. Torque Lab</title>
+          <desc id="chartDesc">Customer example. Peak power up from 170 to 217 hp (+28%) and peak torque from 250 to 338 newton-meters (+35%), measured between 1,500 and 7,000 rpm.</desc>
+          <defs>
+            <linearGradient id="gainGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#FF5A00" stop-opacity=".75"/>
+              <stop offset="1" stop-color="#FF5A00" stop-opacity=".25"/>
+            </linearGradient>
+            <clipPath id="gainClip"><rect id="gainRect" x="80" y="0" width="740" height="500"/></clipPath>
+          </defs>
+          <g class="grid">
+            <line x1="80" y1="40" x2="820" y2="40"/><line x1="80" y1="120" x2="820" y2="120"/><line x1="80" y1="200" x2="820" y2="200"/><line x1="80" y1="280" x2="820" y2="280"/><line x1="80" y1="360" x2="820" y2="360"/><line x1="80" y1="440" x2="820" y2="440" style="stroke:#3A3E45"/>
+            <line x1="147.3" y1="40" x2="147.3" y2="440"/><line x1="281.8" y1="40" x2="281.8" y2="440"/><line x1="416.4" y1="40" x2="416.4" y2="440"/><line x1="550.9" y1="40" x2="550.9" y2="440"/><line x1="685.5" y1="40" x2="685.5" y2="440"/><line x1="820" y1="40" x2="820" y2="440"/>
+          </g>
+          <g class="ax" text-anchor="end">
+            <text x="68" y="44">250</text><text x="68" y="124">200</text><text x="68" y="204">150</text><text x="68" y="284">100</text><text x="68" y="364">50</text>
+          </g>
+          <g class="ax" text-anchor="start">
+            <text x="832" y="44">400</text><text x="832" y="124">320</text><text x="832" y="204">240</text><text x="832" y="284">160</text><text x="832" y="364">80</text>
+          </g>
+          <g class="ax" text-anchor="middle">
+            <text x="147.3" y="468">2</text><text x="281.8" y="468">3</text><text x="416.4" y="468">4</text><text x="550.9" y="468">5</text><text x="685.5" y="468">6</text><text x="820" y="468">7</text>
+          </g>
+          <text class="ax-t" x="80" y="22">HP</text>
+          <text class="ax-t" x="820" y="22" text-anchor="end">NM</text>
+          <text class="ax-t" x="450" y="494" text-anchor="middle">RPM × 1000</text>
+          <path class="c-gain" id="cGain" clip-path="url(#gainClip)" d="M80.0 382.0L93.5 374.8L106.9 362.2L120.4 346.8L133.8 332.1L147.3 322.3L160.7 313.4L174.2 300.1L187.6 284.5L201.1 269.7L214.5 259.1L228.0 250.4L241.5 239.8L254.9 228.9L268.4 219.8L281.8 212.2L295.3 204.6L308.7 197.0L322.2 189.4L335.6 181.8L349.1 174.2L362.5 166.6L376.0 159.0L389.5 151.4L402.9 143.8L416.4 136.2L429.8 129.5L443.3 124.3L456.7 120.2L470.2 116.7L483.6 113.5L497.1 109.8L510.5 105.3L524.0 99.2L537.5 94.1L550.9 92.4L564.4 93.1L577.8 95.3L591.3 97.9L604.7 99.6L618.2 99.2L631.6 95.2L645.1 92.3L658.5 94.8L672.0 100.8L685.5 108.2L698.9 115.0L712.4 118.8L725.8 117.3L739.3 114.7L752.7 116.3L766.2 120.6L779.6 126.0L793.1 130.8L806.5 133.4L820.0 131.7L820.0 219.8L806.5 219.7L793.1 215.3L779.6 209.7L766.2 205.8L752.7 206.3L739.3 206.7L725.8 202.3L712.4 195.2L698.9 187.5L685.5 181.1L672.0 177.8L658.5 179.4L645.1 181.4L631.6 179.6L618.2 175.8L604.7 171.6L591.3 168.4L577.8 167.7L564.4 170.7L550.9 175.1L537.5 178.0L524.0 180.2L510.5 182.2L497.1 184.7L483.6 188.1L470.2 192.8L456.7 198.5L443.3 204.1L429.8 209.7L416.4 215.3L402.9 220.9L389.5 226.5L376.0 232.2L362.5 237.8L349.1 243.4L335.6 249.0L322.2 254.6L308.7 260.2L295.3 265.9L281.8 271.5L268.4 277.4L254.9 283.6L241.5 289.9L228.0 296.0L214.5 301.8L201.1 309.6L187.6 320.3L174.2 331.5L160.7 341.3L147.3 347.9L133.8 354.9L120.4 364.9L106.9 375.3L93.5 384.0L80.0 389.4Z"/>
+          <path class="c-stock tq" id="cSt" d="M80.0 290.0L93.5 284.3L106.9 270.6L120.4 254.4L133.8 240.7L147.3 235.0L160.7 230.7L174.2 220.6L187.6 208.4L201.1 198.3L214.5 194.0L228.0 193.6L241.5 192.6L254.9 191.4L268.4 190.4L281.8 190.0L295.3 190.0L308.7 190.0L322.2 190.0L335.6 190.0L349.1 190.0L362.5 190.0L376.0 190.0L389.5 190.0L402.9 190.0L416.4 190.0L429.8 190.0L443.3 190.0L456.7 190.0L470.2 190.0L483.6 190.8L497.1 193.0L510.5 195.9L524.0 199.1L537.5 202.0L550.9 204.2L564.4 205.0L577.8 206.9L591.3 211.9L604.7 218.8L618.2 226.2L631.6 233.1L645.1 238.1L658.5 240.0L672.0 242.2L685.5 247.9L698.9 255.7L712.4 264.3L725.8 272.1L739.3 277.8L752.7 280.0L766.2 282.1L779.6 287.0L793.1 293.0L806.5 297.9L820.0 300.0"/>
+          <path class="c-stock" id="cSp" d="M80.0 389.4L93.5 384.0L106.9 375.3L120.4 364.9L133.8 354.9L147.3 347.9L160.7 341.3L174.2 331.5L187.6 320.3L201.1 309.6L214.5 301.8L228.0 296.0L241.5 289.9L254.9 283.6L268.4 277.4L281.8 271.5L295.3 265.9L308.7 260.2L322.2 254.6L335.6 249.0L349.1 243.4L362.5 237.8L376.0 232.2L389.5 226.5L402.9 220.9L416.4 215.3L429.8 209.7L443.3 204.1L456.7 198.5L470.2 192.8L483.6 188.1L497.1 184.7L510.5 182.2L524.0 180.2L537.5 178.0L550.9 175.1L564.4 170.7L577.8 167.7L591.3 168.4L604.7 171.6L618.2 175.8L631.6 179.6L645.1 181.4L658.5 179.4L672.0 177.8L685.5 181.1L698.9 187.5L712.4 195.2L725.8 202.3L739.3 206.7L752.7 206.3L766.2 205.8L779.6 209.7L793.1 215.3L806.5 219.7L820.0 219.8"/>
+          <path class="c-tuned tq" id="cTt" d="M80.0 268.0L93.5 258.6L106.9 236.3L120.4 209.7L133.8 187.4L147.3 178.0L160.7 171.8L174.2 156.9L187.6 139.1L201.1 124.2L214.5 118.0L228.0 115.5L241.5 110.0L254.9 104.5L268.4 102.0L281.8 102.0L295.3 102.0L308.7 102.0L322.2 102.0L335.6 102.0L349.1 102.0L362.5 102.0L376.0 102.0L389.5 102.0L402.9 102.0L416.4 102.0L429.8 102.9L443.3 105.4L456.7 109.0L470.2 113.0L483.6 117.0L497.1 120.6L510.5 123.1L524.0 124.0L537.5 125.8L550.9 130.6L564.4 137.3L577.8 145.0L591.3 152.7L604.7 159.4L618.2 164.2L631.6 166.0L645.1 168.5L658.5 175.1L672.0 184.1L685.5 193.9L698.9 202.9L712.4 209.5L725.8 212.0L739.3 213.8L752.7 218.3L766.2 224.6L779.6 231.4L793.1 237.7L806.5 242.2L820.0 244.0"/>
+          <path class="c-tuned" id="cTp" d="M80.0 382.0L93.5 374.8L106.9 362.2L120.4 346.8L133.8 332.1L147.3 322.3L160.7 313.4L174.2 300.1L187.6 284.5L201.1 269.7L214.5 259.1L228.0 250.4L241.5 239.8L254.9 228.9L268.4 219.8L281.8 212.2L295.3 204.6L308.7 197.0L322.2 189.4L335.6 181.8L349.1 174.2L362.5 166.6L376.0 159.0L389.5 151.4L402.9 143.8L416.4 136.2L429.8 129.5L443.3 124.3L456.7 120.2L470.2 116.7L483.6 113.5L497.1 109.8L510.5 105.3L524.0 99.2L537.5 94.1L550.9 92.4L564.4 93.1L577.8 95.3L591.3 97.9L604.7 99.6L618.2 99.2L631.6 95.2L645.1 92.3L658.5 94.8L672.0 100.8L685.5 108.2L698.9 115.0L712.4 118.8L725.8 117.3L739.3 114.7L752.7 116.3L766.2 120.6L779.6 126.0L793.1 130.8L806.5 133.4L820.0 131.7"/>
+          <g class="c-cursor" id="cursor" style="opacity:0">
+            <line id="curLine" x1="0" y1="40" x2="0" y2="440"/>
+            <circle id="curS" r="5" fill="#8D949C"/>
+            <circle id="curT" r="6.5" fill="#FF5A00"/>
+          </g>
+          <g id="peaks">
+            <text class="peak o" id="pkT" x="0" y="0">217 hp</text>
+            <text class="peak" id="pkQ" x="0" y="0">338 Nm</text>
+          </g>
+        </svg>
+        <div class="legend">
+          <span><i style="border-color:#FF5A00"></i>Torque Lab power</span>
+          <span><i style="border-color:#8D949C"></i>Stock power</span>
+          <span><i style="border-color:#F3F4F5;border-top-width:2px"></i>Torque Lab torque</span>
+          <span><i style="border-color:#8D949C;border-top-style:dashed;border-top-width:2px"></i>Stock torque</span>
+        </div>
+        <div class="sheet-read" aria-hidden="true">
+          <div><span>RPM</span><b id="rR">7,000</b></div>
+          <div><span>Stock</span><b id="rS">140 hp</b></div>
+          <div><span>Torque Lab</span><b id="rT" class="o">193 hp</b></div>
+          <div><span>Gain</span><b id="rD">+53 hp</b></div>
+        </div>
+        <figcaption class="fine"><b>Customer example</b>, measured on our rollers. Results depend on each car’s condition, fuel and hardware.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STAGES ================= -->
+<section class="sec stages" id="etapas" data-gear="3" data-label="3rd" data-name="Power">
+  <div class="stages-pin">
+    <div class="wrap stages-head">
+      <div>
+        <p class="gear-tag"><b>3rd</b>Stages</p>
+        <h2 class="display h2 slant split">Pick your stage</h2>
+      </div>
+      <p>Three levels of build, each with its own plate. One rule: nothing leaves the shop without going back on the rollers.</p>
+    </div>
+    <div class="stages-vp">
+      <div class="stages-track" id="stTrack">
+
+        <div class="jig"><span class="jig-lbl">Bay 01</span><i class="clamp a"></i><i class="clamp b"></i><i class="clamp c"></i><i class="clamp d"></i>
+          <article class="plate" aria-labelledby="st1">
+            <i class="rivet a"></i><i class="rivet b"></i><i class="rivet c"></i><i class="rivet d"></i>
+            <div class="plate-head"><span>Torque Lab · Quito EC</span><span>No. TL-S1-26</span></div>
+            <h3 class="plate-title" id="st1"><span class="enamel">1</span><span class="pt"><small>Stage</small><span>Software only</span></span></h3>
+            <dl class="spec">
+              <div><dt>Gain</dt><dd><strong>+12–18%</strong> power</dd></div>
+              <div><dt>Includes</dt><dd>Diagnostics, ECU remap on the rollers, 3 runs and a printed report</dd></div>
+              <div><dt>Parts</dt><dd>None. Your car, just as it is</dd></div>
+              <div><dt>Shop time</dt><dd>1 day</dd></div>
+              <div><dt>From</dt><dd><strong>USD 480</strong></dd></div>
+            </dl>
+            <div class="plate-foot"><span>Min. 92 octane</span><i class="barcode"></i></div>
+          </article>
+        </div>
+
+        <div class="jig"><span class="jig-lbl">Bay 02</span><i class="clamp a"></i><i class="clamp b"></i><i class="clamp c"></i><i class="clamp d"></i>
+          <article class="plate" aria-labelledby="st2">
+            <i class="rivet a"></i><i class="rivet b"></i><i class="rivet c"></i><i class="rivet d"></i>
+            <div class="plate-head"><span>Torque Lab · Quito EC</span><span>No. TL-S2-26</span></div>
+            <h3 class="plate-title" id="st2"><span class="enamel">2</span><span class="pt"><small>Stage</small><span>Breathing</span></span></h3>
+            <dl class="spec">
+              <div><dt>Gain</dt><dd><strong>+22–30%</strong> power</dd></div>
+              <div><dt>Includes</dt><dd>Stage 2 map, front-mount intercooler, downpipe and high-flow intake</dd></div>
+              <div><dt>Parts</dt><dd>Fitted and tested in our shop</dd></div>
+              <div><dt>Shop time</dt><dd>2–3 days</dd></div>
+              <div><dt>From</dt><dd><strong>USD 1,900</strong></dd></div>
+            </dl>
+            <div class="plate-foot"><span>Min. 92 octane</span><i class="barcode"></i></div>
+          </article>
+        </div>
+
+        <div class="jig"><span class="jig-lbl">Bay 03</span><i class="clamp a"></i><i class="clamp b"></i><i class="clamp c"></i><i class="clamp d"></i>
+          <article class="plate" aria-labelledby="st3">
+            <i class="rivet a"></i><i class="rivet b"></i><i class="rivet c"></i><i class="rivet d"></i>
+            <div class="plate-head"><span>Torque Lab · Quito EC</span><span>No. TL-S3-26</span></div>
+            <h3 class="plate-title" id="st3"><span class="enamel">3</span><span class="pt"><small>Stage</small><span>Big turbo</span></span></h3>
+            <dl class="spec">
+              <div><dt>Gain</dt><dd><strong>+40–60%</strong> power</dd></div>
+              <div><dt>Includes</dt><dd>Higher-flow turbo, injectors, fuel pump, uprated clutch and a custom map</dd></div>
+              <div><dt>Parts</dt><dd>Built to the project, with brakes to match</dd></div>
+              <div><dt>Shop time</dt><dd>2–3 weeks</dd></div>
+              <div><dt>From</dt><dd><strong>On quote</strong></dd></div>
+            </dl>
+            <div class="plate-foot"><span>Custom project</span><i class="barcode"></i></div>
+          </article>
+        </div>
+
+        <div class="endcap">
+          <p class="mono">Not sure which?</p>
+          <p class="display endcap-t slant">Start with a baseline run</p>
+          <p>We measure your car as it is for USD 90 and tell you which stage makes sense. If you go ahead with a map, it comes off the bill.</p>
+          <a class="btn btn-primary" href="#reserva" style="align-self:flex-start">Book a baseline run</a>
+        </div>
+      </div>
+      <div class="rail" aria-hidden="true"><span>Parts intake →</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 4 FRENOS ================= -->
+<section class="sec brakes" id="frenos" data-gear="4" data-label="4th" data-name="Brakes &amp; suspension">
+  <div class="wrap">
+    <p class="gear-tag"><b>4th</b>Brakes &amp; suspension</p>
+    <div class="brakes-head">
+      <h2 class="display h2 slant split">More power needs more brakes</h2>
+      <p class="lede">Adding 40 horsepower, then coming down off Pichincha on factory pads, is not a plan. We bring the rest of the car up to its new engine: it stops shorter, grips harder and reaches the last corner in one piece.</p>
+    </div>
+    <ul class="parts">
+      <li>Larger rotors</li><li>4- and 6-piston calipers</li><li>DOT 5.1 fluid</li><li>Adjustable coilovers</li><li>Anti-roll bars</li><li>Alignment and corner weighting</li>
+    </ul>
+  </div>
+
+  <div class="pitwall">
+    <div class="wrap">
+      <div class="pit-label"><h3>Pit wall</h3><p class="mono" style="margin:0">Exploded view · parts from the shop</p></div>
+      <div class="pit-grid" id="pitGrid">
+        <figure class="pit p1"><img src="img/brakes-wheel.webp" alt="Close-up of a forged wheel with an oversized brake caliper" loading="lazy"><i class="ln"></i><figcaption><span><b>01</b> 6-piston caliper · 380 mm rotor</span></figcaption></figure>
+        <figure class="pit p2"><img src="img/exhaust.webp" alt="Titanium exhaust tips, heat-blued" loading="lazy"><i class="ln"></i><figcaption><span><b>02</b> Titanium tips, heat-blued</span></figcaption></figure>
+        <figure class="pit p3"><img src="img/engine-bay.webp" alt="Turbo and intake piping installed in the engine bay" loading="lazy" style="object-position:30% 50%"><i class="ln"></i><figcaption><span><b>03</b> Turbo and high-flow intake</span></figcaption></figure>
+        <figure class="pit p4"><img src="img/carbon-detail.webp" alt="Macro shot of carbon-fiber weave" loading="lazy"><i class="ln"></i><figcaption><span><b>04</b> 2×2 carbon</span></figcaption></figure>
+        <div class="pit-note">
+          <div>
+            <h4>Brakes</h4>
+            <ul>
+              <li>Rotors <b>330–380 mm</b></li>
+              <li>Calipers <b>4 and 6 piston</b></li>
+              <li>Fluid <b>DOT 5.1</b></li>
+              <li>Pads <b>street or track</b></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Suspension</h4>
+            <ul>
+              <li>Coilovers <b>32-way</b></li>
+              <li>Anti-roll bars <b>adjustable</b></li>
+              <li>Alignment <b>laser</b></li>
+              <li>Corner weights <b>per wheel</b></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="carbon" aria-hidden="true">
+  <div class="marquee" id="marquee">
+    <span>Dyno<em>◆</em>ECU<em>◆</em>Turbo<em>◆</em>Exhaust<em>◆</em>Brakes<em>◆</em>Suspension<em>◆</em>Track<em>◆</em></span>
+    <span>Dyno<em>◆</em>ECU<em>◆</em>Turbo<em>◆</em>Exhaust<em>◆</em>Brakes<em>◆</em>Suspension<em>◆</em>Track<em>◆</em></span>
+  </div>
+</div>
+
+<!-- ================= 5 PISTA ================= -->
+<section class="sec track" id="pista" data-gear="5" data-label="5th" data-name="Track">
+  <div class="track-sticky">
+    <div class="track-photo"><img src="img/night-street.webp" alt="A tuned car on a wet mountain road at night, with the lights of Quito below" loading="lazy"></div>
+    <div class="track-meta" aria-hidden="true"><span>● Mountain stretch</span><span>23:40</span><span>9 °C</span><span>Wet asphalt</span></div>
+  </div>
+  <div class="track-copy">
+    <div class="track-panel">
+      <p class="gear-tag"><b>5th</b>Track</p>
+      <h2 class="display h2 slant split">From dyno to apex</h2>
+      <p class="lede">Once a month we take our customers to the track. We check the cars the day before, time every lap, and an instructor rides with you for the first sessions. That’s where you learn to use the power, not on the street.</p>
+      <dl class="facts">
+        <div><dt>Next dates</dt><dd><b>Sat, Nov 14</b> · <b>Sat, Dec 12</b></dd></div>
+        <div><dt>Spots</dt><dd>14 cars per date</dd></div>
+        <div><dt>Includes</dt><dd>Tech inspection, lap-by-lap telemetry, instructor</dd></div>
+        <div><dt>You’ll need</dt><dd>A certified helmet and your car checked at our shop</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 6 RESERVA ================= -->
+<section class="sec book" id="reserva" data-gear="6" data-label="6th" data-name="Your turn">
+  <svg class="book-arc" viewBox="0 0 600 600" aria-hidden="true">
+    <path id="bArcBase" d="M116.2 483.8 A260 260 0 1 1 483.8 483.8" stroke="#2A2D33" stroke-width="2"/>
+    <path id="bArc" d="M555 350.7 A260 260 0 0 1 483.8 483.8" stroke="#FF5A00" stroke-width="22" style="filter:drop-shadow(0 0 22px rgba(255,90,0,.75))"/>
+  </svg>
+  <div class="wrap">
+    <p class="gear-tag"><b>6th</b>Your turn</p>
+    <h2 class="display h2 slant split">Book your dyno day</h2>
+    <div class="book-grid">
+      <div>
+        <p class="lede">Bring your car in. We put it on the rollers, and you leave with your curve on paper and an honest diagnosis. If you decide to map it later, the baseline run comes off the job.</p>
+        <a class="btn btn-primary btn-xl" href="https://wa.me/593990000000?text=Hi%20Torque%20Lab%2C%20I%27d%20like%20to%20book%20a%20dyno%20day">
+          <span class="row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/><path d="M9 9.5c.3 2.2 2.3 4.2 4.5 4.5l1.2-1.2 2 1-1 1.7c-3.3.3-7.8-4.2-7.5-7.5l1.7-1 1 2z" fill="currentColor" stroke="none"/></svg>Message us on WhatsApp</span>
+          <small>+593 99 000 0000</small>
+        </a>
+      </div>
+      <dl class="book-info">
+        <div><dt>Address</dt><dd>Av. Eloy Alfaro N39, Quito</dd></div>
+        <div><dt>Hours</dt><dd>Monday to Friday, 8:30 am – 6 pm<br>Saturday, 9 am – 2 pm</dd></div>
+        <div><dt>Baseline run</dt><dd>USD 90 · 3 pulls, diagnostics and a printed report</dd></div>
+        <div><dt>Duration</dt><dd>About 2 hours. You’re welcome to wait at the shop.</dd></div>
+        <div><dt>WhatsApp</dt><dd><a href="https://wa.me/593990000000">+593 99 000 0000</a></dd></div>
+      </dl>
+    </div>
+  </div>
+  <footer class="foot">
+    <span class="brand-word">Torque<i class="o">/</i>Lab</span>
+    <span>Performance, tuning and dyno · Av. Eloy Alfaro N39, Quito</span>
+    <span>© 2026 Torque Lab · Example figures; every car is different.</span>
+  </footer>
+</section>
+
+</main>
+
+<a class="sticky-cta" id="stickyCta" href="https://wa.me/593990000000?text=Hi%20Torque%20Lab%2C%20I%27d%20like%20to%20book%20a%20dyno%20day">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/></svg>Book the dyno
+</a>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function () {
+  'use strict';
+  var root = document.documentElement;
+  if (!window.gsap || !window.ScrollTrigger) { root.classList.remove('js'); return; }
+  window.__torque = true;
+  gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.config({ ignoreMobileResize: true });
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $ = function (s, c) { return (c || document).querySelector(s); };
+  var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+  var clamp = function (v, a, b) { return Math.max(a, Math.min(b, v)); };
+  var fmt = function (n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ','); };
+  var MINUS = '−';
+
+  /* ---------------- tachometer build ---------------- */
+  var NS = 'http://www.w3.org/2000/svg';
+  var ang = function (r) { return -135 + 270 * r / 8000; };
+  var pt = function (a, rad) { var t = a * Math.PI / 180; return [150 + rad * Math.sin(t), 150 - rad * Math.cos(t)]; };
+  var arc = function (rad, a0, a1) {
+    var s = pt(a0, rad), e = pt(a1, rad);
+    return 'M' + s[0].toFixed(2) + ' ' + s[1].toFixed(2) + ' A' + rad + ' ' + rad + ' 0 ' + ((a1 - a0) > 180 ? 1 : 0) + ' 1 ' + e[0].toFixed(2) + ' ' + e[1].toFixed(2);
+  };
+  var ticks = $('#tTicks');
+  for (var r = 0; r <= 8000; r += 250) {
+    var a = ang(r), maj = r % 1000 === 0, half = r % 500 === 0;
+    var p1 = pt(a, 132), p2 = pt(a, maj ? 112 : half ? 120 : 125);
+    var ln = document.createElementNS(NS, 'line');
+    ln.setAttribute('x1', p1[0]); ln.setAttribute('y1', p1[1]); ln.setAttribute('x2', p2[0]); ln.setAttribute('y2', p2[1]);
+    ln.setAttribute('class', 't-tick' + (maj ? ' maj' : '') + (r >= 7000 ? ' red' : ''));
+    ticks.appendChild(ln);
+    if (maj) {
+      var tp = pt(a, 93), tx = document.createElementNS(NS, 'text');
+      tx.setAttribute('x', tp[0]); tx.setAttribute('y', tp[1]);
+      tx.setAttribute('class', 't-num' + (r >= 7000 ? ' red' : ''));
+      tx.textContent = r / 1000;
+      ticks.appendChild(tx);
+    }
+  }
+  $('#tRed').setAttribute('d', arc(138, ang(7000), ang(8000)));
+  var sweep = $('#tSweep');
+  sweep.setAttribute('d', arc(141, ang(0), ang(8000)));
+  var sweepLen = sweep.getTotalLength();
+  sweep.style.strokeDasharray = sweepLen;
+
+  var cluster = $('.cluster'), clusterInner = $('.cluster-inner');
+  var needle = $('#tNeedle'), tRpm = $('#tRpm'), tGear = $('#tGear');
+  var lights = $$('.lights i');
+  var cBoost = $('#cBoost'), cAfr = $('#cAfr'), cIat = $('#cIat'), cGearTxt = $('#cGearTxt'), cSec = $('#cSec');
+  var hGear = $('.h-g'), hSec = $('.h-s');
+  var navLinks = $$('.gearnav a');
+
+  /* ---------------- engine model ---------------- */
+  var secs = $$('[data-gear]');
+  var BASE = [1000, 2000, 3000, 4000, 5100, 6100, 7000, 8000];
+  var gearStart = [];
+  function measure() {
+    gearStart = [];
+    secs.forEach(function (s) {
+      var g = +s.dataset.gear;
+      if (gearStart[g] === undefined) gearStart[g] = s.getBoundingClientRect().top + window.scrollY;
+    });
+    gearStart[0] = 0;
+    gearStart[7] = Math.max(document.documentElement.scrollHeight, gearStart[6] + 10) ;
+  }
+  function probeY(y) { return y + window.innerHeight * 0.55; }
+  function gearAt(y) {
+    var p = probeY(y), g = 0;
+    for (var i = 1; i <= 6; i++) if (p >= gearStart[i]) g = i;
+    return g;
+  }
+  function targetRpm(y) {
+    var p = probeY(y), g = gearAt(y);
+    var a = g === 0 ? window.innerHeight * 0.55 : gearStart[g], b = g === 6 ? (document.documentElement.scrollHeight - window.innerHeight) + window.innerHeight * 0.55 : gearStart[g + 1];
+    var t = clamp((p - a) / Math.max(1, b - a), 0, 1);
+    return BASE[g] + (BASE[g + 1] - BASE[g]) * t;
+  }
+  function boostOf(r) { return clamp(-0.65 + (r - 1200) / 2600 * 2.2, -0.65, 1.55); }
+  function afrOf(r) { return r < 1800 ? 14.7 : clamp(14.7 - (r - 1800) / 3000 * 2.6, 12.1, 14.7); }
+
+  var state = { rpm: 0, dip: 0, booting: !reduce };
+  var curGear = -1, redline = false, lastShake = 0;
+  var lastT = performance.now(), lastY = window.scrollY, vel = 0;
+  var lastRpmTxt = '', lastLit = -1;
+
+  function setGear(g, initial) {
+    if (g === curGear) return;
+    if (!initial && g > curGear && curGear >= 0 && !reduce) state.dip = -1150;
+    curGear = g;
+    var s = secs.filter(function (el) { return +el.dataset.gear === g; })[0];
+    var lbl = g === 0 ? 'N' : g + (['', 'st', 'nd', 'rd'][g] || 'th');
+    tGear.textContent = g === 0 ? 'N' : String(g);
+    cGearTxt.textContent = lbl; hGear.textContent = lbl;
+    cSec.textContent = s.dataset.name; hSec.textContent = s.dataset.name;
+    navLinks.forEach(function (a) { a.classList.toggle('is-on', +a.dataset.g === g); });
+    if (!reduce && !initial) gsap.fromTo(tGear, { opacity: 0.2 }, { opacity: 1, duration: 0.25, ease: 'steps(3)' });
+  }
+
+  function shake() {
+    if (reduce) return;
+    var now = performance.now();
+    if (now - lastShake < 1600) return;
+    lastShake = now;
+    var pinActive = ScrollTrigger.getAll().some(function (t) { return t.pin && t.isActive; });
+    var targets = pinActive ? [clusterInner] : [$('#main'), clusterInner];
+    gsap.fromTo(targets, { x: 0, y: 0 }, {
+      keyframes: [{ x: -4, y: 2 }, { x: 4, y: -2 }, { x: -3, y: 1 }, { x: 3, y: -1 }, { x: -1, y: 1 }, { x: 0, y: 0 }],
+      duration: 0.48, ease: 'none', clearProps: 'transform'
+    });
+  }
+
+  /* ---------------- speed lines ---------------- */
+  var cv = $('#streaks'), ctx = cv.getContext('2d'), dpr = 1, W = 0, H = 0;
+  var streaks = [];
+  function sizeCanvas() {
+    dpr = Math.min(2, window.devicePixelRatio || 1);
+    W = window.innerWidth; H = window.innerHeight;
+    cv.width = W * dpr; cv.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  function spawn(s, dir) {
+    s.x = Math.random() * W;
+    s.y = dir > 0 ? H + Math.random() * H * 0.5 : -Math.random() * H * 0.5;
+    if (s.init) s.y = Math.random() * H;
+    s.init = false;
+    s.len = 60 + Math.random() * 220;
+    s.w = Math.random() < 0.2 ? 2 : 1;
+    s.sp = 0.6 + Math.random() * 1.2;
+    s.o = Math.random() < 0.16;
+  }
+  for (var i = 0; i < 46; i++) { var s0 = { init: true }; streaks.push(s0); }
+  var streakOn = false;
+  function drawStreaks(dt, v) {
+    var k = clamp((Math.abs(v) - 1.1) / 4.5, 0, 1);
+    if (k <= 0.001) {
+      if (streakOn) { ctx.clearRect(0, 0, W, H); streakOn = false; streaks.forEach(function (s) { s.init = true; }); }
+      return;
+    }
+    if (!streakOn) { streaks.forEach(function (s) { spawn(s, v); }); streakOn = true; }
+    ctx.clearRect(0, 0, W, H);
+    var dir = v > 0 ? 1 : -1;
+    for (var j = 0; j < streaks.length; j++) {
+      var s = streaks[j];
+      if (j / streaks.length > k + 0.15) continue;
+      s.y -= v * dt * s.sp * 1.8;
+      var L = s.len * (0.4 + k * 1.4);
+      if (s.y < -L || s.y > H + L) spawn(s, dir);
+      var g = ctx.createLinearGradient(s.x, s.y, s.x, s.y + L * dir);
+      var c = s.o ? '255,90,0' : '255,255,255';
+      g.addColorStop(0, 'rgba(' + c + ',' + (0.05 + 0.4 * k) + ')');
+      g.addColorStop(1, 'rgba(' + c + ',0)');
+      ctx.strokeStyle = g; ctx.lineWidth = s.w;
+      ctx.beginPath(); ctx.moveTo(s.x, s.y); ctx.lineTo(s.x, s.y + L * dir); ctx.stroke();
+    }
+  }
+
+  /* ---------------- hero HUD ---------------- */
+  var hRpm = $('#hRpm'), hBoost = $('#hBoost'), hAfr = $('#hAfr'), hBar = $('#hBar');
+  var heroVisible = true;
+  function tickHud() {
+    var r = state.rpm + (Math.random() - 0.5) * (state.rpm < 1500 ? 60 : 30);
+    var b = boostOf(r) + (Math.random() - 0.5) * 0.03;
+    var f = afrOf(r) + (Math.random() - 0.5) * 0.12;
+    if (heroVisible) {
+      hRpm.textContent = String(Math.round(r / 10) * 10).padStart(4, '0');
+      hBoost.innerHTML = (b < 0 ? MINUS : '+') + Math.abs(b).toFixed(2) + '<small>bar</small>';
+      hAfr.innerHTML = f.toFixed(1) + '<small>:1</small>';
+      hBar.style.width = clamp(r / 80, 4, 100) + '%';
+    }
+    cBoost.textContent = (b < 0 ? MINUS : '+') + Math.abs(b).toFixed(2);
+    cAfr.textContent = f.toFixed(1);
+    cIat.textContent = Math.round(22 + clamp((r - 1000) / 7000, 0, 1) * 14) + '°';
+  }
+  setInterval(tickHud, reduce ? 600 : 110);
+
+  /* ---------------- main loop ---------------- */
+  function frame(now) {
+    var dt = Math.min(64, now - lastT); lastT = now;
+    var y = window.scrollY;
+    var raw = (y - lastY) / Math.max(1, dt); lastY = y;
+    vel += (raw - vel) * 0.18;
+    if (Math.abs(vel) < 0.002) vel = 0;
+
+    setGear(gearAt(y));
+    var target = targetRpm(y);
+    state.dip *= Math.exp(-dt / 300);
+    if (!state.booting) {
+      if (reduce) state.rpm = target;
+      else state.rpm += (target + state.dip - state.rpm) * (1 - Math.exp(-dt / 120));
+    }
+    var rpm = clamp(state.rpm, 0, 8200);
+    var idle = clamp(1 - (rpm - 900) / 2600, 0, 1);
+    var jit = reduce ? 0 : (Math.sin(now / 31) * 0.45 + Math.sin(now / 13.7) * 0.25 + (Math.random() - 0.5) * 0.5) * (0.35 + idle * 0.9);
+    if (rpm >= 7000 && !reduce) jit += (Math.random() - 0.5) * 2.4;
+    needle.setAttribute('transform', 'rotate(' + (ang(rpm) + jit).toFixed(2) + ' 150 150)');
+    sweep.style.strokeDashoffset = (sweepLen * (1 - rpm / 8000)).toFixed(1);
+    if (!reduce && !state.booting) {
+      var vib = 0.25 + idle * 0.35;
+      clusterInner.style.translate = ((Math.random() - 0.5) * vib).toFixed(2) + 'px ' + ((Math.random() - 0.5) * vib).toFixed(2) + 'px';
+    }
+    var txt = String(Math.round(rpm / 10) * 10);
+    if (txt !== lastRpmTxt) { tRpm.textContent = txt; lastRpmTxt = txt; }
+    var lit = 0;
+    for (var k = 0; k < 8; k++) if (rpm >= 5300 + k * 220) lit = k + 1;
+    if (lit !== lastLit) { lights.forEach(function (l, idx) { l.classList.toggle('on', idx < lit); l.classList.toggle('hi', idx >= 6 && idx < lit); }); lastLit = lit; }
+    if (!redline && rpm >= 7000 && !state.booting) { redline = true; cluster.classList.add('is-redline'); document.body.classList.add('is-redline'); shake(); }
+    else if (redline && rpm < 6880) { redline = false; cluster.classList.remove('is-redline'); document.body.classList.remove('is-redline'); }
+
+    if (!reduce) {
+      drawStreaks(dt, vel);
+      var st = clamp(Math.abs(vel) * 0.012, 0, 0.05);
+      document.body.style.setProperty('--stretch', st.toFixed(3));
+      if (marqueeTween) marqueeTween.timeScale(1 + clamp(Math.abs(vel) * 2.2, 0, 7) * (vel < 0 ? -1 : 1));
+    }
+    requestAnimationFrame(frame);
+  }
+
+  /* ---------------- split headings ---------------- */
+  $$('.split').forEach(function (el) {
+    var walk = function (node) {
+      Array.prototype.slice.call(node.childNodes).forEach(function (n) {
+        if (n.nodeType === 3) {
+          var frag = document.createDocumentFragment();
+          n.textContent.split(/(\s+)/).forEach(function (part) {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(' ')); return; }
+            var w = document.createElement('span'); w.className = 'w';
+            var wi = document.createElement('span'); wi.className = 'wi'; wi.textContent = part;
+            w.appendChild(wi); frag.appendChild(w);
+          });
+          n.parentNode.replaceChild(frag, n);
+        } else if (n.nodeType === 1) walk(n);
+      });
+    };
+    walk(el);
+  });
+
+  /* ---------------- marquee ---------------- */
+  var marqueeTween = null;
+  if (!reduce) marqueeTween = gsap.to('#marquee', { xPercent: -50, duration: 38, ease: 'none', repeat: -1 });
+
+  /* ---------------- hero intro ---------------- */
+  var heroPanelFull = function () { return window.innerWidth >= 1100 ? 'polygon(0 0, 56% 0, 40% 100%, 0 100%)' : 'polygon(0 47%, 100% 37%, 100% 100%, 0 100%)'; };
+  function intro() {
+    if (reduce) {
+      state.booting = false;
+      gsap.set('.hero-panel', { clipPath: heroPanelFull() });
+      gsap.set('.hero .h1 .li', { y: 0 });
+      gsap.set('.hero [data-in], .hero-edge', { opacity: 1 });
+      return;
+    }
+    var tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+    tl.fromTo('.hero-photo img', { scale: 1.18, filter: 'brightness(.35)' }, { scale: 1, filter: 'brightness(1)', duration: 2.2, ease: 'power2.out' }, 0)
+      .to('.hero-panel', { clipPath: heroPanelFull(), duration: 1.1, ease: 'expo.inOut' }, 0.1)
+      .to('.hero-edge', { opacity: 1, duration: 0.2 }, 0.95)
+      .fromTo('.hero-edge', { filter: 'brightness(3)' }, { filter: 'brightness(1)', duration: 0.6 }, 0.95)
+      .to('.hero .h1 .li', { y: 0, yPercent: 0, duration: 1.1, stagger: 0.12 }, 0.7)
+      .fromTo('.hero [data-in]', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.9, stagger: 0.08 }, 1.0);
+    // ignition: instrument self-test sweep
+    gsap.timeline({ delay: 0.35 })
+      .to(state, { rpm: 8000, duration: 0.75, ease: 'power2.inOut' })
+      .to(state, { rpm: 1000, duration: 0.9, ease: 'power3.out' })
+      .add(function () { state.booting = false; });
+  }
+
+  /* ---------------- scroll scenes ---------------- */
+  function scenes() {
+    var mm = gsap.matchMedia();
+
+    // hero parallax
+    if (!reduce) {
+      gsap.to('.hero-photo', { yPercent: 14, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+      gsap.to('.hero .l1', { xPercent: -10, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+      gsap.to('.hero .l2', { xPercent: 6, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+      gsap.to('.hud', { y: -60, opacity: 0, ease: 'none', scrollTrigger: { trigger: '.hero', start: '30% top', end: '80% top', scrub: true } });
+    }
+    ScrollTrigger.create({ trigger: '.hero', start: 'top top', end: 'bottom top', onToggle: function (s) { heroVisible = s.isActive; } });
+
+    // headings
+    $$('.split').forEach(function (h) {
+      if (reduce) return;
+      gsap.from($$('.wi', h), { yPercent: 112, rotate: 5, duration: 1, ease: 'power4.out', stagger: 0.07, scrollTrigger: { trigger: h, start: 'top 86%' } });
+    });
+    $$('.gear-tag b').forEach(function (b) {
+      if (reduce) return;
+      gsap.from(b, { yPercent: 0, color: '#4B5058', borderColor: '#4B5058', duration: 0.6, ease: 'steps(4)', scrollTrigger: { trigger: b, start: 'top 88%' } });
+    });
+
+    // 1 altitude
+    var altFill = $('.alt-big .fill'), mk = $('.alt-ruler .mk');
+    var altState = { p: reduce ? 1 : 0 };
+    var renderAlt = function () {
+      var p = altState.p;
+      altFill.style.clipPath = 'inset(0 ' + ((1 - p) * 100).toFixed(2) + '% 0 0)';
+            mk.style.left = (p * 95) + '%';
+      mk.firstChild.textContent = fmt(2850 * p);
+      mk.firstChild.style.transform = 'translateX(' + (-p * 100).toFixed(1) + '%) translateX(' + (-p * 16).toFixed(1) + 'px)';
+    };
+    renderAlt();
+    if (!reduce) gsap.to(altState, { p: 1, ease: 'none', onUpdate: renderAlt, scrollTrigger: { trigger: '.alt', start: 'top 82%', end: 'bottom 55%', scrub: 0.6 } });
+
+    if (!reduce) {
+      gsap.fromTo('.diag-photo', { clipPath: 'polygon(0 0, 0% 0, -30% 100%, 0 100%)' }, { clipPath: 'polygon(0 0, 130% 0, 100% 100%, 0 100%)', ease: 'none', scrollTrigger: { trigger: '.diag-photo', start: 'top 85%', end: 'top 25%', scrub: 0.5 } });
+      gsap.fromTo('.diag-photo img', { scale: 1.3 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: '.diag-photo', start: 'top bottom', end: 'bottom top', scrub: true } });
+      gsap.from('.log li', { opacity: 0, x: -30, stagger: 0.12, duration: 0.5, ease: 'power3.out', scrollTrigger: { trigger: '.log', start: 'top 80%' } });
+      gsap.from('.log .ok', { opacity: 0, scale: 1.8, stagger: 0.12, duration: 0.3, delay: 0.25, ease: 'back.out(3)', scrollTrigger: { trigger: '.log', start: 'top 80%' } });
+    }
+
+    // 2 map
+    var cells = $$('#ign td');
+    var ramp = function (v) {
+      var t = clamp((v - 11) / 34, 0, 1);
+      var e = Math.pow(t, 1.7);
+      var r0 = 29, g0 = 31, b0 = 36, r1 = 255, g1 = 90, b1 = 0;
+      return 'rgb(' + Math.round(r0 + (r1 - r0) * e) + ',' + Math.round(g0 + (g1 - g0) * e) + ',' + Math.round(b0 + (b1 - b0) * e) + ')';
+    };
+    var paint = function (td, tuned) {
+      var v = parseFloat(tuned ? td.dataset.t : td.dataset.s);
+      td.textContent = v.toFixed(1);
+      td.style.background = ramp(v);
+      td.style.color = v > 36 ? '#0B0B0C' : '#F3F4F5';
+      td.classList.toggle('t', tuned && td.dataset.t !== td.dataset.s);
+    };
+    cells.forEach(function (td) { td._t = false; paint(td, false); });
+    var mapStatus = $('#mapStatus'), mapCells = $('#mapCells'), scan = $('#scan');
+    var ROWS = 8, COLS = 13;
+    var renderMap = function (p) {
+      var done = Math.floor(p * (cells.length + 6));
+      var n = 0;
+      cells.forEach(function (td, idx) {
+        var row = Math.floor(idx / COLS), col = idx % COLS;
+        var order = row * COLS + col;
+        var tuned = order < done;
+        if (tuned) n++;
+        if (td._t !== tuned) { td._t = tuned; paint(td, tuned); }
+      });
+      scan.style.opacity = p > 0.01 && p < 0.99 ? 1 : 0;
+      scan.style.transform = 'translateY(' + (clamp(done / COLS, 0, ROWS) / ROWS * ($('#ign').offsetHeight - 2)) + 'px)';
+      mapStatus.textContent = p < 0.02 ? 'STOCK' : n < cells.length ? 'WRITING ' + Math.round(n / cells.length * 100) + '%' : 'SAVED · TL v3.2';
+      mapCells.textContent = n + ' / ' + cells.length + ' cells';
+    };
+    renderMap(reduce ? 1 : 0);
+    if (!reduce) {
+      ScrollTrigger.create({ trigger: '.map-screen', start: 'top 80%', end: 'bottom 30%', scrub: true, onUpdate: function (s) { renderMap(s.progress); } });
+      gsap.fromTo('.map-photo img', { yPercent: -8, scale: 1.18 }, { yPercent: 8, scale: 1.18, ease: 'none', scrollTrigger: { trigger: '.map-photo', start: 'top bottom', end: 'bottom top', scrub: true } });
+      mm.add('(min-width: 900px)', function () {
+        gsap.fromTo('.map-screen', { rotateY: -28, rotateX: 10, x: 120, opacity: 0 }, { rotateY: -9, rotateX: 4, x: 0, opacity: 1, ease: 'power2.out', scrollTrigger: { trigger: '.map-stage', start: 'top 75%', end: 'center 55%', scrub: 0.6 } });
+      });
+      mm.add('(max-width: 899px)', function () {
+        gsap.from('.map-screen', { y: 60, opacity: 0, ease: 'power2.out', scrollTrigger: { trigger: '.map-screen', start: 'top 95%', end: 'top 65%', scrub: 0.6 } });
+      });
+      gsap.from('.params > div', { opacity: 0, y: 30, stagger: 0.1, duration: 0.7, ease: 'power3.out', scrollTrigger: { trigger: '.params', start: 'top 85%' } });
+    }
+
+    // 3 power chart
+    var DATA = [[1500,31.6,36.2,150,172],[1600,35,40.7,156,181],[1700,40.4,48.6,169,204],[1800,46.9,58.2,186,230],[1900,53.2,67.4,199,253],[2000,57.6,73.6,205,262],[2100,61.7,79.1,209,268],[2200,67.8,87.5,219,283],[2300,74.8,97.2,232,301],[2400,81.5,106.4,242,316],[2500,86.4,113,246,322],[2600,90,118.5,246,325],[2700,93.8,125.1,247,330],[2800,97.7,131.9,249,336],[2900,101.6,137.6,250,338],[3000,105.3,142.4,250,338],[3100,108.8,147.1,250,338],[3200,112.3,151.9,250,338],[3300,115.9,156.6,250,338],[3400,119.4,161.4,250,338],[3500,122.9,166.1,250,338],[3600,126.4,170.9,250,338],[3700,129.9,175.6,250,338],[3800,133.4,180.4,250,338],[3900,136.9,185.1,250,338],[4000,140.4,189.9,250,338],[4100,143.9,194.1,250,337],[4200,147.5,197.3,250,335],[4300,151,199.9,250,331],[4400,154.5,202.1,250,327],[4500,157.5,204.1,249,323],[4600,159.6,206.3,247,319],[4700,161.1,209.2,244,317],[4800,162.4,213,241,316],[4900,163.8,216.2,238,314],[5000,165.6,217.3,236,309],[5100,168.3,216.8,235,303],[5200,170.2,215.4,233,295],[5300,169.7,213.8,228,287],[5400,167.8,212.8,221,281],[5500,165.1,213,214,276],[5600,162.7,215.5,207,274],[5700,161.6,217.3,202,271],[5800,162.9,215.7,200,265],[5900,163.9,212,198,256],[6000,161.8,207.4,192,246],[6100,157.8,203.1,184,237],[6200,153,200.7,176,231],[6300,148.6,201.7,168,228],[6400,145.8,203.3,162,226],[6500,146,202.3,160,222],[6600,146.4,199.6,158,215],[6700,143.9,196.3,153,209],[6800,140.4,193.2,147,202],[6900,137.7,191.6,142,198],[7000,137.6,192.7,140,196]];
+    var X0 = 80, X1 = 820;
+    var xOf = function (r) { return X0 + (r - 1500) / 5500 * (X1 - X0); };
+    var yHp = function (v) { return 440 - v / 250 * 400; };
+    var yNm = function (v) { return 440 - v / 400 * 400; };
+    var at = function (r, k) {
+      var f = clamp((r - 1500) / 100, 0, DATA.length - 1), i0 = Math.floor(f), i1 = Math.min(DATA.length - 1, i0 + 1), t = f - i0;
+      return DATA[i0][k] + (DATA[i1][k] - DATA[i0][k]) * t;
+    };
+    var peakIdx = function (k) { var m = 0; DATA.forEach(function (d, i) { if (d[k] > DATA[m][k]) m = i; }); return m; };
+    var pT = DATA[peakIdx(2)], pQ = DATA[peakIdx(4)];
+    var pkT = $('#pkT'), pkQ = $('#pkQ');
+    pkT.setAttribute('x', xOf(pT[0]) - 34); pkT.setAttribute('y', yHp(pT[2]) - 16);
+    pkT.textContent = Math.round(pT[2]) + ' hp @ ' + fmt(pT[0]);
+    pkQ.setAttribute('x', xOf(pQ[0]) - 60); pkQ.setAttribute('y', yNm(pQ[4]) - 14);
+    pkQ.textContent = Math.round(pQ[4]) + ' Nm';
+    var paths = ['#cSp', '#cSt', '#cTp', '#cTt'].map(function (id) { var p = $(id); var L = p.getTotalLength(); p.style.strokeDasharray = L + ' ' + L; return { el: p, L: L }; });
+    var gainRect = $('#gainRect'), cursor = $('#cursor'), curLine = $('#curLine'), curS = $('#curS'), curT = $('#curT');
+    var gHp = $('#gHp'), gTq = $('#gTq'), rR = $('#rR'), rS = $('#rS'), rT = $('#rT'), rD = $('#rD'), peaks = $('#peaks');
+    var renderChart = function (p) {
+      var ds = clamp(p / 0.28, 0, 1), dt2 = clamp((p - 0.24) / 0.62, 0, 1);
+      paths[0].el.style.strokeDashoffset = paths[0].L * (1 - ds);
+      paths[1].el.style.strokeDashoffset = paths[1].L * (1 - ds);
+      paths[2].el.style.strokeDashoffset = paths[2].L * (1 - dt2);
+      paths[3].el.style.strokeDashoffset = paths[3].L * (1 - dt2);
+      gainRect.setAttribute('width', (X1 - X0) * dt2);
+      var r = 1500 + 5500 * (dt2 > 0 ? dt2 : ds);
+      var sv = at(r, 1), tv = at(r, 2);
+      cursor.style.opacity = (p > 0.01 && p < 0.97) ? 1 : 0;
+      var cx = xOf(r);
+      curLine.setAttribute('x1', cx); curLine.setAttribute('x2', cx);
+      curS.setAttribute('cx', cx); curS.setAttribute('cy', yHp(sv));
+      curT.setAttribute('cx', cx); curT.setAttribute('cy', yHp(dt2 > 0 ? tv : sv));
+      curT.style.opacity = dt2 > 0 ? 1 : 0;
+      gHp.textContent = Math.round(28 * dt2);
+      gTq.textContent = Math.round(35 * dt2);
+      rR.textContent = fmt(Math.round(r / 50) * 50);
+      rS.textContent = Math.round(sv) + ' hp';
+      rT.textContent = dt2 > 0 ? Math.round(tv) + ' hp' : '—';
+      rD.textContent = dt2 > 0 ? '+' + Math.round(tv - sv) + ' hp' : '—';
+      peaks.style.opacity = dt2 > 0.97 ? 1 : 0;
+    };
+    if (reduce) { renderChart(1); peaks.style.opacity = 1; }
+    else {
+      renderChart(0);
+      mm.add('(min-width: 1100px)', function () {
+        ScrollTrigger.create({ trigger: '.power', start: 'top top', end: '+=150%', pin: '.power-pin', scrub: true, onUpdate: function (s) { renderChart(s.progress); }, onRefresh: function (s) { renderChart(s.progress); } });
+      });
+      mm.add('(max-width: 1099px)', function () {
+        ScrollTrigger.create({ trigger: '.gains', start: 'top 80%', endTrigger: '.sheet', end: 'bottom 60%', scrub: true, onUpdate: function (s) { renderChart(s.progress); }, onRefresh: function (s) { renderChart(s.progress); } });
+      });
+      gsap.from('.gain', { opacity: 0, y: 40, stagger: 0.15, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: '.gains', start: 'top 90%' } });
+    }
+
+    // stages
+    if (!reduce) {
+      mm.add('(min-width: 1100px)', function () {
+        var track = $('#stTrack'), vp = $('.stages-vp');
+        var dist = function () { return Math.max(0, track.scrollWidth - vp.clientWidth); };
+        var tween = gsap.to(track, { x: function () { return -dist(); }, ease: 'none', scrollTrigger: { trigger: '.stages', start: 'top top', end: function () { return '+=' + Math.round(dist() * 1.15); }, pin: '.stages-pin', scrub: 0.7, invalidateOnRefresh: true } });
+        $$('.jig').forEach(function (jig, i) {
+          var plate = $('.plate', jig), cl = $$('.clamp', jig);
+          gsap.fromTo(plate, { x: 340, y: i % 2 ? -50 : 50, rotate: i % 2 ? -7 : 6, opacity: 0.25 }, { x: 0, y: 0, rotate: 0, opacity: 1, ease: 'power3.out', scrollTrigger: { containerAnimation: tween, trigger: jig, start: 'left 100%', end: 'left 52%', scrub: true } });
+          gsap.fromTo(cl, { scale: 1.9, opacity: 0 }, { scale: 1, opacity: 1, ease: 'back.out(3)', scrollTrigger: { containerAnimation: tween, trigger: jig, start: 'left 56%', end: 'left 46%', scrub: true } });
+        });
+        gsap.from('.endcap > *', { opacity: 0, x: 60, stagger: 0.1, scrollTrigger: { containerAnimation: tween, trigger: '.endcap', start: 'left 90%', end: 'left 60%', scrub: true } });
+      });
+      mm.add('(max-width: 1099px)', function () {
+        $$('.jig').forEach(function (jig, i) {
+          gsap.fromTo($('.plate', jig), { x: i % 2 ? -70 : 70, rotate: i % 2 ? -5 : 5, opacity: 0 }, { x: 0, rotate: 0, opacity: 1, ease: 'power3.out', scrollTrigger: { trigger: jig, start: 'top 92%', end: 'top 55%', scrub: 0.5 } });
+          gsap.fromTo($$('.clamp', jig), { scale: 1.8, opacity: 0 }, { scale: 1, opacity: 1, ease: 'back.out(3)', scrollTrigger: { trigger: jig, start: 'top 60%', end: 'top 50%', scrub: true } });
+        });
+      });
+    }
+
+    // 4 pit wall: exploded view settling into the grid
+    if (!reduce) {
+      var off = {
+        p1: { x: -42, y: 18, r: -9, ry: 28, s: 0.82 },
+        p2: { x: 46, y: -26, r: 11, ry: -24, s: 0.78 },
+        p3: { x: 52, y: 22, r: -7, ry: -30, s: 0.8 },
+        p4: { x: -26, y: 40, r: 14, ry: 18, s: 0.7 }
+      };
+      mm.add({ d: '(min-width: 900px)', m: '(max-width: 899px)' }, function (ctx) {
+        var f = ctx.conditions.d ? 1 : 0.35;
+        Object.keys(off).forEach(function (k) {
+          var o = off[k];
+          gsap.fromTo('.' + k, { xPercent: o.x * f * 1.4, yPercent: o.y * f, rotate: o.r * (ctx.conditions.d ? 1 : 0.6), rotateY: o.ry * f, scale: o.s, transformPerspective: 1200 },
+            { xPercent: 0, yPercent: 0, rotate: 0, rotateY: 0, scale: 1, ease: 'power2.out', scrollTrigger: { trigger: '#pitGrid', start: 'top 95%', end: ctx.conditions.d ? 'top 22%' : 'top 30%', scrub: 0.6 } });
+          gsap.fromTo('.' + k + ' img', { scale: 1.35 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: '#pitGrid', start: 'top 95%', end: 'top 22%', scrub: 0.6 } });
+        });
+        gsap.fromTo('.pit-note', { yPercent: 40, opacity: 0 }, { yPercent: 0, opacity: 1, ease: 'power2.out', scrollTrigger: { trigger: '#pitGrid', start: 'top 60%', end: 'top 15%', scrub: 0.6 } });
+        gsap.fromTo('.pit .ln, .pit figcaption', { opacity: 0 }, { opacity: 1, scrollTrigger: { trigger: '#pitGrid', start: 'top 30%', end: 'top 18%', scrub: true } });
+      });
+      gsap.from('.parts li', { opacity: 0, y: 14, stagger: 0.06, duration: 0.5, scrollTrigger: { trigger: '.parts', start: 'top 90%' } });
+    }
+
+    // 5 track: letterbox slit opens like headlights
+    if (!reduce) {
+      gsap.fromTo('.track-photo', { clipPath: 'inset(43% 0% 43% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', ease: 'none', scrollTrigger: { trigger: '.track', start: 'top 90%', end: 'top top', scrub: true } });
+      gsap.fromTo('.track-photo img', { scale: 1.35 }, { scale: 1.04, ease: 'none', scrollTrigger: { trigger: '.track', start: 'top bottom', end: 'bottom bottom', scrub: true } });
+      gsap.from('.track-meta span', { opacity: 0, y: -10, stagger: 0.08, scrollTrigger: { trigger: '.track', start: 'top 20%' } });
+      gsap.from('.facts > div', { opacity: 0, y: 24, stagger: 0.08, duration: 0.6, scrollTrigger: { trigger: '.facts', start: 'top 88%' } });
+    }
+
+    // 6 booking
+    var bArc = $('#bArc'), bL = bArc.getTotalLength();
+    bArc.style.strokeDasharray = bL;
+    bArc.style.strokeDashoffset = reduce ? 0 : bL;
+    if (!reduce) {
+      gsap.to(bArc, { strokeDashoffset: 0, ease: 'none', scrollTrigger: { trigger: '.book', start: 'top 70%', end: 'top 10%', scrub: true } });
+      gsap.from('.book-info > div', { opacity: 0, x: 30, stagger: 0.08, duration: 0.6, scrollTrigger: { trigger: '.book-info', start: 'top 88%' } });
+      gsap.from('.btn-xl', { opacity: 0, y: 30, duration: 0.7, scrollTrigger: { trigger: '.btn-xl', start: 'top 95%' } });
+    }
+
+    // sticky CTA
+    var sticky = $('#stickyCta');
+    ScrollTrigger.create({ trigger: '#reserva .book-grid', start: 'top bottom', onEnter: function () { sticky.classList.add('is-hidden'); }, onLeaveBack: function () { sticky.classList.remove('is-hidden'); } });
+
+    var topbar = $('.topbar');
+    ScrollTrigger.create({ start: 60, onEnter: function () { topbar.classList.add('is-solid'); }, onLeaveBack: function () { topbar.classList.remove('is-solid'); } });
+    ScrollTrigger.addEventListener('refresh', measure);
+  }
+
+  /* ---------------- boot ---------------- */
+  sizeCanvas();
+  window.addEventListener('resize', function () { sizeCanvas(); if (!state.booting) gsap.set('.hero-panel', { clipPath: heroPanelFull() }); });
+  scenes();
+  measure();
+  setGear(gearAt(window.scrollY), true);
+  if (reduce) state.rpm = targetRpm(window.scrollY);
+  intro();
+  requestAnimationFrame(frame);
+  var refresh = function () { ScrollTrigger.refresh(); measure(); };
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(refresh);
+  window.addEventListener('load', refresh);
+})();
+</script>
+</body>
+</html>

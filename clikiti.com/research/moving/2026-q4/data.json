@@ -1,0 +1,283 @@
+{
+  "title": "The State of Independent Moving Company Websites 2026",
+  "edition": "2026-Q4",
+  "period": "Q4 2026",
+  "sample": false,
+  "source": "corpus",
+  "note": "Aggregates computed from automated scans. No individual site is identified.",
+  "url": "https://clikiti.com/research/moving/2026-q4",
+  "scannedAt": "2026-10-15T21:07:32.089Z",
+  "publishedAt": "2026-10-15T21:07:50.499Z",
+  "modifiedAt": "2026-10-15T21:07:50.499Z",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "Free to use and cite under CC BY 4.0. Credit Clikiti with a link.",
+  "citation": "Clikiti. (2026, October 15). The state of independent moving company websites 2026 (Q4 2026) [Report]. https://clikiti.com/research/moving/2026-q4",
+  "audience": "Web agencies and freelancers selling to independent local, long-distance, storage and specialty moving companies",
+  "sampleSize": 185,
+  "marginOfErrorPts": 7.2,
+  "medianScore": 76,
+  "meanScore": 77,
+  "meanQuestionsAnswered": 4.1,
+  "questionCount": 9,
+  "findings": [
+    "Only 19% of the 185 independent moving company websites we scanned say whether their estimate is binding, non-binding or not-to-exceed.",
+    "A typical site answers four of the nine questions customers planning a move ask before choosing (mean 4.1).",
+    "The median overall score is 76 out of 100 (mean 77).",
+    "The least-answered questions are \"Is the price fixed?\" (19%), \"What's the deposit, and can I cancel?\" (24%) and \"What if something breaks?\" (31%).",
+    "The best-answered are \"Will you pack for me?\" (85%) and \"Can I get a quote without calling?\" (84%).",
+    "By kind of business, the highest median score is 79 (local residential movers), against 78 for specialty movers: piano, senior and office, 76 for moving and storage companies and 75 for long-distance and interstate movers.",
+    "87% fail \"Loads in under 2.5 s on a phone\" (Core Web Vitals · LCP).",
+    "84% fail \"Text contrast passes 4.5:1\" (WCAG 1.4.3).",
+    "36% fail \"MovingCompany or local business structured data\" (Schema.org · MovingCompany)."
+  ],
+  "questions": [
+    {
+      "id": "estimate",
+      "question": "Is the price fixed?",
+      "label": "Estimate type named: binding, non-binding or not-to-exceed",
+      "standard": "Customer question 2",
+      "passPct": 19,
+      "bySegment": {
+        "local": 16,
+        "long": 31,
+        "store": 22,
+        "spec": 12
+      }
+    },
+    {
+      "id": "deposit",
+      "question": "What's the deposit, and can I cancel?",
+      "label": "Deposit or cancellation terms stated",
+      "standard": "Customer question 8",
+      "passPct": 24,
+      "bySegment": {
+        "local": 27,
+        "long": 36,
+        "store": 5,
+        "spec": 26
+      }
+    },
+    {
+      "id": "valuation",
+      "question": "What if something breaks?",
+      "label": "Valuation or moving insurance explained",
+      "standard": "Customer question 5",
+      "passPct": 31,
+      "bySegment": {
+        "local": 24,
+        "long": 50,
+        "store": 32,
+        "spec": 26
+      }
+    },
+    {
+      "id": "calendar",
+      "question": "Are you free on my date?",
+      "label": "Open dates shown: online booking, a calendar or stated availability",
+      "standard": "Customer question 7",
+      "passPct": 31,
+      "bySegment": {
+        "local": 36,
+        "long": 33,
+        "store": 20,
+        "spec": 29
+      }
+    },
+    {
+      "id": "price",
+      "question": "What does an hour cost, and how many movers?",
+      "label": "A price shown: an hourly rate, a crew rate or a move price",
+      "standard": "Customer question 3",
+      "passPct": 32,
+      "bySegment": {
+        "local": 36,
+        "long": 42,
+        "store": 17,
+        "spec": 29
+      }
+    },
+    {
+      "id": "dot",
+      "question": "Are you licensed to move me?",
+      "label": "USDOT or MC number shown as text",
+      "standard": "Customer question 4",
+      "passPct": 43,
+      "bySegment": {
+        "local": 31,
+        "long": 69,
+        "store": 56,
+        "spec": 26
+      }
+    },
+    {
+      "id": "reviews",
+      "question": "Do other customers vouch for you?",
+      "label": "Reviews marked up, in a widget or quoted",
+      "standard": "Customer question 9",
+      "passPct": 63,
+      "bySegment": {
+        "local": 69,
+        "long": 72,
+        "store": 59,
+        "spec": 44
+      }
+    },
+    {
+      "id": "quote",
+      "question": "Can I get a quote without calling?",
+      "label": "A quote can be requested online",
+      "standard": "Customer question 1",
+      "passPct": 84,
+      "bySegment": {
+        "local": 84,
+        "long": 89,
+        "store": 85,
+        "spec": 79
+      }
+    },
+    {
+      "id": "packing",
+      "question": "Will you pack for me?",
+      "label": "Packing offered as a service",
+      "standard": "Customer question 6",
+      "passPct": 85,
+      "bySegment": {
+        "local": 91,
+        "long": 92,
+        "store": 95,
+        "spec": 53
+      }
+    }
+  ],
+  "technical": [
+    {
+      "id": "lcp",
+      "label": "Loads in under 2.5 s on a phone",
+      "standard": "Core Web Vitals · LCP",
+      "failPct": 87,
+      "bySegment": {
+        "local": 89,
+        "long": 83,
+        "store": 88,
+        "spec": 85
+      }
+    },
+    {
+      "id": "con",
+      "label": "Text contrast passes 4.5:1",
+      "standard": "WCAG 1.4.3",
+      "failPct": 84,
+      "bySegment": {
+        "local": 81,
+        "long": 92,
+        "store": 85,
+        "spec": 82
+      }
+    },
+    {
+      "id": "schema",
+      "label": "MovingCompany or local business structured data",
+      "standard": "Schema.org · MovingCompany",
+      "failPct": 36,
+      "bySegment": {
+        "local": 32,
+        "long": 14,
+        "store": 44,
+        "spec": 56
+      }
+    },
+    {
+      "id": "alt",
+      "label": "Images have text descriptions",
+      "standard": "WCAG 1.1.1",
+      "failPct": 24,
+      "bySegment": {
+        "local": 20,
+        "long": 31,
+        "store": 32,
+        "spec": 15
+      }
+    }
+  ],
+  "segments": [
+    {
+      "id": "local",
+      "name": "Local residential movers",
+      "sites": 74,
+      "median": 79,
+      "weakPct": 0
+    },
+    {
+      "id": "long",
+      "name": "Long-distance and interstate movers",
+      "sites": 36,
+      "median": 75,
+      "weakPct": 0
+    },
+    {
+      "id": "store",
+      "name": "Moving and storage companies",
+      "sites": 41,
+      "median": 76,
+      "weakPct": 2
+    },
+    {
+      "id": "spec",
+      "name": "Specialty movers: piano, senior and office",
+      "sites": 34,
+      "median": 78,
+      "weakPct": 0
+    }
+  ],
+  "agencyProblems": [
+    {
+      "id": "lcp",
+      "label": "Loads in under 2.5 s on a phone",
+      "standard": "Core Web Vitals · LCP",
+      "failPct": 87,
+      "fix": "Resize and compress the hero image, defer chat and tracking scripts, aim for under 2.5 s on a phone.",
+      "pitch": "Your home page takes several seconds to appear on a customer's phone.",
+      "effort": "Build"
+    },
+    {
+      "id": "con",
+      "label": "Text contrast passes 4.5:1",
+      "standard": "WCAG 1.4.3",
+      "failPct": 84,
+      "fix": "Raise text contrast to at least 4.5:1 in the theme, especially white text over truck and crew photos.",
+      "pitch": "Parts of the site are hard to read, and it is a WCAG failure.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "estimate",
+      "label": "Estimate type named: binding, non-binding or not-to-exceed",
+      "standard": "Customer question 2",
+      "failPct": 81,
+      "question": "Is the price fixed?",
+      "fix": "One paragraph, linked from the quote form, that says which kind of estimate the company gives (binding, non-binding or not-to-exceed) and what can change the price on the day.",
+      "pitch": "\"Is the price fixed?\" is the question behind every bad mover story, and your site never answers it.",
+      "effort": "Content"
+    },
+    {
+      "id": "deposit",
+      "label": "Deposit or cancellation terms stated",
+      "standard": "Customer question 8",
+      "failPct": 76,
+      "question": "What's the deposit, and can I cancel?",
+      "fix": "State the deposit (amount or \"no deposit\") and the cancellation and rescheduling terms, near the quote form and in the FAQ.",
+      "pitch": "A customer about to commit wants to know what they lose if the closing date moves, and your site does not say.",
+      "effort": "Quick fix"
+    },
+    {
+      "id": "valuation",
+      "label": "Valuation or moving insurance explained",
+      "standard": "Customer question 5",
+      "failPct": 69,
+      "question": "What if something breaks?",
+      "fix": "A short page on what happens if something breaks: released value (60 cents per pound per article) versus full value protection, what each costs and how to claim.",
+      "pitch": "Customers find out what basic coverage pays only after something breaks; the movers who explain it first get fewer one-star reviews.",
+      "effort": "Content"
+    }
+  ]
+}

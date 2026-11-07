@@ -1,0 +1,25 @@
+# The State of School Websites 2026 (Q4 2026). CC BY 4.0, credit Clikiti with a link: https://clikiti.com/research/education
+"section","id","label","standard","metric","value"
+"summary","sites","Websites scanned","","count",114
+"summary","median","Median overall score","","score_0_100",74
+"summary","mean","Mean overall score","","score_0_100",75
+"summary","moe","Margin of error (95%)","","percentage_points",9.2
+"summary","weak","Sites scoring under 60","","percent",1
+"question","contact","Can I reach a person?","Parent question 10","percent_pass",9
+"question","accr","Is it recognised?","Parent question 5","percent_pass",27
+"question","cal","When are the holidays?","Parent question 8","percent_pass",46
+"question","tour","Can we visit?","Parent question 3","percent_pass",59
+"question","cost","What does it cost?","Parent question 1","percent_pass",68
+"question","aid","Can we afford it?","Parent question 6","percent_pass",76
+"technical","con","Text contrast passes 4.5:1","WCAG 1.4.3","percent_fail",80
+"technical","lcp","Loads in under 2.5 s on a phone","Core Web Vitals · LCP","percent_fail",57
+"technical","alt","Images have text descriptions","WCAG 1.1.1","percent_fail",17
+"segment","ind","Independent schools","","median_score",73
+"segment","ind","Independent schools","","percent_under_60",0
+"segment","ind","Independent schools","","sites",58
+"segment","small","Small private schools","","median_score",75
+"segment","small","Small private schools","","percent_under_60",0
+"segment","small","Small private schools","","sites",31
+"segment","tut","Tutoring and learning centres","","median_score",78
+"segment","tut","Tutoring and learning centres","","percent_under_60",4
+"segment","tut","Tutoring and learning centres","","sites",25
